@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,12 +26,13 @@
   outputs =
     inputs@{
       self,
-      nix-darwin,
-      nixpkgs,
-      nix-homebrew,
-      homebrew-core,
       homebrew-cask,
+      homebrew-core,
       neovim-nightly-overlay,
+      nix-darwin,
+      nix-homebrew,
+      nixpkgs,
+      home-manager,
       ...
     }:
 
@@ -292,6 +297,7 @@ run '~/.tmux/plugins/tpm/tpm'
       # $ darwin-rebuild build --flake .#Christophers-MacBook
       darwinConfigurations."Christophers-MacBook" = nix-darwin.lib.darwinSystem {
         modules = [
+          home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
           configuration
           (
