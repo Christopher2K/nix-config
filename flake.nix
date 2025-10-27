@@ -25,22 +25,26 @@
 
   outputs =
     inputs@{
-      self,
-      homebrew-cask,
-      homebrew-core,
-      nix-darwin,
-      nix-homebrew,
-      nixpkgs,
-      neovim-nightly-overlay,
-      ...
+    homebrew-cask,
+    homebrew-core,
+    neovim-nightly-overlay,
+    nix-darwin,
+    nix-homebrew,
+    nixpkgs,
+    home-manager,
+    ...
     }:
     {
       darwinConfigurations."Christophers-MacBook" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit neovim-nightly-overlay homebrew-core homebrew-cask; };
+        specialArgs = {
+          inherit neovim-nightly-overlay homebrew-core homebrew-cask;
+          username = "christopher";
+        };
         modules = [
           nix-homebrew.darwinModules.nix-homebrew
-          # home-manager.darwinModules.home-manager
-          ./configuration.nix
+          home-manager.darwinModules.home-manager
+          ./configuration
+          ./home-manager
         ];
       };
     };

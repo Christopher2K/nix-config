@@ -1,7 +1,5 @@
-let
-  username = "christopher";
-in
 {
+  username,
   config,
   pkgs,
   homebrew-cask,
@@ -10,6 +8,10 @@ in
   ...
 }:
 {
+  imports = [
+    ./homebrew.nix
+  ];
+
   nix = {
     # Disable darwin-nix self version management
     enable = false;
@@ -26,84 +28,9 @@ in
   fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
   environment.systemPackages = [
-    # CLI
-    pkgs.bat
-    pkgs.fd
-    pkgs.fzf
-    pkgs.jankyborders
-    pkgs.lazydocker
-    pkgs.lazygit
-    pkgs.lf
-    pkgs.neofetch
-    pkgs.opencode
-    pkgs.ripgrep
-    pkgs.scrcpy
-    pkgs.starship
-    pkgs.tmux
-    pkgs.watchman
-
-    # GUI
-    pkgs._1password-gui
-    pkgs.aerospace
-    pkgs.discord
-    pkgs.ghostty-bin
-    pkgs.mise
-    pkgs.nixfmt-rfc-style
-    pkgs.orbstack
-    pkgs.raycast
-    pkgs.signal-desktop-bin
-    pkgs.slack
-    pkgs.tableplus
-    pkgs.vlc-bin
-    pkgs.whatsapp-for-mac
-    pkgs.xcodes
-    pkgs.yaak
-    pkgs.zed-editor
-    pkgs.zoom-us
-
-    # Nightly stuff
-    neovim-nightly-overlay.packages.${pkgs.system}.default
   ];
 
-  nix-homebrew = {
-    enable = true;
-    enableRosetta = false;
-    mutableTaps = false;
-    user = username;
-    taps = {
-      "homebrew/homebrew-core" = homebrew-core;
-      "homebrew/homebrew-cask" = homebrew-cask;
-    };
-  };
-
-  homebrew = {
-    enable = true;
-    brews = [ ];
-    taps = builtins.attrNames config.nix-homebrew.taps;
-    casks = [
-      "android-studio"
-      "arc"
-      "bezel"
-      "cleanshot"
-      "daisydisk"
-      "elgato-capture-device-utility"
-      "elgato-stream-deck"
-      "figma"
-      "helium-browser"
-      "insta360-link-controller"
-      "intellij-idea-ce"
-      "linear-linear"
-      "localcan"
-      "loopback"
-      "notion"
-      "obsidian"
-      "screen-studio"
-      "sketch"
-      "transmission"
-      "tuple"
-      "virtualbuddy"
-    ];
-  };
+  users.users.${username}.home = "/Users/${username}";
 
   programs.tmux = {
     enable = true;
@@ -157,7 +84,7 @@ in
 
   services.aerospace = {
     enable = true;
-    settings = ./options/aerospace.nix;
+    settings = ../home-manager/aerospace.nix;
   };
 
   services.jankyborders = {
