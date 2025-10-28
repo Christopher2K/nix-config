@@ -10,6 +10,7 @@
   home-manager.users.christopher = {
     imports = [
       ./aerospace.nix
+      ./ghostty.nix
       ./git.nix
       ./jankyborders.nix
       ./mise.nix
