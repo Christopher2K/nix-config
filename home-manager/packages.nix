@@ -1,6 +1,5 @@
 {
   pkgs,
-  neovim-nightly-overlay,
   ...
 }:
 {
@@ -28,8 +27,5 @@
     vlc-bin
     yaak
     zoom-us
-
-    # Nightly stuff
-    neovim-nightly-overlay.packages.${pkgs.system}.default
   ];
 }

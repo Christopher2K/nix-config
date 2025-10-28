@@ -6,11 +6,9 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      "vim" = "nvim";
       "switch" = "sudo darwin-rebuild switch";
     };
     sessionVariables = {
-      EDITOR = "vim";
       LC_ALL = "en_US.UTF-8";
       LC_CTYPE = "en_US.UTF-8";
 
