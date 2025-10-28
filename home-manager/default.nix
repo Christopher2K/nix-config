@@ -12,8 +12,9 @@
       ./aerospace.nix
       ./git.nix
       ./jankyborders.nix
-      ./packages.nix
+      ./mise.nix
       ./neovim.nix
+      ./packages.nix
       ./tmux.nix
       ./zsh.nix
     ];

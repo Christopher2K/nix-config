@@ -12,6 +12,7 @@
     lazygit
     lf
     neofetch
+    nixfmt-rfc-style
     opencode
     ripgrep
     scrcpy
@@ -19,8 +20,6 @@
     xcodes
 
     # GUI
-    mise
-    nixfmt-rfc-style
     orbstack
     raycast
     tableplus
