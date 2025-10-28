@@ -40,6 +40,7 @@
           inherit neovim-nightly-overlay homebrew-core homebrew-cask;
           username = "christopher";
         };
+
         modules = [
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager

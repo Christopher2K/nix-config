@@ -27,9 +27,6 @@
 
   fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
-  environment.systemPackages = [
-  ];
-
   users.users.${username}.home = "/Users/${username}";
 
   programs.tmux = {
@@ -74,25 +71,6 @@
 
       run '~/.tmux/plugins/tpm/tpm'
     '';
-  };
-
-  programs.zsh = {
-    enable = true;
-    enableFastSyntaxHighlighting = true;
-    shellInit = "eval $(starship init zsh)";
-  };
-
-  services.jankyborders = {
-    enable = true;
-    active_color = "0xfffe8019";
-    hidpi = true;
-    style = "round";
-    width = 10.0;
-    ax_focus = true;
-    blacklist = [
-      "idea"
-      "studio"
-    ];
   };
 
   power.sleep = {

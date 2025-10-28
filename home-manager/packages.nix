@@ -9,7 +9,6 @@
     bat
     fd
     fzf
-    jankyborders
     lazydocker
     lazygit
     lf
@@ -23,7 +22,6 @@
     xcodes
 
     # GUI
-    aerospace
     mise
     nixfmt-rfc-style
     orbstack
