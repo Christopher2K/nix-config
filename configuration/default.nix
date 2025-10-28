@@ -82,11 +82,6 @@
     shellInit = "eval $(starship init zsh)";
   };
 
-  services.aerospace = {
-    enable = true;
-    settings = ../home-manager/aerospace.nix;
-  };
-
   services.jankyborders = {
     enable = true;
     active_color = "0xfffe8019";
