@@ -13,6 +13,7 @@
       ./git.nix
       ./jankyborders.nix
       ./packages.nix
+      ./neovim.nix
       ./tmux.nix
       ./zsh.nix
     ];
