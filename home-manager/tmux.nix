@@ -2,10 +2,10 @@
   programs.tmux = {
     enable = true;
     plugins = with pkgs; [
+      tmuxPlugins.sensible
       tmuxPlugins.resurrect
       tmuxPlugins.pain-control
     ];
-    shell = "${pkgs.zsh}/bin/zsh";
     keyMode = "vi";
     mouse = true;
     baseIndex = 1;
@@ -26,6 +26,7 @@
       set -g status-right-length 40
       set -g status-right-style default
       set -g status-right "#[fg=#ffffff,bold bg=#a89984] %H:%M "
+      set -g default-command ${pkgs.zsh}/bin/zsh
     '';
   };
 }
