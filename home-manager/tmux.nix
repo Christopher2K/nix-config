@@ -2,16 +2,14 @@
   programs.tmux = {
     enable = true;
     plugins = with pkgs; [
-      tmuxPlugins.sensible
       tmuxPlugins.resurrect
       tmuxPlugins.pain-control
     ];
+    shell = "${pkgs.zsh}/bin/zsh";
+    keyMode = "vi";
+    mouse = true;
+    baseIndex = 1;
     extraConfig = ''
-      # Set base index to 1
-      set -g base-index 1
-      setw -g pane-base-index 1
-
-      # Status Bar
       set -g status on
       set -g status-style bg=#d5c4a1,fg=#594945
       set -g status-interval 1
@@ -28,9 +26,6 @@
       set -g status-right-length 40
       set -g status-right-style default
       set -g status-right "#[fg=#ffffff,bold bg=#a89984] %H:%M "
-
-      unbind %
-      unbind '"'
     '';
   };
 }
