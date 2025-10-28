@@ -16,8 +16,6 @@
     opencode
     ripgrep
     scrcpy
-    starship
-    tmux
     watchman
     xcodes
 

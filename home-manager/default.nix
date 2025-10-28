@@ -15,6 +15,7 @@ in
       ./aerospace.nix
       ./jankyborders.nix
       ./packages.nix
+      ./tmux.nix
       ./zsh.nix
     ];
     home.username = "christopher";
