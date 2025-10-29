@@ -9,7 +9,7 @@ pkgs,
     settings = {
       theme = "Gruvbox Light";
       font-family = "JetBrainsMono Nerd Font Mono";
-      font-size = 18;
+      font-size = 16;
       macos-titlebar-style = "hidden";
       window-padding-x = 12;
       window-padding-y = 12;

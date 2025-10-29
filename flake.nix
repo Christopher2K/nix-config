@@ -25,14 +25,14 @@
 
   outputs =
     inputs@{
-    homebrew-cask,
-    homebrew-core,
-    neovim-nightly-overlay,
-    nix-darwin,
-    nix-homebrew,
-    nixpkgs,
-    home-manager,
-    ...
+      homebrew-cask,
+      homebrew-core,
+      neovim-nightly-overlay,
+      nix-darwin,
+      nix-homebrew,
+      nixpkgs,
+      home-manager,
+      ...
     }:
     {
       darwinConfigurations."Christophers-MacBook" = nix-darwin.lib.darwinSystem {
