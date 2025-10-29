@@ -1,10 +1,11 @@
 {
-config,
-username,
-homebrew-core,
-homebrew-cask,
-...
-} : {
+  config,
+  username,
+  homebrew-core,
+  homebrew-cask,
+  ...
+}:
+{
   nix-homebrew = {
     enable = true;
     enableRosetta = false;
@@ -43,10 +44,12 @@ homebrew-cask,
       "notion"
       "obsidian"
       "screen-studio"
+      "signal"
       "sketch"
       "transmission"
       "tuple"
       "virtualbuddy"
+      "whatsapp"
       "zed"
     ];
   };
