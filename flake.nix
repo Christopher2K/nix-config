@@ -34,8 +34,8 @@
       home-manager,
       ...
     }:
-    {
-      darwinConfigurations."Christophers-MacBook" = nix-darwin.lib.darwinSystem {
+    let
+      darwinConfiguration = nix-darwin.lib.darwinSystem {
         specialArgs = {
           inherit neovim-nightly-overlay homebrew-core homebrew-cask;
           username = "christopher";
@@ -48,5 +48,9 @@
           ./home-manager
         ];
       };
+    in
+    {
+      darwinConfigurations."Christophers-MacBook" = darwinConfiguration;
+      darwinConfigurations."CookUnityLaptop" = darwinConfiguration;
     };
 }
