@@ -4,9 +4,6 @@
 }:
 {
   home.packages = with pkgs; [
-    # Dependencies
-    libyaml
-
     # CLI
     bat
     fd

@@ -20,7 +20,9 @@
   homebrew = {
     enable = true;
     onActivation.cleanup = "uninstall";
-    brews = [ ];
+    brews = [
+      "libyaml"
+    ];
     taps = builtins.attrNames config.nix-homebrew.taps;
     casks = [
       "1password"
