@@ -1,7 +1,8 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   programs.mise = {
     enable = true;
     enableZshIntegration = true;
@@ -18,7 +19,7 @@
         ocaml = "5.2.0";
         opam = "2.2.0";
         python = "3.10.7";
-        ruby = "3.2.2";
+        ruby = "3.2.9";
         rust = "1.75.0";
       };
     };
