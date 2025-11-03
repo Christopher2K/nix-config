@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
@@ -24,4 +25,8 @@
       };
     };
   };
+
+  home.activation.miseInstall = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ${pkgs.mise}/bin/mise install
+  '';
 }

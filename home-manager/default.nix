@@ -3,8 +3,10 @@
   neovim-nightly-overlay,
   config,
   username,
+  lib,
   ...
-}: {
+}:
+{
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.christopher = {
