@@ -13,7 +13,7 @@
         erlang = "28.0.2";
         gleam = "1.3.2";
         golang = "1.22.2";
-        java = "adoptopenjdk-17.0.2+8";
+        java = "openjdk-17.0.2";
         kotlin = "2.0.0";
         nodejs = "22.11.0";
         ocaml = "5.2.0";
