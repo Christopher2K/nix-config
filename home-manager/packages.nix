@@ -18,7 +18,6 @@
     scrcpy
     tree-sitter
     watchman
-    xcodes
 
     # GUI
     orbstack

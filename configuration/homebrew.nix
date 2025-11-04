@@ -22,6 +22,7 @@
     onActivation.cleanup = "uninstall";
     brews = [
       "libyaml"
+      "xcodes"
     ];
     taps = builtins.attrNames config.nix-homebrew.taps;
     casks = [
@@ -34,7 +35,6 @@
       "daisydisk"
       "discord"
       "elgato-capture-device-utility"
-      "slack"
       "elgato-stream-deck"
       "figma"
       "helium-browser"
@@ -48,11 +48,13 @@
       "screen-studio"
       "signal"
       "sketch"
+      "slack"
       "switchresx"
       "transmission"
       "tuple"
       "virtualbuddy"
       "whatsapp"
+      "xcodes"
       "zed"
     ];
   };
