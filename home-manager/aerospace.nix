@@ -10,6 +10,7 @@
       accordion-padding = 30;
       default-root-container-layout = "accordion";
       default-root-container-orientation = "horizontal";
+      automatically-unhide-macos-hidden-apps = true;
       key-mapping.preset = "qwerty";
       gaps = {
         inner.horizontal = 12;
