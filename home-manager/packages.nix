@@ -16,6 +16,7 @@
     opencode
     ripgrep
     scrcpy
+    tree-sitter
     watchman
     xcodes
 

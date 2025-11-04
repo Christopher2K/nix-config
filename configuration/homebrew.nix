@@ -48,6 +48,7 @@
       "screen-studio"
       "signal"
       "sketch"
+      "switchresx"
       "transmission"
       "tuple"
       "virtualbuddy"
