@@ -1,8 +1,14 @@
 {
   pkgs,
+  getConfig,
+  getDest,
   ...
 }:
 {
+  home.file."${getDest ".env.template"}" = {
+    source = getConfig ".env.template";
+  };
+
   programs.zsh = {
     enable = true;
     shellAliases = {
@@ -40,6 +46,10 @@
       }
 
       alias delete_localonly_branch="delete_localonly_branches"
+
+      if command -v op &> /dev/null; then
+        eval $(op inject -i ~/.env.template)
+      fi
     '';
   };
 
