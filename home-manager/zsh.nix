@@ -9,6 +9,11 @@
     source = getConfig ".env.template";
   };
 
+  home.file."${getDest "scripts"}" = {
+    source = getConfig "scripts";
+    recursive = true;
+  };
+
   programs.zsh = {
     enable = true;
     shellAliases = {
@@ -47,8 +52,15 @@
 
       alias delete_localonly_branch="delete_localonly_branches"
 
-      if command -v op &> /dev/null; then
-        eval $(op inject -i ~/.env.template)
+      # Load cached environment variables from 1Password
+      CACHE_FILE="$HOME/.cache/env/.env.cache"
+
+      if [ -f "$CACHE_FILE" ]; then
+        source "$CACHE_FILE"
+      else
+        echo "⚠️  No cached environment variables found. Running: ~/scripts/secure-env-refresh"
+        ~/scripts/secure-env-refresh.sh
+        source "$CACHE_FILE"
       fi
     '';
   };
