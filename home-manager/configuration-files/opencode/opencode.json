@@ -1,0 +1,12 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "gruvbox",
+  "plugin": [
+    "opencode-skills"
+  ],
+  "provider": {
+    "anthropic": {
+      "options": {}
+    }
+  }
+}

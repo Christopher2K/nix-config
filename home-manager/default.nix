@@ -17,6 +17,7 @@
       ./jankyborders.nix
       ./mise.nix
       ./neovim.nix
+      ./opencode.nix
       ./packages.nix
       ./tmux.nix
       ./zsh.nix

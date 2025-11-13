@@ -6,6 +6,8 @@
   home.packages = with pkgs; [
     # CLI
     bat
+    claude-code
+    codex
     fd
     fzf
     lazydocker

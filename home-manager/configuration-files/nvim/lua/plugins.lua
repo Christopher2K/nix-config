@@ -23,6 +23,7 @@ function plugins.init()
     -- Global dependencies
     "muniftanjim/nui.nvim",                                                    -- UI library
     "folke/noice.nvim",                                                        -- UI library as well
+    "folke/snacks.nvim",                                                       -- UI library as well
     "rcarriga/nvim-notify",                                                    -- Notifications
     "nvim-lua/plenary.nvim",                                                   -- Utilities
 
@@ -54,6 +55,7 @@ function plugins.init()
     "windwp/nvim-ts-autotag",                                                  -- Treesitter extension for auto-tag
     "wakatime/vim-wakatime",                                                   -- WakaTime
     "folke/which-key.nvim",                                                    -- Bindings helpers
+    "NickvanDyke/opencode.nvim",                                               -- Opencode integration
   })
 end
 
@@ -165,6 +167,7 @@ function plugins.configure()
   local noice = require("noice")
   local notify = require("notify")
   local stay_centered = require("stay-centered")
+  local snacks = require("snacks")
 
   noice.setup({
     presets = {
@@ -183,6 +186,12 @@ function plugins.configure()
   })
   stay_centered.setup({
     enabled = false
+  })
+
+  snacks.setup({
+    input = { enabled = true },
+    terminal = { enabled = true },
+    picker = { enabled = true },
   })
   --#endregion
 
@@ -281,6 +290,11 @@ function plugins.configure()
       lsp_fallback = "fallback",
     },
   })
+  --#endregion
+
+  --#region AI tools
+  vim.g.opencode_opts = {
+  }
   --#endregion
 end
 
