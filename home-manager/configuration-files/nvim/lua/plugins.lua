@@ -56,6 +56,7 @@ function plugins.init()
     "wakatime/vim-wakatime",                                                   -- WakaTime
     "folke/which-key.nvim",                                                    -- Bindings helpers
     "NickvanDyke/opencode.nvim",                                               -- Opencode integration
+    "OXY2DEV/markview.nvim",                                                   -- Markdown viewers
   })
 end
 
