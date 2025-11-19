@@ -8,6 +8,7 @@
     bat
     claude-code
     codex
+    devenv
     fd
     fzf
     lazydocker
