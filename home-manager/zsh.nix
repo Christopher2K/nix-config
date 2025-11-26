@@ -24,6 +24,9 @@
       LC_CTYPE = "en_US.UTF-8";
       TMPDIR = "$HOME/.tmp";
 
+      ZSH_TMUX_AUTOSTART = "true";
+      ZSH_TMUX_AUTOQUIT = "false";
+
       DEV = "$HOME/Developer";
       COOKIN = "$DEV/cookin";
 
@@ -71,6 +74,7 @@
     plugins = [
       "git"
       "sudo"
+      "tmux"
     ];
   };
 
