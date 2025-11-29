@@ -12,7 +12,7 @@
         bun = "1.2.2";
         elixir = "1.18.4-otp-28";
         erlang = "28.0.2";
-        gleam = "1.3.2";
+        gleam = "1.13.0";
         golang = "1.22.2";
         java = "openjdk-17.0.2";
         kotlin = "2.0.0";
