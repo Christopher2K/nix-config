@@ -20,6 +20,10 @@ function lsp.init()
     -- "expert",
   }
 
+  local unmanaged_servers = {
+    "gleam",
+  }
+
   require("mason").setup()
   require("mason-lspconfig").setup({
     automatic_enable = false,
@@ -75,6 +79,7 @@ function lsp.init()
 
   -- Enable everything
   vim.lsp.enable(servers)
+  vim.lsp.enable(unmanaged_servers)
 end
 
 return lsp
