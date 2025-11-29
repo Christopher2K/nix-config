@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     # CLI
     bat
+    beamMinimal28Packages.rebar3
     claude-code
     codex
     devenv
