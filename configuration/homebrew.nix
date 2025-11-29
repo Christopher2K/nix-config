@@ -44,6 +44,7 @@
       "localcan"
       "loopback"
       "notion"
+      "obs"
       "obsidian"
       "screen-studio"
       "signal"
