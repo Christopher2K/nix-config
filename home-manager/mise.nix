@@ -17,7 +17,7 @@
         java = "openjdk-17.0.2";
         kotlin = "2.0.0";
         nodejs = "22.11.0";
-        ocaml = "5.2.0";
+        ocaml = "5.4.0";
         opam = "2.2.0";
         python = "3.10.7";
         ruby = "3.2.9";

@@ -3,8 +3,8 @@ local lsp = {}
 function lsp.init()
   local servers = {
     "astro",
-    "clangd",
     "biome",
+    "clangd",
     "cssls",
     "docker_compose_language_service",
     "dockerls",
@@ -21,6 +21,7 @@ function lsp.init()
   }
 
   local unmanaged_servers = {
+    "ocamllsp",
     "gleam",
   }
 

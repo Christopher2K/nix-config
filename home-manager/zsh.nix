@@ -2,6 +2,7 @@
   pkgs,
   getConfig,
   getDest,
+  lib,
   ...
 }:
 {
@@ -24,7 +25,7 @@
       LC_CTYPE = "en_US.UTF-8";
       TMPDIR = "$HOME/.tmp";
 
-      ZSH_TMUX_AUTOSTART = "true";
+      # ZSH_TMUX_AUTOSTART = "true";
       ZSH_TMUX_AUTOQUIT = "false";
 
       DEV = "$HOME/Developer";
@@ -41,31 +42,44 @@
       ERL_AFLAGS = "-kernel shell_history enabled";
     };
 
-    initContent = ''
-      delete_localonly_branches () {
-        git fetch -p
+    initContent =
+      let
+        zshConfigEarlyInit = lib.mkOrder 500 ''
+          delete_localonly_branches () {
+            git fetch -p
 
-        for branch in $(git branch --format "%(refname:short)"); do
-          if ! git show-ref --quiet refs/remotes/origin/$branch; then
-            echo "Delete local $branch"
-            git branch -D $branch
+            for branch in $(git branch --format "%(refname:short)"); do
+              if ! git show-ref --quiet refs/remotes/origin/$branch; then
+                echo "Delete local $branch"
+                git branch -D $branch
+              fi
+            done
+          }
+
+          alias delete_localonly_branch="delete_localonly_branches"
+
+          # Load cached environment variables from 1Password
+          CACHE_FILE="$HOME/.cache/env/.env.cache"
+
+          if [ -f "$CACHE_FILE" ]; then
+            source "$CACHE_FILE"
+          else
+            echo "⚠️  No cached environment variables found. Running: ~/scripts/secure-env-refresh"
+            ~/scripts/secure-env-refresh.sh
+            source "$CACHE_FILE"
           fi
-        done
-      }
+        '';
+        zshConfig = lib.mkOrder 1500 ''
+          # OPAM init
+          [[ ! -r '/Users/christopher/.opam/opam-init/init.zsh' ]] || source '/Users/christopher/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+        '';
 
-      alias delete_localonly_branch="delete_localonly_branches"
+      in
+      lib.mkMerge [
+        zshConfigEarlyInit
+        zshConfig
+      ];
 
-      # Load cached environment variables from 1Password
-      CACHE_FILE="$HOME/.cache/env/.env.cache"
-
-      if [ -f "$CACHE_FILE" ]; then
-        source "$CACHE_FILE"
-      else
-        echo "⚠️  No cached environment variables found. Running: ~/scripts/secure-env-refresh"
-        ~/scripts/secure-env-refresh.sh
-        source "$CACHE_FILE"
-      fi
-    '';
   };
 
   programs.zsh.oh-my-zsh = {
