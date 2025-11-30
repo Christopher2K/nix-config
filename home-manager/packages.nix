@@ -10,6 +10,7 @@
     claude-code
     codex
     devenv
+    exercism
     fd
     fzf
     lazydocker
