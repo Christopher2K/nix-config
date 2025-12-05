@@ -95,6 +95,7 @@ function keys.init()
     end,
     { desc = "Pick live grep" }
   )
+  vim.keymap.set('n', '<leader>fw', '<cmd>Pick git_worktrees<cr>')
 
   -- Terminal
   vim.keymap.set("n", "`", require('FTerm').toggle, { desc = "Open terminal" })

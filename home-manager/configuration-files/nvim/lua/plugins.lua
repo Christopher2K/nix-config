@@ -227,7 +227,33 @@ function plugins.configure()
   })
 
   local pick = require("mini.pick")
+  local worktree_picker = require("worktree_picker")
   pick.setup()
+
+  pick.registry.git_worktrees = function(local_opts)
+    local cwd = local_opts.cwd or vim.fn.getcwd()
+    if vim.system({ 'git', '-C', cwd, 'rev-parse' }):wait().code ~= 0 then
+      vim.notify(
+        'Not in a git repository',
+        vim.log.levels.ERROR
+      )
+      return
+    end
+    local opts = {
+      source = {
+        -- NOTE: Window Title
+        name = string.format('Git Worktrees - %s', cwd),
+        choose = worktree_picker.wt_switch,
+      },
+    }
+    local_opts.command =
+    { 'git', '-C', cwd, 'worktree', 'list', '--porcelain', '-z' }
+    local_opts.postprocess = worktree_picker.wt_postprocess
+
+    return pick.builtin.cli(local_opts, opts)
+  end
+
+
   --#endregion
 
   --#region Editor
