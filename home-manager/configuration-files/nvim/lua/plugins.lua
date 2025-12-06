@@ -99,6 +99,9 @@ function plugins.configure()
         leave_dirs_open = false,
       },
     },
+    window = {
+      position = "right",
+    },
   })
   --#endregion
 
