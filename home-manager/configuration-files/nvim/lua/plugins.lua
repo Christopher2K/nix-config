@@ -26,6 +26,7 @@ function plugins.init()
     "folke/snacks.nvim",                                                       -- UI library as well
     "rcarriga/nvim-notify",                                                    -- Notifications
     "nvim-lua/plenary.nvim",                                                   -- Utilities
+    "laytan/cloak.nvim",                                                       -- Cloak for streaming
 
     "ellisonleao/gruvbox.nvim",                                                -- Theme
     "nvim-tree/nvim-web-devicons",                                             -- Icons
@@ -172,6 +173,7 @@ function plugins.configure()
   local notify = require("notify")
   local stay_centered = require("stay-centered")
   local snacks = require("snacks")
+  local cloak = require("cloak")
 
   noice.setup({
     presets = {
@@ -182,12 +184,14 @@ function plugins.configure()
       lsp_doc_border = true,        -- add a border to hover docs and signature help
     },
   })
+
   notify.setup({
     stages = "fade_in_slide_out",
     timeout = 3000,
     render = "compact",
     top_down = false,
   })
+
   stay_centered.setup({
     enabled = false
   })
@@ -197,6 +201,9 @@ function plugins.configure()
     terminal = { enabled = true },
     picker = { enabled = true },
   })
+
+  cloak.setup()
+
   --#endregion
 
   --#region AI Stuff
