@@ -29,7 +29,6 @@
       "1password"
       "1password-cli"
       "android-studio"
-      "arc"
       "bezel"
       "cleanshot"
       "daisydisk"

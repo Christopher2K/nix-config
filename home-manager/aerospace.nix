@@ -114,7 +114,7 @@
           run = "move-node-to-workspace 1";
         }
         {
-          "if".app-id = "company.thebrowser.Browser";
+          "if".app-id = "net.imput.helium";
           run = "move-node-to-workspace 2";
         }
         {

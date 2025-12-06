@@ -15,7 +15,7 @@
       persistent-apps = [
         "/System/Applications/Mail.app"
         "/System/Applications/Calendar.app"
-        "/Applications/Arc.app"
+        "/Applications/Helium.app"
         "/Users/${username}/Applications/Home Manager Apps/Ghostty.app"
         "/Applications/Android Studio.app"
         "/Applications/IntelliJ IDEA CE.app"
