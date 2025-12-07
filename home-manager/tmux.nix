@@ -23,11 +23,11 @@
 
       set -g status-left-length 40
       set -g status-left-style default
-      set -g status-left ""
+      set -g status-left "#{?client_prefix,[P],}#[fg=#FFFFFF,bold,bg=#7F6E63] #S "
 
       set -g status-right-length 40
       set -g status-right-style default
-      set -g status-right ""
+      set -g status-right "#[fg=#ffffff,bold bg=#a89984] %H:%M "
       set -g default-command ${pkgs.zsh}/bin/zsh
     '';
   };
