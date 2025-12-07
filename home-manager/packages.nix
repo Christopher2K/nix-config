@@ -13,6 +13,7 @@
     exercism
     fd
     fzf
+    glow
     lazydocker
     lazygit
     lf
