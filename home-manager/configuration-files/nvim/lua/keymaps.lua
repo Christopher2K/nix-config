@@ -70,7 +70,9 @@ function keys.init()
   vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Check references" })
 
   -- Plugins stuff
-  vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle reveal position=right<cr>", { desc = "Toggle explorer" })
+  vim.keymap.set("n", "<leader>e", "<cmd>Neotree reveal position=right<cr>", { desc = "Open or focus explorer" })
+  vim.keymap.set("n", "<leader>b", "<cmd>Neotree close<cr>", { desc = "Close explorer" })
+
   vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "Open LazyGit" })
   vim.keymap.set("n", "<leader>i", "<cmd>Sleuth<cr>", { desc = "Fix indentiation" })
 
