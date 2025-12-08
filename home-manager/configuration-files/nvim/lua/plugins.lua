@@ -35,6 +35,7 @@ function plugins.init()
     "stevearc/conform.nvim",                                                   -- Format plugin
     "Bekaboo/dropbar.nvim",                                                    -- Breadcrumbs plugin
     "numToStr/FTerm.nvim",                                                     -- Terminal plugin
+    "akinsho/toggleterm.nvim",                                                 -- Another terminal plugin
     "lewis6991/gitsigns.nvim",                                                 -- Git signs plugin
     "kdheepak/lazygit.nvim",                                                   -- LazyGit plugin
 
@@ -352,12 +353,23 @@ function plugins.configure()
   }
   --#endregion
 
-  --#region
+  --#region Bufferline
   local bufferline = require("bufferline")
   bufferline.setup({
     options = {
       mode = "tabs",
     },
+  })
+  --#endregion
+
+  --#region toggleterm
+  local gruvbox = require("gruvbox")
+  local toggleterm = require("toggleterm")
+  toggleterm.setup({
+    open_mapping = [[<c-\>]],
+    shade_terminals = false,
+    highlights = {
+    }
   })
   --#endregion
 end
