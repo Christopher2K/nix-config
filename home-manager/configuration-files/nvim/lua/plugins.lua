@@ -369,6 +369,7 @@ function plugins.configure()
   local Terminal = require("toggleterm.terminal").Terminal
   local opencode_terminal = Terminal:new({
     cmd = "opencode",
+    count = 99,
     display_name = "OpenCode",
     direction = "float",
     on_open = function(term)
