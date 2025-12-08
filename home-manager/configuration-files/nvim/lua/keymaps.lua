@@ -108,13 +108,8 @@ function keys.init()
 
   vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
-  -- Opencode
-  vim.keymap.set({ "n", "t" }, "<C-x>", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
-  vim.keymap.set("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end,
-    { desc = "opencode half page up" })
-  vim.keymap.set("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end,
-    { desc = "opencode half page down" })
-  --
+  -- OpenCode Terminal (ToggleTerm)
+  vim.keymap.set({ "n", "t" }, "<C-x>", function() _toggle_opencode() end, { desc = "Toggle OpenCode terminal" })
 end
 
 return keys

@@ -59,7 +59,6 @@ function plugins.init()
     "windwp/nvim-ts-autotag",                                                  -- Treesitter extension for auto-tag
     "wakatime/vim-wakatime",                                                   -- WakaTime
     "folke/which-key.nvim",                                                    -- Bindings helpers
-    "NickvanDyke/opencode.nvim",                                               -- Opencode integration
     "OXY2DEV/markview.nvim",                                                   -- Markdown viewers
   })
 end
@@ -348,11 +347,6 @@ function plugins.configure()
   })
   --#endregion
 
-  --#region AI tools
-  vim.g.opencode_opts = {
-  }
-  --#endregion
-
   --#region Bufferline
   local bufferline = require("bufferline")
   bufferline.setup({
@@ -363,7 +357,6 @@ function plugins.configure()
   --#endregion
 
   --#region toggleterm
-  local gruvbox = require("gruvbox")
   local toggleterm = require("toggleterm")
   toggleterm.setup({
     open_mapping = [[<c-\>]],
@@ -371,6 +364,22 @@ function plugins.configure()
     highlights = {
     }
   })
+
+  -- Create persistent OpenCode terminal
+  local Terminal = require("toggleterm.terminal").Terminal
+  local opencode_terminal = Terminal:new({
+    cmd = "opencode",
+    display_name = "OpenCode",
+    direction = "float",
+    on_open = function(term)
+      vim.cmd("startinsert!")
+    end,
+  })
+
+  function _toggle_opencode()
+    opencode_terminal:toggle()
+  end
+
   --#endregion
 end
 
