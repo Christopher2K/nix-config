@@ -361,26 +361,7 @@ function plugins.configure()
   toggleterm.setup({
     open_mapping = [[<c-\>]],
     shade_terminals = false,
-    highlights = {
-    }
   })
-
-  -- Create persistent OpenCode terminal
-  local Terminal = require("toggleterm.terminal").Terminal
-  local opencode_terminal = Terminal:new({
-    cmd = "opencode",
-    count = 99,
-    display_name = "OpenCode",
-    direction = "float",
-    on_open = function(term)
-      vim.cmd("startinsert!")
-    end,
-  })
-
-  function _toggle_opencode()
-    opencode_terminal:toggle()
-  end
-
   --#endregion
 end
 

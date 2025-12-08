@@ -11,6 +11,8 @@ local function augroup(name)
 end
 
 function autocmds.init()
+  local keymaps = require("keymaps")
+
   vim.api.nvim_create_autocmd({ "VimResized" }, {
     group = augroup("resize_splits"),
     callback = function()
@@ -29,6 +31,11 @@ function autocmds.init()
   vim.api.nvim_create_autocmd('FileType', {
     pattern = { '<filetype>' },
     callback = function() vim.treesitter.start() end,
+  })
+
+  vim.api.nvim_create_autocmd('TermOpen', {
+    pattern = "term://*toggleterm#*",
+    callback = keymaps.set_terminal_keymaps
   })
 end
 

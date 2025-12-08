@@ -1,8 +1,20 @@
 local keys = {}
 -- INFO:
 -- Plugin specific keymaps are under their respective file in plugins/*
+--
+function keys.set_terminal_keymaps()
+  local opts = { buffer = 0 }
+  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+  vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
+end
 
 function keys.init()
+  local fns = require("fns")
+
   -- No arrow key allowed
   vim.keymap.set("n", "<up>", "<nop>", { silent = true })
   vim.keymap.set("n", "<down>", "<nop>", { silent = true })
@@ -95,21 +107,8 @@ function keys.init()
   )
   vim.keymap.set('n', '<leader>fw', '<cmd>Pick git_worktrees<cr>')
 
-  -- Terminal
-  function _G.set_terminal_keymaps()
-    local opts = { buffer = 0 }
-    vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
-    vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-    vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-    vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-    vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-    vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
-  end
-
-  vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-
   -- OpenCode Terminal (ToggleTerm)
-  vim.keymap.set({ "n", "t" }, "<C-x>", function() _toggle_opencode() end, { desc = "Toggle OpenCode terminal" })
+  vim.keymap.set({ "n", "t" }, "<C-x>", fns.toggle_opencode_terminal, { desc = "Toggle OpenCode terminal" })
 end
 
 return keys
