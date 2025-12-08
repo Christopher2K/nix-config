@@ -103,6 +103,17 @@ function plugins.configure()
     window = {
       position = "left",
     },
+    default_component_configs = {
+      file_size = {
+        enabled = false,
+      },
+      created = {
+        enabled = false,
+      },
+      symlink_target = {
+        enabled = true
+      },
+    },
   })
   --#endregion
 
