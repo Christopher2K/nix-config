@@ -18,7 +18,7 @@ function opts.init()
   vim.opt.cursorline = true -- Highlight current line
   vim.opt.expandtab = true -- Use spaces instead of tabs
   vim.opt.smartindent = true -- Insert indents automatically
-  vim.opt.winbar = "" -- Disable winbar
+  -- vim.opt.winbar = "" -- Disable winbar
   vim.opt.mousescroll = "ver:3,hor:0" -- Disable horizontal mouse scrolling
   vim.opt.winborder = "rounded" -- Make all popup window rounded
   vim.opt.background = "light" -- Theme

@@ -43,9 +43,11 @@ function plugins.init()
     "williamboman/mason.nvim",                                                 -- LSP / Tools Installer
     "elixir-tools/elixir-tools.nvim",                                          -- Elixir LSP & Tools
     "williamboman/mason-lspconfig.nvim",                                       -- Helper for mason
-    { src = "saghen/blink.cmp",         version = vim.version.range("*") },    -- LSP completion plugin
+    { src = "saghen/blink.cmp",        version = vim.version.range("*") },     -- LSP completion plugin
+    { src = 'akinsho/bufferline.nvim', version = vim.version.range("*") },     -- Bufferline
+
     "nvim-lualine/lualine.nvim",                                               -- Status line plugin
-    { src = "echasnovski/mini.comment", version = "main" },                    -- Comment plugin
+    { src = "echasnovski/mini.comment",  version = "main" },                   -- Comment plugin
     "JoosepAlviste/nvim-ts-context-commentstring",                             -- Contextual commentstring
     { src = "echasnovski/mini.pairs",    version = "main" },                   -- Autopairs plugin
     { src = "echasnovski/mini.surround", version = "main" },                   -- Symbol surround plugin
@@ -126,13 +128,17 @@ function plugins.configure()
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = { "lazygit" },
+      always_show_tabline = true,
       always_divide_middle = true,
       globalstatus = true,
     },
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
-      lualine_z = { "fileformat", "filetype" },
+      lualine_c = { 'filename' },
+      lualine_x = {},
+      lualine_y = { 'progress', 'encoding', 'fileformat', 'filetype' },
+      lualine_z = {},
     }
   })
   --#endregion
@@ -344,6 +350,15 @@ function plugins.configure()
   --#region AI tools
   vim.g.opencode_opts = {
   }
+  --#endregion
+
+  --#region
+  local bufferline = require("bufferline")
+  bufferline.setup({
+    options = {
+      mode = "tabs",
+    },
+  })
   --#endregion
 end
 
