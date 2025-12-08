@@ -101,7 +101,7 @@ function plugins.configure()
       },
     },
     window = {
-      position = "right",
+      position = "left",
     },
   })
   --#endregion
