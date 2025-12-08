@@ -10,6 +10,7 @@ function lsp.init()
     "dockerls",
     "html",
     "jsonls",
+    "kotlin_lsp",
     "lua_ls",
     "nextls",
     "pyright",
@@ -17,7 +18,6 @@ function lsp.init()
     "tailwindcss",
     "vtsls",
     "yamlls",
-    -- "expert",
   }
 
   local unmanaged_servers = {

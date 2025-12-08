@@ -337,7 +337,8 @@ function plugins.configure()
       html = { "prettier" },
       jsonc = { "biome_c", "prettier", stop_after_first = true },
       nix = { "nixfmt", stop_after_first = true },
-      ocaml = { "ocamlformat", stop_after_first = true }
+      ocaml = { "ocamlformat", stop_after_first = true },
+      kotlin = { "ktlint", stop_after_first = true }
     },
     format_on_save = {
       quiet = true,
