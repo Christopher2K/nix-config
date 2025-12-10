@@ -21,15 +21,13 @@
     enable = true;
     onActivation.cleanup = "uninstall";
     brews = [
-      "bitwarden-cli"
       "libyaml"
       "xcodes"
     ];
     taps = builtins.attrNames config.nix-homebrew.taps;
-    masApps = {
-      Bitwarden = 1352778147;
-    };
     casks = [
+      "1password"
+      "1password-cli"
       "android-studio"
       "bezel"
       "cleanshot"

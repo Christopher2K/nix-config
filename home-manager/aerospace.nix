@@ -154,7 +154,7 @@
           run = "move-node-to-workspace M";
         }
         {
-          "if".app-id = "com.bitwarden.desktop";
+          "if".app-id = "com.1password.1password";
           run = "layout floating";
         }
       ];
