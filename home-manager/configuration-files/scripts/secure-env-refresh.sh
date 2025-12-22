@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 CACHE_FILE="$HOME/.cache/env/.env.cache"
 TEMPLATE_FILE="$HOME/.env.template"

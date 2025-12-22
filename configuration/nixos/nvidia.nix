@@ -28,7 +28,7 @@
       };
       open = true;
       prime = {
-        reverseSync.enable = true;
+        sync.enable = true;
         nvidiaBusId = "PCI:197:0:0";
         amdgpuBusId = "PCI:198:0:0";
       };
