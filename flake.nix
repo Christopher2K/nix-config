@@ -52,5 +52,11 @@
     {
       darwinConfigurations."Christophers-MacBook" = darwinConfiguration;
       darwinConfigurations."CookUnityLaptop" = darwinConfiguration;
+      nixosConfigurations."razer-nix" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration/nixos
+        ];
+      };
     };
 }
