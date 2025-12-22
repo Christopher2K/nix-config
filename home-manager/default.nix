@@ -29,6 +29,7 @@
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [
       ./i3.nix
+      ./hyprland.nix
       ./rofi.nix
     ];
     home.username = "christopher";
