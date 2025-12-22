@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./programs.nix
     ./nvidia.nix
     ./resolutions.nix
   ];
@@ -25,6 +26,7 @@
   i18n.defaultLocale = "en_CA.UTF-8";
 
   users.users.christopher = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "Christopher Katoyi";
     extraGroups = [
@@ -41,20 +43,6 @@
   };
   console.useXkbConfig = true;
   services.libinput.touchpad.disableWhileTyping = true;
-
-  # System packages block
-  nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [
-    gcc
-    gnumake
-    gnupg
-    pkg-config
-    cmake
-    firefox
-    lshw
-    pciutils
-    polybar
-  ];
 
   # Window manager
   services.xserver.enable = true;

@@ -8,6 +8,9 @@
     enable = true;
     enableZshIntegration = true;
     globalConfig = {
+      settings = {
+        all_compile = false;
+      };
       tools = {
         bun = "1.2.2";
         elixir = "1.18.4-otp-28";
@@ -19,7 +22,7 @@
         nodejs = "22.11.0";
         ocaml = "5.4.0";
         opam = "2.2.0";
-        python = "3.10.7";
+        python = "3.12.0";
         ruby = "3.2.9";
         rust = "1.75.0";
       };
