@@ -12,6 +12,17 @@
     enable = true;
     package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    withUWSM = true;
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd 'uwsm start hyprland-uwsm.desktop'";
+        user = "greeter";
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [
