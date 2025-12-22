@@ -18,7 +18,8 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      "switch" = "sudo darwin-rebuild switch";
+      "switch" =
+        if pkgs.stdenv.isDarwin then "sudo darwin-rebuild switch" else "sudo nixos-rebuild switch";
     };
     sessionVariables = {
       LC_ALL = "en_US.UTF-8";
