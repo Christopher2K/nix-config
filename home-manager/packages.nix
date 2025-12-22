@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }:
 {
@@ -38,5 +39,6 @@
       vlc-bin-universal
     ]
     ++ lib.optionals stdenv.isLinux [
+      inputs.hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 }

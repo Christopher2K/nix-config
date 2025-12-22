@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  hyprland,
+  inputs,
   ...
 }:
 
@@ -10,8 +10,9 @@
   # The PC is now only running using the dGPU (NVIDIA RTX 5070Ti)
   programs.hyprland = {
     enable = true;
-    package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     withUWSM = true;
   };
 
@@ -19,14 +20,9 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd 'uwsm start hyprland-uwsm.desktop'";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'uwsm start hyprland-uwsm.desktop'";
         user = "greeter";
       };
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    hyprpaper
-    kitty
-  ];
 }

@@ -1,6 +1,6 @@
 {
   pkgs,
-  neovim-nightly-overlay,
+  inputs,
   config,
   username,
   lib,
@@ -36,7 +36,7 @@
   };
 
   home-manager.extraSpecialArgs = {
-    inherit neovim-nightly-overlay;
+    inherit inputs;
     getConfig = filename: ./configuration-files/${filename};
     getDest = filename: "${config.users.users."${username}".home}/${filename}";
   };

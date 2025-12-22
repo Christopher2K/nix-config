@@ -1,6 +1,6 @@
 {
   pkgs,
-  neovim-nightly-overlay,
+  inputs,
   getDest,
   getConfig,
   ...
@@ -13,7 +13,7 @@
 
   programs.neovim = {
     enable = true;
-    package = neovim-nightly-overlay.packages.${pkgs.system}.default;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;

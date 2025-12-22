@@ -45,4 +45,13 @@
   };
   console.useXkbConfig = true;
   services.libinput.touchpad.disableWhileTyping = true;
+
+  # HyprDynamicMonitors - automatic monitor profile management
+  services.hyprdynamicmonitors = {
+    enable = true;
+    mode = "user"; # Run as user service
+  };
+
+  # Required for power/lid events
+  services.upower.enable = true;
 }

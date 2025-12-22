@@ -40,11 +40,7 @@
     let
       spArgs = {
         inherit
-          hyprland
-          hyprdynamicmonitors
-          neovim-nightly-overlay
-          homebrew-core
-          homebrew-cask
+          inputs
           ;
         username = "christopher";
       };

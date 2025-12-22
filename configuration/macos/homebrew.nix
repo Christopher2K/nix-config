@@ -1,8 +1,7 @@
 {
   config,
   username,
-  homebrew-core,
-  homebrew-cask,
+  inputs,
   ...
 }:
 {
@@ -12,8 +11,8 @@
     mutableTaps = false;
     user = username;
     taps = {
-      "homebrew/homebrew-core" = homebrew-core;
-      "homebrew/homebrew-cask" = homebrew-cask;
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
     };
   };
 

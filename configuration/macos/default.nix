@@ -2,9 +2,7 @@
   username,
   config,
   pkgs,
-  homebrew-cask,
-  homebrew-core,
-  neovim-nightly-overlay,
+  inputs,
   ...
 }:
 {
