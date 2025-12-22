@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
@@ -26,10 +27,11 @@
     watchman
 
     # GUI
-    orbstack
-    tableplus
-    vlc-bin
     yaak
     zoom-us
+  ] ++ lib.optionals stdenv.isDarwin [
+    orbstack
+    tableplus
+    vlc-bin-universal
   ];
 }

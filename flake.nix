@@ -34,13 +34,13 @@
       home-manager,
       ...
     }:
+    let spArgs = {
+      inherit neovim-nightly-overlay homebrew-core homebrew-cask;
+      username = "christopher";
+    }; in
     let
       darwinConfiguration = nix-darwin.lib.darwinSystem {
-        specialArgs = {
-          inherit neovim-nightly-overlay homebrew-core homebrew-cask;
-          username = "christopher";
-        };
-
+        specialArgs = spArgs;
         modules = [
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
@@ -53,9 +53,11 @@
       darwinConfigurations."Christophers-MacBook" = darwinConfiguration;
       darwinConfigurations."CookUnityLaptop" = darwinConfiguration;
       nixosConfigurations."razer-nix" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        specialArgs = spArgs;
         modules = [
+          home-manager.nixosModules.home-manager
           ./configuration/nixos
+          ./home-manager
         ];
       };
     };
