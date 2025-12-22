@@ -21,5 +21,6 @@
     lshw
     pciutils
     unzip
+    vim
   ];
 }
