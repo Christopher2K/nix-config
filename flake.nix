@@ -21,44 +21,44 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    # On demande à Nix de récupérer le flake de Hyprland
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs =
-    inputs@{
-      homebrew-cask,
-      homebrew-core,
-      neovim-nightly-overlay,
-      nix-darwin,
-      nix-homebrew,
-      nixpkgs,
-      home-manager,
-      ...
-    }:
-    let spArgs = {
-      inherit neovim-nightly-overlay homebrew-core homebrew-cask;
+  outputs = inputs @ {
+    homebrew-cask,
+    homebrew-core,
+    neovim-nightly-overlay,
+    nix-darwin,
+    nix-homebrew,
+    nixpkgs,
+    home-manager,
+    ...
+  }: let
+    spArgs = {
+      # Penser à inherit des inputs du flake ici pour les fournir aux modules
+      inherit inputs neovim-nightly-overlay homebrew-core homebrew-cask;
       username = "christopher";
-    }; in
-    let
-      darwinConfiguration = nix-darwin.lib.darwinSystem {
-        specialArgs = spArgs;
-        modules = [
-          nix-homebrew.darwinModules.nix-homebrew
-          home-manager.darwinModules.home-manager
-          ./configuration/macos
-          ./home-manager
-        ];
-      };
-    in
-    {
-      darwinConfigurations."Christophers-MacBook" = darwinConfiguration;
-      darwinConfigurations."CookUnityLaptop" = darwinConfiguration;
-      nixosConfigurations."razer-nix" = nixpkgs.lib.nixosSystem {
-        specialArgs = spArgs;
-        modules = [
-          home-manager.nixosModules.home-manager
-          ./configuration/nixos
-          ./home-manager
-        ];
-      };
     };
+    darwinConfiguration = nix-darwin.lib.darwinSystem {
+      specialArgs = spArgs;
+      modules = [
+        nix-homebrew.darwinModules.nix-homebrew
+        home-manager.darwinModules.home-manager
+        ./configuration/macos
+        ./home-manager
+      ];
+    };
+  in {
+    darwinConfigurations."Christophers-MacBook" = darwinConfiguration;
+    darwinConfigurations."CookUnityLaptop" = darwinConfiguration;
+    nixosConfigurations."razer-nix" = nixpkgs.lib.nixosSystem {
+      specialArgs = spArgs;
+      modules = [
+        home-manager.nixosModules.home-manager
+        ./configuration/nixos
+        ./home-manager
+      ];
+    };
+  };
 }

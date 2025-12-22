@@ -1,13 +1,12 @@
-{ config, ... }:
-{
-  boot.blacklistedKernelModules = [ "nouveau" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+{config, ...}: {
+  boot.blacklistedKernelModules = ["nouveau"];
+  boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
   boot.kernelParams = [
     "amdgpu.modeset=1"
     "nvidia_drm.modeset=1"
   ];
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware = {
     graphics = {
@@ -16,6 +15,9 @@
     };
 
     nvidia = {
+      # Je crois que tu as oublié le plus important
+      enabled = true;
+
       modesetting.enable = true;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
