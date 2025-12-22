@@ -22,9 +22,13 @@
       ./packages.nix
       ./tmux.nix
       ./zsh.nix
-    ] ++ lib.optionals pkgs.stdenv.isDarwin [
+    ]
+    ++ lib.optionals pkgs.stdenv.isDarwin [
       ./aerospace.nix
       ./jankyborders.nix
+    ]
+    ++ lib.optionals pkgs.stdenv.isLinux [
+      ./i3.nix
     ];
     home.username = "christopher";
     home.stateVersion = "25.11";
