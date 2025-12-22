@@ -44,7 +44,7 @@
         modules = [
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
-          ./configuration
+          ./configuration/macos
           ./home-manager
         ];
       };
