@@ -21,6 +21,7 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    hyprland.url = "github:hyprwm/hyprland";
   };
 
   outputs =
@@ -32,12 +33,20 @@
       nix-homebrew,
       nixpkgs,
       home-manager,
+      hyprland,
       ...
     }:
-    let spArgs = {
-      inherit neovim-nightly-overlay homebrew-core homebrew-cask;
-      username = "christopher";
-    }; in
+    let
+      spArgs = {
+        inherit
+          hyprland
+          neovim-nightly-overlay
+          homebrew-core
+          homebrew-cask
+          ;
+        username = "christopher";
+      };
+    in
     let
       darwinConfiguration = nix-darwin.lib.darwinSystem {
         specialArgs = spArgs;
