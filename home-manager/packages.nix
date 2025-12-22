@@ -27,7 +27,6 @@
 
     # GUI
     orbstack
-    raycast
     tableplus
     vlc-bin
     yaak
