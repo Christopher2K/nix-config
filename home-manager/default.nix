@@ -28,7 +28,6 @@
       ./jankyborders.nix
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [
-      ./i3.nix
       ./hyprland.nix
       ./rofi.nix
     ];

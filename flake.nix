@@ -22,6 +22,7 @@
       flake = false;
     };
     hyprland.url = "github:hyprwm/hyprland";
+    hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
   };
 
   outputs =
@@ -40,6 +41,7 @@
       spArgs = {
         inherit
           hyprland
+          hyprdynamicmonitors
           neovim-nightly-overlay
           homebrew-core
           homebrew-cask
@@ -65,6 +67,7 @@
         specialArgs = spArgs;
         modules = [
           home-manager.nixosModules.home-manager
+          inputs.hyprdynamicmonitors.nixosModules.default
           ./configuration/nixos
           ./home-manager
         ];

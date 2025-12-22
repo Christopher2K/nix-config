@@ -64,7 +64,7 @@ function plugins.init()
 end
 
 function plugins.configure()
-  -- vim.cmd("colorscheme gruvbox")
+  vim.cmd("colorscheme gruvbox")
 
   require("which-key").setup()
   require("mini.pairs").setup()
