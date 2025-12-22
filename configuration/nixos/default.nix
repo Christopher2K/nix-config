@@ -45,11 +45,13 @@
   # System packages block
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    gcc
+    gnumake
+    gnupg
+    pkg-config
+    cmake
     firefox
-    ghostty
-    git
     lshw
-    neovim
     pciutils
     polybar
   ];
