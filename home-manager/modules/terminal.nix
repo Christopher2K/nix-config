@@ -35,15 +35,6 @@
   };
 
   ############
-  # Scripts  #
-  ############
-  home.file."${homeDest "scripts"}" = {
-    source = src "scripts";
-    recursive = true;
-    force = true;
-  };
-
-  ############
   # ZSH      #
   ############
   programs.zsh = {

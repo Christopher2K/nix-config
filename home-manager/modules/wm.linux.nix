@@ -19,7 +19,10 @@
       "$mainMod" = "SUPER";
 
       # Autostart
-      exec-once = [ "$terminal" ];
+      exec-once = [
+        "$terminal"
+        "~/scripts/touchpad-typing-guard.sh"
+      ];
 
       # Environment variables
       env = [
@@ -127,7 +130,7 @@
         sensitivity = 0;
 
         touchpad = {
-          natural_scroll = false;
+          natural_scroll = true;
           disable_while_typing = true;
         };
       };
