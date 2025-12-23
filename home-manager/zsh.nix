@@ -1,18 +1,20 @@
 {
   pkgs,
-  getConfig,
-  getDest,
+  homeDest,
+  src,
   lib,
   ...
 }:
 {
-  home.file."${getDest ".env.template"}" = {
-    source = getConfig ".env.template";
+  home.file."${homeDest ".env.template"}" = {
+    source = src ".env.template";
+    force = true;
   };
 
-  home.file."${getDest "scripts"}" = {
-    source = getConfig "scripts";
+  home.file."${homeDest "scripts"}" = {
+    source = src "scripts";
     recursive = true;
+    force = true;
   };
 
   programs.zsh = {
@@ -72,7 +74,7 @@
         '';
         zshConfig = lib.mkOrder 1500 ''
           # OPAM init
-          [[ ! -r '/Users/christopher/.opam/opam-init/init.zsh' ]] || source '/Users/christopher/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+          [[ ! -r "/$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
         '';
 
       in

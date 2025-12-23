@@ -1,14 +1,15 @@
 {
   pkgs,
   inputs,
-  getDest,
-  getConfig,
+  configDest,
+  src,
   ...
 }:
 {
-  home.file."${getDest ".config/nvim"}" = {
-    source = getConfig "nvim";
+  home.file."${configDest "nvim"}" = {
+    source = src "nvim";
     recursive = true;
+    force = true;
   };
 
   programs.neovim = {

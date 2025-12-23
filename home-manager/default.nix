@@ -4,6 +4,7 @@
   config,
   username,
   lib,
+  mkHelpers,
   ...
 }:
 {
@@ -34,9 +35,12 @@
     home.stateVersion = "25.11";
   };
 
-  home-manager.extraSpecialArgs = {
-    inherit inputs;
-    getConfig = filename: ./configuration-files/${filename};
-    getDest = filename: "${config.users.users."${username}".home}/${filename}";
+  home-manager.extraSpecialArgs = rec {
+    inherit inputs mkHelpers;
+    getConfig = filename_or_dirname: ./configuration-files/${filename_or_dirname};
+
+    src = filename_or_dirname: ./../files/${filename_or_dirname};
+    homeDest = filename_or_dirname: "${config.users.users."${username}".home}/${filename_or_dirname}";
+    configDest = filename_or_dirname: homeDest "/.config/${filename_or_dirname}";
   };
 }

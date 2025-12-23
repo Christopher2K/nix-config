@@ -26,31 +26,29 @@
   };
 
   outputs =
-    inputs@{
-      homebrew-cask,
-      homebrew-core,
-      neovim-nightly-overlay,
-      nix-darwin,
-      nix-homebrew,
-      nixpkgs,
-      home-manager,
-      hyprland,
-      ...
-    }:
+    { ... }@inputs:
     let
-      spArgs = {
+      # Constants
+      username = "christopher";
+      commonModules = [
+        ./home-manager
+
+      ];
+
+      # Special args
+      commonSpecialArgs = {
         inherit
           inputs
+          username
           ;
-        username = "christopher";
       };
-    in
-    let
-      darwinConfiguration = nix-darwin.lib.darwinSystem {
-        specialArgs = spArgs;
+
+      # Common configurations
+      darwinConfiguration = inputs.nix-darwin.lib.darwinSystem {
+        specialArgs = commonSpecialArgs;
         modules = [
-          nix-homebrew.darwinModules.nix-homebrew
-          home-manager.darwinModules.home-manager
+          inputs.nix-homebrew.darwinModules.nix-homebrew
+          inputs.home-manager.darwinModules.home-manager
           ./configuration/macos
           ./home-manager
         ];
@@ -59,10 +57,10 @@
     {
       darwinConfigurations."Christophers-MacBook" = darwinConfiguration;
       darwinConfigurations."CookUnityLaptop" = darwinConfiguration;
-      nixosConfigurations."razer-nix" = nixpkgs.lib.nixosSystem {
-        specialArgs = spArgs;
+      nixosConfigurations."razer-nix" = inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = commonSpecialArgs;
         modules = [
-          home-manager.nixosModules.home-manager
+          inputs.home-manager.nixosModules.home-manager
           inputs.hyprdynamicmonitors.nixosModules.default
           ./configuration/nixos
           ./home-manager

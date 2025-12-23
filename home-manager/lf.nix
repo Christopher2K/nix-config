@@ -1,11 +1,13 @@
 {
-  getDest,
-  getConfig,
+  config,
+  src,
+  configDest,
   ...
 }:
 {
-  home.file."${getDest ".config/lf"}" = {
-    source = getConfig "lf";
+  home.file."${configDest "lf"}" = {
+    source = src "lf";
     recursive = true;
+    force = true;
   };
 }

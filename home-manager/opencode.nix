@@ -1,10 +1,12 @@
 {
-  getDest,
-  getConfig,
+  configDest,
+  src,
   ...
 }:
 {
-  home.file."${getDest ".config/opencode/opencode.json"}" = {
-    source = getConfig "opencode/opencode.json";
+  home.file."${configDest "opencode"}" = {
+    source = src "opencode";
+    force = true;
+    recursive = true;
   };
 }

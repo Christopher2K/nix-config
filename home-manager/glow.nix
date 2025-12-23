@@ -1,11 +1,13 @@
 {
-  getDest,
-  getConfig,
+  configDest,
+  src,
   ...
 }:
+
 {
-  home.file."${getDest ".config/glow/glow.yml"}" = {
-    source = getConfig "glow/glow.yml";
+  home.file."${configDest "glow"}" = {
+    source = src "glow";
     recursive = true;
+    force = true;
   };
 }

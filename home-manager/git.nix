@@ -1,12 +1,13 @@
 {
   pkgs,
-  getConfig,
-  getDest,
+  configDest,
+  src,
   ...
 }:
 {
-  home.file."${getDest "gitconfig-cookunity"}" = {
-    source = getConfig "gitconfig-cookunity";
+  home.file."${configDest "gitconfig-cookunity"}" = {
+    source = src "gitconfig-cookunity";
+    force = true;
   };
 
   programs.git = {
@@ -24,7 +25,7 @@
 
     includes = [
       {
-        path = "${getDest ".config/git/gitconfig-cookunity"}";
+        path = configDest ".config/git/gitconfig-cookunity";
         condition = "gitdir:**/cookunity/**";
       }
     ];
