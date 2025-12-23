@@ -29,9 +29,8 @@
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [
       ./hyprland.nix
-      ./rofi.nix
     ];
-    home.username = "christopher";
+    home.username = username;
     home.stateVersion = "25.11";
   };
 
