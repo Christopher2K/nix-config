@@ -5,9 +5,7 @@
     ./hardware-configuration.nix
     ./programs.nix
     ./nvidia.nix
-    # ./resolutions.nix
-    # ./wm.i3.nix
-    ./wm.hypr.nix
+    ./dm.nix
   ];
 
   boot.loader.systemd-boot.enable = true;

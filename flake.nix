@@ -49,7 +49,7 @@
         modules = [
           inputs.nix-homebrew.darwinModules.nix-homebrew
           inputs.home-manager.darwinModules.home-manager
-          ./configuration/macos
+          ./configuration/macos/configuration.nix
           ./home-manager
         ];
       };
@@ -62,7 +62,7 @@
         modules = [
           inputs.home-manager.nixosModules.home-manager
           inputs.hyprdynamicmonitors.nixosModules.default
-          ./configuration/nixos
+          ./configuration/nixos/configuration.nix
           ./home-manager
         ];
       };

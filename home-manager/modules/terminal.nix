@@ -6,17 +6,46 @@
   ...
 }:
 {
+  ############
+  # Ghostty  #
+  ############
+  programs.ghostty = {
+    enable = true;
+    package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+    enableZshIntegration = true;
+    settings = {
+      theme = "Gruvbox Light";
+      font-family = "JetBrainsMono Nerd Font Mono";
+      font-size = 16;
+      macos-titlebar-style = "hidden";
+      window-padding-x = 12;
+      window-padding-y = 12;
+      working-directory = "home";
+      window-inherit-working-directory = false;
+      window-save-state = "never";
+    };
+  };
+
+  ##############
+  # Global env #
+  ##############
   home.file."${homeDest ".env.template"}" = {
     source = src ".env.template";
     force = true;
   };
 
+  ############
+  # Scripts  #
+  ############
   home.file."${homeDest "scripts"}" = {
     source = src "scripts";
     recursive = true;
     force = true;
   };
 
+  ############
+  # ZSH      #
+  ############
   programs.zsh = {
     enable = true;
     shellAliases = {
@@ -85,6 +114,9 @@
 
   };
 
+  ############
+  # OhMyZsh  #
+  ############
   programs.zsh.oh-my-zsh = {
     enable = true;
     theme = "robbyrussell";
@@ -95,6 +127,9 @@
     ];
   };
 
+  ############
+  # Starship #
+  ############
   programs.starship = {
     enable = true;
     settings = {
@@ -108,5 +143,40 @@
         show_milliseconds = false;
       };
     };
+  };
+
+  ############
+  # Tmux     #
+  ############
+  programs.tmux = {
+    enable = true;
+    plugins = with pkgs; [
+      tmuxPlugins.sensible
+      tmuxPlugins.resurrect
+      tmuxPlugins.pain-control
+    ];
+    keyMode = "vi";
+    mouse = true;
+    baseIndex = 1;
+    extraConfig = ''
+      set -g status on
+      set -g status-position top
+      set -g status-style bg=#d5c4a1,fg=#594945
+      set -g status-interval 1
+      set -g status-justify left
+
+      set -g window-status-current-format "#[fg=#ebdbb2,bold bg=#af3a03] #I #W "
+      set -g window-status-format "#[fg=#ebdbb4,bg=#a89984] #I #W "
+      set -g window-status-separator ""
+
+      set -g status-left-length 40
+      set -g status-left-style default
+      set -g status-left "#{?client_prefix,[P],}#[fg=#FFFFFF,bold,bg=#7F6E63] #S "
+
+      set -g status-right-length 40
+      set -g status-right-style default
+      set -g status-right "#[fg=#ffffff,bold bg=#a89984] %H:%M "
+      set -g default-command ${pkgs.zsh}/bin/zsh
+    '';
   };
 }
