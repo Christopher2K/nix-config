@@ -7,24 +7,17 @@
 }:
 {
   imports = [
+    ../common.nix
     ./macos-defaults.nix
     ./homebrew.nix
   ];
 
-  nix = {
-    # Disable darwin-nix self version management
-    enable = false;
-    settings.experimental-features = "nix-command flakes";
-  };
+  # Disable darwin-nix self version management
+  nix.enable = false;
 
-  nixpkgs = {
-    hostPlatform = "aarch64-darwin";
-    config.allowUnfree = true;
-  };
+  nixpkgs.hostPlatform = "aarch64-darwin";
 
   environment.etc.nix-darwin.source = "/Users/${username}/dotfiles";
-
-  fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
   users.users.${username}.home = "/Users/${username}";
 
