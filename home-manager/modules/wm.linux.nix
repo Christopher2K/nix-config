@@ -13,6 +13,9 @@ let
   };
 in
 {
+  ############
+  # Hyprland #
+  ############
   # Specifics are configured at system level
   wayland.windowManager.hyprland = {
     enable = true;
@@ -155,21 +158,21 @@ in
 
       # Keybindings
       bind = [
-        "$mainMod, Q, exec, $terminal"
+        "$mainMod, Q, killactive,"
         "$mainMod, B, exec, $webBrowser"
-        "$mainMod, C, killactive,"
+        "$mainMod, RETURN, exec, $terminal"
         "$mainMod, M, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating,"
-        "$mainMod, R, exec, $menu"
+        "$mainMod, SPACE, exec, $menu"
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
 
         # Move focus with arrow keys
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+        "$mainMod, h, movefocus, l"
+        "$mainMod, l, movefocus, r"
+        "$mainMod, k, movefocus, u"
+        "$mainMod, j, movefocus, d"
 
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
@@ -198,10 +201,6 @@ in
         # Special workspace (scratchpad)
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
-
-        # Scroll through workspaces
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
       ];
 
       # Mouse bindings
@@ -272,6 +271,9 @@ in
     '';
   };
 
+  ######################
+  # HyprDynaicMonitors #
+  ######################
   home.file."${configDest "hypr-monitors-config"}" = {
     source = src "hypr-monitors-config";
     recursive = true;
@@ -312,5 +314,21 @@ in
       description = "${monitors.desk}"
       monitor_tag = "monitor1"
     '';
+  };
+
+  ################
+  # Hyprlauncher #
+  ################
+  services.hyprlauncher = {
+    enable = true;
+    settings = { };
+  };
+
+  ##############
+  # Hyprpaper #
+  ##############
+  services.hyprpaper = {
+    enable = true;
+    settings = { };
   };
 }
