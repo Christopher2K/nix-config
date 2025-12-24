@@ -41,7 +41,7 @@
     ++ lib.optionals stdenv.isLinux [
       inputs.hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default
       jq
-
+      hyprpaper
       # GUI
       vesktop
     ];
