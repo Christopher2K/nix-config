@@ -11,6 +11,7 @@
   programs.firefox.enable = true;
   programs._1password.enable = true;
   programs._1password-gui.enable = true;
+  programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
     gcc
