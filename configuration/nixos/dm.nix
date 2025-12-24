@@ -16,6 +16,11 @@
     withUWSM = true;
   };
 
+  services.hyprdynamicmonitors = {
+    enable = true;
+    mode = "system";
+  };
+
   services.greetd = {
     enable = true;
     settings = {

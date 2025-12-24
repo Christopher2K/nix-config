@@ -60,8 +60,8 @@
       nixosConfigurations."razer-nix" = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = commonSpecialArgs;
         modules = [
-          inputs.home-manager.nixosModules.home-manager
           inputs.hyprdynamicmonitors.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
           ./configuration/nixos/configuration.nix
           ./home-manager
         ];

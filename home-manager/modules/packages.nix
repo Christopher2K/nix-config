@@ -40,7 +40,9 @@
     ]
     ++ lib.optionals stdenv.isLinux [
       inputs.hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default
-      libinput # For touchpad-typing-guard script
-      jq # For parsing hyprctl JSON output
+      jq
+
+      # GUI
+      vesktop
     ];
 }
