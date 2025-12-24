@@ -40,6 +40,7 @@
     ]
     ++ lib.optionals stdenv.isLinux [
       inputs.hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.notifd
       jq
       hyprpaper
       # GUI

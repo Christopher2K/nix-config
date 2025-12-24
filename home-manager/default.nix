@@ -21,6 +21,7 @@
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [
       inputs.hyprdynamicmonitors.homeManagerModules.default
+      inputs.ags.homeManagerModules.default
       ./modules/wm.linux.nix
     ];
     home.username = username;
