@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   src,
@@ -837,8 +838,16 @@ in
   #   '';
   # };
 
-  programs.ags = {
+  home.file."${configDest "ags"}".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/files/ags";
+  programs.ags.enable = true;
+
+  #######
+  # GTK #
+  #######
+  gtk = {
     enable = true;
-    configDir = src "ags";
+    theme.package = pkgs.gruvbox-gtk-theme;
+    theme.name = "Gruvbox-Dark";
   };
 }
