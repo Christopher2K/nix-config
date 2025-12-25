@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -16,6 +17,11 @@
     withUWSM = true;
   };
 
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors.hyprland.binPath = lib.mkForce "/run/current-system/sw/bin/start-hyprland";
+  };
+
   services.hyprdynamicmonitors = {
     enable = true;
     mode = "system";
@@ -25,7 +31,8 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'uwsm start hyprland-uwsm.desktop'";
+        # command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'uwsm start hyprland-uwsm.desktop'";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd '${lib.getExe config.programs.uwsm.package} start -e -D Hyprland hyprland-uwsm.desktop'";
         user = "greeter";
       };
     };
