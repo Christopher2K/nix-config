@@ -34,6 +34,7 @@ in
       exec-once = [
         "$terminal"
         "~/scripts/touchpad-typing-guard.sh"
+        "ags run"
       ];
 
       # Environment variables
