@@ -18,6 +18,7 @@ in
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = false;
   boot.loader.grub.enable = false;
@@ -33,12 +34,19 @@ in
     '';
   };
 
-  # Install rEFInd theme to ESP
   system.activationScripts.refind-theme = ''
     mkdir -p /boot/EFI/refind/themes
     rm -rf /boot/EFI/refind/themes/refind-theme-regular
     cp -r ${refind-theme-regular} /boot/EFI/refind/themes/refind-theme-regular
   '';
+
+  boot.plymouth = {
+    enable = true;
+    theme = "breeze";
+  };
+  boot.kernelParams = [ "quiet" ];
+  boot.consoleLogLevel = 0;
+  boot.initrd.verbose = false;
 
   system.stateVersion = "25.11";
 
