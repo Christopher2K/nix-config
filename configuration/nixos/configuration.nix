@@ -1,5 +1,13 @@
 { config, pkgs, ... }:
 
+let
+  refind-theme-regular = pkgs.fetchFromGitHub {
+    owner = "bobafetthotmail";
+    repo = "refind-theme-regular";
+    rev = "master";
+    hash = "sha256-gSFSJhW3UjzDAMspSIowbRXLRmrtaO/s1K5qFOWD8Qo=";
+  };
+in
 {
   imports = [
     ../common.nix
@@ -9,9 +17,28 @@
     ./dm.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.grub.enable = false;
+
+  boot.loader.refind = {
+    enable = true;
+    maxGenerations = 2;
+    extraConfig = ''
+      timeout 5
+      resolution 1280 800
+      showtools shell, gdisk, memtest, mok_tool, about, reboot, firmware, exit
+      include themes/refind-theme-regular/theme.conf
+    '';
+  };
+
+  # Install rEFInd theme to ESP
+  system.activationScripts.refind-theme = ''
+    mkdir -p /boot/EFI/refind/themes
+    rm -rf /boot/EFI/refind/themes/refind-theme-regular
+    cp -r ${refind-theme-regular} /boot/EFI/refind/themes/refind-theme-regular
+  '';
 
   system.stateVersion = "25.11";
 
