@@ -15,6 +15,12 @@
 
   system.stateVersion = "25.11";
 
+  # Some optimization for the garbage collector
+  nix.settings.auto-optimise-store = true;
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than +10";
+
   # Networking
   networking.hostName = "razer-nix";
   networking.networkmanager.enable = true;
