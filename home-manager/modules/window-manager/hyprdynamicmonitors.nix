@@ -26,6 +26,7 @@ in
     config = ''
       [general]
       destination = "$HOME/.config/hypr/monitors.conf"
+      post_apply_exec = "hyprctl reload"
 
       [profiles.laptop]
       config_file = "$HOME/.config/hypr-monitors-config/laptop.conf"
