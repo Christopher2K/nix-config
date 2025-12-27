@@ -47,6 +47,17 @@
         layout = "dwindle";
       };
 
+      workspace = [
+        "1, monitor:HDMI-A-1, default:true"
+        "2, monitor:HDMI-A-1, persistent:true"
+        "3, monitor:HDMI-A-1, persistent:true"
+        "4, monitor:HDMI-A-1, persistent:true"
+        "5, monitor:eDP-2, default:true"
+        "6, monitor:eDP-2, persistent:true"
+        "7, monitor:eDP-2, persistent:true"
+        "8, monitor:eDP-2, persistent:true"
+      ];
+
       # Decoration
       decoration = {
         rounding = 10;
@@ -149,7 +160,7 @@
         "$mainMod, Q, killactive,"
         "$mainMod, B, exec, $webBrowser"
         "$mainMod, RETURN, exec, $terminal"
-        "$mainMod, M, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"
+        "$mainMod, ESCAPE, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating,"
         "$mainMod, SPACE, exec, $menu"
@@ -162,7 +173,7 @@
         "$mainMod, k, movefocus, u"
         "$mainMod, j, movefocus, d"
 
-        # Switch workspaces with mainMod + [0-9]
+        # Switch workspaces
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -170,9 +181,7 @@
         "$mainMod, 5, workspace, 5"
         "$mainMod, 6, workspace, 6"
         "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+        "$mainMod, M, workspace, 8"
 
         # Move active window to workspace
         "$mainMod SHIFT, 1, movetoworkspace, 1"
@@ -182,9 +191,7 @@
         "$mainMod SHIFT, 5, movetoworkspace, 5"
         "$mainMod SHIFT, 6, movetoworkspace, 6"
         "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
+        "$mainMod SHIFT, M, movetoworkspace, 8"
 
         # Special workspace (scratchpad)
         "$mainMod, S, togglespecialworkspace, magic"
