@@ -1,0 +1,16 @@
+{
+  programs.starship = {
+    enable = true;
+    settings = {
+      command_timeout = 10000;
+      format = "$character$directory";
+      right_format = "$all";
+
+      ruby.detect_variables = [ ];
+      cmd_duration = {
+        min_time = 0;
+        show_milliseconds = false;
+      };
+    };
+  };
+}
