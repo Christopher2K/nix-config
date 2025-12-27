@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  username,
+  ...
+}:
 
 let
   refind-theme-regular = pkgs.fetchFromGitHub {
@@ -72,6 +77,10 @@ in
       "wheel"
     ];
   };
+  nix.settings.trusted-users = [
+    "root"
+    username
+  ];
 
   # Input blocks
   services.xserver.xkb = {
