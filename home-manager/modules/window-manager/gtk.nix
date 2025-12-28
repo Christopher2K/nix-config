@@ -10,6 +10,7 @@
 
     font = {
       name = "JetBrainsMono Nerd Font";
+      size = 12;
     };
 
     theme = {
