@@ -27,10 +27,12 @@
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
-        "LIBVA_DRIVER_NAME,nvidia"
-        "XDG_SESSION_TYPE,wayland"
-        "GBM_BACKEND,nvidia-drm"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "AQ_NO_ATOMIC,1"
+        "AQ_DRM_DEVICES,/dev/dri/amdigpu"
+        # "LIBVA_DRIVER_NAME,nvidia"
+        # "XDG_SESSION_TYPE,wayland"
+        # "GBM_BACKEND,nvidia-drm"
+        # "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "WLR_NO_HARDWARE_CURSORS,1"
       ];
 
@@ -226,7 +228,8 @@
     };
     extraConfig = ''
       # Source the auto-generated monitors configuration
-      source = ~/.config/hypr/monitors.conf
+      # source = ~/.config/hypr/monitors.conf
+      monitor = , preferred, auto, 1
 
       windowrule {
           # Ignore maximize requests from all apps. You'll probably like this.

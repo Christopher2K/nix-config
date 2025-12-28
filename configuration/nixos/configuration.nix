@@ -33,7 +33,6 @@ in
     maxGenerations = 2;
     extraConfig = ''
       timeout 5
-      resolution 1280 800
       showtools shell, gdisk, memtest, mok_tool, about, reboot, firmware, exit
       include themes/refind-theme-regular/theme.conf
     '';
@@ -101,4 +100,9 @@ in
   services.udisks2.enable = true; # For mounting removable drives
 
   hardware.openrazer.enable = true;
+
+  services.udev.extraRules = ''
+    KERNEL=="card*", KERNELS=="0000:c6:00.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/amdigpu"
+    KERNEL=="card*", KERNELS=="0000:c5:00.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/nvidiagpu"
+  '';
 }
