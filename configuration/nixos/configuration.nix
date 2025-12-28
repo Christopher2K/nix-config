@@ -82,7 +82,6 @@ in
     username
   ];
 
-  # Input blocks
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -91,6 +90,8 @@ in
   console.useXkbConfig = true;
   services.libinput.touchpad.disableWhileTyping = true;
 
-  # Required for power/lid events
   services.upower.enable = true;
+  # Since I'm using Nautilis, I need some gnome related shit
+  services.gvfs.enable = true; # For trash
+  services.udisks2.enable = true; # For mounting removable drives
 }
