@@ -73,10 +73,15 @@ in
     isNormalUser = true;
     description = "Christopher Katoyi";
     extraGroups = [
+      "openrazer"
       "networkmanager"
       "wheel"
+      "i2c"
     ];
   };
+
+  # Enable ddcutil for display brightness control
+  hardware.i2c.enable = true;
   nix.settings.trusted-users = [
     "root"
     username
@@ -94,4 +99,6 @@ in
   # Since I'm using Nautilis, I need some gnome related shit
   services.gvfs.enable = true; # For trash
   services.udisks2.enable = true; # For mounting removable drives
+
+  hardware.openrazer.enable = true;
 }

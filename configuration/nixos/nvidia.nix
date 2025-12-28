@@ -3,7 +3,6 @@
   boot.blacklistedKernelModules = [ "nouveau" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
   boot.kernelParams = [
-    "amdgpu.modeset=1"
     "nvidia_drm.modeset=1"
     "nvidia_drm.fbdev=1"
     "nvidia.NVreg_TemporaryFilePath=/var/tmp"
@@ -23,6 +22,15 @@
       modesetting.enable = true;
       powerManagement.enable = true;
       powerManagement.finegrained = false;
+
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+        nvidiaBusId = "PCI:197:0:0";
+        amdgpuBusId = "PCI:198:0:0";
+      };
     };
   };
 }
