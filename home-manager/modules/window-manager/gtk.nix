@@ -1,11 +1,25 @@
 {
   pkgs,
+  configDest,
+  src,
   ...
 }:
 {
   gtk = {
     enable = true;
-    theme.package = pkgs.gruvbox-gtk-theme;
-    theme.name = "Gruvbox-Light";
+
+    font = {
+      name = "JetBrainsMono Nerd Font";
+    };
+
+    theme = {
+      package = pkgs.gruvbox-gtk-theme;
+      name = "Gruvbox-Light";
+    };
+
+    iconTheme = {
+      package = pkgs.adwaita-icon-theme;
+      name = "Adwaita";
+    };
   };
 }

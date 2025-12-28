@@ -12,7 +12,7 @@
     settings = {
       # Variables
       "$terminal" = "ghostty";
-      "$fileManager" = "dolphin";
+      "$fileManager" = "nautilus";
       "$menu" = "hyprlauncher";
       "$webBrowser" = "firefox";
       "$mainMod" = "SUPER";

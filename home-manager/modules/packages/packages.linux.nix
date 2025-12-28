@@ -12,5 +12,9 @@
 
     # GUI
     vesktop
+    nautilus
+    gdk-pixbuf
+    ffmpegthumbnailer
+    webp-pixbuf-loader
   ];
 }
