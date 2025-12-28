@@ -26,8 +26,7 @@ in
     config = ''
       [general]
       destination = "$HOME/.config/hypr/monitors.conf"
-      pre_apply_exec = "ags quit 2>/dev/null || true"
-      post_apply_exec = "hyprctl reload && ags run"
+      post_apply_exec = "hyprctl reload"
 
       [profiles.laptop]
       config_file = "$HOME/.config/hypr-monitors-config/laptop.conf"

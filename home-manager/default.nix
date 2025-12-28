@@ -16,14 +16,6 @@
       ./modules/packages
       ./modules/window-manager
     ];
-    # ++ lib.optionals pkgs.stdenv.isDarwin [
-    #   ./modules/wm.macos.nix
-    # ]
-    # ++ lib.optionals pkgs.stdenv.isLinux [
-    #   inputs.hyprdynamicmonitors.homeManagerModules.default
-    #   inputs.ags.homeManagerModules.default
-    #   ./modules/wm.linux.nix
-    # ];
     home.username = username;
     home.stateVersion = "25.11";
   };

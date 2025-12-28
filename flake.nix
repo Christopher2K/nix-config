@@ -23,8 +23,6 @@
     };
     hyprland.url = "github:hyprwm/hyprland";
     hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
-    astal.url = "github:aylur/astal";
-    ags.url = "github:aylur/ags";
   };
 
   outputs =
