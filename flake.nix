@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,26 +27,22 @@
     };
     niri.url = "github:sodiboo/niri-flake/97876f35dcd5";
     vicinae.url = "github:vicinaehq/vicinae";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     { ... }@inputs:
     let
-      # Constants
       username = "christopher";
-      commonModules = [
-        ./home-manager
-      ];
-
-      # Special args
       commonSpecialArgs = {
         inherit
           inputs
           username
           ;
       };
-
-      # Common configurations
       darwinConfiguration = inputs.nix-darwin.lib.darwinSystem {
         specialArgs = commonSpecialArgs;
         modules = [

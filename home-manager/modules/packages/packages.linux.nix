@@ -4,6 +4,10 @@
   ...
 }:
 {
+  imports = [
+    ./firefox.nix
+  ];
+
   home.packages = with pkgs; [
     jq
     libinput

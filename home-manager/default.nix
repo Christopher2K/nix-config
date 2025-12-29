@@ -6,13 +6,18 @@
   ...
 }:
 {
-  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+  nixpkgs.overlays = [
+    inputs.niri.overlays.niri
+    inputs.nur.overlays.default
+  ];
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.${username} = {
     imports = [
       inputs.niri.homeModules.niri
+      inputs.niri.homeModules.stylix
+      inputs.stylix.homeModules.stylix
       ./modules/code
       ./modules/terminal
       ./modules/tools

@@ -8,10 +8,11 @@
     [ ]
     ++ lib.optionals pkgs.stdenv.isLinux [
       ./gtk.nix
+      ./kanshi.nix
       ./niri.nix
+      ./stylix.nix
       ./vicinae.nix
       ./waybar.nix
-      ./kanshi.nix
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       ./aerospace.nix
