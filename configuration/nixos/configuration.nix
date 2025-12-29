@@ -107,4 +107,16 @@ in
     KERNEL=="render*", KERNELS=="0000:c6:00.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/amdigpurender"
     KERNEL=="render*", KERNELS=="0000:c5:00.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/nvidiagpurender"
   '';
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'niri-session'";
+        # command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'uwsm start hyprland-uwsm.desktop'";
+        # command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd '${lib.getExe config.programs.uwsm.package} start -e -D Hyprland hyprland-uwsm.desktop'";
+        user = "greeter";
+      };
+    };
+  };
 }
