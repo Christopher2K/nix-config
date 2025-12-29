@@ -19,6 +19,11 @@
   services.gnome.sushi.enable = true;
   services.gnome.tinysparql.enable = true;
 
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
+
   environment.systemPackages = with pkgs; [
     gcc
     gnumake

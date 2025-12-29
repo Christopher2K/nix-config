@@ -6,10 +6,13 @@
   ...
 }:
 {
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.${username} = {
     imports = [
+      inputs.niri.homeModules.niri
       ./modules/code
       ./modules/terminal
       ./modules/tools

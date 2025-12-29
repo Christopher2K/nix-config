@@ -23,6 +23,10 @@
     };
     hyprland.url = "github:hyprwm/hyprland";
     hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
+    niri = {
+      url = "github:sodiboo/niri-flake/97876f35dcd5";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
