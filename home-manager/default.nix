@@ -17,7 +17,7 @@
       ./modules/terminal
       ./modules/tools
       ./modules/packages
-      ./modules/window-manager
+      ./modules/desktop-env
     ];
     home.username = username;
     home.stateVersion = "25.11";

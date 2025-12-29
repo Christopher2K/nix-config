@@ -104,5 +104,7 @@ in
   services.udev.extraRules = ''
     KERNEL=="card*", KERNELS=="0000:c6:00.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/amdigpu"
     KERNEL=="card*", KERNELS=="0000:c5:00.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/nvidiagpu"
+    KERNEL=="render*", KERNELS=="0000:c6:00.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/amdigpurender"
+    KERNEL=="render*", KERNELS=="0000:c5:00.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/nvidiagpurender"
   '';
 }

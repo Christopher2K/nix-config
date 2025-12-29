@@ -34,5 +34,7 @@
     pciutils
     unzip
     vim
+    nvtopPackages.nvidia
+    nvtopPackages.amd
   ];
 }

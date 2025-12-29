@@ -15,6 +15,11 @@
     package = pkgs.niri;
 
     settings = {
+      debug = {
+        render-drm-device = "/dev/dri/amdigpurender";
+      };
+
+      prefer-no-csd = true;
       # Input device configuration
       input = {
         keyboard = {
@@ -62,10 +67,7 @@
         struts = { };
       };
 
-      # Spawn at startup
-      spawn-at-startup = [
-        { argv = [ "waybar" ]; }
-      ];
+      # spawn-at-startup = [];
 
       # Hotkey overlay
       hotkey-overlay = { };
@@ -94,12 +96,15 @@
 
         # Launch programs
         "Mod+Return" = {
-          hotkey-overlay.title = "Open a Terminal: ghostty";
+          hotkey-overlay.title = "Open ghostty";
           action.spawn = "ghostty";
         };
-        "Mod+D" = {
-          hotkey-overlay.title = "Run an Application: fuzzel";
-          action.spawn = "fuzzel";
+        "Mod+Space" = {
+          hotkey-overlay.title = "Start launcher";
+          action.spawn = [
+            "vicinae"
+            "toggle"
+          ];
         };
         "Super+Alt+L" = {
           hotkey-overlay.title = "Lock the Screen: swaylock";

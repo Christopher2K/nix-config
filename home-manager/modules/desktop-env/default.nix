@@ -7,9 +7,11 @@
   imports =
     [ ]
     ++ lib.optionals pkgs.stdenv.isLinux [
-      ./niri.nix
       ./gtk.nix
+      ./niri.nix
+      ./vicinae.nix
       ./waybar.nix
+      ./kanshi.nix
       # ./hyprdynamicmonitors.nix
       # ./hyprland.nix
       # ./hyprlauncher.nix
