@@ -19,6 +19,15 @@
         render-drm-device = "/dev/dri/amdigpurender";
       };
 
+      spawn-at-startup = [
+        {
+          argv = [
+            "1password"
+            "--silent"
+          ];
+        }
+      ];
+
       prefer-no-csd = true;
       # Input device configuration
       input = {
