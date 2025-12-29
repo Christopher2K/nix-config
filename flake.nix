@@ -21,8 +21,6 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    hyprland.url = "github:hyprwm/hyprland";
-    hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
     niri.url = "github:sodiboo/niri-flake/97876f35dcd5";
     vicinae.url = "github:vicinaehq/vicinae";
   };
@@ -34,7 +32,6 @@
       username = "christopher";
       commonModules = [
         ./home-manager
-
       ];
 
       # Special args
@@ -62,7 +59,6 @@
       nixosConfigurations."razer-nix" = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = commonSpecialArgs;
         modules = [
-          inputs.hyprdynamicmonitors.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
           ./configuration/nixos/configuration.nix
           ./home-manager

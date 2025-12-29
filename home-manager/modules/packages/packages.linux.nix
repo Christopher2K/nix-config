@@ -5,9 +5,8 @@
 }:
 {
   home.packages = with pkgs; [
-    inputs.hyprdynamicmonitors.packages.${stdenv.hostPlatform.system}.default
     jq
-    hyprpaper
+    libinput
 
     # GUI
     vesktop

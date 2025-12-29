@@ -19,7 +19,6 @@ in
     ./hardware-configuration.nix
     ./programs.nix
     ./nvidia.nix
-    ./dm.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -113,8 +112,6 @@ in
     settings = {
       default_session = {
         command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'niri-session'";
-        # command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'uwsm start hyprland-uwsm.desktop'";
-        # command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd '${lib.getExe config.programs.uwsm.package} start -e -D Hyprland hyprland-uwsm.desktop'";
         user = "greeter";
       };
     };
