@@ -54,6 +54,11 @@
       input = {
         keyboard = {
           numlock = true;
+          xkb = {
+            layout = "us";
+            variant = "altgr-intl";
+            options = "caps:escape";
+          };
         };
 
         touchpad = {

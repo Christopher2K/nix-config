@@ -108,7 +108,9 @@ function keys.init()
   vim.keymap.set('n', '<leader>fw', '<cmd>Pick git_worktrees<cr>')
 
   -- OpenCode Terminal (ToggleTerm)
-  vim.keymap.set({ "n", "t" }, "<C-x>", fns.toggle_opencode_terminal, { desc = "Toggle OpenCode terminal" })
+  if not vim.g.vscode then
+    vim.keymap.set({ "n", "t" }, "<C-x>", fns.toggle_opencode_terminal, { desc = "Toggle OpenCode terminal" })
+  end
 end
 
 return keys

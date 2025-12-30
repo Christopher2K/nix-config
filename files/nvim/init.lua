@@ -6,14 +6,8 @@ if vim.g.vscode then
   local opts = require("opts")
   opts.init()
 
-  local usercommand = require("usercmds")
-  usercommand.init()
-
-  local keys = require("keys")
+  local keys = require("keymaps")
   keys.init()
-
-  local autocmds = require("autocmds")
-  autocmds.init()
 else
   local plugins = require("plugins")
   plugins.init()

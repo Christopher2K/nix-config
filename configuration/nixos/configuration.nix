@@ -87,7 +87,7 @@ in
 
   services.xserver.xkb = {
     layout = "us";
-    variant = "";
+    variant = "altgr-intl";
     options = "caps:escape";
   };
   console.useXkbConfig = true;

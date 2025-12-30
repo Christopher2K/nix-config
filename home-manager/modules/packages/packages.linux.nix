@@ -13,10 +13,11 @@
     libinput
 
     # GUI
-    vesktop
-    nautilus
-    gdk-pixbuf
     ffmpegthumbnailer
+    gdk-pixbuf
+    nautilus
+    vesktop
+    vscodium
     webp-pixbuf-loader
   ];
 }
