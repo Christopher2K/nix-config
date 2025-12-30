@@ -3,6 +3,10 @@
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
+    brotli
+    unixODBC
+    libGL
+    glib
   ];
 
   programs.zsh.enable = true;

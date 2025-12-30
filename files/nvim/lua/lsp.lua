@@ -14,6 +14,7 @@ function lsp.init()
     "lua_ls",
     "nextls",
     "pyright",
+    "qmlls",
     "svelte",
     "tailwindcss",
     "vtsls",

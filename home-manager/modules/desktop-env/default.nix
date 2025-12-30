@@ -10,6 +10,7 @@
       ./gtk.nix
       ./kanshi.nix
       ./niri.nix
+      ./quickshell.nix
       ./stylix.nix
       ./vicinae.nix
       ./waybar.nix
