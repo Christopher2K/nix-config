@@ -33,6 +33,7 @@ let
     echo "$output"
   '';
   mirror-command = "exec wl-present mirror $(${get-output-by-description}/bin/get-output-by-description \"${monitors.builtin-laptop}\") --fullscreen-output $(${get-output-by-description}/bin/get-output-by-description \"${monitors.capture-card}\") --fullscreen";
+  base-command = "exec pkill -i wl-mirror; exec awww img ${configDest "wallpapers/wallpaper-2.jpg"}";
 in
 {
   home.packages = with pkgs; [
@@ -46,6 +47,7 @@ in
     settings = [
       {
         profile.name = "undocked";
+        profile.exec = base-command;
         profile.outputs = [
           {
             criteria = monitors.builtin-laptop;
@@ -56,10 +58,11 @@ in
       }
       {
         profile.name = "docked";
+        profile.exec = base-command;
         profile.outputs = [
           {
             criteria = monitors.builtin-laptop;
-            scale = 1.0;
+            scale = 1.5;
             mode = "2560x1600@240";
           }
           {
