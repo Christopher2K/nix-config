@@ -27,10 +27,12 @@
     };
     niri.url = "github:sodiboo/niri-flake/97876f35dcd5";
     vicinae.url = "github:vicinaehq/vicinae";
+    awww.url = "git+https://codeberg.org/LGFae/awww";
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs =

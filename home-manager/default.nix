@@ -9,6 +9,7 @@
   nixpkgs.overlays = [
     inputs.niri.overlays.niri
     inputs.nur.overlays.default
+    inputs.neovim-nightly-overlay.overlays.default
   ];
 
   home-manager.useGlobalPkgs = true;

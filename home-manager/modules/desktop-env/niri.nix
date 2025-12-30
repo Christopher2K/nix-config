@@ -2,13 +2,22 @@
   config,
   lib,
   pkgs,
+  configDest,
+  src,
+  inputs,
   ...
 }:
 
 {
-  home.packages = with pkgs; [
-    xwayland-satellite
+  home.packages = [
+    pkgs.xwayland-satellite
+    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
   ];
+
+  home.file."${configDest "wallpapers"}" = {
+    source = src "wallpapers";
+    recursive = true;
+  };
 
   programs.niri = {
     enable = true;
@@ -24,6 +33,18 @@
           argv = [
             "1password"
             "--silent"
+          ];
+        }
+        {
+          argv = [
+            "awww-daemon"
+          ];
+        }
+        {
+          argv = [
+            "awww"
+            "img"
+            (configDest "wallpapers/wallpaper-1.jpg")
           ];
         }
       ];
@@ -93,6 +114,13 @@
             }
           ];
           open-floating = true;
+        }
+      ];
+
+      layer-rules = [
+        {
+          matches = [ { namespace = "^wallpaper$"; } ];
+          place-within-backdrop = true;
         }
       ];
 
