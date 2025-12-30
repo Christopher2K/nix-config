@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, configDest, ... }:
 let
   monitors = {
     builtin-laptop = "Samsung Display Corp. ATNA60DL04-0  Unknown";
