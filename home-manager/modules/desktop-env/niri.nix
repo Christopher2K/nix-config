@@ -47,6 +47,11 @@
             (configDest "wallpapers/wallpaper-1.jpg")
           ];
         }
+        {
+          argv = [
+            "quickshell"
+          ];
+        }
       ];
 
       prefer-no-csd = true;

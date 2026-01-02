@@ -13,7 +13,7 @@
       ./quickshell.nix
       ./stylix.nix
       ./vicinae.nix
-      ./waybar.nix
+      # ./waybar.nix
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       ./aerospace.nix

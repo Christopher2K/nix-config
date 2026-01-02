@@ -64,13 +64,13 @@ in
             criteria = monitors.builtin-laptop;
             scale = 1.5;
             mode = "2560x1600@240";
-            position = "0,0";
+            position = "-1707,0";
           }
           {
             criteria = monitors.lg-home;
             scale = 1.0;
             mode = "2560x1440@120";
-            position = "2560,0";
+            position = "0,0";
           }
         ];
       }
