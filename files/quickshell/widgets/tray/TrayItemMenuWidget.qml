@@ -92,7 +92,7 @@ Item {
                 color: mouseArea.backgroundColor
                 radius: 4
 
-                Text {
+                CustomText {
                     id: text
 
                     topPadding: 4
@@ -100,10 +100,6 @@ Item {
                     leftPadding: 8
                     rightPadding: 8
                     color: mouseArea.textColor
-                    font {
-                        family: ThemeColors.font
-                        pointSize: ThemeColors.fontSize
-                    }
                     text: modelData.text
                 }
             }

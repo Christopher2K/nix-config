@@ -32,7 +32,7 @@ Scope {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: TrayMenuState.clearMenu();
+                onClicked: TrayMenuState.clearMenu()
             }
         }
     }
