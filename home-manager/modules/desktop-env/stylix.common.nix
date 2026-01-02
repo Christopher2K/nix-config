@@ -43,23 +43,10 @@
     };
   };
 
-  stylix.targets.niri.enable = true;
-  stylix.targets.vencord.enable = true;
-  stylix.targets.vesktop.enable = true;
   stylix.targets.ghostty = {
     enable = true;
     opacity.enable = true;
   };
   stylix.targets.fontconfig.enable = true;
-  stylix.targets.gnome.enable = true;
   stylix.targets.starship.enable = true;
-  stylix.targets.gtk.enable = true;
-  stylix.targets.firefox = {
-    enable = true;
-    profileNames = [ "base-profile" ];
-    colorTheme.enable = true;
-    colors.enable = true;
-    firefoxGnomeTheme.enable = true;
-  };
-  stylix.targets.vicinae.enable = true;
 }
