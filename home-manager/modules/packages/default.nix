@@ -6,7 +6,6 @@
 {
   imports = [
     ./firefox.nix
-    ./obsidian.nix
     ./packages.common.nix
   ]
   ++ lib.optionals pkgs.stdenv.isDarwin [

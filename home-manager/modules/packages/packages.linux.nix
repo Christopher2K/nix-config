@@ -11,13 +11,14 @@
   home.packages = with pkgs; [
     jq
     libinput
-
-    # GUI
     ffmpegthumbnailer
     gdk-pixbuf
+    webp-pixbuf-loader
+
+    # GUI
     nautilus
     vesktop
     vscodium
-    webp-pixbuf-loader
+    obsidian
   ];
 }
