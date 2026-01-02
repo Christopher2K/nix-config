@@ -1,5 +1,5 @@
 import QtQuick
-import "../../"
+import "root:/"
 
 Rectangle {
     color: Constants.base06

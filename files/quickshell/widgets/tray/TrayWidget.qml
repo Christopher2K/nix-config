@@ -1,7 +1,7 @@
 import QtQuick
 import Quickshell
 import Quickshell.Services.SystemTray
-import "../../"
+import "root:/"
 
 Rectangle {
     id: root

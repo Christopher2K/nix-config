@@ -45,7 +45,7 @@ Scope {
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
-                    Clock {
+                    ClockWidget {
                         anchors.verticalCenter: parent.verticalCenter
                     }
                 }
