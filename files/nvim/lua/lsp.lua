@@ -15,6 +15,7 @@ function lsp.init()
     "nextls",
     "pyright",
     "qmlls",
+    "rust_analyzer",
     "svelte",
     "tailwindcss",
     "vtsls",
