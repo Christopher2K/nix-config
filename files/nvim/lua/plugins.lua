@@ -64,6 +64,9 @@ function plugins.init()
 end
 
 function plugins.configure()
+  require("gruvbox").setup({
+    transparent_mode = true,
+  })
   vim.cmd("colorscheme gruvbox")
 
   require("which-key").setup()

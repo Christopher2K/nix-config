@@ -1,16 +1,13 @@
 {
+  config,
   pkgs,
-  inputs,
   configDest,
-  src,
   ...
 }:
 {
-  home.file."${configDest "nvim"}" = {
-    source = src "nvim";
-    recursive = true;
-    force = true;
-  };
+
+  home.file."${configDest "nvim"}".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/files/nvim";
 
   programs.neovim = {
     enable = true;
