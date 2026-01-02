@@ -16,7 +16,6 @@
     glow
     lazydocker
     lazygit
-    lf
     neofetch
     nixfmt-rfc-style
     opencode
@@ -24,6 +23,7 @@
     scrcpy
     tree-sitter
     watchman
+    yazi
 
     # GUI
     yaak

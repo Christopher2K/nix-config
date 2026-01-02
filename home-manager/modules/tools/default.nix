@@ -1,7 +1,7 @@
 {
   imports = [
     ./glow.nix
-    ./lf.nix
+    ./yazi.nix
     ./scripts.nix
   ];
 }
