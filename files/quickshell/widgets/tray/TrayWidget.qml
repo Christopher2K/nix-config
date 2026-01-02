@@ -1,13 +1,13 @@
 import QtQuick
 import Quickshell
 import Quickshell.Services.SystemTray
-import "root:/"
+import "root:/utils"
 
 Rectangle {
     id: root
     property ShellScreen screen
 
-    color: Constants.base07
+    color: ThemeColors.base07
     radius: 999
     implicitHeight: row.implicitHeight
     implicitWidth: row.implicitWidth

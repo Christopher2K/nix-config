@@ -1,12 +1,16 @@
 import Quickshell
 import Quickshell.Io
 import QtQuick
+import "root:/utils"
 import "./widgets/clock"
 import "./widgets/tray"
+import "./widgets/battery"
 
 Scope {
     id: root
     property string time
+
+    readonly property int barHeight: 40
 
     Variants {
         model: Quickshell.screens
@@ -25,12 +29,12 @@ Scope {
             anchors.left: true
             anchors.right: true
 
-            implicitHeight: Constants.barHeight
+            implicitHeight: root.barHeight 
 
             Rectangle {
                 anchors.fill: parent
                 radius: 999
-                color: Qt.alpha(Constants.background, 0.95)
+                color: Qt.alpha(ThemeColors.background, 0.95)
 
                 Row {
                     anchors.fill: parent
@@ -39,6 +43,10 @@ Scope {
                     rightPadding: 10
                     leftPadding: 10
                     spacing: 10
+
+                    BatteryWidget {
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
 
                     TrayWidget {
                         screen: barWindow.modelData

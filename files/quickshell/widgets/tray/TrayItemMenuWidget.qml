@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Services.SystemTray
-import "root:/"
+import "root:/utils"
 
 Item {
     id: root
@@ -28,11 +28,11 @@ Item {
 
         Rectangle {
             id: content
-            color: Constants.background
+            color: ThemeColors.background
             implicitWidth: wrapper.width
             implicitHeight: wrapper.height
             radius: 8
-            border.color: Constants.base05
+            border.color: ThemeColors.base05
             border.width: 2
 
             Item {
@@ -73,8 +73,8 @@ Item {
         MouseArea {
             id: mouseArea
             property QsMenuEntry entry
-            property color backgroundColor: mouseArea.containsMouse ? Constants.base05 : "transparent"
-            property color textColor: mouseArea.containsMouse ? Constants.base00 : Constants.base05
+            property color backgroundColor: mouseArea.containsMouse ? ThemeColors.base05 : "transparent"
+            property color textColor: mouseArea.containsMouse ? ThemeColors.base00 : ThemeColors.base05
 
             cursorShape: Qt.PointingHandCursor
             hoverEnabled: true
@@ -101,8 +101,8 @@ Item {
                     rightPadding: 8
                     color: mouseArea.textColor
                     font {
-                        family: Constants.font
-                        pointSize: Constants.fontSize
+                        family: ThemeColors.font
+                        pointSize: ThemeColors.fontSize
                     }
                     text: modelData.text
                 }
@@ -124,7 +124,7 @@ Item {
                 anchors.centerIn: parent
                 width: parent.width - 16
                 height: 2
-                color: Constants.base07
+                color: ThemeColors.base07
                 radius: 999
             }
         }
