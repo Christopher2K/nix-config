@@ -29,6 +29,9 @@ Row {
             source: Quickshell.iconPath(niri.focusedWindowEntry.icon)
             width: 28
             height: 28
+            sourceSize.width: 56
+            sourceSize.height: 56
+            smooth: true
             visible: false
         }
 
