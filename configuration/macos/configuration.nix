@@ -17,7 +17,7 @@
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  environment.etc.nix-darwin.source = "/Users/${username}/dotfiles";
+  environment.etc.nix-darwin.source = "/Users/${username}/nix-config";
 
   users.users.${username}.home = "/Users/${username}";
 
