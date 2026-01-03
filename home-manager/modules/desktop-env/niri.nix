@@ -5,6 +5,7 @@
   configDest,
   src,
   inputs,
+  razerKeyboardSerial,
   ...
 }:
 
@@ -211,6 +212,23 @@
             "--class=backlight"
             "set"
             "10%-"
+          ];
+        };
+
+        "XF86KbdBrightnessUp" = {
+          allow-when-locked = true;
+          action.spawn = [
+            "sh"
+            "${config.home.homeDirectory}/scripts/razer-kbd-brightness-up.sh"
+            razerKeyboardSerial
+          ];
+        };
+        "XF86KbdBrightnessDown" = {
+          allow-when-locked = true;
+          action.spawn = [
+            "sh"
+            "${config.home.homeDirectory}/scripts/razer-kbd-brightness-down.sh"
+            razerKeyboardSerial
           ];
         };
 

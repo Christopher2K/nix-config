@@ -47,10 +47,12 @@
     { ... }@inputs:
     let
       username = "christopher";
+      razerKeyboardSerial = "BY2516N73300445";
       commonSpecialArgs = {
         inherit
           inputs
           username
+          razerKeyboardSerial
           ;
       };
       darwinConfiguration = inputs.nix-darwin.lib.darwinSystem {

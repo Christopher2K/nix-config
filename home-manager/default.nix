@@ -2,6 +2,7 @@
   inputs,
   config,
   username,
+  razerKeyboardSerial,
   pkgs,
   ...
 }:
@@ -30,7 +31,7 @@
   };
 
   home-manager.extraSpecialArgs = rec {
-    inherit inputs pkgs;
+    inherit inputs pkgs razerKeyboardSerial;
 
     src = filename_or_dirname: ./../files/${filename_or_dirname};
     homeDest = filename_or_dirname: "${config.users.users."${username}".home}/${filename_or_dirname}";

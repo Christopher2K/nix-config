@@ -21,5 +21,6 @@
     vesktop
     vscodium
     obsidian
+    polychromatic
   ];
 }
