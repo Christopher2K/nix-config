@@ -1,10 +1,12 @@
 import Quickshell
 import Quickshell.Io
 import QtQuick
+import QtQuick.Layouts
 import "root:/utils"
 import "./widgets/clock"
 import "./widgets/tray"
 import "./widgets/battery"
+import "./widgets/workspaces"
 
 Scope {
     id: root
@@ -36,25 +38,37 @@ Scope {
                 radius: 999
                 color: Qt.alpha(ThemeColors.background, 0.95)
 
-                Row {
+                FlexboxLayout {
                     anchors.fill: parent
-                    layoutDirection: Qt.RightToLeft
+                    justifyContent: FlexboxLayout.JustifySpaceBetween
+                    alignItems: FlexboxLayout.AlignCenter
 
-                    rightPadding: 10
-                    leftPadding: 10
-                    spacing: 10
+                    Row {
+                        rightPadding: 8
+                        leftPadding: 8
+                        spacing: 8
 
-                    TrayWidget {
-                        screen: barWindow.modelData
-                        anchors.verticalCenter: parent.verticalCenter
+                        WorkspacesWidget {}
+                        FocusedWindowWidget {}
                     }
 
-                    ClockWidget {
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
+                    Row {
+                        rightPadding: 8
+                        leftPadding: 8
+                        spacing: 8
 
-                    BatteryWidget {
-                        anchors.verticalCenter: parent.verticalCenter
+                        BatteryWidget {
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+
+                        ClockWidget {
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+
+                        TrayWidget {
+                            screen: barWindow.modelData
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
                     }
                 }
             }

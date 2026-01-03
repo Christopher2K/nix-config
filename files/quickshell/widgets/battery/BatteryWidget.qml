@@ -6,7 +6,6 @@ CustomBackground {
     id: root
     property var icon: {
         const value = BatteryProcess.percentage;
-        console.log("Charging", UPowerDeviceState.Discharging);
         if (BatteryProcess.isCharging) {
             return "󰂄";
         }
@@ -27,7 +26,6 @@ CustomBackground {
             icon: root.icon
             color: "#41cc54"
             size: 14
-
         }
 
         CustomText {
