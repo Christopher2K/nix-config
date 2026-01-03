@@ -18,5 +18,6 @@
   ++ lib.optionals pkgs.stdenv.isDarwin [
     ./aerospace.nix
     ./jankyborders.nix
+    ./paneru.nix
   ];
 }
