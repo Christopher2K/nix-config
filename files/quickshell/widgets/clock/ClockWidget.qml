@@ -1,11 +1,8 @@
 import QtQuick
 import "root:/utils"
 
-Rectangle {
-    color: ThemeColors.base06
-    implicitHeight: row.implicitHeight
-    implicitWidth: row.implicitWidth
-    radius: 999
+CustomBackground {
+    containerWidth: row.implicitWidth
 
     component ClockText: CustomText {
         id: label
@@ -18,6 +15,7 @@ Rectangle {
 
     Row {
         id: row
+        anchors.centerIn: parent
         spacing: 4
 
         ClockText {

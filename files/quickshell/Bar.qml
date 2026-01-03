@@ -10,7 +10,7 @@ Scope {
     id: root
     property string time
 
-    readonly property int barHeight: 40
+    readonly property int barHeight: Values.barHeight
 
     Variants {
         model: Quickshell.screens
@@ -29,7 +29,7 @@ Scope {
             anchors.left: true
             anchors.right: true
 
-            implicitHeight: root.barHeight 
+            implicitHeight: root.barHeight
 
             Rectangle {
                 anchors.fill: parent
@@ -44,16 +44,16 @@ Scope {
                     leftPadding: 10
                     spacing: 10
 
-                    BatteryWidget {
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-
                     TrayWidget {
                         screen: barWindow.modelData
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
                     ClockWidget {
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    BatteryWidget {
                         anchors.verticalCenter: parent.verticalCenter
                     }
                 }
