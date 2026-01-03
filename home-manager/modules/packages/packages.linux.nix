@@ -14,6 +14,7 @@
     ffmpegthumbnailer
     gdk-pixbuf
     webp-pixbuf-loader
+    brightnessctl
 
     # GUI
     nautilus

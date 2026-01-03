@@ -156,13 +156,6 @@
           action.spawn = "swaylock";
         };
 
-        # Screen reader toggle
-        "Super+Alt+S" = {
-          allow-when-locked = true;
-          hotkey-overlay.hidden = true;
-          action.spawn-sh = "pkill orca || exec orca";
-        };
-
         # Volume controls
         "XF86AudioRaiseVolume" = {
           allow-when-locked = true;
@@ -204,6 +197,7 @@
           allow-when-locked = true;
           action.spawn = [
             "brightnessctl"
+            "--device=amdgpu_bl2"
             "--class=backlight"
             "set"
             "+10%"
@@ -213,6 +207,7 @@
           allow-when-locked = true;
           action.spawn = [
             "brightnessctl"
+            "--device=amdgpu_bl2"
             "--class=backlight"
             "set"
             "10%-"
