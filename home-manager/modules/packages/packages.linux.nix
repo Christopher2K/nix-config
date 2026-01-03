@@ -6,6 +6,7 @@
 {
   imports = [
     ./firefox.nix
+    ./obs-studio.nix
   ];
 
   home.packages = with pkgs; [
