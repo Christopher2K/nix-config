@@ -94,7 +94,7 @@ in
   services.libinput.touchpad.disableWhileTyping = true;
 
   services.upower.enable = true;
-  # Since I'm using Nautilis, I need some gnome related shit
+  # Since I'm using Nautilus, I need some gnome related shit
   services.gvfs.enable = true; # For trash
   services.udisks2.enable = true; # For mounting removable drives
 
