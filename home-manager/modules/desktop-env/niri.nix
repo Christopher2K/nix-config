@@ -170,10 +170,6 @@
           allow-when-locked = true;
           action.spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
         };
-        "XF86AudioMicMute" = {
-          allow-when-locked = true;
-          action.spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-        };
 
         # Media controls
         "XF86AudioPlay" = {
@@ -196,23 +192,11 @@
         # Brightness controls
         "XF86MonBrightnessUp" = {
           allow-when-locked = true;
-          action.spawn = [
-            "brightnessctl"
-            "--device=amdgpu_bl2"
-            "--class=backlight"
-            "set"
-            "+10%"
-          ];
+          action.spawn-sh = "brightnessctl --device='amdgpu_bl*' set +10%";
         };
         "XF86MonBrightnessDown" = {
           allow-when-locked = true;
-          action.spawn = [
-            "brightnessctl"
-            "--device=amdgpu_bl2"
-            "--class=backlight"
-            "set"
-            "10%-"
-          ];
+          action.spawn-sh = "brightnessctl --device='amdgpu_bl*' set 10%-";
         };
 
         "XF86KbdBrightnessUp" = {

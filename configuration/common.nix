@@ -6,5 +6,7 @@
     "flakes"
   ];
   fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [
+    bc
+  ];
 }
