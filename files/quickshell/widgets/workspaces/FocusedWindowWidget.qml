@@ -10,6 +10,7 @@ Row {
         id: niri
     }
     visible: niri.focusedWindowEntry != null
+    property var focusedWindowIcon: niri.focusedWindowEntry ? Quickshell.iconPath(niri.focusedWindowEntry.icon) : ""
 
     property string appLabel: {
         if (niri.focusedWindowEntry == null)
@@ -23,11 +24,12 @@ Row {
         topRightRadius: 0
         bottomRightRadius: 0
         color: ThemeColors.base05
+        visible: niri.focusedWindowEntry != null
 
         IconImage {
             id: icon
             anchors.centerIn: parent
-            source: Quickshell.iconPath(niri.focusedWindowEntry.icon)
+            source: focusedWindowIcon
             implicitSize: 24
             visible: false
         }
