@@ -79,7 +79,6 @@ in
   };
 
   # Enable ddcutil for display brightness control
-  hardware.i2c.enable = true;
   nix.settings.trusted-users = [
     "root"
     username
@@ -93,12 +92,10 @@ in
   console.useXkbConfig = true;
   services.libinput.touchpad.disableWhileTyping = true;
 
-  services.upower.enable = true;
-  # Since I'm using Nautilus, I need some gnome related shit
-  services.gvfs.enable = true; # For trash
-  services.udisks2.enable = true; # For mounting removable drives
-
+  hardware.i2c.enable = true;
   hardware.openrazer.enable = true;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 
   services.udev.extraRules = ''
     KERNEL=="card*", KERNELS=="0000:c6:00.0", SUBSYSTEM=="drm", SUBSYSTEMS=="pci", SYMLINK+="dri/amdigpu"
@@ -116,4 +113,87 @@ in
       };
     };
   };
+
+  # Various stuff for gnome to be working
+  services.gvfs.enable = true; # For trash
+  services.udisks2.enable = true; # For mounting removable drives
+
+  # Power management
+  services.upower.enable = true;
+
+  # Sound management
+  services.pipewire = {
+    enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
+    pulse.enable = true;
+    jack.enable = true;
+    wireplumber = {
+      enable = true;
+      extraConfig."51-rodecaster-rename" = {
+        "monitor.alsa.rules" = [
+          # Outputs
+          {
+            matches = [ { "node.name" = "alsa_output.usb-R__DE_R__DECaster_Duo-00.pro-output-0"; } ];
+            actions = {
+              update-props = {
+                "node.description" = "Rodecaster Secondary Output";
+              };
+            };
+          }
+          {
+            matches = [ { "node.name" = "alsa_output.usb-R__DE_RODECaster_Duo_IR0008380-00.pro-output-0"; } ];
+            actions = {
+              update-props = {
+                "node.description" = "Rodecaster Chat Output";
+              };
+            };
+          }
+          {
+            matches = [ { "node.name" = "alsa_output.usb-R__DE_RODECaster_Duo_IR0008380-00.pro-output-1"; } ];
+            actions = {
+              update-props = {
+                "node.description" = "Rodecaster Main Output";
+              };
+            };
+          }
+          # Inputs
+          {
+            matches = [ { "node.name" = "alsa_input.usb-R__DE_R__DECaster_Duo-00.pro-input-0"; } ];
+            actions = {
+              update-props = {
+                "node.description" = "Rodecaster Secondary Input";
+              };
+            };
+          }
+          {
+            matches = [ { "node.name" = "alsa_input.usb-R__DE_RODECaster_Duo_IR0008380-00.pro-input-0"; } ];
+            actions = {
+              update-props = {
+                "node.description" = "Rodecaster Chat Input";
+              };
+            };
+          }
+          {
+            matches = [ { "node.name" = "alsa_input.usb-R__DE_RODECaster_Duo_IR0008380-00.pro-input-1"; } ];
+            actions = {
+              update-props = {
+                "node.description" = "Rodecaster Main Input";
+              };
+            };
+          }
+        ];
+      };
+    };
+  };
+
+  # services.pulseaudio = {
+  #   enable = true;
+  #   support32Bit = true;
+  #   extraConfig = ''
+  #     load-module module-device-manager
+  #   '';
+  # };
 }

@@ -37,6 +37,7 @@
     pciutils
     unzip
     vim
+    pavucontrol
     nvtopPackages.nvidia
     nvtopPackages.amd
   ];
