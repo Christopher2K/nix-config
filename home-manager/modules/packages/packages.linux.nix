@@ -18,6 +18,7 @@
     brightnessctl
 
     # GUI
+    nur.repos.Ev357.helium
     nautilus
     vesktop
     vscodium
