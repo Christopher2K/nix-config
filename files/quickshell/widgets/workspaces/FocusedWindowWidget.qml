@@ -13,14 +13,10 @@ Row {
 
     property string appLabel: {
         if (niri.focusedWindowEntry == null)
-        return "";
+            return "";
         return `${niri.focusedWindowEntry.name}`;
     }
     spacing: 0
-
-    property var test : {
-        console.log(Quickshell.iconPath(niri.focusedWindowEntry.icon))
-    }
 
     CustomBackground {
         containerWidth: icon.width
@@ -36,14 +32,12 @@ Row {
             visible: false
         }
 
-
         Desaturate {
             anchors.fill: icon
             source: icon
             desaturation: 1
         }
     }
-
 
     CustomBackground {
         containerWidth: text.width + 16
