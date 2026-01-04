@@ -3,9 +3,10 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 import "root:/utils"
+import "./widgets/audio"
+import "./widgets/battery"
 import "./widgets/clock"
 import "./widgets/tray"
-import "./widgets/battery"
 import "./widgets/workspaces"
 
 Scope {
@@ -56,6 +57,8 @@ Scope {
                         rightPadding: 8
                         leftPadding: 8
                         spacing: 8
+
+                        SoundOutputWidget {}
 
                         BatteryWidget {
                             anchors.verticalCenter: parent.verticalCenter
