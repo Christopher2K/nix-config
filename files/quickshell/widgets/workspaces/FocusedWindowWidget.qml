@@ -1,4 +1,5 @@
 import Quickshell
+import Quickshell.Widgets
 import QtQuick
 import Qt5Compat.GraphicalEffects
 import "root:/utils"
@@ -12,10 +13,14 @@ Row {
 
     property string appLabel: {
         if (niri.focusedWindowEntry == null)
-            return "";
+        return "";
         return `${niri.focusedWindowEntry.name}`;
     }
     spacing: 0
+
+    property var test : {
+        console.log(Quickshell.iconPath(niri.focusedWindowEntry.icon))
+    }
 
     CustomBackground {
         containerWidth: icon.width
@@ -23,17 +28,14 @@ Row {
         bottomRightRadius: 0
         color: ThemeColors.base05
 
-        Image {
+        IconImage {
             id: icon
             anchors.centerIn: parent
             source: Quickshell.iconPath(niri.focusedWindowEntry.icon)
-            width: 28
-            height: 28
-            sourceSize.width: 56
-            sourceSize.height: 56
-            smooth: true
+            implicitSize: 24
             visible: false
         }
+
 
         Desaturate {
             anchors.fill: icon
@@ -41,6 +43,7 @@ Row {
             desaturation: 1
         }
     }
+
 
     CustomBackground {
         containerWidth: text.width + 16

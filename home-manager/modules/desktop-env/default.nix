@@ -11,6 +11,7 @@
     ./gtk.nix
     ./kanshi.nix
     ./niri.nix
+    ./qt.nix
     ./quickshell.nix
     ./stylix.linux.nix
     ./vicinae.nix

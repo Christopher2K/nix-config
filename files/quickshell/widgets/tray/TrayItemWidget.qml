@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import Quickshell.Widgets
 import Quickshell.Services.SystemTray
 
 Item {
@@ -10,10 +11,10 @@ Item {
     implicitHeight: 20
     implicitWidth: 20
 
-    Image {
-        width: 20
-        height: 20
+    IconImage {
+        implicitSize: 20
         source: root.modelData.icon
+        mipmap: true
 
         MouseArea {
             anchors.fill: parent
