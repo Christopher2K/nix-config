@@ -15,6 +15,7 @@
     ./quickshell.nix
     ./stylix.linux.nix
     ./vicinae.nix
+    ./xdg.nix
   ]
   ++ lib.optionals pkgs.stdenv.isDarwin [
     ./aerospace.nix
