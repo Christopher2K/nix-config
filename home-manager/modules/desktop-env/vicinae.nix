@@ -16,5 +16,15 @@
         USE_LAYER_SHELL = 1;
       };
     };
+    settings = {
+      font = {
+        size = 11;
+      };
+      window = {
+        csd = true;
+        opacity = 0.9;
+        rouding = 10;
+      }
+    };
   };
 }
