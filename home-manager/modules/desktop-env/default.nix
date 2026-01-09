@@ -8,6 +8,7 @@
     ./stylix.common.nix
   ]
   ++ lib.optionals pkgs.stdenv.isLinux [
+    ./ags.nix
     ./gtk.nix
     ./kanshi.nix
     ./niri.nix
