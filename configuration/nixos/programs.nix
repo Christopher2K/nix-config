@@ -21,6 +21,7 @@
   programs.nautilus-open-any-terminal.terminal = "ghostty";
   services.gnome.sushi.enable = true;
   services.gnome.tinysparql.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   environment.pathsToLink = [
     "/share/applications"

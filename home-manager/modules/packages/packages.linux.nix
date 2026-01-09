@@ -18,6 +18,7 @@
     brightnessctl
 
     # GUI
+    mailspring
     nur.repos.Ev357.helium
     nautilus
     vesktop
