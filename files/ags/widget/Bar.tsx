@@ -1,6 +1,7 @@
 import { Astal, type Gdk } from "ags/gtk4";
 import app from "ags/gtk4/app";
 import { ActiveWindowWidget } from "./bar-widgets/active-window-widget";
+import { DateWidget } from "./bar-widgets/date-widget";
 import { TrayWidget } from "./bar-widgets/tray-widget";
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
@@ -22,7 +23,8 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
           <ActiveWindowWidget />
         </box>
 
-        <box $type="end" vexpand>
+        <box $type="end" vexpand spacing={8}>
+          <DateWidget />
           <TrayWidget />
         </box>
       </centerbox>

@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Base colors
 $fg-color: #{"@theme_fg_color"};
 $bg-color: #{"@theme_bg_color"};
@@ -53,11 +55,15 @@ label {
   color: $bg-color;
 }
 
+.text-icon {
+  font-size: 24px;
+}
+
 .barRoot {
   margin: 16px;
   padding: 8px;
   border-radius: 999px;
-  background-color: transparentize($base00, 0.2);
+  background-color: color.scale($base00, $alpha: -20%);
 }
 
 .container {
@@ -89,4 +95,17 @@ label {
   image {
     filter: grayscale(100%);
   }
+}
+
+.date-widget {
+  .dot {
+    border-radius: 999px;
+    background-color: $base00;
+  }
+
+  .text-icon {
+    padding-left: 4px;
+  }
+
+
 }
