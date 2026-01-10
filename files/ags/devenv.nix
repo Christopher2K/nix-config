@@ -11,6 +11,6 @@
 
   processes.dev.exec = ''
     ags quit || true
-    ${pkgs.nodemon}/bin/nodemon --watch . -e ts,tsx,js,jsx,json --exec 'ags run'
+    ${pkgs.nodemon}/bin/nodemon --watch . -e scss,ts,tsx,js,jsx,json --exec 'ags run'
   '';
 }

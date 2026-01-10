@@ -1,20 +1,92 @@
-// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+// Base colors
 $fg-color: #{"@theme_fg_color"};
 $bg-color: #{"@theme_bg_color"};
+$base-color: #{"@theme_base_color"};
+$text-color: #{"@theme_text_color"};
 
-window.Bar {
-  background: transparent;
-  color: $fg-color;
-  font-weight: bold;
+// Selected/accent colors
+$selected-bg-color: #{"@theme_selected_bg_color"};
+$selected-fg-color: #{"@theme_selected_fg_color"};
 
-  > centerbox {
-    background: $bg-color;
-    border-radius: 10px;
-    margin: 8px;
+// Borders
+$borders-color: #{"@borders"};
+$unfocused-borders-color: #{"@unfocused_borders"};
+
+// Insensitive/disabled state
+$insensitive-fg-color: #{"@insensitive_fg_color"};
+$insensitive-bg-color: #{"@insensitive_bg_color"};
+
+// Semantic colors
+$warning-color: #{"@warning_color"};
+$error-color: #{"@error_color"};
+$success-color: #{"@success_color"};
+$destructive-color: #{"@destructive_color"};
+
+// Unfocused state colors
+$unfocused-fg-color: #{"@theme_unfocused_fg_color"};
+$unfocused-bg-color: #{"@theme_unfocused_bg_color"};
+$unfocused-base-color: #{"@theme_unfocused_base_color"};
+$unfocused-text-color: #{"@theme_unfocused_text_color"};
+$unfocused-selected-bg-color: #{"@theme_unfocused_selected_bg_color"};
+$unfocused-selected-fg-color: #{"@theme_unfocused_selected_fg_color"};
+
+// Base 16 Gruvbox
+$base00: #fbf1c7;
+$base01: #ebdbb2;
+$base02: #d5c4a1;
+$base03: #bdae93;
+$base04: #7c6f64;
+$base05: #3c3836;
+$base06: #282828;
+$base07: #1d2021;
+$base08: #cc241d;
+$base09: #d65d0e;
+$base0A: #d79921;
+$base0B: #98971a;
+$base0C: #689d6a;
+$base0D: #458588;
+$base0E: #b16286;
+$base0F: #9d0006;
+
+label {
+  font-size: 12px;
+  color: $bg-color;
+}
+
+.barRoot {
+  margin: 16px;
+  padding: 8px 8px;
+  border-radius: 999px;
+  background-color: $bg-color;
+}
+
+.container {
+  border-radius: 999px;
+  background-color: $base06;
+  padding: 0 16px;
+}
+
+.tray-widget-root {
+  padding: 8px 0px;
+}
+
+.active-window-widget {
+  $spacing: 8px;
+  background-color: transparent;
+  border-radius: 999px;
+
+  image {
+    background-color: $base05;
+    padding: 0px $spacing;
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
+    filter: grayscale(100%);
   }
 
-  button {
-    border-radius: 8px;
-    margin: 2px;
+  box {
+    background-color: $base06;
+    padding: 0px 12px;
+    border-top-right-radius: 999px;
+    border-bottom-right-radius: 999px;
   }
 }
