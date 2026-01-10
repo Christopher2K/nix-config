@@ -3,5 +3,9 @@ type ContainerProps = {
 };
 
 export const Container = ({ children }: ContainerProps) => {
-  return <box class="container">{children}</box>;
+  return (
+    <box class="container" vexpand>
+      {children}
+    </box>
+  );
 };

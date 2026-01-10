@@ -15,13 +15,14 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
       exclusivity={Astal.Exclusivity.EXCLUSIVE}
       anchor={TOP | LEFT | RIGHT}
       application={app}
+      height_request={80}
     >
       <centerbox hexpand vexpand class="barRoot">
-        <box $type="start">
+        <box $type="start" vexpand>
           <ActiveWindowWidget />
         </box>
 
-        <box $type="end">
+        <box $type="end" vexpand>
           <TrayWidget />
         </box>
       </centerbox>

@@ -55,9 +55,9 @@ label {
 
 .barRoot {
   margin: 16px;
-  padding: 8px 8px;
+  padding: 8px;
   border-radius: 999px;
-  background-color: $bg-color;
+  background-color: transparentize($color: $base00, $amount: 0.2);
 }
 
 .container {
@@ -66,9 +66,7 @@ label {
   padding: 0 16px;
 }
 
-.tray-widget-root {
-  padding: 8px 0px;
-}
+.tray-widget {}
 
 .active-window-widget {
   $spacing: 8px;

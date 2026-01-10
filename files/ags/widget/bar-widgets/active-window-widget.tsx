@@ -47,7 +47,7 @@ export const ActiveWindowWidget = () => {
         if (app == null) return null;
 
         return (
-          <box class="active-window-widget" spacing={0}>
+          <box class="active-window-widget" spacing={0} vexpand>
             <image
               class="window-icon"
               icon_name={app.iconName}

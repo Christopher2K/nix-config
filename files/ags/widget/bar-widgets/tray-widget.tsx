@@ -10,7 +10,7 @@ export const TrayWidget = () => {
 
   return (
     <Container>
-      <box class="tray-widget-root" spacing={8}>
+      <box class="tray-widget" spacing={8} vexpand>
         <For each={trayItems}>
           {(item) => {
             return <image gicon={item.gicon} pixelSize={ICON_SIZE} />;
