@@ -19,7 +19,7 @@
       inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.battery
       inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.network
       inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.tray
-      pkgs.astal.tray
+      inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.apps
     ];
   };
 }
