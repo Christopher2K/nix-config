@@ -80,8 +80,8 @@ in
         profile.outputs = [
           {
             criteria = monitors.builtin-laptop;
-            scale = 1.25;
-            mode = "2560x1600@240";
+            scale = 1.0;
+            mode = "1600x1200@240";
             position = "0,0";
           }
           {
