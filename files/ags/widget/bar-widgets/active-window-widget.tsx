@@ -6,6 +6,7 @@ import {
   type NiriSubscription,
   subscribeToNiri,
 } from "../../lib/niri";
+import { Container } from "../common/container";
 
 const apps = new AstalApps.Apps();
 const appList = apps.get_list();
@@ -47,14 +48,12 @@ export const ActiveWindowWidget = () => {
         if (app == null) return null;
 
         return (
-          <box class="active-window-widget" spacing={0} vexpand>
-            <image
-              class="window-icon"
-              icon_name={app.iconName}
-              pixel_size={24}
-            />
-            <box class="window-title">{app.name}</box>
-          </box>
+          <Container
+            className="active-window-widget"
+            left={<image icon_name={app.iconName} pixel_size={24} />}
+          >
+            <label label={app.name} />
+          </Container>
         );
       }}
     </With>
