@@ -1,10 +1,7 @@
 {
   "dependencies": {
+    "@biomejs/biome": "^2.3.11",
     "ags": "*",
     "gnim": "*"
-  },
-  "prettier": {
-    "semi": false,
-    "tabWidth": 2
   }
 }
