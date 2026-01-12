@@ -51,12 +51,13 @@ $base0E: #b16286;
 $base0F: #9d0006;
 
 label {
-  font-size: 12px;
+  font-size: 0.8rem;
   color: $bg-color;
 }
 
 .text-icon {
   font-size: 24px;
+  padding-left: 4px;
 }
 
 .barRoot {
@@ -102,10 +103,18 @@ label {
     border-radius: 999px;
     background-color: $base00;
   }
+}
 
-  .text-icon {
-    padding-left: 4px;
+.battery-widget {
+  .battery-good {
+    color: $base0B;
   }
 
+  .battery-medium {
+    color: $base0A;
+  }
 
+  .battery-critical {
+    color: $base08;
+  }
 }
