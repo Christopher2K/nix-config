@@ -25,5 +25,7 @@
     vscodium
     obsidian
     polychromatic
+    whatsapp-electron
+    signal-desktop
   ];
 }
