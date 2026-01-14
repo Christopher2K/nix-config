@@ -5,6 +5,7 @@
 {
   home.packages = with pkgs; [
     # CLI
+    awscli2
     bat
     beamMinimal28Packages.rebar3
     claude-code
