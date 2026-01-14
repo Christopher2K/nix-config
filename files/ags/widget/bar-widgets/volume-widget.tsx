@@ -1,11 +1,5 @@
 import AstalWp from "gi://AstalWp";
-import {
-  createBinding,
-  createComputed,
-  createEffect,
-  createState,
-  With,
-} from "gnim";
+import { createBinding, createComputed, With } from "gnim";
 import { Container } from "../common/container";
 
 export const VolumeWidget = () => {

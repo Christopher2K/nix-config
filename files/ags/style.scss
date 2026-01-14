@@ -90,7 +90,14 @@ label {
   }
 }
 
-.tray-widget {}
+.tray-widget {
+  button {
+    background-color: $base06;
+    padding: 0px;
+    padding: 0px;
+    border-radius: 999px;
+  }
+}
 
 .active-window-widget {
   image {
