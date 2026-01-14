@@ -1,4 +1,5 @@
 import Tray from "gi://AstalTray";
+import { Gdk, Gtk } from "ags/gtk4";
 import { createBinding, For } from "gnim";
 import { Container } from "../common/container";
 
@@ -14,8 +15,33 @@ export const TrayWidget = () => {
         <For each={trayItems}>
           {(item) => {
             const icon = createBinding(item, "gicon");
+            let popoverRef: Gtk.Popover | null = null;
 
-            return <image gicon={icon} pixelSize={ICON_SIZE} />;
+            return (
+              <box>
+                <button
+                  class="tray-item"
+                  $={(self) => {
+                    const rightClick = new Gtk.GestureClick();
+                    rightClick.set_button(Gdk.BUTTON_SECONDARY);
+                    rightClick.connect("pressed", () => popoverRef?.popup());
+                    self.add_controller(rightClick);
+                  }}
+                  onClicked={() => item.activate(0, 0)}
+                >
+                  <image gicon={icon} pixelSize={ICON_SIZE} />
+                </button>
+                <popover
+                  position={Gtk.PositionType.BOTTOM}
+                  hasArrow={false}
+                  $={(self) => {
+                    popoverRef = self;
+                  }}
+                >
+                  <label label="Hello world" />
+                </popover>
+              </box>
+            );
           }}
         </For>
       </box>
