@@ -10,12 +10,13 @@
   ];
 
   home.packages = with pkgs; [
-    jq
-    libinput
+    brightnessctl
+    fastfetch
     ffmpegthumbnailer
     gdk-pixbuf
+    jq
+    libinput
     webp-pixbuf-loader
-    brightnessctl
 
     # GUI
     mailspring
