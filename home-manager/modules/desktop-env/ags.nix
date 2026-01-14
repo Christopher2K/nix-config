@@ -20,6 +20,7 @@
       inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.network
       inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.tray
       inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.apps
+      inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.wireplumber
     ];
   };
 }

@@ -1,6 +1,7 @@
 import GLib from "gi://GLib";
 import { Gtk } from "ags/gtk4";
 import { createPoll } from "ags/time";
+import { With } from "gnim";
 import { Container } from "../common/container";
 
 const DOT_SIZE = 8;
@@ -20,19 +21,25 @@ export const DateWidget = () => {
   }
 
   return (
-    <Container
-      className="date-widget"
-      rightContainerSpacing={8}
-      left={<label class="text-icon" label="󰸗" />}
-    >
-      <label label={dateTime().date} />
-      <box
-        class="dot"
-        heightRequest={DOT_SIZE}
-        widthRequest={DOT_SIZE}
-        valign={Gtk.Align.CENTER}
-      />
-      <label label={dateTime().time} />
-    </Container>
+    <box>
+      <With value={dateTime}>
+        {({ date, time }) => (
+          <Container
+            className="date-widget"
+            rightContainerSpacing={8}
+            left={<label class="text-icon" label="󰸗" />}
+          >
+            <label label={date} />
+            <box
+              class="dot"
+              heightRequest={DOT_SIZE}
+              widthRequest={DOT_SIZE}
+              valign={Gtk.Align.CENTER}
+            />
+            <label label={time} />
+          </Container>
+        )}
+      </With>
+    </box>
   );
 };

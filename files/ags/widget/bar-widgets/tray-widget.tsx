@@ -13,7 +13,9 @@ export const TrayWidget = () => {
       <box class="tray-widget" spacing={8} vexpand>
         <For each={trayItems}>
           {(item) => {
-            return <image gicon={item.gicon} pixelSize={ICON_SIZE} />;
+            const icon = createBinding(item, "gicon");
+
+            return <image gicon={icon} pixelSize={ICON_SIZE} />;
           }}
         </For>
       </box>
