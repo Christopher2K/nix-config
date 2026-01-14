@@ -24,7 +24,6 @@
     tree-sitter
     watchman
     yazi
-    zoxide
 
     # GUI
     yaak
