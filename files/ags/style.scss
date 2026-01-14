@@ -91,11 +91,21 @@ label {
 }
 
 .tray-widget {
-  button {
-    background-color: $base06;
-    padding: 0px;
-    padding: 0px;
-    border-radius: 999px;
+  .tray-item {
+    button {
+      background-color: $base06;
+      padding: 0px;
+      padding: 0px;
+      border-radius: 999px;
+    }
+
+    popover.menu contents {
+      background-color: $base02;
+    }
+
+    popover.menu label {
+      color: $base05;
+    }
   }
 }
 

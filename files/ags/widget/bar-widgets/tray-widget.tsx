@@ -1,6 +1,6 @@
 import Tray from "gi://AstalTray";
 import { Gdk, Gtk } from "ags/gtk4";
-import { createBinding, For } from "gnim";
+import { createBinding, createEffect, For, onMount } from "gnim";
 import { Container } from "../common/container";
 
 const ICON_SIZE = 20;
@@ -12,39 +12,42 @@ export const TrayWidget = () => {
   return (
     <Container>
       <box class="tray-widget" spacing={8} vexpand>
-        <For each={trayItems}>
-          {(item) => {
-            const icon = createBinding(item, "gicon");
-            let popoverRef: Gtk.Popover | null = null;
-
-            return (
-              <box>
-                <button
-                  class="tray-item"
-                  $={(self) => {
-                    const rightClick = new Gtk.GestureClick();
-                    rightClick.set_button(Gdk.BUTTON_SECONDARY);
-                    rightClick.connect("pressed", () => popoverRef?.popup());
-                    self.add_controller(rightClick);
-                  }}
-                  onClicked={() => item.activate(0, 0)}
-                >
-                  <image gicon={icon} pixelSize={ICON_SIZE} />
-                </button>
-                <popover
-                  position={Gtk.PositionType.BOTTOM}
-                  hasArrow={false}
-                  $={(self) => {
-                    popoverRef = self;
-                  }}
-                >
-                  <label label="Hello world" />
-                </popover>
-              </box>
-            );
-          }}
-        </For>
+        <For each={trayItems}>{(item) => <TrayItemWidget item={item} />}</For>
       </box>
     </Container>
+  );
+};
+
+const TrayItemWidget = ({ item }: { item: Tray.TrayItem }) => {
+  const icon = createBinding(item, "gicon");
+  let popoverMenuRef: Gtk.PopoverMenu | null = null;
+  const menuModel = createBinding(item, "menuModel");
+
+  return (
+    <box
+      class="tray-item"
+      $={(self) => {
+        self.insert_action_group("dbusmenu", item.actionGroup);
+      }}
+    >
+      <button
+        $={(self) => {
+          const rightClick = new Gtk.GestureClick();
+          rightClick.set_button(Gdk.BUTTON_SECONDARY);
+          rightClick.connect("pressed", () => popoverMenuRef?.popup());
+          self.add_controller(rightClick);
+        }}
+        onClicked={() => item.activate(0, 0)}
+      >
+        <image gicon={icon} pixelSize={ICON_SIZE} />
+      </button>
+      <Gtk.PopoverMenu
+        $={(self) => {
+          popoverMenuRef = self;
+        }}
+        menuModel={menuModel}
+        hasArrow={false}
+      />
+    </box>
   );
 };
