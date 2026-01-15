@@ -32,7 +32,10 @@ export const ActiveWindowWidget = () => {
   onMount(() => {
     updateFocusedWindow();
     subscription = subscribeToNiri((event) => {
-      if (event.name === "WindowFocusChanged") {
+      if (
+        event.name === "WindowFocusChanged" ||
+        event.name === "WindowOpenedOrChanged"
+      ) {
         updateFocusedWindow();
       }
     });
@@ -45,7 +48,7 @@ export const ActiveWindowWidget = () => {
   return (
     <With value={focusedApp}>
       {(app) => {
-        if (app == null) return null;
+        if (app == null) return <box />;
 
         return (
           <Container

@@ -71,20 +71,20 @@ label {
   background-color: transparent;
   border-radius: 999px;
 
-  .left {
+  >.left {
     background-color: $base05;
     padding: 0px 8px;
     border-top-left-radius: 999px;
     border-bottom-left-radius: 999px;
   }
 
-  .right {
+  >.right {
     background-color: $base06;
     padding: 0px 12px;
     border-radius: 999px;
   }
 
-  .right.withLeft {
+  >.right.withLeft {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
   }
@@ -100,11 +100,20 @@ label {
     }
 
     popover.menu contents {
-      background-color: $base02;
+      margin-top: 16px;
+      background-color: $base00;
     }
 
     popover.menu label {
       color: $base05;
+    }
+
+    popover.menu accelerator {
+      font-size: 0.7rem;
+    }
+
+    popover.menu separator {
+      background-color: $base01;
     }
   }
 }
