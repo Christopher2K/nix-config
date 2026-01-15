@@ -30,12 +30,6 @@
             "--silent"
           ];
         }
-        {
-          argv = [
-            "ags"
-            "run"
-          ];
-        }
       ];
 
       prefer-no-csd = true;

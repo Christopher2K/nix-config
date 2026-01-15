@@ -22,5 +22,7 @@
       inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.apps
       inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.wireplumber
     ];
+
+    systemd.enable = true;
   };
 }
