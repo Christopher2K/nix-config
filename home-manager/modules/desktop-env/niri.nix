@@ -50,7 +50,8 @@
         }
         {
           argv = [
-            "quickshell"
+            "ags"
+            "run"
           ];
         }
       ];
