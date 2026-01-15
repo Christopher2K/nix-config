@@ -12,13 +12,7 @@
 {
   home.packages = [
     pkgs.xwayland-satellite
-    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
   ];
-
-  home.file."${configDest "wallpapers"}" = {
-    source = src "wallpapers";
-    recursive = true;
-  };
 
   programs.niri = {
     enable = true;
@@ -34,18 +28,6 @@
           argv = [
             "1password"
             "--silent"
-          ];
-        }
-        {
-          argv = [
-            "awww-daemon"
-          ];
-        }
-        {
-          argv = [
-            "awww"
-            "img"
-            (configDest "wallpapers/wallpaper-1.jpg")
           ];
         }
         {
