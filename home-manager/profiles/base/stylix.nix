@@ -1,10 +1,12 @@
 {
   config,
-  inputs,
   pkgs,
+  inputs,
   ...
 }:
 {
+  imports = [
+  ];
   home.packages = with pkgs; [
     base16-schemes
   ];
@@ -43,6 +45,7 @@
     };
   };
 
+  # Common stylix targets
   stylix.targets.ghostty = {
     enable = true;
     opacity.enable = true;

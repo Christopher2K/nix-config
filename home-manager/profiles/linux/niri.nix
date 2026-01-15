@@ -2,14 +2,16 @@
   config,
   lib,
   pkgs,
-  configDest,
-  src,
   inputs,
   razerKeyboardSerial,
   ...
 }:
 
 {
+  imports = [
+    inputs.niri.homeModules.niri
+  ];
+
   home.packages = [
     pkgs.xwayland-satellite
   ];
@@ -73,7 +75,7 @@
         };
 
         focus-ring = {
-          enable = false;
+          enable = true;
         };
 
         shadow = {

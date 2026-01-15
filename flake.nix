@@ -40,10 +40,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.quickshell.follows = "quickshell";
     };
-    paneru = {
-      url = "github:karinushka/paneru";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     astal.url = "github:aylur/astal";
     ags.url = "github:aylur/ags";
   };
@@ -53,6 +49,7 @@
     let
       username = "christopher";
       razerKeyboardSerial = "BY2516N73300445";
+
       commonSpecialArgs = {
         inherit
           inputs
@@ -60,26 +57,45 @@
           razerKeyboardSerial
           ;
       };
-      darwinConfiguration = inputs.nix-darwin.lib.darwinSystem {
-        specialArgs = commonSpecialArgs;
-        modules = [
-          inputs.nix-homebrew.darwinModules.nix-homebrew
-          inputs.home-manager.darwinModules.home-manager
-          ./configuration/macos/configuration.nix
-          ./home-manager
-        ];
-      };
+
+      mkDarwin =
+        hostname:
+        inputs.nix-darwin.lib.darwinSystem {
+          specialArgs = commonSpecialArgs // {
+            inherit hostname;
+          };
+          modules = [
+            inputs.nix-homebrew.darwinModules.nix-homebrew
+            inputs.home-manager.darwinModules.home-manager
+            ./modules/common.nix
+            ./modules/darwin/common.nix
+            ./hosts/${hostname}
+            ./home-manager
+          ];
+        };
+
+      mkNixos =
+        hostname:
+        inputs.nixpkgs.lib.nixosSystem {
+          specialArgs = commonSpecialArgs // {
+            inherit hostname;
+          };
+          modules = [
+            inputs.home-manager.nixosModules.home-manager
+            ./modules/common.nix
+            ./modules/nixos/common.nix
+            ./hosts/${hostname}
+            ./home-manager
+          ];
+        };
     in
     {
-      darwinConfigurations."Christophers-MacBook" = darwinConfiguration;
-      darwinConfigurations."CookUnityLaptop" = darwinConfiguration;
-      nixosConfigurations."razer-nix" = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = commonSpecialArgs;
-        modules = [
-          inputs.home-manager.nixosModules.home-manager
-          ./configuration/nixos/configuration.nix
-          ./home-manager
-        ];
+      darwinConfigurations = {
+        "Christophers-MacBook" = mkDarwin "macbook-personal";
+        "CookUnityLaptop" = mkDarwin "macbook-work";
+      };
+      nixosConfigurations = {
+        "razer-nix" = mkNixos "laptop";
       };
     };
 }

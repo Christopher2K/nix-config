@@ -1,5 +1,12 @@
 {
-  stylix.targets.niri.enable = true;
+  inputs,
+  ...
+}:
+{
+  imports = [
+    inputs.stylix.homeModules.stylix
+  ];
+
   stylix.targets.vencord.enable = true;
   stylix.targets.vesktop.enable = true;
   stylix.targets.gnome.enable = true;
