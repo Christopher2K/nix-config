@@ -22,6 +22,7 @@
     opencode
     ripgrep
     scrcpy
+    texliveMedium
     tree-sitter
     watchman
     yazi
