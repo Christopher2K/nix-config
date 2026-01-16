@@ -53,10 +53,9 @@ export const ActiveWindowWidget = () => {
         return (
           <Container
             className="active-window-widget"
-            left={<image icon_name={app.iconName} pixel_size={24} />}
-          >
-            <label label={app.name} />
-          </Container>
+            leftIcon={<image icon_name={app.iconName} pixel_size={24} />}
+            content={<label label={app.name} />}
+          />
         );
       }}
     </With>
