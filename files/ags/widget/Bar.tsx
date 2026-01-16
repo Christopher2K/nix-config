@@ -19,7 +19,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
       exclusivity={Astal.Exclusivity.EXCLUSIVE}
       anchor={TOP | LEFT | RIGHT}
       application={app}
-      height_request={80}
+      height_request={40}
     >
       <centerbox hexpand vexpand class="barRoot">
         <box $type="start" vexpand>
