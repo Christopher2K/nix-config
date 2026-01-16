@@ -30,10 +30,9 @@ export const VolumeWidget = () => {
           return (
             <Container
               className="volume-widget"
-              left={<label class="text-icon" label={icon} />}
-            >
-              <label label={formattedVolume} />
-            </Container>
+              leftIcon={<label class="text-icon" label={icon} />}
+              content={<label label={formattedVolume} />}
+            />
           );
         }}
       </With>

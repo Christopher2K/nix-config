@@ -44,9 +44,8 @@ export const BatteryWidget = () => {
   return (
     <Container
       className="battery-widget"
-      left={<label class={`text-icon ${iconClass}`} label={icon} />}
-    >
-      <label label={formattedPercentage} />
-    </Container>
+      leftIcon={<label class={`text-icon ${iconClass}`} label={icon} />}
+      content={<label label={formattedPercentage} />}
+    />
   );
 };

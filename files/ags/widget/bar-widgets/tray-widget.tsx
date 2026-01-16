@@ -10,11 +10,13 @@ export const TrayWidget = () => {
   const trayItems = createBinding(tray, "items");
 
   return (
-    <Container>
-      <box class="tray-widget" spacing={8} vexpand>
-        <For each={trayItems}>{(item) => <TrayItemWidget item={item} />}</For>
-      </box>
-    </Container>
+    <Container
+      content={
+        <box class="tray-widget" spacing={8} vexpand>
+          <For each={trayItems}>{(item) => <TrayItemWidget item={item} />}</For>
+        </box>
+      }
+    />
   );
 };
 

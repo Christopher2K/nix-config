@@ -27,17 +27,18 @@ export const DateWidget = () => {
           <Container
             className="date-widget"
             rightContainerSpacing={8}
-            left={<label class="text-icon" label="󰸗" />}
-          >
-            <label label={date} />
-            <box
-              class="dot"
-              heightRequest={DOT_SIZE}
-              widthRequest={DOT_SIZE}
-              valign={Gtk.Align.CENTER}
-            />
-            <label label={time} />
-          </Container>
+            leftIcon={<label class="text-icon" label="󰸗" />}
+            content={[
+              <label label={date} />,
+              <box
+                class="dot"
+                heightRequest={DOT_SIZE}
+                widthRequest={DOT_SIZE}
+                valign={Gtk.Align.CENTER}
+              />,
+              <label label={time} />,
+            ]}
+          />
         )}
       </With>
     </box>

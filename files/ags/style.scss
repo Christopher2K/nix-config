@@ -74,8 +74,11 @@ label {
   >.left {
     background-color: $base05;
     padding: 0px 8px;
-    border-top-left-radius: 999px;
-    border-bottom-left-radius: 999px;
+    border-radius: 999px;
+
+    .text-icon {
+      padding-right: 4px;
+    }
   }
 
   >.right {
@@ -87,6 +90,15 @@ label {
   >.right.withLeft {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+  }
+
+  >.left.withContent {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    .text-icon {
+      padding-right: 0px;
+    }
   }
 }
 

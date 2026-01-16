@@ -2,26 +2,30 @@ import { cx } from "../../lib/utils";
 
 type ContainerProps = {
   className?: string;
-  left?: JSX.Element | JSX.Element[];
-  children?: JSX.Element | JSX.Element[];
+  leftIcon?: JSX.Element | JSX.Element[];
+  content?: JSX.Element | JSX.Element[];
   rightContainerSpacing?: number;
 };
 
 export const Container = ({
   className,
-  left,
+  leftIcon,
   rightContainerSpacing,
-  children,
+  content,
 }: ContainerProps) => {
   return (
     <box class={cx(className, "container")} vexpand>
-      {left && <box class="left">{left}</box>}
-      <box
-        class={cx("right", left && "withLeft")}
-        spacing={rightContainerSpacing}
-      >
-        {children}
-      </box>
+      {leftIcon && (
+        <box class={cx("left", content && "withContent")}>{leftIcon}</box>
+      )}
+      {content && (
+        <box
+          class={cx("right", leftIcon && "withLeft")}
+          spacing={rightContainerSpacing}
+        >
+          {content}
+        </box>
+      )}
     </box>
   );
 };

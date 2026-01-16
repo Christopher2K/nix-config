@@ -5,6 +5,7 @@ import { BatteryWidget } from "./bar-widgets/battery-widget";
 import { DateWidget } from "./bar-widgets/date-widget";
 import { TrayWidget } from "./bar-widgets/tray-widget";
 import { VolumeWidget } from "./bar-widgets/volume-widget";
+import { WifiWidget } from "./bar-widgets/wifi-widget";
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -26,6 +27,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         </box>
 
         <box $type="end" vexpand spacing={8}>
+          <WifiWidget />
           <VolumeWidget />
           <BatteryWidget />
           <DateWidget />
