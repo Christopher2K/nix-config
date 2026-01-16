@@ -1,5 +1,16 @@
+import Network from "gi://AstalNetwork";
+import { createBinding, createComputed } from "gnim";
 import { Container } from "../common/container";
 
 export const WifiWidget = () => {
-  return <Container leftIcon={<label class="text-icon" label="󰖩" />} />;
+  const network = Network.get_default();
+  const ap = createBinding(network, "wifi", "activeAccessPoint");
+  const wifiEnabled = createBinding(network, "wifi", "enabled");
+
+  const icon = createComputed(() => {
+    if (!wifiEnabled() || !ap()) return "󰖪";
+    return "󰖩";
+  });
+
+  return <Container leftIcon={<label class="text-icon" label={icon} />} />;
 };
