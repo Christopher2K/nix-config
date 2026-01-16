@@ -5,7 +5,6 @@
 }:
 {
   imports = [
-    ./macos-defaults.nix
     ./homebrew.nix
   ];
 

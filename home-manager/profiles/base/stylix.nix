@@ -6,7 +6,9 @@
 }:
 {
   imports = [
+    inputs.stylix.homeModules.stylix
   ];
+
   home.packages = with pkgs; [
     base16-schemes
   ];
