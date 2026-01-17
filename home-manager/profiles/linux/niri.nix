@@ -62,7 +62,11 @@
       # Layout settings
       layout = {
         gaps = 16;
+        struts = {
+          top = -16 - 10;
+        };
         center-focused-column = "never";
+        background-color = "transparent";
 
         preset-column-widths = [
           { proportion = 1.0 / 3.0; }
@@ -85,8 +89,6 @@
         struts = { };
       };
 
-      # spawn-at-startup = [];
-
       # Hotkey overlay
       hotkey-overlay = { };
 
@@ -95,21 +97,25 @@
 
       # Window rules
       window-rules = [
-        # Open Firefox picture-in-picture as floating
         {
-          matches = [
+          matches = [ ];
+          geometry-corner-radius =
+            let
+              radius = 12.0;
+            in
             {
-              app-id = "firefox$";
-              title = "^Picture-in-Picture$";
-            }
-          ];
-          open-floating = true;
+              top-left = radius;
+              top-right = radius;
+              bottom-left = radius;
+              bottom-right = radius;
+            };
+          clip-to-geometry = true;
         }
       ];
 
       layer-rules = [
         {
-          matches = [ { namespace = "^wallpaper$"; } ];
+          matches = [ { namespace = "^wpaperd"; } ];
           place-within-backdrop = true;
         }
       ];
