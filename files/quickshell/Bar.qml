@@ -24,54 +24,124 @@ Scope {
             screen: modelData
             color: "transparent"
 
-            margins.top: 16
-            margins.right: 16
-            margins.left: 16
-
             anchors.top: true
             anchors.left: true
             anchors.right: true
 
             implicitHeight: root.barHeight
 
-            Rectangle {
+            Item {
+                id: barContainer
                 anchors.fill: parent
-                radius: 999
-                color: Qt.alpha(ThemeColors.background, 0.95)
 
-                FlexboxLayout {
-                    anchors.fill: parent
-                    justifyContent: FlexboxLayout.JustifySpaceBetween
-                    alignItems: FlexboxLayout.AlignCenter
+                property color fillColor: ThemeColors.background
+                property real cornerRadius: 32
+                property real mainHeight: 48
 
-                    Row {
-                        rightPadding: 8
-                        leftPadding: 8
-                        spacing: 8
+                // Main bar rectangle (40px height)
+                Rectangle {
+                    id: mainBar
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    height: barContainer.mainHeight
+                    color: barContainer.fillColor
+                }
 
-                        WorkspacesWidget {}
-                        FocusedWindowWidget {}
+                // Left inverted corner
+                Canvas {
+                    id: leftCorner
+                    anchors.left: parent.left
+                    anchors.top: mainBar.bottom
+                    width: 40
+                    height: 32
+
+                    onPaint: {
+                        var ctx = getContext("2d")
+                        const r = barContainer.cornerRadius
+                        ctx.clearRect(0, 0, r, r)
+
+                        // Fill the square
+                        ctx.fillStyle = barContainer.fillColor
+                        ctx.fillRect(0, 0, r, r)
+
+                        // Cut out the circle to create inverted corner
+                        ctx.globalCompositeOperation = "destination-out"
+                        ctx.beginPath()
+                        ctx.arc(r, r, r, Math.PI, 1.5 * Math.PI)
+                        ctx.lineTo(r, r)
+                        ctx.closePath()
+                        ctx.fill()
                     }
 
-                    Row {
-                        rightPadding: 8
-                        leftPadding: 8
-                        spacing: 8
+                    Component.onCompleted: requestPaint()
+                }
 
-                        SoundOutputWidget {}
+                // Right inverted corner
+                Canvas {
+                    id: rightCorner
+                    anchors.right: parent.right
+                    anchors.top: mainBar.bottom
+                    width: barContainer.cornerRadius
+                    height: barContainer.cornerRadius
 
-                        BatteryWidget {
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
+                    onPaint: {
+                        var ctx = getContext("2d")
+                        var r = barContainer.cornerRadius
+                        ctx.clearRect(0, 0, r, r)
 
-                        ClockWidget {
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
+                        // Fill the square
+                        ctx.fillStyle = barContainer.fillColor
+                        ctx.fillRect(0, 0, r, r)
 
-                        TrayWidget {
-                            screen: barWindow.modelData
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
+                        // Cut out the circle to create inverted corner
+                        ctx.globalCompositeOperation = "destination-out"
+                        ctx.beginPath()
+                        ctx.arc(0, r, r, 1.5 * Math.PI, 2 * Math.PI)
+                        ctx.lineTo(0, r)
+                        ctx.closePath()
+                        ctx.fill()
+                    }
+
+                    Component.onCompleted: requestPaint()
+                }
+            }
+
+            FlexboxLayout {
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: parent.top
+                height: barContainer.mainHeight
+                justifyContent: FlexboxLayout.JustifySpaceBetween
+                alignItems: FlexboxLayout.AlignCenter
+
+                Row {
+                    rightPadding: 8
+                    leftPadding: 8
+                    spacing: 8
+
+                    WorkspacesWidget {}
+                    FocusedWindowWidget {}
+                }
+
+                Row {
+                    rightPadding: 8
+                    leftPadding: 8
+                    spacing: 8
+
+                    SoundOutputWidget {}
+
+                    BatteryWidget {
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    ClockWidget {
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    TrayWidget {
+                        screen: barWindow.modelData
+                        anchors.verticalCenter: parent.verticalCenter
                     }
                 }
             }

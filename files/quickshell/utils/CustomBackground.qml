@@ -4,7 +4,7 @@ import "root:/utils"
 Rectangle {
     property real containerWidth: 0
     property real containerHeight: {
-        Values.barHeight - Values.barVerticalPadding * 2
+        Values.contentHeight - Values.barVerticalPadding * 2;
     }
 
     color: ThemeColors.base06
