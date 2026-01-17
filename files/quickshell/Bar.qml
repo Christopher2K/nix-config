@@ -35,10 +35,12 @@ Scope {
                 anchors.fill: parent
 
                 property color fillColor: ThemeColors.background
+                property color borderColor: ThemeColors.base04
                 property real cornerRadius: 32
                 property real mainHeight: 48
+                property real borderWidth: 4
 
-                // Main bar rectangle (40px height)
+                // Main bar rectangle (48px height)
                 Rectangle {
                     id: mainBar
                     anchors.left: parent.left
@@ -46,6 +48,17 @@ Scope {
                     anchors.top: parent.top
                     height: barContainer.mainHeight
                     color: barContainer.fillColor
+                    topLeftRadius: barContainer.cornerRadius
+                    topRightRadius: barContainer.cornerRadius
+                }
+
+                // Bottom border on main bar (outside)
+                Rectangle {
+                    anchors.left: leftCorner.right
+                    anchors.right: rightCorner.left
+                    anchors.top: mainBar.bottom
+                    height: barContainer.borderWidth
+                    color: barContainer.borderColor
                 }
 
                 // Left inverted corner
@@ -53,25 +66,47 @@ Scope {
                     id: leftCorner
                     anchors.left: parent.left
                     anchors.top: mainBar.bottom
-                    width: 40
-                    height: 32
+                    width: barContainer.cornerRadius
+                    height: barContainer.cornerRadius
 
                     onPaint: {
-                        var ctx = getContext("2d")
-                        const r = barContainer.cornerRadius
-                        ctx.clearRect(0, 0, r, r)
+                        var ctx = getContext("2d");
+                        var r = barContainer.cornerRadius;
+                        var bw = barContainer.borderWidth;
+                        var segments = 20;
+                        var startAngle = Math.PI;
+                        var endAngle = 1.5 * Math.PI;
+                        var angleStep = (endAngle - startAngle) / segments;
 
-                        // Fill the square
-                        ctx.fillStyle = barContainer.fillColor
-                        ctx.fillRect(0, 0, r, r)
+                        ctx.clearRect(0, 0, r, r);
 
-                        // Cut out the circle to create inverted corner
-                        ctx.globalCompositeOperation = "destination-out"
-                        ctx.beginPath()
-                        ctx.arc(r, r, r, Math.PI, 1.5 * Math.PI)
-                        ctx.lineTo(r, r)
-                        ctx.closePath()
-                        ctx.fill()
+                        // Fill the square with background
+                        ctx.fillStyle = barContainer.fillColor.toString();
+                        ctx.fillRect(0, 0, r, r);
+
+                        // Cut out the full circle
+                        ctx.globalCompositeOperation = "destination-out";
+                        ctx.beginPath();
+                        ctx.arc(r, r, r, startAngle, endAngle);
+                        ctx.lineTo(r, r);
+                        ctx.closePath();
+                        ctx.fill();
+
+                        // Draw tapered border segments (thick at top, thin at left)
+                        ctx.globalCompositeOperation = "source-over";
+                        ctx.fillStyle = barContainer.borderColor.toString();
+                        for (var i = 0; i < segments; i++) {
+                            var t = i / segments;
+                            var currentWidth = bw * t;
+                            var segStart = startAngle + i * angleStep;
+                            var segEnd = segStart + angleStep + 0.01;
+
+                            ctx.beginPath();
+                            ctx.arc(r, r, r, segStart, segEnd);
+                            ctx.arc(r, r, r - currentWidth, segEnd, segStart, true);
+                            ctx.closePath();
+                            ctx.fill();
+                        }
                     }
 
                     Component.onCompleted: requestPaint()
@@ -86,21 +121,43 @@ Scope {
                     height: barContainer.cornerRadius
 
                     onPaint: {
-                        var ctx = getContext("2d")
-                        var r = barContainer.cornerRadius
-                        ctx.clearRect(0, 0, r, r)
+                        var ctx = getContext("2d");
+                        var r = barContainer.cornerRadius;
+                        var bw = barContainer.borderWidth;
+                        var segments = 20;
+                        var startAngle = 1.5 * Math.PI;
+                        var endAngle = 2 * Math.PI;
+                        var angleStep = (endAngle - startAngle) / segments;
 
-                        // Fill the square
-                        ctx.fillStyle = barContainer.fillColor
-                        ctx.fillRect(0, 0, r, r)
+                        ctx.clearRect(0, 0, r, r);
 
-                        // Cut out the circle to create inverted corner
-                        ctx.globalCompositeOperation = "destination-out"
-                        ctx.beginPath()
-                        ctx.arc(0, r, r, 1.5 * Math.PI, 2 * Math.PI)
-                        ctx.lineTo(0, r)
-                        ctx.closePath()
-                        ctx.fill()
+                        // Fill the square with background
+                        ctx.fillStyle = barContainer.fillColor.toString();
+                        ctx.fillRect(0, 0, r, r);
+
+                        // Cut out the full circle
+                        ctx.globalCompositeOperation = "destination-out";
+                        ctx.beginPath();
+                        ctx.arc(0, r, r, startAngle, endAngle);
+                        ctx.lineTo(0, r);
+                        ctx.closePath();
+                        ctx.fill();
+
+                        // Draw tapered border segments
+                        ctx.globalCompositeOperation = "source-over";
+                        ctx.fillStyle = barContainer.borderColor.toString();
+                        for (var i = 0; i < segments; i++) {
+                            var t = i / segments;
+                            var currentWidth = bw * (1 - t);
+                            var segStart = startAngle + i * angleStep;
+                            var segEnd = segStart + angleStep + 0.01;
+
+                            ctx.beginPath();
+                            ctx.arc(0, r, r, segStart, segEnd);
+                            ctx.arc(0, r, r - currentWidth, segEnd, segStart, true);
+                            ctx.closePath();
+                            ctx.fill();
+                        }
                     }
 
                     Component.onCompleted: requestPaint()
