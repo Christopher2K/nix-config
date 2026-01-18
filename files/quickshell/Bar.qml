@@ -186,6 +186,10 @@ Scope {
                     leftPadding: 8
                     spacing: 8
 
+                    WidgetContainer {
+                        icon: ""
+                    }
+    
                     SoundOutputWidget {}
 
                     BatteryWidget {
