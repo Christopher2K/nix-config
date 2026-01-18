@@ -1,6 +1,6 @@
 import AstalBattery from "gi://AstalBattery";
 import { createBinding, createComputed } from "gnim";
-import { Container } from "../common/container";
+import { Container } from "../components/container";
 
 export const BatteryWidget = () => {
   const Battery = AstalBattery.get_default();

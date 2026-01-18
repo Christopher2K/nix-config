@@ -2,7 +2,7 @@ import GLib from "gi://GLib";
 import { Gtk } from "ags/gtk4";
 import { createPoll } from "ags/time";
 import { With } from "gnim";
-import { Container } from "../common/container";
+import { Container } from "../components/container";
 
 const DOT_SIZE = 8;
 

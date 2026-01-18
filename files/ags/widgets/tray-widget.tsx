@@ -1,7 +1,7 @@
 import Tray from "gi://AstalTray";
 import { Gdk, Gtk } from "ags/gtk4";
 import { createBinding, For } from "gnim";
-import { Container } from "../common/container";
+import { Container } from "../components/container";
 
 const ICON_SIZE = 20;
 

@@ -1,6 +1,6 @@
 import AstalWp from "gi://AstalWp";
 import { createBinding, createComputed, With } from "gnim";
-import { Container } from "../common/container";
+import { Container } from "../components/container";
 
 export const VolumeWidget = () => {
   const speakers = createBinding(AstalWp.get_default().audio, "speakers");

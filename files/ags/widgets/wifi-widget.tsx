@@ -1,6 +1,6 @@
 import Network from "gi://AstalNetwork";
 import { createBinding, createComputed } from "gnim";
-import { Container } from "../common/container";
+import { Container } from "../components/container";
 
 export const WifiWidget = () => {
   const network = Network.get_default();

@@ -1,4 +1,4 @@
-import { cx } from "../../lib/utils";
+import { cx } from "../lib/utils";
 
 type ContainerProps = {
   className?: string;
@@ -14,7 +14,7 @@ export const Container = ({
   content,
 }: ContainerProps) => {
   return (
-    <box class={cx(className, "container")} vexpand>
+    <box class={cx(className, "container")}>
       {leftIcon && (
         <box class={cx("left", content && "withContent")}>{leftIcon}</box>
       )}

@@ -62,9 +62,17 @@
       # Layout settings
       layout = {
         gaps = 16;
-        struts = {
-          top = -16 - 10;
-        };
+        struts =
+          let
+            verticalStruts = 40;
+            horizontalStruts = 16;
+          in
+          {
+            top = verticalStruts;
+            bottom = verticalStruts;
+            left = horizontalStruts;
+            right = horizontalStruts;
+          };
         center-focused-column = "never";
         background-color = "transparent";
 
@@ -88,8 +96,6 @@
         shadow = {
           enable = false;
         };
-
-        struts = { };
       };
 
       # Hotkey overlay

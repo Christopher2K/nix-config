@@ -1,12 +1,12 @@
 import AstalApps from "gi://AstalApps";
 import { execAsync } from "ags/process";
 import { createComputed, createState, onCleanup, onMount, With } from "gnim";
+import { Container } from "../components/container";
 import {
   type NiriFocusedWindow,
   type NiriSubscription,
   subscribeToNiri,
-} from "../../lib/niri";
-import { Container } from "../common/container";
+} from "../lib/niri";
 
 const apps = new AstalApps.Apps();
 const appList = apps.get_list();
