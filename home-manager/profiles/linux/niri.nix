@@ -80,6 +80,9 @@
 
         focus-ring = {
           enable = true;
+          active = {
+            color = "#7C6F64";
+          };
         };
 
         shadow = {
