@@ -31,15 +31,6 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    qml-niri = {
-      url = "github:imiric/qml-niri/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";
-    };
     astal.url = "github:aylur/astal";
     ags.url = "github:aylur/ags";
   };

@@ -5,7 +5,6 @@
     ./gtk.nix
     ./niri.nix
     ./qt.nix
-    ./quickshell.nix
     ./stylix.nix
     ./vicinae.nix
     ./wpaperd.nix
