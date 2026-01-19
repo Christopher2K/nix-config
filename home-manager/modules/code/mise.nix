@@ -9,7 +9,7 @@
     # Disable global zsh integration - direnv handles mise activation per-project
     # This removes the `eval "$(mise activate zsh)"` from shell startup
     # Tools are still available via direnv when you cd into a project
-    enableZshIntegration = false;
+    enableZshIntegration = true;
     globalConfig = {
       settings = {
         all_compile = false;
