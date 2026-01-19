@@ -6,19 +6,39 @@
 {
   programs.zsh = {
     enable = true;
-    oh-my-zsh = {
-      enable = true;
-      theme = "robbyrussell";
-      plugins = [
-        "git"
-        "sudo"
-        "tmux"
-      ];
-    };
+    # Disabled oh-my-zsh for faster shell startup
+    oh-my-zsh.enable = false;
+
+    # Enable built-in completions (faster than oh-my-zsh)
+    enableCompletion = true;
+    completionInit = ''
+      autoload -Uz compinit
+      # Only regenerate .zcompdump once a day for faster startup
+      if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+        compinit
+      else
+        compinit -C
+      fi
+    '';
 
     shellAliases = {
       "switch" =
         if pkgs.stdenv.isDarwin then "sudo darwin-rebuild switch" else "sudo nixos-rebuild switch";
+
+      # Git aliases (replacing oh-my-zsh git plugin - only the commonly used ones)
+      g = "git";
+      ga = "git add";
+      gaa = "git add --all";
+      gb = "git branch";
+      gc = "git commit";
+      gcm = "git commit -m";
+      gco = "git checkout";
+      gd = "git diff";
+      gf = "git fetch";
+      gl = "git pull";
+      gp = "git push";
+      gst = "git status";
+      glog = "git log --oneline --decorate --graph";
     };
 
     sessionVariables = {
@@ -69,10 +89,25 @@
             ~/scripts/secure-env-refresh.sh
             source "$CACHE_FILE"
           fi
+
+          # sudo plugin replacement: press ESC ESC to prepend sudo
+          sudo-command-line() {
+            [[ -z $BUFFER ]] && zle up-history
+            [[ $BUFFER != sudo\ * ]] && BUFFER="sudo $BUFFER"
+            zle end-of-line
+          }
+          zle -N sudo-command-line
+          bindkey '\e\e' sudo-command-line
         '';
         zshConfig = lib.mkOrder 1500 ''
-          # OPAM init
-          [[ ! -r "/$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
+          # Lazy-load OPAM: only initialize when first calling opam/ocaml/dune
+          _opam_lazy_init() {
+            unfunction opam ocaml dune 2>/dev/null
+            [[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2>&1
+          }
+          opam() { _opam_lazy_init; opam "$@" }
+          ocaml() { _opam_lazy_init; ocaml "$@" }
+          dune() { _opam_lazy_init; dune "$@" }
         '';
 
       in
