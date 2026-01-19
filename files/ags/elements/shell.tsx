@@ -30,35 +30,26 @@ export const Shell = (gdkmonitor: Gdk.Monitor) => {
         <FrameDrawing />
 
         {/* Overlay: UI content (bars) */}
-        <box
-          $type="overlay"
-          hexpand
-          vexpand
-          orientation={VERTICAL}
-          canTarget={false}
-          canFocus={false}
-        >
+        <box $type="overlay" hexpand vexpand orientation={VERTICAL}>
           <TopBar />
 
           {/* Middle section */}
           <box hexpand vexpand orientation={HORIZONTAL}>
-            {/* Left edge - clickable */}
+            {/* Left edge */}
             <box
               vexpand
               class="shell-edge left-edge"
               width_request={EDGE_WIDTH}
-              canTarget={true}
             />
 
-            {/* Transparent middle - non-interactive */}
-            <box vexpand hexpand canTarget={false} canFocus={false} />
+            {/* Transparent middle - input region handles click-through */}
+            <box vexpand hexpand />
 
-            {/* Right edge - clickable */}
+            {/* Right edge */}
             <box
               vexpand
               class="shell-edge right-edge"
               width_request={EDGE_WIDTH}
-              canTarget={true}
             />
           </box>
 
@@ -67,7 +58,6 @@ export const Shell = (gdkmonitor: Gdk.Monitor) => {
             hexpand
             class="shell-bar bottom-bar"
             height_request={BAR_HEIGHT}
-            canTarget={true}
           ></box>
         </box>
       </overlay>
