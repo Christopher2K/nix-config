@@ -73,7 +73,7 @@
             left = horizontalStruts;
             right = horizontalStruts;
           };
-        center-focused-column = "never";
+        center-focused-column = "always";
         background-color = "transparent";
 
         preset-column-widths = [
