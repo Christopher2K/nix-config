@@ -33,6 +33,10 @@
     };
     astal.url = "github:aylur/astal";
     ags.url = "github:aylur/ags";
+    sqlit = {
+      url = "github:maxteabag/sqlit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

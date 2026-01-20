@@ -19,6 +19,7 @@
     webp-pixbuf-loader
 
     # GUI
+    inputs.sqlit.packages.${pkgs.stdenv.hostPlatform.system}.default
     mailspring
     nur.repos.Ev357.helium
     nautilus
