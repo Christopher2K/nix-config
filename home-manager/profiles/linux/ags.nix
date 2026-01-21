@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  lib,
   configDest,
   ...
 }:
@@ -24,5 +25,12 @@
     ];
 
     systemd.enable = true;
+  };
+
+  # Fix AGS startup timing - wait for display to be ready
+  systemd.user.services.ags = {
+    Unit = {
+      After = lib.mkForce [ "graphical-session.target" ];
+    };
   };
 }
