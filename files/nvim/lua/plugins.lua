@@ -60,6 +60,7 @@ function plugins.init()
     "wakatime/vim-wakatime",                                                   -- WakaTime
     "folke/which-key.nvim",                                                    -- Bindings helpers
     "OXY2DEV/markview.nvim",                                                   -- Markdown viewers
+    "lervag/vimtex"
   })
 end
 
