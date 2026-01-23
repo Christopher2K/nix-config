@@ -6,7 +6,7 @@
   programs.zellij = {
     enable = true;
     enableZshIntegration = true;
-    attachExistingSession = true;
+    attachExistingSession = false;
     layouts = {
       default = {
         layout = {
@@ -57,15 +57,15 @@
                     };
                   }
                   { "children" = { }; }
-                  {
-                    pane = {
-                      size = 1;
-                      borderless = true;
-                      plugin = {
-                        location = "zellij:status-bar";
-                      };
-                    };
-                  }
+                  # {
+                  #   pane = {
+                  #     size = 1;
+                  #     borderless = true;
+                  #     plugin = {
+                  #       location = "zellij:status-bar";
+                  #     };
+                  #   };
+                  # }
                 ];
               };
             }
@@ -79,6 +79,7 @@
       simplified_ui = true;
       default_shell = "zsh";
       copy_on_select = true;
+      show_startup_tips = false;
     };
   };
 }
