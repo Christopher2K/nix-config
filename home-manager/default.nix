@@ -12,6 +12,9 @@
     inputs.niri.overlays.niri
     inputs.nur.overlays.default
     inputs.neovim-nightly-overlay.overlays.default
+    (final: prev: {
+      zjstatus = inputs.zjstatus.packages.${prev.system}.default;
+    })
   ];
 
   home-manager.useGlobalPkgs = true;

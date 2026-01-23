@@ -37,6 +37,7 @@
       url = "github:maxteabag/sqlit";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zjstatus.url = "github:dj95/zjstatus";
   };
 
   outputs =

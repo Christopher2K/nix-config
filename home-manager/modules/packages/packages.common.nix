@@ -18,7 +18,7 @@
     lazydocker
     lazygit
     neofetch
-    nixfmt-rfc-style
+    nixfmt
     opencode
     ripgrep
     scrcpy
