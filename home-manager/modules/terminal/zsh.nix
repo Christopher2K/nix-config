@@ -6,11 +6,10 @@
 {
   programs.zsh = {
     enable = true;
-    # Disabled oh-my-zsh for faster shell startup
-    oh-my-zsh.enable = false;
+    oh-my-zsh.enable = true;
 
     # Enable built-in completions (faster than oh-my-zsh)
-    enableCompletion = true;
+    enableCompletion = false;
     completionInit = ''
       autoload -Uz compinit
       # Only regenerate .zcompdump once a day for faster startup

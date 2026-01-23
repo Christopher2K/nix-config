@@ -8,7 +8,6 @@
     enable = true;
     package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
     enableZshIntegration = true;
-    enableFishIntegration = true;
     settings = {
       macos-titlebar-style = "hidden";
       window-padding-x = 12;

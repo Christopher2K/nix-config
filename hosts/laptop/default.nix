@@ -65,7 +65,7 @@ in
   i18n.defaultLocale = "en_CA.UTF-8";
 
   users.users.christopher = {
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
     isNormalUser = true;
     description = "Christopher Katoyi";
     extraGroups = [

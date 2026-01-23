@@ -50,10 +50,6 @@
     glib
   ];
 
-  programs.fish = {
-    enable = true;
-    useBabelfish = true;
-  };
   programs.zsh.enable = true;
   programs.bash.enable = true;
   programs._1password.enable = true;

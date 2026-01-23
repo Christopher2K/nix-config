@@ -1,7 +1,6 @@
 {
   imports = [
     ./env.nix
-    ./fish.nix
     ./ghostty.nix
     ./starship.nix
     ./tmux.nix
