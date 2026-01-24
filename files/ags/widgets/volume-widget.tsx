@@ -1,19 +1,23 @@
 import AstalWp from "gi://AstalWp";
-import { createBinding, createComputed, With } from "gnim";
+import { createBinding, createComputed, createState, With } from "gnim";
 import { Container } from "../components/container";
 
 export const VolumeWidget = () => {
-  const speakers = createBinding(AstalWp.get_default().audio, "speakers");
-  const defaultSpeaker = createComputed(() => {
-    const speaker = speakers().find((speaker) => speaker.is_default);
-    return speaker ?? null;
+  const [defaultSpeaker, setDefaultSpeaker] =
+    createState<AstalWp.Endpoint | null>(null);
+
+  AstalWp.get_default().connect("ready", (Wp) => {
+    setDefaultSpeaker(Wp.default_speaker);
+  });
+  AstalWp.get_default().connect("notify::default-speaker", (Wp) => {
+    setDefaultSpeaker(Wp.default_speaker);
   });
 
   return (
     <box>
       <With value={defaultSpeaker}>
         {(speaker) => {
-          if (speaker == null) return null;
+          if (speaker == null) return false;
 
           const volume = createBinding(speaker, "volume");
           const mute = createBinding(speaker, "mute");
@@ -26,6 +30,8 @@ export const VolumeWidget = () => {
             if (volume() > 0.5) return "";
             return "";
           });
+
+          console.log("JUST RENDER MY SHIT BRO");
 
           return (
             <Container

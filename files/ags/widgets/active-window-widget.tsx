@@ -46,18 +46,20 @@ export const ActiveWindowWidget = () => {
   });
 
   return (
-    <With value={focusedApp}>
-      {(app) => {
-        if (app == null) return <box />;
+    <box>
+      <With value={focusedApp}>
+        {(app) => {
+          if (app == null) return <box />;
 
-        return (
-          <Container
-            className="active-window-widget"
-            leftIcon={<image icon_name={app.iconName} pixel_size={24} />}
-            content={<label label={app.name} />}
-          />
-        );
-      }}
-    </With>
+          return (
+            <Container
+              className="active-window-widget"
+              leftIcon={<image icon_name={app.iconName} pixel_size={24} />}
+              content={<label label={app.name} />}
+            />
+          );
+        }}
+      </With>
+    </box>
   );
 };
