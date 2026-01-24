@@ -1,15 +1,9 @@
 import { Astal, type Gdk, Gtk } from "ags/gtk4";
 import app from "ags/gtk4/app";
-import {
-  BAR_HEIGHT,
-  EDGE_WIDTH,
-  FrameDrawing,
-  setShellWindow,
-} from "../widgets/frame-drawing";
+import { setShellWindow } from "../widgets/frame-drawing";
 import { TopBar } from "./top-bar";
 
-const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor;
-const { VERTICAL, HORIZONTAL } = Gtk.Orientation;
+const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
 
 export const Shell = (gdkmonitor: Gdk.Monitor) => {
   return (
@@ -19,48 +13,13 @@ export const Shell = (gdkmonitor: Gdk.Monitor) => {
       class="shell"
       gdkmonitor={gdkmonitor}
       exclusivity={Astal.Exclusivity.IGNORE}
-      anchor={TOP | BOTTOM | LEFT | RIGHT}
+      anchor={TOP | LEFT | RIGHT}
       application={app}
       $={(self) => {
         setShellWindow(self);
       }}
     >
-      <overlay>
-        {/* Base layer: Cairo drawing for frame + input region */}
-        <FrameDrawing />
-
-        {/* Overlay: UI content (bars) */}
-        <box $type="overlay" hexpand vexpand orientation={VERTICAL}>
-          <TopBar />
-
-          {/* Middle section */}
-          <box hexpand vexpand orientation={HORIZONTAL}>
-            {/* Left edge */}
-            <box
-              vexpand
-              class="shell-edge left-edge"
-              width_request={EDGE_WIDTH}
-            />
-
-            {/* Transparent middle - input region handles click-through */}
-            <box vexpand hexpand />
-
-            {/* Right edge */}
-            <box
-              vexpand
-              class="shell-edge right-edge"
-              width_request={EDGE_WIDTH}
-            />
-          </box>
-
-          {/* Bottom bar */}
-          <box
-            hexpand
-            class="shell-bar bottom-bar"
-            height_request={BAR_HEIGHT}
-          ></box>
-        </box>
-      </overlay>
+      <TopBar />
     </window>
   );
 };

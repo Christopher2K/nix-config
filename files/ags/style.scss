@@ -60,19 +60,23 @@ label {
   padding-left: 4px;
 }
 
-.barRoot {
+.top-bar {
   padding: 8px;
-  background-color: color.scale($base00, $alpha: -20%);
+  background-color: color.scale($base00, $alpha: -10%);
+  border-radius: 12px;
+  margin-top: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .container {
   background-color: transparent;
-  border-radius: 999px;
+  border-radius: 12px;
 
   >.left {
     background-color: $base05;
     padding: 0px 8px;
-    border-radius: 999px;
+    border-radius: 12px;
 
     .text-icon {
       padding-right: 4px;
@@ -82,7 +86,7 @@ label {
   >.right {
     background-color: $base06;
     padding: 0px 12px;
-    border-radius: 999px;
+    border-radius: 12px;
   }
 
   >.right.withLeft {
