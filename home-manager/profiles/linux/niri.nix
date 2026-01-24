@@ -62,18 +62,7 @@
       # Layout settings
       layout = {
         gaps = 16;
-        struts =
-          let
-            verticalStruts = 40;
-            horizontalStruts = 16;
-          in
-          {
-            top = verticalStruts;
-            bottom = verticalStruts;
-            left = horizontalStruts;
-            right = horizontalStruts;
-          };
-        center-focused-column = "always";
+        center-focused-column = "on-overflow";
         background-color = "transparent";
 
         preset-column-widths = [
