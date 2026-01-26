@@ -100,11 +100,23 @@
           bind "g" { SwitchToMode "Locked"; }
           bind "p" { SwitchToMode "Pane"; }
           bind "t" { SwitchToMode "Tab"; }
-          bind "n" { SwitchToMode "Resize"; }
-          bind "h" { SwitchToMode "Move"; }
+          bind "r" { SwitchToMode "Resize"; }
+          bind "m" { SwitchToMode "Move"; }
           bind "s" { SwitchToMode "Scroll"; }
           bind "o" { SwitchToMode "Session"; }
           bind "q" { Quit; }
+
+          bind "Ctrl n" "n" { GoToNextTab; SwitchToMode "Normal"; }
+          bind "Ctrl p" "p" { GoToPreviousTab; SwitchToMode "Normal"; }
+          bind "Ctrl 1" "1" { GoToTab 1; SwitchToMode "Normal"; }
+          bind "Ctrl 2" "2" { GoToTab 2; SwitchToMode "Normal"; }
+          bind "Ctrl 3" "3" { GoToTab 3; SwitchToMode "Normal"; }
+          bind "Ctrl 4" "4" { GoToTab 4; SwitchToMode "Normal"; }
+          bind "Ctrl 5" "5" { GoToTab 5; SwitchToMode "Normal"; }
+          bind "Ctrl 6" "6" { GoToTab 6; SwitchToMode "Normal"; }
+          bind "Ctrl 7" "7" { GoToTab 7; SwitchToMode "Normal"; }
+          bind "Ctrl 8" "8" { GoToTab 8; SwitchToMode "Normal"; }
+          bind "Ctrl 9" "9" { GoToTab 9; SwitchToMode "Normal"; }
         }
       }
     '';
