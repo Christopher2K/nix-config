@@ -57,15 +57,6 @@
                     };
                   }
                   { "children" = { }; }
-                  # {
-                  #   pane = {
-                  #     size = 1;
-                  #     borderless = true;
-                  #     plugin = {
-                  #       location = "zellij:status-bar";
-                  #     };
-                  #   };
-                  # }
                 ];
               };
             }
@@ -81,5 +72,41 @@
       copy_on_select = true;
       show_startup_tips = false;
     };
+
+    extraConfig = ''
+      keybinds {
+        normal clear-defaults=true {
+          bind "Ctrl b" { SwitchToMode "Tmux"; }
+
+          bind "Alt f" { ToggleFloatingPanes; }
+          bind "Alt n" { NewPane; }
+          bind "Alt i" { MoveTab "Left"; }
+          bind "Alt o" { MoveTab "Right"; }
+          bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
+          bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
+          bind "Alt j" "Alt Down" { MoveFocus "Down"; }
+          bind "Alt k" "Alt Up" { MoveFocus "Up"; }
+          bind "Alt =" "Alt +" { Resize "Increase"; }
+          bind "Alt -" { Resize "Decrease"; }
+          bind "Alt [" { PreviousSwapLayout; }
+          bind "Alt ]" { NextSwapLayout; }
+          bind "Alt p" { TogglePaneInGroup; }
+          bind "Alt Shift p" { ToggleGroupMarking; }
+        }
+
+        tmux clear-defaults=true {
+          bind "Ctrl b" { Write 2; SwitchToMode "Normal"; }
+          bind "Esc" { SwitchToMode "Normal"; }
+          bind "g" { SwitchToMode "Locked"; }
+          bind "p" { SwitchToMode "Pane"; }
+          bind "t" { SwitchToMode "Tab"; }
+          bind "n" { SwitchToMode "Resize"; }
+          bind "h" { SwitchToMode "Move"; }
+          bind "s" { SwitchToMode "Scroll"; }
+          bind "o" { SwitchToMode "Session"; }
+          bind "q" { Quit; }
+        }
+      }
+    '';
   };
 }
