@@ -6,7 +6,7 @@
   programs.zellij = {
     enable = true;
     enableZshIntegration = true;
-    attachExistingSession = false;
+    attachExistingSession = true;
     layouts = {
       default = {
         layout = {
