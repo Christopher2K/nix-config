@@ -30,5 +30,6 @@
     # GUI
     yaak
     zoom-us
+    ungoogled-chromium
   ];
 }

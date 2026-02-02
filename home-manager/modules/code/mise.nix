@@ -19,7 +19,7 @@
         golang = "1.22.2";
         java = "openjdk-17.0.2";
         kotlin = "2.0.0";
-        nodejs = "22.11.0";
+        nodejs = "24.13.0";
         ocaml = "5.4.0";
         opam = "2.2.0";
         python = "3.12.0";
