@@ -54,6 +54,7 @@
       "switchresx"
       "transmission"
       "tuple"
+      "ungoogled-chromium"
       "virtualbuddy"
       "whatsapp"
       "xcodes"

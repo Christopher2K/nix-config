@@ -29,5 +29,6 @@
     polychromatic
     whatsapp-electron
     signal-desktop
+    ungoogled-chromium
   ];
 }
