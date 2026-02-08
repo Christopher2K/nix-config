@@ -5,6 +5,7 @@
     launchd.keepAlive = true;
 
     settings = {
+      after-startup-command = [ "layout accordion" ];
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
       accordion-padding = 30;
