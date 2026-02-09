@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   ...
 }:
@@ -28,6 +29,7 @@
     yazi
 
     # GUI
+    inputs.sqlit.packages.${pkgs.stdenv.hostPlatform.system}.default
     yaak
     zoom-us
   ];
