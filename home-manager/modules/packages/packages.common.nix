@@ -16,6 +16,7 @@
     fd
     fzf
     glow
+    inputs.expert.packages.${pkgs.stdenv.hostPlatform.system}.default
     lazydocker
     lazygit
     neofetch
