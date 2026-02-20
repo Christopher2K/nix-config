@@ -9,7 +9,12 @@
         "chrome-devtools-mcp@latest",
         "--executable-path=/etc/profiles/per-user/christopher/bin/chromium",
       ]
-    }
+    },
+    "tanstack": {
+      "type": "local",
+      "command": ["npx", "@tanstack/cli", "mcp"],
+      "enabled": true
+    },
   },
   "theme": "gruvbox",
   "plugin": [],

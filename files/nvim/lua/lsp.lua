@@ -8,11 +8,11 @@ function lsp.init()
     "cssls",
     "docker_compose_language_service",
     "dockerls",
+    "gopls",
     "html",
     "jsonls",
     "kotlin_lsp",
     "lua_ls",
-    "nextls",
     "pyright",
     "qmlls",
     "rust_analyzer",
@@ -23,6 +23,7 @@ function lsp.init()
   }
 
   local unmanaged_servers = {
+    "expert",
     "ocamllsp",
     "gleam",
   }
@@ -70,15 +71,15 @@ function lsp.init()
     end
   })
 
-  local elixir = require("elixir")
-  local elixirls = require("elixir.elixirls")
-  elixir.setup({
-    nextls = { enable = false },
-    elixirls = {
-      enable = true,
-      settings = elixirls.settings {},
-    },
-  })
+  -- local elixir = require("elixir")
+  -- local elixirls = require("elixir.elixirls")
+  -- elixir.setup({
+  --   nextls = { enable = false },
+  --   elixirls = {
+  --     enable = true,
+  --     settings = elixirls.settings {},
+  --   },
+  -- })
 
   -- Enable everything
   vim.lsp.enable(servers)
