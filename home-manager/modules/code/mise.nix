@@ -16,7 +16,6 @@
         elixir = "1.18.4-otp-28";
         erlang = "28.0.2";
         gleam = "1.13.0";
-        golang = "1.22.2";
         java = "openjdk-17.0.2";
         kotlin = "2.0.0";
         nodejs = "24.13.0";
@@ -25,6 +24,7 @@
         python = "3.12.0";
         ruby = "3.2.9";
         rust = "1.75.0";
+        golang = "1.26.0";
       };
     };
   };
