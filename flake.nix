@@ -38,10 +38,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zjstatus.url = "github:dj95/zjstatus";
-    expert = {
-      url = "github:elixir-lang/expert";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =

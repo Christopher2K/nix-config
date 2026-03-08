@@ -23,7 +23,6 @@ function lsp.init()
   }
 
   local unmanaged_servers = {
-    "expert",
     "ocamllsp",
     "gleam",
   }
