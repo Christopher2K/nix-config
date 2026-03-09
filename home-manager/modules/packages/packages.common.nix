@@ -11,7 +11,6 @@
     beamMinimal28Packages.rebar3
     claude-code
     codex
-    devenv
     exercism
     fd
     fzf
@@ -27,6 +26,7 @@
     tree-sitter
     watchman
     yazi
+    inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # GUI
     inputs.sqlit.packages.${pkgs.stdenv.hostPlatform.system}.default
