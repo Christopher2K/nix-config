@@ -6,30 +6,32 @@
 {
   home.packages = with pkgs; [
     # CLI
-    awscli2
     bat
     beamMinimal28Packages.rebar3
     claude-code
     codex
     exercism
+    fastfetch
     fd
     fzf
+    gh
     glow
+    inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.default
     lazydocker
     lazygit
-    fastfetch
     nixfmt
     opencode
+    proton-pass-cli
     ripgrep
     scrcpy
     texliveMedium
     tree-sitter
     watchman
     yazi
-    inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # GUI
     inputs.sqlit.packages.${pkgs.stdenv.hostPlatform.system}.default
+    proton-pass
     yaak
     zoom-us
   ];

@@ -123,7 +123,6 @@ in
   };
 
   programs.steam.enable = true;
-  programs._1password-gui.enable = true;
   programs.dconf.enable = true;
   programs.nautilus-open-any-terminal.enable = true;
   programs.nautilus-open-any-terminal.terminal = "ghostty";

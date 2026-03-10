@@ -26,12 +26,12 @@
       };
 
       spawn-at-startup = [
-        {
-          argv = [
-            "1password"
-            "--silent"
-          ];
-        }
+        # {
+        #   argv = [
+        #     "1password"
+        #     "--silent"
+        #   ];
+        # }
       ];
 
       prefer-no-csd = true;

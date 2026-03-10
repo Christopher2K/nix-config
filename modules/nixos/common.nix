@@ -52,7 +52,6 @@
 
   programs.zsh.enable = true;
   programs.bash.enable = true;
-  programs._1password.enable = true;
 
   environment.pathsToLink = [
     "/share/applications"

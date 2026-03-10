@@ -155,7 +155,7 @@
           run = "move-node-to-workspace M";
         }
         {
-          "if".app-id = "com.1password.1password";
+          "if".app-id = "me.proton.pass.electron";
           run = "layout floating";
         }
       ];

@@ -46,6 +46,7 @@
       "notion"
       "obs"
       "obsidian"
+      "proton-drive"
       "raycast"
       "screen-studio"
       "signal"
