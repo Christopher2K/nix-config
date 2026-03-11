@@ -29,9 +29,13 @@
       "headers": {
         "Authorization": "Bearer {env:GITHUB_PAT_TOKEN}"
       }
-    }
+    },
+    "pencil": {
+      "enabled": true,
+      "type": "local",
+      "command": ["/Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64", "--app","desktop"],
+    },
   },
-  "theme": "gruvbox",
   "plugin": [],
   "provider": {
     "anthropic": {
