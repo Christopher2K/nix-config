@@ -43,6 +43,8 @@
     initContent =
       let
         zshConfigEarlyInit = lib.mkOrder 500 ''
+          source ~/.runtimerc 2>/dev/null || true
+
           delete_localonly_branches () {
             git fetch -p
 
