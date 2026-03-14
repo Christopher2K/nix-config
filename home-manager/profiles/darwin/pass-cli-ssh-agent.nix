@@ -9,7 +9,7 @@
         "start"
       ];
       RunAtLoad = true;
-      KeepAlive = false;
+      KeepAlive = true;
       StandardOutPath = "${config.home.homeDirectory}/Library/Logs/pass-cli-ssh-agent.log";
       StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/pass-cli-ssh-agent.log";
     };
