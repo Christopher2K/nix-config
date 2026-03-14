@@ -70,16 +70,6 @@ function lsp.init()
     end
   })
 
-  -- local elixir = require("elixir")
-  -- local elixirls = require("elixir.elixirls")
-  -- elixir.setup({
-  --   nextls = { enable = false },
-  --   elixirls = {
-  --     enable = true,
-  --     settings = elixirls.settings {},
-  --   },
-  -- })
-
   -- Enable everything
   vim.lsp.enable(servers)
   vim.lsp.enable(unmanaged_servers)

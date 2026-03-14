@@ -22,7 +22,7 @@ function plugins.init()
   plugins.add({
     -- Global dependencies
     "muniftanjim/nui.nvim",                                                    -- UI library
-    "folke/noice.nvim",                                                        -- UI library as well
+    -- "folke/noice.nvim",                                                        -- UI library as well
     "folke/snacks.nvim",                                                       -- UI library as well
     "rcarriga/nvim-notify",                                                    -- Notifications
     "nvim-lua/plenary.nvim",                                                   -- Utilities
@@ -107,7 +107,7 @@ function plugins.configure()
       },
     },
     window = {
-      position = "left",
+      position = "float",
     },
     default_component_configs = {
       file_size = {
@@ -190,29 +190,29 @@ function plugins.configure()
   --#endregion
 
   --#region UI stuff
-  local noice = require("noice")
-  local notify = require("notify")
+  -- local noice = require("noice")
+  -- local notify = require("notify")
   local stay_centered = require("stay-centered")
   local snacks = require("snacks")
   local cloak = require("cloak")
 
-  noice.setup({
-    presets = {
-      bottom_search = true,         -- use a classic bottom cmdline for search
-      command_palette = true,       -- position the cmdline and popupmenu together
-      long_message_to_split = true, -- long messages will be sent to a split
-      inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-      lsp_doc_border = true,        -- add a border to hover docs and signature help
-    },
-  })
+  -- noice.setup({
+  --   presets = {
+  --     bottom_search = true,         -- use a classic bottom cmdline for search
+  --     command_palette = true,       -- position the cmdline and popupmenu together
+  --     long_message_to_split = true, -- long messages will be sent to a split
+  --     inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+  --     lsp_doc_border = true,        -- add a border to hover docs and signature help
+  --   },
+  -- })
 
-  notify.setup({
-    background_colour = "#000000",
-    stages = "fade_in_slide_out",
-    timeout = 3000,
-    render = "compact",
-    top_down = false,
-  })
+  -- notify.setup({
+  --   background_colour = "#000000",
+  --   stages = "fade_in_slide_out",
+  --   timeout = 3000,
+  --   render = "compact",
+  --   top_down = false,
+  -- })
 
   stay_centered.setup({
     enabled = false
