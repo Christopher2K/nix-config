@@ -10,7 +10,8 @@
     ZSH_TMUX_AUTOQUIT = "false";
 
     DEV = "$HOME/Developer";
-    COOKIN = "$DEV/cookin";
+
+    SSH_AUTH_SOCK = "$HOME/.ssh/proton-pass-agent.sock";
 
     # Android
     ANDROID_ROOT = "$HOME/Library/Android";

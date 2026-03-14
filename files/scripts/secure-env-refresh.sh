@@ -3,7 +3,7 @@
 CACHE_FILE="$HOME/.cache/env/.env.cache"
 TEMPLATE_FILE="$HOME/.env.template"
 
-# Check if 1Password CLI is available
+# Check if Pass CLI is available
 if ! command -v pass-cli &> /dev/null; then
   echo "❌ ProtonPass CLI not found"
   exit 1
@@ -18,7 +18,7 @@ fi
 mkdir -p "$HOME/.cache/env"
 touch "$CACHE_FILE"
 
-# Inject variables from 1Password into cache file
+# Inject variables into cache file
 echo "🔄 Fetching environment variables from Proton Pass..."
 pass-cli inject -i "$TEMPLATE_FILE" -o "$CACHE_FILE" --force
 
