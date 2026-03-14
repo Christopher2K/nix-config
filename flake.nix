@@ -91,7 +91,7 @@
     in
     {
       darwinConfigurations = {
-        "Christophers-MacBook" = mkDarwin "macbook-personal";
+        "chris-macbook" = mkDarwin "macbook-personal";
         "CookUnityLaptop" = mkDarwin "macbook-work";
       };
       nixosConfigurations = {
