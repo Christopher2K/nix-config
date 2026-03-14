@@ -4,7 +4,6 @@
 }:
 {
   imports = [
-    ./firefox.nix
     ./obs-studio.nix
   ];
 

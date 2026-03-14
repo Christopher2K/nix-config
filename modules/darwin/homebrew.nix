@@ -26,7 +26,6 @@
     taps = builtins.attrNames config.nix-homebrew.taps;
     casks = [
       "1password"
-      "1password-cli"
       "android-studio"
       "bezel"
       "cap"

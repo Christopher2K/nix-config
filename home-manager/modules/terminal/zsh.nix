@@ -45,8 +45,6 @@
         zshConfigEarlyInit = lib.mkOrder 500 ''
           source ~/.runtimerc 2>/dev/null || true
 
-          export SSH_AUTH_SOCK=$HOME/.ssh/proton-pass-agent.sock
-
           delete_localonly_branches () {
             git fetch -p
 
@@ -60,7 +58,7 @@
 
           alias delete_localonly_branch="delete_localonly_branches"
 
-          # Load cached environment variables from 1Password
+          # Load cached environment variables
           CACHE_FILE="$HOME/.cache/env/.env.cache"
 
           if [ -f "$CACHE_FILE" ]; then
