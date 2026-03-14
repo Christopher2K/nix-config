@@ -45,6 +45,8 @@
         zshConfigEarlyInit = lib.mkOrder 500 ''
           source ~/.runtimerc 2>/dev/null || true
 
+          export SSH_AUTH_SOCK=$HOME/.ssh/proton-pass-agent.sock
+
           delete_localonly_branches () {
             git fetch -p
 
