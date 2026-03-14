@@ -42,15 +42,11 @@
         applications = 12;
       };
     };
-    opacity = {
-      terminal = 0.9;
-    };
   };
 
   # Common stylix targets
   stylix.targets.ghostty = {
     enable = true;
-    opacity.enable = true;
   };
   stylix.targets.fontconfig.enable = true;
   stylix.targets.starship.enable = true;
