@@ -46,6 +46,7 @@
 
   system.defaults = {
     spaces.spans-displays = false; # For aerospace
+    dock.expose-group-apps = true; # For aerospace
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
     dock = {
       autohide = true;

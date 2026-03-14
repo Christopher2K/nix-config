@@ -6,12 +6,11 @@
     LC_CTYPE = "en_US.UTF-8";
     TMPDIR = "$HOME/.tmp";
 
-    # ZSH_TMUX_AUTOSTART = "true";
-    ZSH_TMUX_AUTOQUIT = "false";
-
     DEV = "$HOME/Developer";
 
     SSH_AUTH_SOCK = "$HOME/.ssh/proton-pass-agent.sock";
+
+    SHELL_SESSIONS_DISABLE = 1;
 
     # Android
     ANDROID_ROOT = "$HOME/Library/Android";
@@ -23,6 +22,7 @@
     # Erlang
     ERL_AFLAGS = "-kernel shell_history enabled";
   };
+
   home.shell = {
     enableShellIntegration = true;
   };
