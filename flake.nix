@@ -33,6 +33,7 @@
     };
     astal.url = "github:aylur/astal";
     ags.url = "github:aylur/ags";
+    opencode.url = "github:sst/opencode";
     sqlit = {
       url = "github:maxteabag/sqlit";
       inputs.nixpkgs.follows = "nixpkgs";

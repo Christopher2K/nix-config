@@ -20,7 +20,7 @@
     lazydocker
     lazygit
     nixfmt
-    opencode
+    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.opencode
     proton-pass-cli
     ripgrep
     scrcpy
