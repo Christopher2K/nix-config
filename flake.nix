@@ -14,6 +14,9 @@
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
 
+    niri-scratchpad.url = "github:gvolpe/niri-scratchpad";
+    niri-scratchpad.inputs.nixpkgs.follows = "nixpkgs";
+
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     opencode.url = "github:sst/opencode";

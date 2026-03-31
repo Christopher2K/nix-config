@@ -29,7 +29,10 @@ in
         inputs.niri.homeModules.niri
       ];
 
-      home.packages = [ pkgs.xwayland-satellite ];
+      home.packages = with pkgs; [
+        xwayland-satellite
+        inputs.niri-scratchpad.packages.${stdenv.hostPlatform.system}.default
+      ];
 
       home.file."${helpers.mkConfigPath config "/wallpapers"}" = {
         source = helpers.mkAssetsPath "/wallpapers";
@@ -55,6 +58,12 @@ in
             {
               command = [
                 "kwalletd6"
+              ];
+            }
+            {
+              argv = [
+                "ghostty"
+                "--title=_ghostty-scratchpad"
               ];
             }
           ];
@@ -113,6 +122,14 @@ in
             };
           };
 
+          workspaces = {
+            "01-main".name = "main";
+            "02-secondary".name = "secondary";
+            "03-stream".name = "stream";
+            "04-misc".name = "misc";
+            "05-scratch".name = "scratch";
+          };
+
           # Hotkey overlay
           hotkey-overlay = { };
 
@@ -134,6 +151,15 @@ in
                 };
               clip-to-geometry = true;
             }
+
+            {
+              matches = [
+                { title = "_ghostty-scratchpad"; }
+              ];
+              open-on-workspace = "scratch";
+              open-floating = true;
+              open-focused = false;
+            }
           ];
 
           layer-rules = [
@@ -149,6 +175,10 @@ in
             "Mod+Shift+Slash".action.show-hotkey-overlay = [ ];
 
             # Launch programs
+            "Mod+Grave" = {
+              hotkey-overlay.title = "Open ghostty scratch";
+              action.spawn-sh = "nscratch -t _ghostty-scratchpad -s 'ghostty --title=_ghostty-scratchpad' -m";
+            };
             "Mod+Return" = {
               hotkey-overlay.title = "Open ghostty";
               action.spawn = "ghostty";
