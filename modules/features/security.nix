@@ -3,9 +3,8 @@
   flake.modules.nixos.security =
     { pkgs, ... }:
     {
-      services.gnome.gnome-keyring.enable = true;
       services.howdy.enable = true;
-      security.pam.services.login.enableGnomeKeyring = true;
+      security.pam.services.login.kwallet.enable = true;
       security.pam.howdy.enable = true;
 
       security.pam.services.sudo.howdy = {

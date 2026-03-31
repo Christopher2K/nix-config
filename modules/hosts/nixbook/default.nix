@@ -28,6 +28,7 @@ in
             hm.cli-tooling
             hm.coding
             hm.launcher
+            hm.kde-apps
             hm.security
             hm.terminal
             hm.theme

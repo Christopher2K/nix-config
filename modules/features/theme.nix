@@ -4,7 +4,12 @@
 }:
 {
   flake.modules.homeManager.theme =
-    { config, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     {
       imports = [
         inputs.stylix.homeModules.stylix
@@ -55,6 +60,16 @@
       stylix.targets.vesktop.enable = true;
       stylix.targets.gnome.enable = true;
       stylix.targets.gtk.enable = true;
+      stylix.targets.qt.enable = true;
       stylix.targets.vicinae.enable = true;
+
+      # Use the KDE platform theme so Qt apps pick up Stylix colours and
+      # integrate with the rest of the desktop (cursors, fonts, dialogs).
+      # mkForce is required because stylix sets platformTheme.name = "qtct" by default.
+      qt = {
+        enable = true;
+        platformTheme.name = lib.mkForce "kde";
+        style.name = "breeze";
+      };
     };
 }

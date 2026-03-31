@@ -13,7 +13,10 @@ in
 
       xdg.portal = {
         enable = true;
-        extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+        extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+        # Explicitly map all interfaces to the KDE backend so niri sessions
+        # (which don't advertise a desktop environment) resolve unambiguously.
+        config.common.default = "*";
       };
 
       programs.niri.enable = true;
