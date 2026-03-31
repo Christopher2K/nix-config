@@ -1,4 +1,7 @@
 { inputs, config, ... }:
+let
+  username = config.flake.username;
+in
 {
   flake.modules.nixos.desktop-shell =
     { pkgs, ... }:
@@ -17,7 +20,7 @@
         settings = {
           bar = {
             density = "compact";
-            position = "right";
+            position = "left";
             showCapsule = false;
             widgets = {
               left = [
@@ -55,9 +58,10 @@
               ];
             };
           };
-          colorSchemes.predefinedScheme = "Monochrome";
+          wallpaper.enabled = false;
+          # colorSchemes is managed by stylix.targets.noctalia-shell
           general = {
-            avatarImage = "/home/drfoobar/.face";
+            avatarImage = "/home/${username}/.face";
             radiusRatio = 0.2;
           };
           location = {
