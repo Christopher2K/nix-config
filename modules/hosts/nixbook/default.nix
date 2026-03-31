@@ -9,6 +9,7 @@ in
       # system level configuration
       nixos.ai
       nixos.coding
+      nixos.gaming
       nixos.launcher
       nixos.nixbookConfiguration
       nixos.security
