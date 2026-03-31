@@ -3,13 +3,17 @@
   flake.modules.nixos.security =
     { pkgs, ... }:
     {
-      services.howdy.enable = true;
+      services.howdy = {
+        enable = true;
+        settings.core.device = "/dev/video2";
+      };
       security.pam.services.login.kwallet.enable = true;
-      security.pam.howdy.enable = true;
-
       security.pam.services.sudo.howdy = {
         enable = true;
         control = "sufficient";
+      };
+      security.pam.services.polkit-1.howdy = {
+        enable = false;
       };
     };
 

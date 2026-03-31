@@ -7,11 +7,12 @@ in
   flake.nixosConfigurations.nixbook = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       # system level configuration
-      nixos.nixbookConfiguration
       nixos.ai
       nixos.coding
       nixos.launcher
+      nixos.nixbookConfiguration
       nixos.security
+      nixos.splashscreen
       nixos.terminal
       nixos.window-manager
 
