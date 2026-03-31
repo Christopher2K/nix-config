@@ -45,7 +45,13 @@ in
             render-drm-device = "/dev/dri/by-path/pci-0000:65:00.0-render";
           };
 
-          spawn-at-startup = [ ];
+          spawn-at-startup = [
+            {
+              command = [
+                "noctalia-shell"
+              ];
+            }
+          ];
 
           prefer-no-csd = true;
 

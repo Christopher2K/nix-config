@@ -27,6 +27,7 @@ in
             hm.browser
             hm.cli-tooling
             hm.coding
+            hm.desktop-shell
             hm.launcher
             hm.kde-apps
             hm.security
