@@ -51,6 +51,11 @@ in
                 "noctalia-shell"
               ];
             }
+            {
+              command = [
+                "kwalletd6"
+              ];
+            }
           ];
 
           prefer-no-csd = true;

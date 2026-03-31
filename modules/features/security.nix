@@ -42,6 +42,22 @@
         };
       };
 
+      systemd.user.services.kwalletd = {
+        Unit = {
+          Description = "KWallet daemon";
+          After = [ "graphical-session.target" ];
+          PartOf = [ "graphical-session.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.kdePackages.kwallet}/bin/kwalletd6";
+          Restart = "on-failure";
+          RestartSec = "1s";
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
+      };
+
       home.packages = [
         pkgs.proton-pass
         pkgs.proton-pass-cli
