@@ -34,6 +34,9 @@ in
                 {
                   id = "Bluetooth";
                 }
+                {
+                  id = "ActiveWindow";
+                }
               ];
               center = [
                 {
@@ -61,6 +64,7 @@ in
               ];
             };
           };
+          dock.enable = false;
           wallpaper.enabled = false;
           # colorSchemes is managed by stylix.targets.noctalia-shell
           general = {
