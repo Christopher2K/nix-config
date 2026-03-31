@@ -19,7 +19,7 @@ in
         enable = true;
         settings = {
           bar = {
-            density = "compact";
+            density = "comfortable";
             position = "left";
             showCapsule = false;
             widgets = {
@@ -66,7 +66,7 @@ in
           };
           location = {
             monthBeforeDay = true;
-            name = "Marseille, France";
+            name = "Toronto, Ontario, Canada";
           };
         };
       };
