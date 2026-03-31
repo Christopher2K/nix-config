@@ -7,6 +7,11 @@
       services.howdy.enable = true;
       security.pam.services.login.enableGnomeKeyring = true;
       security.pam.howdy.enable = true;
+
+      security.pam.services.sudo.howdy = {
+        enable = true;
+        control = "sufficient";
+      };
     };
 
   flake.modules.homeManager.security =
