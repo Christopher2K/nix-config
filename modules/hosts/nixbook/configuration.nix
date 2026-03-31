@@ -51,9 +51,11 @@ in
       ];
 
       environment.systemPackages = with pkgs; [
+        asusctl
         libgcc
         gcc
         gnumake
+        pciutils
       ];
       environment.pathsToLink = [
         "/share/applications"

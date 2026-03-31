@@ -73,6 +73,9 @@
           nvidiaBusId = "PCI:100@0:0:0";
         };
       };
+      # Asus specific stuff
+      services.supergfxd.enable = true;
+      services.asusd.enable = true;
 
       hardware.bluetooth.enable = true;
       hardware.bluetooth.powerOnBoot = true;
