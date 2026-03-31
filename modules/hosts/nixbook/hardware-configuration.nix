@@ -76,5 +76,7 @@
 
       hardware.bluetooth.enable = true;
       hardware.bluetooth.powerOnBoot = true;
+      services.power-profiles-daemon.enable = true;
+      services.upower.enable = true;
     };
 }

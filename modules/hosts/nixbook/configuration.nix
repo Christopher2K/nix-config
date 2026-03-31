@@ -17,7 +17,6 @@ in
         "/dev/disk/by-uuid/b38e2595-9210-48d9-8869-601e610db49e";
       networking.hostName = "nixbook";
       networking.wireless.enable = true;
-
       networking.networkmanager.enable = true;
 
       time.timeZone = "America/Toronto";
