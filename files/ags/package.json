@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@biomejs/biome": "^2.3.11",
-    "ags": "*",
-    "gnim": "*"
-  }
-}
