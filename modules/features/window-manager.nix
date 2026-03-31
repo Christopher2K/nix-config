@@ -43,6 +43,7 @@ in
         settings = {
           debug = {
             render-drm-device = "/dev/dri/by-path/pci-0000:65:00.0-render";
+            honor-xdg-activation-with-invalid-serial = true;
           };
 
           spawn-at-startup = [
@@ -119,7 +120,21 @@ in
           screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
 
           # Window rules
-          window-rules = [ ];
+          window-rules = [
+            {
+              geometry-corner-radius =
+                let
+                  radius = 12.0;
+                in
+                {
+                  bottom-left = radius;
+                  bottom-right = radius;
+                  top-left = radius;
+                  top-right = radius;
+                };
+              clip-to-geometry = true;
+            }
+          ];
 
           layer-rules = [
             {

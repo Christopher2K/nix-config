@@ -55,6 +55,9 @@ in
                   useMonospacedFont = true;
                   usePrimaryColor = true;
                 }
+                {
+                  id = "Tray";
+                }
               ];
             };
           };
