@@ -62,6 +62,11 @@ in
             honor-xdg-activation-with-invalid-serial = true;
           };
 
+          hotkey-overlay = {
+            skip-at-startup = true;
+            hide-not-bound = true;
+          };
+
           spawn-at-startup = [
             {
               command = [
