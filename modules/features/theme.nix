@@ -3,6 +3,16 @@
   ...
 }:
 {
+  flake.modules.nixos.theme =
+    { ... }:
+    {
+      imports = [
+        inputs.stylix.nixosModules.stylix
+      ];
+
+      stylix.targets.gtk.enable = true;
+    };
+
   flake.modules.homeManager.theme =
     {
       config,
@@ -22,9 +32,8 @@
       stylix = {
         enable = true;
         autoEnable = false;
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-light.yaml";
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-light-soft.yaml";
 
-        # image = ../../../files/wallpapers/wallpaper-1.jpg;
         cursor = {
           size = 32;
           name = "phinger-cursors-light";
@@ -43,9 +52,9 @@
           };
 
           sizes = {
-            terminal = 12;
-            desktop = 12;
-            applications = 12;
+            terminal = 10;
+            desktop = 10;
+            applications = 10;
           };
         };
       };
@@ -64,13 +73,16 @@
       stylix.targets.vicinae.enable = true;
       stylix.targets.noctalia-shell.enable = true;
 
-      # Use the KDE platform theme so Qt apps pick up Stylix colours and
-      # integrate with the rest of the desktop (cursors, fonts, dialogs).
-      # mkForce is required because stylix sets platformTheme.name = "qtct" by default.
+      gtk = {
+        enable = true;
+        iconTheme = {
+          package = pkgs.gruvbox-plus-icons;
+          name = "Gruvbox-Plus-Dark";
+        };
+      };
+
       qt = {
         enable = true;
-        platformTheme.name = lib.mkForce "kde";
-        style.name = "breeze";
       };
     };
 }

@@ -14,8 +14,8 @@ in
 
       xdg.portal = {
         enable = true;
-        extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
-        # Explicitly map all interfaces to the KDE backend so niri sessions
+        extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+        # Explicitly map all interfaces to the GNOME backend so niri sessions
         # (which don't advertise a desktop environment) resolve unambiguously.
         config.common.default = "*";
       };
@@ -70,7 +70,9 @@ in
             }
             {
               command = [
-                "kwalletd6"
+                "gnome-keyring-daemon"
+                "--start"
+                "--components=secrets,pkcs11"
               ];
             }
             {

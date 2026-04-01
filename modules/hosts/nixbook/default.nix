@@ -10,6 +10,7 @@ in
       nixos.ai
       nixos.coding
       nixos.gaming
+      nixos.gnome-apps
       nixos.graphics
       nixos.launcher
       nixos.nixbookConfiguration
@@ -17,6 +18,7 @@ in
       nixos.sound
       nixos.splashscreen
       nixos.terminal
+      nixos.theme
       nixos.window-manager
 
       # home level configuration
@@ -34,7 +36,7 @@ in
             hm.communication
             hm.desktop-shell
             hm.gaming
-            hm.kde-apps
+            hm.gnome-apps
             hm.launcher
             hm.security
             hm.sound
