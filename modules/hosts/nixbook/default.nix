@@ -31,8 +31,9 @@ in
             hm.coding
             hm.communication
             hm.desktop-shell
-            hm.launcher
+            hm.gaming
             hm.kde-apps
+            hm.launcher
             hm.security
             hm.terminal
             hm.theme

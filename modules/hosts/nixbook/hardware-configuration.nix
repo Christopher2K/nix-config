@@ -1,4 +1,8 @@
-{ self, inputs, ... }:
+{
+  inputs,
+  config,
+  ...
+}:
 {
   flake.nixosModules.nixbookHardware =
     {
@@ -52,10 +56,11 @@
 
       hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-      hardware.graphics = {
-        enable = true;
-        enable32Bit = true;
-      };
+      # hardware.graphics = {
+      #   enable = true;
+      #   enable32Bit = true;
+      # };
+      # hardware.opengl.enable = true;
 
       hardware.nvidia = {
         nvidiaSettings = true;
@@ -63,6 +68,8 @@
         modesetting.enable = true;
         powerManagement.enable = true;
         powerManagement.finegrained = true;
+
+        package = config.boot.kernelPackages.nvidiaPackages.production;
 
         prime = {
           offload = {
