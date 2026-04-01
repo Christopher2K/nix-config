@@ -7,7 +7,8 @@
         enable = true;
         settings.core.device = "/dev/video2";
       };
-      security.pam.services.login.kwallet.enable = true;
+      security.pam.services.login.enableGnomeKeyring = true;
+      services.gnome.gnome-keyring.enable = true;
       security.pam.services.sudo.howdy = {
         enable = true;
         control = "sufficient";
@@ -46,14 +47,14 @@
         };
       };
 
-      systemd.user.services.kwalletd = {
+      systemd.user.services.gnome-keyring-daemon = {
         Unit = {
-          Description = "KWallet daemon";
+          Description = "GNOME Keyring daemon";
           After = [ "graphical-session.target" ];
           PartOf = [ "graphical-session.target" ];
         };
         Service = {
-          ExecStart = "${pkgs.kdePackages.kwallet}/bin/kwalletd6";
+          ExecStart = "${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start --components=secrets,pkcs11";
           Restart = "on-failure";
           RestartSec = "1s";
         };

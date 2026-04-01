@@ -61,6 +61,8 @@ in
 
         # Erlang
         ERL_AFLAGS = "-kernel shell_history enabled";
+
+        TERMINAL = "ghostty";
       };
 
       home.shell.enableShellIntegration = true;
