@@ -12,6 +12,7 @@
         nautilus
         file-roller
         gnome-calculator
+        gnome-text-editor
         loupe
         evince
       ];
