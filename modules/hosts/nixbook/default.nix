@@ -14,6 +14,7 @@ in
       nixos.launcher
       nixos.nixbookConfiguration
       nixos.security
+      nixos.sound
       nixos.splashscreen
       nixos.terminal
       nixos.window-manager
@@ -36,6 +37,7 @@ in
             hm.kde-apps
             hm.launcher
             hm.security
+            hm.sound
             hm.terminal
             hm.theme
             hm.window-manager
