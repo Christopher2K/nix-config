@@ -10,6 +10,7 @@ in
       nixos.ai
       nixos.coding
       nixos.gaming
+      nixos.graphics
       nixos.launcher
       nixos.nixbookConfiguration
       nixos.security

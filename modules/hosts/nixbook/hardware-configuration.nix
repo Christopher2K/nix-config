@@ -56,37 +56,7 @@
 
       hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-      # hardware.graphics = {
-      #   enable = true;
-      #   enable32Bit = true;
-      # };
-      # hardware.opengl.enable = true;
-
-      hardware.nvidia = {
-        nvidiaSettings = true;
-        open = true;
-        modesetting.enable = true;
-        powerManagement.enable = true;
-        powerManagement.finegrained = true;
-
-        package = config.boot.kernelPackages.nvidiaPackages.production;
-
-        prime = {
-          offload = {
-            enable = true;
-            enableOffloadCmd = true;
-          };
-          amdgpuBusId = "PCI:101@0:0:0";
-          nvidiaBusId = "PCI:100@0:0:0";
-        };
-      };
-      # Asus specific stuff
-      services.supergfxd.enable = true;
-      services.asusd.enable = true;
-
       hardware.bluetooth.enable = true;
       hardware.bluetooth.powerOnBoot = true;
-      services.power-profiles-daemon.enable = true;
-      services.upower.enable = true;
     };
 }

@@ -7,6 +7,7 @@ in
   flake.modules.nixos.terminal =
     { pkgs, ... }:
     {
+      console.useXkbConfig = true;
       programs.zsh.enable = true;
       users.users.${username}.shell = pkgs.zsh;
 
