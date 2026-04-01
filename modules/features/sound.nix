@@ -46,6 +46,8 @@
               sleep 2
               ${pkgs.alsa-utils}/bin/amixer -c 2 cset numid=25 on
               ${pkgs.alsa-utils}/bin/amixer -c 2 cset numid=24 87
+              ${pkgs.alsa-utils}/bin/amixer -c 2 cset numid=21 on,on
+              ${pkgs.alsa-utils}/bin/amixer -c 2 cset numid=20 41,41
             ''
           );
         };
