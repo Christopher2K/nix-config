@@ -13,8 +13,9 @@ in
     nix.enable = false;
 
     nixpkgs.hostPlatform = "aarch64-darwin";
+    nixpkgs.config.allowUnfree = true;
 
-    environment.etc.nix-darwin.source = lib.mkDefault "/Users/${username}/NixConfig";
+    # environment.etc.nix-darwin.source = lib.mkDefault "/Users/${username}/NixConfig";
 
     users.users.${username}.home = lib.mkDefault "/Users/${username}";
 
