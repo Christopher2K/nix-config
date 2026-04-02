@@ -45,14 +45,32 @@
       }:
       {
         pkgs ? null,
+        lib,
         ...
       }@args:
-      let
-        isDarwin = if pkgs != null then pkgs.stdenv.hostPlatform.isDarwin else false;
-        platformFn = if isDarwin then darwin else linux;
-        modules =
-          lib.optional (common != null) (common args) ++ lib.optional (platformFn != null) (platformFn args);
-      in
-      if pkgs == null then { } else modules;
+      if pkgs == null then
+        { }
+      else
+        let
+          isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+          platformFn = if isDarwin then darwin else linux;
+          # Evaluate common config if provided
+          commonCfg = if common != null then common args else { };
+          # Evaluate platform-specific config if provided
+          platformCfg = if platformFn != null then platformFn args else { };
+          # Deep merge using recursiveUpdate
+          merged = lib.recursiveUpdate commonCfg platformCfg;
+          # Special handling for home.packages - concatenate them
+          final =
+            if commonCfg ? home.packages && platformCfg ? home.packages then
+              merged // { home.packages = commonCfg.home.packages ++ platformCfg.home.packages; }
+            else if commonCfg ? home.packages then
+              merged // { home.packages = commonCfg.home.packages; }
+            else if platformCfg ? home.packages then
+              merged // { home.packages = platformCfg.home.packages; }
+            else
+              merged;
+        in
+        final;
   };
 }

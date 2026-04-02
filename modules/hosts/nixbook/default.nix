@@ -45,6 +45,9 @@ in
             hm.terminal
             hm.theme
             hm.window-manager
+            hm.testmkhybrid
+            hm.testSimple
+            hm.testDirect
           ];
         };
       }
