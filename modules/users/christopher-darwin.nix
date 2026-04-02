@@ -10,7 +10,7 @@ in
       hm.aerospace
       hm.jankyborders
       hm.darwinPackages
-      hm.darwinSshAgent
+      hm.security
     ];
   };
 }

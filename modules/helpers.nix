@@ -34,5 +34,25 @@
       hmConfig: filename_or_dir: "${hmConfig.home.homeDirectory}/.config/${filename_or_dir}";
     # Get a path to the home folder
     mkHomePath = hmConfig: filename_or_dir: "${hmConfig.home.homeDirectory}/${filename_or_dir}";
+
+    # Create a hybrid Home Manager module that applies different configs based on platform
+    mkHybrid =
+      name:
+      {
+        linux ? null,
+        darwin ? null,
+        common ? null,
+      }:
+      {
+        pkgs ? null,
+        ...
+      }@args:
+      let
+        isDarwin = if pkgs != null then pkgs.stdenv.hostPlatform.isDarwin else false;
+        platformFn = if isDarwin then darwin else linux;
+        platformAttrs = if platformFn != null then platformFn args else { };
+        commonAttrs = if common != null then common args else { };
+      in
+      if pkgs == null then { } else commonAttrs // platformAttrs;
   };
 }
