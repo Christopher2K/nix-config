@@ -50,9 +50,9 @@
       let
         isDarwin = if pkgs != null then pkgs.stdenv.hostPlatform.isDarwin else false;
         platformFn = if isDarwin then darwin else linux;
-        platformAttrs = if platformFn != null then platformFn args else { };
-        commonAttrs = if common != null then common args else { };
+        modules =
+          lib.optional (common != null) (common args) ++ lib.optional (platformFn != null) (platformFn args);
       in
-      if pkgs == null then { } else commonAttrs // platformAttrs;
+      if pkgs == null then { } else modules;
   };
 }
