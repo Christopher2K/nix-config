@@ -2,6 +2,12 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nix-darwin = "github:nix-darwin/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    nix-homebrew.inputs.nixpkgs.follows = "nixpkgs";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     import-tree.url = "github:vic/import-tree";
