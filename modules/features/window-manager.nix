@@ -228,6 +228,16 @@ in
               action.spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             };
 
+            "XF86MonBrightnessUp" = {
+              allow-when-locked = true;
+              action.spawn-sh = "noctalia-shell ipc call brightness increase";
+            };
+
+            "XF86MonBrightnessDown" = {
+              allow-when-locked = true;
+              action.spawn-sh = "noctalia-shell ipc call brightness decrease";
+            };
+
             # Media controls
             "XF86AudioPlay" = {
               allow-when-locked = true;
