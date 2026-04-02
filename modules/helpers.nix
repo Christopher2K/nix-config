@@ -35,42 +35,33 @@
     # Get a path to the home folder
     mkHomePath = hmConfig: filename_or_dir: "${hmConfig.home.homeDirectory}/${filename_or_dir}";
 
-    # Create a hybrid Home Manager module that applies different configs based on platform
+    # Create a hybrid Home Manager module that applies platform-specific config.
+    # Usage:
+    #   flake.modules.homeManager.foo = helpers.mkHybrid "foo" {
+    #     common = { pkgs, config, ... }: { ... };   # applied on all platforms
+    #     linux  = { pkgs, config, ... }: { ... };   # applied on Linux only
+    #     darwin = { pkgs, config, ... }: { ... };   # applied on macOS only
+    #   };
+    # Any of common/linux/darwin may be omitted or set to null.
     mkHybrid =
-      name:
+      _name:
       {
         linux ? null,
         darwin ? null,
         common ? null,
       }:
+      # This is a valid Home Manager module function. HM calls it with full args.
       {
         pkgs ? null,
         lib,
         ...
-      }@args:
-      if pkgs == null then
-        { }
-      else
-        let
-          isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
-          platformFn = if isDarwin then darwin else linux;
-          # Evaluate common config if provided
-          commonCfg = if common != null then common args else { };
-          # Evaluate platform-specific config if provided
-          platformCfg = if platformFn != null then platformFn args else { };
-          # Deep merge using recursiveUpdate
-          merged = lib.recursiveUpdate commonCfg platformCfg;
-          # Special handling for home.packages - concatenate them
-          final =
-            if commonCfg ? home.packages && platformCfg ? home.packages then
-              merged // { home.packages = commonCfg.home.packages ++ platformCfg.home.packages; }
-            else if commonCfg ? home.packages then
-              merged // { home.packages = commonCfg.home.packages; }
-            else if platformCfg ? home.packages then
-              merged // { home.packages = platformCfg.home.packages; }
-            else
-              merged;
-        in
-        final;
+      }:
+      let
+        isDarwin = if pkgs != null then pkgs.stdenv.hostPlatform.isDarwin else false;
+        platformMod = if isDarwin then darwin else linux;
+      in
+      {
+        imports = lib.optional (common != null) common ++ lib.optional (platformMod != null) platformMod;
+      };
   };
 }
