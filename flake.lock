@@ -1429,6 +1429,7 @@
         "proton-cachyos": "proton-cachyos",
         "sqlit": "sqlit",
         "stylix": "stylix",
+        "tree-sitter": "tree-sitter",
         "vicinae": "vicinae",
         "wrapper-modules": "wrapper-modules",
         "zjstatus": "zjstatus"
@@ -1714,6 +1715,26 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
+        "type": "github"
+      }
+    },
+    "tree-sitter": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775021749,
+        "narHash": "sha256-BBx0SqQtZE7TZR6B8TvzHl1coZg3LF49khevLv/Zy1s=",
+        "owner": "tree-sitter",
+        "repo": "tree-sitter",
+        "rev": "64698af1ac6abb97f5a548cfbaf6e88bca2d8782",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tree-sitter",
+        "repo": "tree-sitter",
         "type": "github"
       }
     },

@@ -59,13 +59,16 @@ in
         force = true;
       };
 
-      home.packages = with pkgs; [
-        devenv
-        lazydocker
-        lazygit
-        sqlit
-        tree-sitter
-      ];
+      home.packages =
+        (with pkgs; [
+          devenv
+          lazydocker
+          lazygit
+          sqlit
+        ])
+        ++ [
+          inputs.tree-sitter.packages.${pkgs.stdenv.hostPlatform.system}.default
+        ];
 
       programs.neovim = {
         enable = true;

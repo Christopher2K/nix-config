@@ -18,6 +18,8 @@
     niri-scratchpad.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    tree-sitter.url = "github:tree-sitter/tree-sitter";
+    tree-sitter.inputs.nixpkgs.follows = "nixpkgs";
 
     opencode.url = "github:sst/opencode";
 

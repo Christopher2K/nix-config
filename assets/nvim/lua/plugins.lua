@@ -55,7 +55,7 @@ function plugins.init()
     "tpope/vim-sleuth",                                                        -- Auto indent detection
     "nvim-pack/nvim-spectre",                                                  -- Search and replace
     "arnamak/stay-centered.nvim",                                              -- Centered mode
-    { src = "nvim-treesitter/nvim-treesitter", version = "master" },           -- Treesitter
+    { src = "nvim-treesitter/nvim-treesitter", version = "main" },             -- Treesitter
     "windwp/nvim-ts-autotag",                                                  -- Treesitter extension for auto-tag
     "wakatime/vim-wakatime",                                                   -- WakaTime
     "folke/which-key.nvim",                                                    -- Bindings helpers
@@ -148,34 +148,34 @@ function plugins.configure()
   --#endregion
 
   --#region Treesitter
-  local treesitter = require("nvim-treesitter.configs")
+  local treesitter = require("nvim-treesitter")
   treesitter.setup({
-    auto_install = true,
-    ensure_installed = {
-      "lua",
-      "javascript",
-      "typescript",
-      "css",
-      "html",
-      "elixir",
-      "php",
-      "go",
-      "gleam",
-      "rust",
-      "jsdoc",
-      "json",
-      "markdown",
-      "sql",
-      "toml",
-      "yaml",
-      "tsx",
-      "vue",
-      "svelte",
-      "swift",
-      "zig",
-    },
     highlight = { enable = true },
     indent = { enable = true },
+  })
+  treesitter.install({
+    "lua",
+    "javascript",
+    "typescript",
+    "css",
+    "html",
+    "elixir",
+    "php",
+    "go",
+    "gleam",
+    "rust",
+    "jsdoc",
+    "json",
+    "markdown",
+    "markdown_inline",
+    "sql",
+    "toml",
+    "yaml",
+    "tsx",
+    "vue",
+    "svelte",
+    "swift",
+    "zig",
   })
   require("nvim-ts-autotag").setup()
   local comments = require("mini.comment")
