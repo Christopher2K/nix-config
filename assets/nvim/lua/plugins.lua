@@ -49,7 +49,7 @@ function plugins.init()
 
     "nvim-lualine/lualine.nvim",                                               -- Status line plugin
     { src = "echasnovski/mini.comment",  version = "main" },                   -- Comment plugin
-    "JoosepAlviste/nvim-ts-context-commentstring",                             -- Contextual commentstring
+    -- "JoosepAlviste/nvim-ts-context-commentstring",                             -- Contextual commentstring
     { src = "echasnovski/mini.pairs",    version = "main" },                   -- Autopairs plugin
     { src = "echasnovski/mini.surround", version = "main" },                   -- Symbol surround plugin
     "tpope/vim-sleuth",                                                        -- Auto indent detection
@@ -179,12 +179,12 @@ function plugins.configure()
   })
   require("nvim-ts-autotag").setup()
   local comments = require("mini.comment")
-  local commentstring = require("ts_context_commentstring")
+  -- local commentstring = require("ts_context_commentstring")
   comments.setup({
     options = {
-      custom_commentstring = function()
-        return commentstring.calculate_commentstring() or vim.bo.commentstring
-      end,
+      -- custom_commentstring = function()
+      --   return commentstring.calculate_commentstring() or vim.bo.commentstring
+      -- end,
     },
   })
   --#endregion
