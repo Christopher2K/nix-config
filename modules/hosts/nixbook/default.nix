@@ -9,6 +9,7 @@ in
       # system level configuration
       nixos.ai
       nixos.coding
+      nixos.mise-fixes
       nixos.gaming
       nixos.gnome-apps
       nixos.graphics
@@ -33,6 +34,7 @@ in
             hm.browser
             hm.cli-tooling
             hm.coding
+            hm.mise-fixes
             hm.communication
             hm.desktop-shell
             hm.gaming
