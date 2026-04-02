@@ -27,7 +27,7 @@
       "type": "remote",
       "url": "https://api.githubcopilot.com/mcp/",
       "headers": {
-        "Authorization": "Bearer {env:GITHUB_PAT_TOKEN}"
+        "Authorization": "Bearer {env:GITHUB_TOKEN}"
       }
     },
     "pencil": {
@@ -42,9 +42,7 @@
       "options": {}
     },
     "openrouter": {
-      "models": {
-        "x-ai/grok-code-fast-1": {}
-      }
+      "models": {}
     }
   }
 }

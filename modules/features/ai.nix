@@ -24,11 +24,7 @@ in
     ];
   };
 
-  flake.modules.darwin.ai = {
-    nixpkgs.overlays = [
-      inputs.opencode.overlays.default
-    ];
-  };
+  flake.modules.darwin.ai = flake.modules.nixos.ai;
 
   flake.modules.homeManager.ai =
     { pkgs, config, ... }:
