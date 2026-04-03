@@ -87,13 +87,13 @@ in
                 {
                   criteria = monitors.builtin-laptop;
                   scale = 1.0;
-                  mode = "2400x1800@120";
+                  mode = "1600x1200@120";
                   position = "0,0";
                 }
                 {
                   criteria = monitors.capture-card;
                   scale = 1.0;
-                  mode = "2560x1440@59.951";
+                  mode = "2560x1440@60";
                   position = "10000,10000";
                 }
               ];
