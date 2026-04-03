@@ -9,6 +9,13 @@
     "aarch64-darwin"
   ];
 
+  # Allow multiple host files to each define their own darwinConfigurations entry
+  # without flake-parts complaining about multiple definitions of an undeclared option.
+  options.flake.darwinConfigurations = lib.mkOption {
+    type = lib.types.attrsOf lib.types.raw;
+    default = { };
+  };
+
   # Custom types
   options.flake.username = lib.mkOption {
     type = lib.types.str;

@@ -1,13 +1,13 @@
 {
   flake.modules.darwin.productivity = {
-    homebrew.cask = [
+    homebrew.casks = [
       "bezel"
       "notion"
     ];
   };
 
   flake.modules.darwin.productivity-cookunity = {
-    homebrew.cask = [
+    homebrew.casks = [
       "notion"
       "linear-linear"
       "tuple"

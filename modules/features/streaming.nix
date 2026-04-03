@@ -9,6 +9,7 @@ in
       "elgato-stream-deck"
       "insta360-link-controller"
       "screen-studio"
+      "obs"
     ];
   };
 
@@ -19,7 +20,7 @@ in
   };
 
   flake.modules.homeManager.streaming = helpers.mkHybrid {
-    common = {
+    linux = {
       programs.obs-studio = {
         enable = true;
       };

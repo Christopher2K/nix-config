@@ -1,6 +1,6 @@
 {
   flake.modules.darwin.design = {
-    homebrew.cask = [
+    homebrew.casks = [
       "figma"
       "cleanshot"
       "cap"
