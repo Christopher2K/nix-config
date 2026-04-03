@@ -58,40 +58,34 @@ let
     "ungoogled-chromium"
     "xcodes"
     "zed"
-  ];
-
-  # Common modules for both MacBooks
-  mkDarwinModules = casks: [
-    # System-level configuration
-    darwin.system
-
-    # Homebrew with host-specific casks
-    (helpers.mkDarwinHomebrew casks)
-
-    # nix-homebrew module
-    inputs.nix-homebrew.darwinModules.nix-homebrew
-
-    # Home Manager integration
-    inputs.home-manager.darwinModules.home-manager
-    {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.users.${username} = {
-        imports = [
-          hm.christopherDarwin
-        ];
-      };
-    }
+    "libyaml"
+    "xcodes"
   ];
 in
 {
-  flake.darwinConfigurations = {
-    macbook = inputs.nix-darwin.lib.darwinSystem {
-      modules = mkDarwinModules macbookCasks;
-    };
+  flake.darwinConfigurations.macbook = inputs.nix-darwin.lib.darwinSystem {
+    modules = [
+      inputs.nix-homebrew.darwinModules.nix-homebrew
 
-    macbook-cookunity = inputs.nix-darwin.lib.darwinSystem {
-      modules = mkDarwinModules macbookCookunityCasks;
-    };
+      # system-level configuration
+      darwin.ai
+      darwin.homebrew
+      darwin.system
+
+      inputs.home-manager.darwinModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.${username} = {
+          imports = [
+            hm.ai
+            hm.christopher
+            hm.darwinPackages
+            hm.security
+            hm.window-manager
+          ];
+        };
+      }
+    ];
   };
 }

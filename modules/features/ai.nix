@@ -20,11 +20,15 @@ in
 {
   flake.modules.nixos.ai = {
     nixpkgs.overlays = [
-      opencodeOverlay
+      # opencodeOverlay
     ];
   };
 
-  flake.modules.darwin.ai = flake.modules.nixos.ai;
+  flake.modules.darwin.ai = {
+    nixpkgs.overlays = [
+      # opencodeOverlay
+    ];
+  };
 
   flake.modules.homeManager.ai =
     { pkgs, config, ... }:
@@ -32,7 +36,7 @@ in
       home.packages = with pkgs; [
         opencode
         codex
-        claude-code
+        # claude-code
       ];
 
       home.file."${config.home.homeDirectory}/.config/opencode" = {

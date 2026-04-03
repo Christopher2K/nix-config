@@ -37,14 +37,13 @@
 
     # Create a hybrid Home Manager module that applies platform-specific config.
     # Usage:
-    #   flake.modules.homeManager.foo = helpers.mkHybrid "foo" {
+    #   flake.modules.homeManager.foo = helpers.mkHybrid {
     #     common = { pkgs, config, ... }: { ... };   # applied on all platforms
     #     linux  = { pkgs, config, ... }: { ... };   # applied on Linux only
     #     darwin = { pkgs, config, ... }: { ... };   # applied on macOS only
     #   };
     # Any of common/linux/darwin may be omitted or set to null.
     mkHybrid =
-      _name:
       {
         linux ? null,
         darwin ? null,

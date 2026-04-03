@@ -21,7 +21,7 @@ in
       };
     };
 
-  flake.modules.homeManager.security = helpers.mkHybrid "security" {
+  flake.modules.homeManager.security = helpers.mkHybrid {
     common =
       { pkgs, ... }:
       {
