@@ -50,17 +50,33 @@
         common ? null,
       }:
       # This is a valid Home Manager module function. HM calls it with full args.
-      {
-        pkgs ? null,
-        lib,
-        ...
-      }:
+      # Each platform sub-module is wrapped so that:
+      #   - its `imports` are always included (they only declare options, not config)
+      #   - all other config attrs are gated behind lib.mkIf for the correct platform
+      { lib, ... }:
       let
-        isDarwin = if pkgs != null then pkgs.stdenv.hostPlatform.isDarwin else false;
-        platformMod = if isDarwin then darwin else linux;
+        # Build a wrapper module for `mod` that activates only when `isDarwin` matches
+        # `forDarwin`. `imports` from the sub-module are passed through unconditionally
+        # so that any options they declare are available on all platforms.
+        wrapPlatform =
+          forDarwin: mod:
+          { pkgs, lib, ... }@args:
+          let
+            isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+            result = if lib.isFunction mod then mod args else mod;
+            subImports = result.imports or [ ];
+            rest = builtins.removeAttrs result [ "imports" ];
+          in
+          {
+            imports = subImports;
+          }
+          // lib.mkIf (isDarwin == forDarwin) rest;
       in
       {
-        imports = lib.optional (common != null) common ++ lib.optional (platformMod != null) platformMod;
+        imports =
+          lib.optional (common != null) common
+          ++ lib.optional (linux != null) (wrapPlatform false linux)
+          ++ lib.optional (darwin != null) (wrapPlatform true darwin);
       };
   };
 }
