@@ -6,7 +6,7 @@ let
   helpers = config.flake.helpers;
 in
 {
-  flake.darwinConfigurations.macbook = inputs.nix-darwin.lib.darwinSystem {
+  flake.darwinConfigurations.macbook-cookunity = inputs.nix-darwin.lib.darwinSystem {
     modules = [
       inputs.nix-homebrew.darwinModules.nix-homebrew
 
@@ -15,13 +15,11 @@ in
       darwin.coding
       darwin.communication
       darwin.design
-      darwin.desktop-shell
       darwin.homebrew
       darwin.launcher
-      darwin.macbookConfiguration
-      darwin.productivity
+      darwin.macbookConfiguration # Same as personal macbook
+      darwin.productivity-cookunity
       darwin.security
-      darwin.streaming
       darwin.terminal
       darwin.theme
 
@@ -38,12 +36,18 @@ in
             hm.coding
             hm.communication
             hm.security
-            hm.streaming
+            hm.streaming-cookunity
             hm.terminal
             hm.theme
             hm.window-manager
           ];
         };
+      }
+      {
+        homebrew.brews = [
+          "tuple"
+          "linear-linear"
+        ];
       }
     ];
   };

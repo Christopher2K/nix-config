@@ -2,6 +2,7 @@
 let
   nixos = config.flake.modules.nixos;
   hm = config.flake.modules.homeManager;
+  username = config.flake.username;
 in
 {
   flake.nixosConfigurations.nixbook = inputs.nixpkgs.lib.nixosSystem {
@@ -27,7 +28,7 @@ in
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users.${config.flake.username} = {
+        home-manager.users.${username} = {
           imports = [
             hm.christopher
             hm.ai
@@ -42,6 +43,7 @@ in
             hm.launcher
             hm.security
             hm.sound
+            hm.streaming
             hm.terminal
             hm.theme
             hm.window-manager

@@ -3,6 +3,12 @@ let
   username = config.flake.username;
 in
 {
+  flake.modules.darwin.desktop-shell = {
+    homebrew.casks = [
+      "switchresx"
+    ];
+  };
+
   flake.modules.homeManager.desktop-shell =
     { pkgs, config, ... }:
     {
