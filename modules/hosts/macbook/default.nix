@@ -52,6 +52,7 @@ in
       darwin.macbookConfiguration
       darwin.security
       darwin.terminal
+      darwin.theme
 
       inputs.home-manager.darwinModules.home-manager
       {
@@ -67,6 +68,7 @@ in
             hm.communication
             hm.security
             hm.terminal
+            hm.theme
             hm.window-manager
           ];
         };
