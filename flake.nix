@@ -1,102 +1,64 @@
 {
-  description = "Christopher's systems configurations";
-
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    nix-darwin.url = "github:nix-darwin/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
     };
+
     homebrew-cask = {
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    niri.url = "github:sodiboo/niri-flake/97876f35dcd5";
-    vicinae.url = "github:vicinaehq/vicinae";
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    astal.url = "github:aylur/astal";
-    ags.url = "github:aylur/ags";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    import-tree.url = "github:vic/import-tree";
+
+    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    niri.url = "github:sodiboo/niri-flake";
+    niri.inputs.nixpkgs.follows = "nixpkgs";
+
+    niri-scratchpad.url = "github:gvolpe/niri-scratchpad";
+    niri-scratchpad.inputs.nixpkgs.follows = "nixpkgs";
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    tree-sitter.url = "github:tree-sitter/tree-sitter";
+    tree-sitter.inputs.nixpkgs.follows = "nixpkgs";
+
     opencode.url = "github:sst/opencode";
-    sqlit = {
-      url = "github:maxteabag/sqlit";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    helium.url = "github:schembriaiden/helium-browser-nix-flake";
+    helium.inputs.nixpkgs.follows = "nixpkgs";
+
+    vicinae.url = "github:vicinaehq/vicinae";
+
+    stylix.url = "github:nix-community/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+
     zjstatus.url = "github:dj95/zjstatus";
-    devenv = {
-      url = "github:cachix/devenv";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    devenv.url = "github:cachix/devenv";
+    devenv.inputs.nixpkgs.follows = "nixpkgs";
+
+    sqlit.url = "github:maxteabag/sqlit";
+    sqlit.inputs.nixpkgs.follows = "nixpkgs";
+
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia.inputs.nixpkgs.follows = "nixpkgs";
+
+    proton-cachyos.url = "github:powerofthe69/proton-cachyos-nix";
   };
 
-  outputs =
-    { ... }@inputs:
-    let
-      username = "christopher";
-      razerKeyboardSerial = "BY2516N73300445";
-
-      commonSpecialArgs = {
-        inherit
-          inputs
-          username
-          razerKeyboardSerial
-          ;
-      };
-
-      mkDarwin =
-        hostname:
-        inputs.nix-darwin.lib.darwinSystem {
-          specialArgs = commonSpecialArgs // {
-            inherit hostname;
-          };
-          modules = [
-            inputs.nix-homebrew.darwinModules.nix-homebrew
-            inputs.home-manager.darwinModules.home-manager
-            ./modules/common.nix
-            ./modules/darwin/common.nix
-            ./hosts/${hostname}
-            ./home-manager
-          ];
-        };
-
-      mkNixos =
-        hostname:
-        inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = commonSpecialArgs // {
-            inherit hostname;
-          };
-          modules = [
-            inputs.home-manager.nixosModules.home-manager
-            ./modules/common.nix
-            ./modules/nixos/common.nix
-            ./hosts/${hostname}
-            ./home-manager
-          ];
-        };
-    in
-    {
-      darwinConfigurations = {
-        "chris-macbook" = mkDarwin "macbook-personal";
-        "CookUnityLaptop" = mkDarwin "macbook-work";
-      };
-      nixosConfigurations = {
-        "razer-nix" = mkNixos "laptop";
-      };
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }

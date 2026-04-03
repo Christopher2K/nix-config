@@ -1,0 +1,48 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "chrome-devtools": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--executable-path=/etc/profiles/per-user/christopher/bin/chromium",
+      ]
+    },
+    "tanstack": {
+      "enabled": true,
+      "type": "local",
+      "command": ["npx", "@tanstack/cli", "mcp"],
+    },
+    "lucid": {
+      "enabled": false,
+      "type": "local",
+      "command": ["npx", "-y", "mcp-remote", "https://mcp.lucid.app/mcp"]
+    },
+    "github": {
+      "enabled": true ,
+      "oauth": false,
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer {env:GITHUB_TOKEN}"
+      }
+    },
+    "pencil": {
+      "enabled": true,
+      "type": "local",
+      "command": ["/Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64", "--app","desktop"],
+    },
+  },
+  "plugin": [],
+  "provider": {
+    "anthropic": {
+      "options": {}
+    },
+    "openrouter": {
+      "models": {}
+    }
+  }
+}
