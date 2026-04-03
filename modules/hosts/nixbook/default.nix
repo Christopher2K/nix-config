@@ -41,6 +41,7 @@ in
             hm.gaming
             hm.gnome-apps
             hm.launcher
+            hm.monitor-config
             hm.notes
             hm.security
             hm.sound
