@@ -16,11 +16,9 @@ let
     "obsidian"
     "proton-drive"
     "screen-studio"
-    "signal"
     "sketch"
     "transmission"
     "virtualbuddy"
-    "whatsapp"
   ];
 
   # Work MacBook (CookUnity) casks
@@ -33,12 +31,9 @@ let
     "figma"
     "insta360-link-controller"
     "linear-linear"
-    "loopback"
     "notion"
     "obsidian"
     "proton-drive"
-    "signal"
-    "slack"
     "switchresx"
     "tuple"
   ];
@@ -51,9 +46,12 @@ in
       # system-level configuration
       darwin.ai
       darwin.coding
+      darwin.communication
       darwin.homebrew
       darwin.launcher
-      darwin.system
+      darwin.macbookConfiguration
+      darwin.security
+      darwin.terminal
 
       inputs.home-manager.darwinModules.home-manager
       {
@@ -68,6 +66,7 @@ in
             hm.coding
             hm.communication
             hm.security
+            hm.terminal
             hm.window-manager
           ];
         };

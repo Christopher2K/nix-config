@@ -2,6 +2,11 @@
 let
   username = config.flake.username;
   helpers = config.flake.helpers;
+  overlays = [
+    (final: prev: {
+      zjstatus = inputs.zjstatus.packages.${prev.stdenv.hostPlatform.system}.default;
+    })
+  ];
 in
 {
   flake.modules.nixos.terminal =
@@ -11,12 +16,12 @@ in
       programs.zsh.enable = true;
       users.users.${username}.shell = pkgs.zsh;
 
-      nixpkgs.overlays = [
-        (final: prev: {
-          zjstatus = inputs.zjstatus.packages.${prev.stdenv.hostPlatform.system}.default;
-        })
-      ];
+      nixpkgs.overlays = overlays;
     };
+
+  flake.modules.darwin.terminal = {
+    nixpkgs.overlays = overlays;
+  };
 
   flake.modules.homeManager.terminal =
     {

@@ -21,6 +21,14 @@ in
       };
     };
 
+  flake.modules.darwin.security = {
+    security.pam.services.sudo_local = {
+      enable = true;
+      reattach = true;
+      touchIdAuth = true;
+    };
+  };
+
   flake.modules.homeManager.security = helpers.mkHybrid {
     common =
       { pkgs, ... }:
