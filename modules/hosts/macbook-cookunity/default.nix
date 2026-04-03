@@ -17,7 +17,7 @@ in
       darwin.design
       darwin.homebrew
       darwin.launcher
-      darwin.macbookConfiguration # Same as personal macbook
+      darwin.macbookCookUnityConfiguration
       darwin.productivity-cookunity
       darwin.security
       darwin.terminal
