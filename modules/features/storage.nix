@@ -1,5 +1,5 @@
 {
-  flakes.modules.darwin.storage = {
+  flake.modules.darwin.storage = {
     homebrew.cask = [
       "cyberduck"
       "daisy-disk"
