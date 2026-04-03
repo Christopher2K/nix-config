@@ -48,13 +48,13 @@ in
 
     homebrew.brews = [
       "xcodegen"
-      "localcan"
       "libyaml"
     ];
 
     homebrew.casks = [
       "android-studio"
       "ungoogled-chromium"
+      "localcan"
       "xcodes"
     ];
   };
