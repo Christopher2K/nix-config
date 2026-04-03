@@ -20,6 +20,7 @@ in
       darwin.macbookCookUnityConfiguration
       darwin.productivity-cookunity
       darwin.security
+      darwin.streaming-cookunity
       darwin.terminal
       darwin.theme
 
@@ -37,7 +38,6 @@ in
             hm.communication
             hm.notes
             hm.security
-            hm.streaming-cookunity
             hm.terminal
             hm.theme
             hm.window-manager
