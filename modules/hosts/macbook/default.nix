@@ -7,14 +7,10 @@ let
 
   # Personal MacBook casks
   macbookCasks = [
-    "1password"
-    "android-studio"
     "cleanshot"
     "cyberduck"
     "daisydisk"
-    "discord"
     "figma"
-    "intellij-idea-ce"
     "notion"
     "obs"
     "obsidian"
@@ -24,28 +20,20 @@ let
     "signal"
     "sketch"
     "transmission"
-    "ungoogled-chromium"
     "virtualbuddy"
     "whatsapp"
-    "xcodes"
-    "zed"
   ];
 
   # Work MacBook (CookUnity) casks
   macbookCookunityCasks = [
-    "1password"
-    "android-studio"
     "bezel"
     "cap"
     "cleanshot"
     "elgato-capture-device-utility"
     "elgato-stream-deck"
     "figma"
-    "helium-browser"
     "insta360-link-controller"
-    "intellij-idea-ce"
     "linear-linear"
-    "localcan"
     "loopback"
     "notion"
     "obsidian"
@@ -55,11 +43,6 @@ let
     "slack"
     "switchresx"
     "tuple"
-    "ungoogled-chromium"
-    "xcodes"
-    "zed"
-    "libyaml"
-    "xcodes"
   ];
 in
 {
@@ -69,6 +52,7 @@ in
 
       # system-level configuration
       darwin.ai
+      darwin.coding
       darwin.homebrew
       darwin.system
 
@@ -81,6 +65,9 @@ in
             hm.ai
             hm.browser
             hm.christopher
+            hm.cli-tooling
+            hm.coding
+            hm.communication
             hm.darwinPackages
             hm.security
             hm.window-manager
