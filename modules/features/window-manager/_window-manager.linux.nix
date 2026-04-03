@@ -107,11 +107,26 @@
       };
 
       workspaces = {
-        "01-main".name = "main";
-        "02-secondary".name = "secondary";
-        "03-stream".name = "stream";
-        "04-misc".name = "misc";
-        "05-scratch".name = "scratch";
+        "01-main" = {
+          name = "main";
+          open-on-output = "HDMI-A-1";
+        };
+        "02-secondary" = {
+          name = "secondary";
+          open-on-output = "HDMI-A-1";
+        };
+        "03-stream" = {
+          name = "stream";
+          open-on-output = "eDP-1";
+        };
+        "04-misc" = {
+          name = "misc";
+          open-on-output = "eDP-1";
+        };
+        "05-scratch" = {
+          name = "scratch";
+          open-on-output = "HDMI-A-1";
+        };
       };
 
       # Hotkey overlay
