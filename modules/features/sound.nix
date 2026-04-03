@@ -1,4 +1,10 @@
 {
+  flake.modules.darwin.sound = {
+    home.brews = [
+      "loopback"
+    ];
+  };
+
   flake.modules.nixos.sound =
     { pkgs, ... }:
     {
