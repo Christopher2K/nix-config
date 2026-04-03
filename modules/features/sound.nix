@@ -38,22 +38,131 @@
         ];
       };
 
-      # WirePlumber restores saved ALSA state on boot that soft-mixer
+      # Force pro-audio profile on both RODECaster Duo cards so that
+      # WirePlumber creates all three stream pairs (main, chat, secondary).
+      services.pipewire.wireplumber.extraConfig."52-rodecaster-profile" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              { "device.name" = "alsa_card.usb-R__DE_RODECaster_Duo_IR0008380-00"; }
+              { "device.name" = "alsa_card.usb-R__DE_R__DECaster_Duo-00"; }
+            ];
+            actions = {
+              update-props = {
+                "device.profile" = "pro-audio";
+              };
+            };
+          }
+        ];
+      };
+
+      # Rodecaster for wireplumber
+      services.pipewire.wireplumber.extraConfig."53-rodecaster-rename" = {
+        "monitor.alsa.rules" = [
+          # Outputs
+          {
+            matches = [ { "node.name" = "alsa_output.usb-R__DE_R__DECaster_Duo-00.pro-output-0"; } ];
+            actions = {
+              update-props = {
+                "node.description" = "Rodecaster Secondary Output";
+              };
+            };
+          }
+          {
+            matches = [ { "node.name" = "alsa_output.usb-R__DE_RODECaster_Duo_IR0008380-00.pro-output-0"; } ];
+            actions = {
+              update-props = {
+                "node.description" = "Rodecaster Chat Output";
+              };
+            };
+          }
+          {
+            matches = [ { "node.name" = "alsa_output.usb-R__DE_RODECaster_Duo_IR0008380-00.pro-output-1"; } ];
+            actions = {
+              update-props = {
+                "node.description" = "Rodecaster Main Output";
+              };
+            };
+          }
+
+          # Inputs
+          {
+            matches = [ { "node.name" = "alsa_input.usb-R__DE_R__DECaster_Duo-00.pro-input-0"; } ];
+            actions = {
+              update-props = {
+                "node.description" = "Rodecaster Secondary Input";
+              };
+            };
+          }
+          {
+            matches = [ { "node.name" = "alsa_input.usb-R__DE_RODECaster_Duo_IR0008380-00.pro-input-0"; } ];
+            actions = {
+              update-props = {
+                "node.description" = "Rodecaster Chat Input";
+              };
+            };
+          }
+          {
+            matches = [ { "node.name" = "alsa_input.usb-R__DE_RODECaster_Duo_IR0008380-00.pro-input-1"; } ];
+            actions = {
+              update-props = {
+                "node.description" = "Rodecaster Main Input";
+              };
+            };
+          }
+        ];
+      };
+
+      # WirePlumber restores saved ALSA state on boot/resume that soft-mixer
       # won't override. Pin hardware mixer to nominal levels.
-      systemd.services.fix-cs35l56-mixer = {
+      # Must be a user service: pipewire/wireplumber run in the user session.
+      # after = wireplumber.service ensures we run after WirePlumber has
+      # finished restoring its own state, eliminating the old sleep 2 race.
+      systemd.user.services.fix-cs35l56-mixer = {
         description = "Pin ALSA hardware mixer for CS35L56 soft-mixer";
-        after = [ "sound.target" ];
-        wantedBy = [ "multi-user.target" ];
+        after = [
+          "pipewire.service"
+          "wireplumber.service"
+        ];
+        wants = [
+          "pipewire.service"
+          "wireplumber.service"
+        ];
+        wantedBy = [ "default.target" ];
         serviceConfig = {
           Type = "oneshot";
           RemainAfterExit = true;
           ExecStart = toString (
             pkgs.writeShellScript "fix-cs35l56-mixer" ''
-              sleep 2
               ${pkgs.alsa-utils}/bin/amixer -c 2 cset numid=25 on
               ${pkgs.alsa-utils}/bin/amixer -c 2 cset numid=24 87
               ${pkgs.alsa-utils}/bin/amixer -c 2 cset numid=21 on,on
               ${pkgs.alsa-utils}/bin/amixer -c 2 cset numid=20 41,41
+            ''
+          );
+        };
+      };
+
+      # Re-pin mixer levels after resume from suspend.
+      # System-level service runs as root after sleep.target and uses
+      # machinectl/loginctl to restart the user unit in the active session.
+      systemd.services.fix-cs35l56-mixer-resume = {
+        description = "Re-pin ALSA hardware mixer for CS35L56 after resume";
+        after = [
+          "suspend.target"
+          "hibernate.target"
+          "hybrid-sleep.target"
+        ];
+        wantedBy = [
+          "suspend.target"
+          "hibernate.target"
+          "hybrid-sleep.target"
+        ];
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = toString (
+            pkgs.writeShellScript "fix-cs35l56-mixer-resume" ''
+              ${pkgs.systemd}/bin/systemctl --user -M 1000@ restart fix-cs35l56-mixer.service
             ''
           );
         };
