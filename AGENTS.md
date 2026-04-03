@@ -13,13 +13,15 @@ under `modules/`.
 flake.nix                  # Entrypoint: delegates to flake-parts via import-tree
 modules/
   flake-modules.nix        # Imports flake-parts and home-manager flake modules
-  helpers.nix              # Shared utilities (mkAssetsPath, etc.) and flake-level options
-  parts.nix                # Empty placeholder for additional flake-parts config
-  features/                # Feature modules (ai, browser, coding, terminal, theme, …)
-  hosts/                   # Per-host NixOS configurations
-    nixbook/               # Main Linux host (NixOS)
-    macbook/               # Personal macOS host (nix-darwin, stub)
-    macbook-cookunity/     # Work macOS host (nix-darwin, stub)
+  helpers.nix              # Shared utilities (mkAssetsPath, mkHybrid, etc.) and flake-level options
+  features/                # Feature modules (ai, browser, cli-tooling, coding, communication,
+                           #   design, desktop-shell, gaming, gnome-apps, graphics, homebrew,
+                           #   launcher, mise-fixes, productivity, security, sound, splashscreen,
+                           #   storage, streaming, terminal, theme, window-manager, …)
+  hosts/                   # Per-host configurations
+    nixbook/               # Main Linux host (NixOS, x86_64-linux)
+    macbook/               # Personal macOS host (nix-darwin, aarch64-darwin)
+    macbook-cookunity/     # Work macOS host (nix-darwin, aarch64-darwin)
   users/
     christopher.nix        # Home Manager base user config
 assets/                    # Static files symlinked into $HOME (nvim config, scripts, wallpapers, …)
@@ -154,11 +156,17 @@ Not every feature needs all three; omit namespaces that don't apply.
   ```
 
 ### String Interpolation & Paths
-- Use `helpers.mkAssetsPath "/subpath"` to reference files under `assets/`.
-- Use `helpers.mkConfigPath config "/subpath"` for `~/.config/` paths.
-- Use `helpers.mkHomePath config "/subpath"` for `~/` paths.
+- Use `helpers.mkAssetsPath "/subpath"` to reference files under `assets/` as a **Nix store path**
+  (evaluated at build time).
+- Use `helpers.mkAssetsStringPath hmConfig "/subpath"` to reference `assets/` files as a **string
+  path** (`~/NixConfig/assets/<path>`) — use this for live symlinks that must not enter the store.
+- Use `helpers.mkConfigPath hmConfig "/subpath"` for `~/.config/` paths.
+- Use `helpers.mkHomePath hmConfig "/subpath"` for `~/` paths.
 - Prefer `config.lib.file.mkOutOfStoreSymlink` for mutable/live-edited assets (e.g., the Neovim
   config) so changes don't require a rebuild.
+- Use `helpers.mkHybrid { linux? darwin? common? }` to create a Home Manager module that
+  conditionally applies config per platform — `common` is always included, `linux`/`darwin` are
+  guarded with `lib.mkIf` for the matching platform.
 
 ### Naming Conventions
 - Feature module names match their filename without extension (e.g., `cli-tooling`, `window-manager`).
@@ -182,23 +190,6 @@ Not every feature needs all three; omit namespaces that don't apply.
 - Use `#` inline comments to explain non-obvious choices (e.g., workaround links, performance
   rationale).
 - Section headers use a blank line above and a short `# Section title` comment.
-
----
-
-## Key Inputs & Their Roles
-
-| Input | Purpose |
-|---|---|
-| `nixpkgs` | nixos-unstable package set |
-| `flake-parts` | Modular flake output composition |
-| `import-tree` | Auto-import all `.nix` files under `modules/` |
-| `home-manager` | User-level dotfile/package management |
-| `stylix` | Unified theming (base16/gruvbox-light) |
-| `niri` | Wayland compositor |
-| `neovim-nightly-overlay` | Latest Neovim build |
-| `devenv` | Per-project dev shell environments |
-| `mise` | Runtime version manager (replaces asdf) |
-| `zjstatus` | Zellij status bar plugin |
 
 ---
 

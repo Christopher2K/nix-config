@@ -54,7 +54,6 @@ NixConfig/
 ├── modules/                         # All Nix configuration logic (auto-imported by import-tree)
 │   ├── flake-modules.nix            # Registers flake-parts + home-manager flake modules
 │   ├── helpers.nix                  # Global options: username, supported systems, path helpers
-│   ├── parts.nix                    # Placeholder for future flake-parts options
 │   ├── features/                    # Feature modules — one file per capability
 │   ├── hosts/
 │   │   ├── nixbook/                 # Primary Linux host (fully configured)
@@ -62,9 +61,11 @@ NixConfig/
 │   │   │   ├── configuration.nix    # Boot, networking, display manager, users, locale
 │   │   │   └── hardware-configuration.nix  # LUKS, GPU (AMD+Nvidia PRIME), Bluetooth
 │   │   ├── macbook/
-│   │   │   └── default.nix          # Personal macOS host (stub)
+│   │   │   ├── default.nix          # Personal macOS host (nix-darwin + Homebrew)
+│   │   │   └── configuration.nix    # macOS system settings, apps, Homebrew config
 │   │   └── macbook-cookunity/
-│   │       └── default.nix          # Work macOS host (stub)
+│   │       ├── default.nix          # Work macOS host (nix-darwin + Homebrew)
+│   │       └── configuration.nix    # macOS system settings, apps, Homebrew config
 │   └── users/
 │       └── christopher.nix          # Minimal Home Manager base: username + stateVersion
 └── assets/                          # Static files symlinked into $HOME at activation time
@@ -75,10 +76,12 @@ NixConfig/
 | Decision | Rationale |
 |---|---|
 | `config.flake.username` | Username is declared once in `helpers.nix`, never hardcoded elsewhere |
-| `helpers.mk*Path` functions | All file paths go through helpers; no raw string paths scattered around |
+| `helpers.mkAssetsPath` | Returns a Nix store path to `assets/<path>` — used at eval time |
+| `helpers.mkAssetsStringPath` | Returns a string `~/NixConfig/assets/<path>` — used for live symlinks that must not enter the store |
+| `helpers.mkConfigPath` / `mkHomePath` | All `~/.config/` and `~/` paths go through helpers; no raw string paths scattered around |
+| `helpers.mkHybrid` | Wraps a Home Manager module to conditionally apply config per platform (Linux vs. macOS) |
 | `mkOutOfStoreSymlink` for `assets/nvim/` | Neovim config edits take effect immediately without a rebuild |
 | Proton Pass secret pipeline | `env.template` + `secure-env-refresh.sh` + systemd service — secrets never touch the Nix store |
-| `pkgs.stdenv.isDarwin` guards | The same Home Manager module works on both Linux and macOS |
 
 ---
 
@@ -87,8 +90,8 @@ NixConfig/
 | Host | Platform | Status | Description |
 |---|---|---|---|
 | `nixbook` | `x86_64-linux` | Active | Main desktop — AMD+Nvidia PRIME, LUKS, Niri, SDDM |
-| `macbook` | `aarch64-darwin` | Stub | Personal MacBook (not yet configured) |
-| `macbook-cookunity` | `aarch64-darwin` | Stub | Work MacBook (not yet configured) |
+| `macbook` | `aarch64-darwin` | Active | Personal MacBook — nix-darwin + Homebrew |
+| `macbook-cookunity` | `aarch64-darwin` | Active | Work MacBook — nix-darwin + Homebrew |
 
 ---
 
