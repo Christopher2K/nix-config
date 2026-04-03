@@ -134,10 +134,14 @@
           RemainAfterExit = true;
           ExecStart = toString (
             pkgs.writeShellScript "fix-cs35l56-mixer" ''
-              ${pkgs.alsa-utils}/bin/amixer -c 2 cset numid=25 on
-              ${pkgs.alsa-utils}/bin/amixer -c 2 cset numid=24 87
-              ${pkgs.alsa-utils}/bin/amixer -c 2 cset numid=21 on,on
-              ${pkgs.alsa-utils}/bin/amixer -c 2 cset numid=20 41,41
+              # Resolve card index from stable PCI address to avoid
+              # enumeration-order races with USB devices.
+              card=$(basename /sys/bus/pci/devices/0000:65:00.6/sound/card*)
+              idx=''${card#card}
+              ${pkgs.alsa-utils}/bin/amixer -c "$idx" cset name='Master Playback Switch' on
+              ${pkgs.alsa-utils}/bin/amixer -c "$idx" cset name='Master Playback Volume' 87
+              ${pkgs.alsa-utils}/bin/amixer -c "$idx" cset name='Capture Switch' on,on
+              ${pkgs.alsa-utils}/bin/amixer -c "$idx" cset name='Capture Volume' 41,41
             ''
           );
         };
