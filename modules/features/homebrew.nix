@@ -16,16 +16,16 @@ in
         enableRosetta = false;
         mutableTaps = false;
         user = username;
-        # taps = {
-        #   "homebrew/homebrew-core" = inputs.homebrew-core;
-        #   "homebrew/homebrew-cask" = inputs.homebrew-cask;
-        # };
+        taps = {
+          "homebrew/homebrew-core" = inputs.homebrew-core;
+          "homebrew/homebrew-cask" = inputs.homebrew-cask;
+        };
       };
 
       homebrew = {
         enable = true;
         onActivation.cleanup = "uninstall";
-        # taps = builtins.attrNames config.nix-homebrew.taps;
+        taps = builtins.attrNames config.nix-homebrew.taps;
       };
     };
 }
