@@ -79,6 +79,7 @@ in
         home-manager.users.${username} = {
           imports = [
             hm.ai
+            hm.browser
             hm.christopher
             hm.darwinPackages
             hm.security
