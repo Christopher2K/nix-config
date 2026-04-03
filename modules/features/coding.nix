@@ -55,7 +55,7 @@ in
     homebrew.casks = [
       "android-studio"
       "ungoogled-chromium"
-      "xcodes-apps"
+      "xcodes"
     ];
   };
 
