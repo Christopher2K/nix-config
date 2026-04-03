@@ -35,6 +35,7 @@ in
             hm.cli-tooling
             hm.coding
             hm.communication
+            hm.notes
             hm.security
             hm.streaming-cookunity
             hm.terminal
