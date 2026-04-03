@@ -12,6 +12,15 @@ in
     linux =
       { pkgs, ... }:
       let
+        niri-reorder-workspaces = pkgs.writeShellScriptBin "niri-reorder-workspaces" ''
+          set -euo pipefail
+          sleep 1
+          ${pkgs.niri}/bin/niri msg action move-workspace-to-index --reference stream 1
+          ${pkgs.niri}/bin/niri msg action move-workspace-to-index --reference misc 2
+          ${pkgs.niri}/bin/niri msg action move-workspace-to-index --reference main 3
+          ${pkgs.niri}/bin/niri msg action move-workspace-to-index --reference secondary 4
+          ${pkgs.niri}/bin/niri msg action move-workspace-to-index --reference scratch 5
+        '';
         get-output-by-description = pkgs.writeShellScriptBin "get-output-by-description" ''
           set -euo pipefail
 
@@ -45,6 +54,7 @@ in
         home.packages = with pkgs; [
           wl-mirror
           get-output-by-description
+          niri-reorder-workspaces
         ];
 
         services.kanshi = {
@@ -53,7 +63,10 @@ in
           settings = [
             {
               profile.name = "undocked";
-              profile.exec = base-command;
+              profile.exec = [
+                base-command
+                "${niri-reorder-workspaces}/bin/niri-reorder-workspaces"
+              ];
               profile.outputs = [
                 {
                   criteria = monitors.builtin-laptop;
