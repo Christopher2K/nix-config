@@ -3,11 +3,6 @@ let
   username = config.flake.username;
 in
 {
-  flake.modules.nixos.desktop-shell =
-    { pkgs, ... }:
-    {
-    };
-
   flake.modules.homeManager.desktop-shell =
     { pkgs, config, ... }:
     {

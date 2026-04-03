@@ -15,7 +15,6 @@ let
     "obs"
     "obsidian"
     "proton-drive"
-    "raycast"
     "screen-studio"
     "signal"
     "sketch"
@@ -38,7 +37,6 @@ let
     "notion"
     "obsidian"
     "proton-drive"
-    "raycast"
     "signal"
     "slack"
     "switchresx"
@@ -54,6 +52,7 @@ in
       darwin.ai
       darwin.coding
       darwin.homebrew
+      darwin.launcher
       darwin.system
 
       inputs.home-manager.darwinModules.home-manager
@@ -68,7 +67,6 @@ in
             hm.cli-tooling
             hm.coding
             hm.communication
-            hm.darwinPackages
             hm.security
             hm.window-manager
           ];

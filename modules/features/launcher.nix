@@ -1,4 +1,7 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
+let
+  helpers = config.flake.helpers;
+in
 {
   flake.modules.nixos.launcher = {
     nixpkgs.overlays = [
@@ -6,27 +9,35 @@
     ];
   };
 
-  flake.modules.homeManager.launcher =
-    { pkgs, ... }:
-    {
-      imports = [
-        inputs.vicinae.homeManagerModules.default
-      ];
+  flake.modules.darwin.launcher = {
+    homebrew.casks = [
+      "raycast"
+    ];
+  };
 
-      services.vicinae = {
-        enable = true;
-        systemd = {
+  flake.modules.homeManager.launcher = helpers.mkHybrid {
+    linux =
+      { pkgs, ... }:
+      {
+        imports = [
+          inputs.vicinae.homeManagerModules.default
+        ];
+
+        services.vicinae = {
           enable = true;
-          autoStart = true;
-          environment = {
-            USE_LAYER_SHELL = 1;
+          systemd = {
+            enable = true;
+            autoStart = true;
+            environment = {
+              USE_LAYER_SHELL = 1;
+            };
           };
-        };
-        settings = {
-          font = {
-            size = 11;
+          settings = {
+            font = {
+              size = 11;
+            };
           };
         };
       };
-    };
+  };
 }
