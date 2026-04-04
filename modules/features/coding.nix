@@ -1,5 +1,6 @@
 { inputs, config, ... }:
 let
+  username = config.flake.username;
   helpers = config.flake.helpers;
   overlays = [
     inputs.neovim-nightly-overlay.overlays.default
@@ -41,6 +42,12 @@ in
         libxml2
         zstd
       ];
+
+      users.users.${username}.extraGroups = [ "kvm" ];
+      environment.systemPackages = with pkgs; [
+        jetbrains.idea
+      ];
+      nixpkgs.config.android_sdk.accept_license = true;
     };
 
   flake.modules.darwin.coding = {
@@ -157,7 +164,6 @@ in
       { pkgs, ... }:
       {
         home.packages = with pkgs; [
-          android-studio
           ungoogled-chromium # for MCP and stuff
         ];
       };
