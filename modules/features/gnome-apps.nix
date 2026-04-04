@@ -3,6 +3,10 @@
     { ... }:
     {
       services.gvfs.enable = true;
+      programs.appimage = {
+        enable = true;
+        binfmt = true;
+      };
     };
 
   flake.modules.homeManager.gnome-apps =
