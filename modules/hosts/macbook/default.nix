@@ -24,6 +24,7 @@ in
       darwin.streaming
       darwin.terminal
       darwin.theme
+      darwin.window-manager
 
       inputs.home-manager.darwinModules.home-manager
       {

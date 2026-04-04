@@ -848,6 +848,22 @@
         "type": "github"
       }
     },
+    "homebrew-barutsrb-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775249972,
+        "narHash": "sha256-n6P19X1wgmefEwPk7HfU4R+B8I3+9r7MXl1J+c1DKXM=",
+        "owner": "BarutSRB",
+        "repo": "homebrew-tap",
+        "rev": "aae0ce518de67f5be36759307fdbb37cad513c6b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BarutSRB",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "homebrew-cask": {
       "flake": false,
       "locked": {
@@ -1507,6 +1523,7 @@
         "flake-parts": "flake-parts_4",
         "helium": "helium",
         "home-manager": "home-manager",
+        "homebrew-barutsrb-tap": "homebrew-barutsrb-tap",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "import-tree": "import-tree",

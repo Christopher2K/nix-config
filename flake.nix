@@ -17,6 +17,11 @@
       flake = false;
     };
 
+    homebrew-barutsrb-tap = {
+      url = "github:BarutSRB/homebrew-tap";
+      flake = false;
+    };
+
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     import-tree.url = "github:vic/import-tree";

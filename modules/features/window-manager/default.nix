@@ -35,6 +35,12 @@ in
       programs.niri.enable = true;
     };
 
+  flake.modules.darwin.window-manager =
+    { ... }:
+    {
+      homebrew.casks = [ "omniwm" ];
+    };
+
   flake.modules.homeManager.window-manager = helpers.mkHybrid {
     linux = import ./_window-manager.linux.nix { inherit inputs helpers; };
     darwin = import ./_window-manager.darwin.nix { inherit inputs helpers; };

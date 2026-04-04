@@ -2,9 +2,9 @@
 { pkgs, config, ... }:
 {
   programs.aerospace = {
-    enable = true;
-    launchd.enable = true;
-    launchd.keepAlive = true;
+    enable = false;
+    launchd.enable = false;
+    launchd.keepAlive = false;
 
     settings = {
       after-startup-command = [ "layout accordion" ];
@@ -104,7 +104,7 @@
   };
 
   services.jankyborders = {
-    enable = true;
+    enable = false;
     settings = {
       active_color = "0xfffe8019";
       inactive_color = "0x00000000";
