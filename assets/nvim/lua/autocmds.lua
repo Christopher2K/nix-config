@@ -28,14 +28,37 @@ function autocmds.init()
     end,
   })
 
-  vim.api.nvim_create_autocmd('FileType', {
-    pattern = { '<filetype>' },
-    callback = function() vim.treesitter.start() end,
-  })
-
   vim.api.nvim_create_autocmd('TermOpen', {
     pattern = "term://*toggleterm#*",
     callback = keymaps.set_terminal_keymaps
+  })
+
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = {
+      'python',
+      'javascript',
+      'typescript',
+      'javascriptreact',
+      'typescriptreact',
+      'elixir',
+      'html',
+      'css',
+      'heex',
+      'go',
+      'rust',
+      'nix',
+      'bash'
+    },
+    callback = function()
+      vim.treesitter.start()
+
+      -- Folds
+      -- vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      -- vim.wo[0][0].foldmethod = 'expr'
+
+      -- Identation
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
   })
 end
 

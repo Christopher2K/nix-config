@@ -149,10 +149,6 @@ function plugins.configure()
 
   --#region Treesitter
   local treesitter = require("nvim-treesitter")
-  treesitter.setup({
-    highlight = { enable = true },
-    indent = { enable = true },
-  })
   treesitter.install({
     "lua",
     "javascript",
@@ -177,7 +173,6 @@ function plugins.configure()
     "swift",
     "zig",
   })
-  require("nvim-ts-autotag").setup()
   local comments = require("mini.comment")
   -- local commentstring = require("ts_context_commentstring")
   comments.setup({

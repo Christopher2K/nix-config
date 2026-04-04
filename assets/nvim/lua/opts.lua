@@ -26,8 +26,6 @@ function opts.init()
   vim.opt.timeoutlen = 300 -- Used for whichkey
   vim.opt.ignorecase = true -- Case insensitive search
   vim.opt.smartcase = true
-  vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-  vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 end
 
 return opts
