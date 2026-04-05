@@ -113,7 +113,6 @@ in
               java = "openjdk-17.0.2";
               kotlin = "2.0.0";
               nodejs = "24.13.0";
-              opam = "2.2.0";
               python = "3.12.0";
               ruby = "3.2.9";
               rust = "1.75.0";
