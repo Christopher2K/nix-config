@@ -16,6 +16,9 @@
         ncurses
         openssl
         libxslt
+        bubblewrap # Needed by opam
+        mercurial
+        darcs
       ];
     };
 

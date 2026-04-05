@@ -152,21 +152,9 @@ in
                 source "$CACHE_FILE"
               fi
             '';
-            zshConfig = lib.mkOrder 1500 ''
-              # Lazy-load OPAM: only initialize when first calling opam/ocaml/dune
-              _opam_lazy_init() {
-                unfunction opam ocaml dune 2>/dev/null
-                [[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2>&1
-              }
-              opam() { _opam_lazy_init; opam "$@" }
-              ocaml() { _opam_lazy_init; ocaml "$@" }
-              dune() { _opam_lazy_init; dune "$@" }
-            '';
-
           in
           lib.mkMerge [
             zshConfigEarlyInit
-            zshConfig
           ];
       };
 
