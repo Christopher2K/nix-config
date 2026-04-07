@@ -22,7 +22,7 @@
 
     settings = {
       debug = {
-        render-drm-device = "/dev/dri/by-path/pci-0000:65:00.0-render";
+        render-drm-device = "/dev/dri/by-path/pci-0000:64:00.0-render";
         honor-xdg-activation-with-invalid-serial = true;
       };
 
