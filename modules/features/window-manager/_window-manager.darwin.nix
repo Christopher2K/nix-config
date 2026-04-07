@@ -1,6 +1,12 @@
 { inputs, helpers }:
 { pkgs, config, ... }:
 {
+
+  home.file."${helpers.mkConfigPath config "/omniwm/settings.json"}" = {
+    source = helpers.mkAssetsPath "/omniwm-settings.json";
+    force = true;
+  };
+
   programs.aerospace = {
     enable = false;
     launchd.enable = false;
@@ -104,7 +110,7 @@
   };
 
   services.jankyborders = {
-    enable = false;
+    enable = true;
     settings = {
       active_color = "0xfffe8019";
       inactive_color = "0x00000000";
