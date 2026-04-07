@@ -44,12 +44,6 @@ in
           ];
         };
       }
-      {
-        homebrew.brews = [
-          "tuple"
-          "linear-linear"
-        ];
-      }
     ];
   };
 }
