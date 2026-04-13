@@ -34,15 +34,12 @@
       boot.extraModulePackages = [ ];
 
       fileSystems."/" = {
-        device = "/dev/mapper/luks-8814e771-52e3-403d-ab17-1e04d7a8104a";
+        device = "/dev/disk/by-uuid/1e35732a-3f88-42b3-808d-2c8d6ca6793f";
         fsType = "ext4";
       };
 
-      boot.initrd.luks.devices."luks-8814e771-52e3-403d-ab17-1e04d7a8104a".device =
-        "/dev/disk/by-uuid/8814e771-52e3-403d-ab17-1e04d7a8104a";
-
       fileSystems."/boot" = {
-        device = "/dev/disk/by-uuid/57E3-3FD4";
+        device = "/dev/disk/by-uuid/A415-1A0A";
         fsType = "vfat";
         options = [
           "fmask=0077"
@@ -50,9 +47,7 @@
         ];
       };
 
-      swapDevices = [
-        { device = "/dev/mapper/luks-b38e2595-9210-48d9-8869-601e610db49e"; }
-      ];
+      swapDevices = [ ];
 
       hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
