@@ -1,7 +1,7 @@
 #!/bin/sh
 
 CACHE_FILE="$HOME/.cache/env/.env.cache"
-TEMPLATE_FILE="$HOME/.env.template"
+TEMPLATE_FILE="$HOME/.config/.env.template"
 
 # Check if Pass CLI is available
 if ! command -v pass-cli &> /dev/null; then
