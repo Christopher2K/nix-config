@@ -21,6 +21,7 @@ in
       darwin.macbookConfiguration
       darwin.productivity
       darwin.security
+      darwin.storage
       darwin.streaming
       darwin.terminal
       darwin.theme

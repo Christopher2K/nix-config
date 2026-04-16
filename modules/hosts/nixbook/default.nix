@@ -10,11 +10,11 @@ in
       # system level configuration
       nixos.ai
       nixos.coding
-      nixos.mise-fixes
       nixos.gaming
       nixos.gnome-apps
       nixos.graphics
       nixos.launcher
+      nixos.mise-fixes
       nixos.nixbookConfiguration
       nixos.security
       nixos.sound

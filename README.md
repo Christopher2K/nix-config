@@ -146,3 +146,14 @@ nix flake update nixpkgs
 ```bash
 nixfmt **/*.nix
 ```
+
+---
+
+## Tools configuration
+
+### Howdy
+
+For adding a face for howdy, run:
+```bash
+sudo howdy add
+```
