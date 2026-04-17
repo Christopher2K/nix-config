@@ -13,9 +13,6 @@ in
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
-      boot.initrd.luks.devices."luks-b38e2595-9210-48d9-8869-601e610db49e".device =
-        "/dev/disk/by-uuid/b38e2595-9210-48d9-8869-601e610db49e";
-
       networking.hostName = "nixbook";
       networking.wireless.enable = true;
       networking.networkmanager.enable = true;
