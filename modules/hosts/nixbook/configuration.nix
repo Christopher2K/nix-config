@@ -54,11 +54,17 @@ in
       };
 
       environment.systemPackages = with pkgs; [
+        appimage-run
         asusctl
         libgcc
         gcc
         gnumake
       ];
+
+      programs.appimage = {
+        enable = true;
+        binfmt = true;
+      };
 
       environment.pathsToLink = [
         "/share/applications"
