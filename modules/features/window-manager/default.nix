@@ -20,16 +20,11 @@ in
         config.common.default = "*";
       };
 
-      services.displayManager = {
-        sddm = {
-          enable = true;
-          wayland.enable = true;
-        };
-
-        autoLogin = {
-          enable = true;
-          user = username;
-        };
+      services.displayManager.dms-greeter = {
+        enable = true;
+        compositor.name = "niri";
+        package = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
+        configHome = "/home/${username}";
       };
 
       programs.niri.enable = true;

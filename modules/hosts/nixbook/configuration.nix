@@ -54,6 +54,7 @@ in
       };
 
       environment.systemPackages = with pkgs; [
+        accountsservice
         appimage-run
         asusctl
         libgcc

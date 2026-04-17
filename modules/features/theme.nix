@@ -92,7 +92,6 @@ in
         stylix.targets.gtk.enable = true;
         stylix.targets.qt.enable = true;
         stylix.targets.vicinae.enable = true;
-        stylix.targets.noctalia-shell.enable = true;
       };
 
     darwin = { };

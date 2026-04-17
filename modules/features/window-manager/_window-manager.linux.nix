@@ -34,11 +34,6 @@
       spawn-at-startup = [
         {
           command = [
-            "noctalia-shell"
-          ];
-        }
-        {
-          command = [
             "gnome-keyring-daemon"
             "--start"
             "--components=secrets,pkcs11"
@@ -175,13 +170,6 @@
         }
       ];
 
-      layer-rules = [
-        {
-          matches = [ { namespace = "^wpaperd"; } ];
-          place-within-backdrop = true;
-        }
-      ];
-
       # Keybindings
       binds = {
         # Show hotkey overlay
@@ -221,15 +209,15 @@
           action.spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
         };
 
-        "XF86MonBrightnessUp" = {
-          allow-when-locked = true;
-          action.spawn-sh = "noctalia-shell ipc call brightness increase";
-        };
+        # "XF86MonBrightnessUp" = {
+        #   allow-when-locked = true;
+        #   action.spawn-sh = "noctalia-shell ipc call brightness increase";
+        # };
 
-        "XF86MonBrightnessDown" = {
-          allow-when-locked = true;
-          action.spawn-sh = "noctalia-shell ipc call brightness decrease";
-        };
+        # "XF86MonBrightnessDown" = {
+        #   allow-when-locked = true;
+        #   action.spawn-sh = "noctalia-shell ipc call brightness decrease";
+        # };
 
         # Media controls
         "XF86AudioPlay" = {
@@ -376,15 +364,6 @@
 
         # Power off monitors
         "Mod+Shift+P".action.power-off-monitors = [ ];
-      };
-    };
-  };
-
-  services.wpaperd = {
-    enable = true;
-    settings = {
-      any = {
-        path = helpers.mkConfigPath config "/wallpapers/wallpaper-1.jpg";
       };
     };
   };

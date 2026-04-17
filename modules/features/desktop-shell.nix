@@ -1,6 +1,7 @@
 { inputs, config, ... }:
 let
   username = config.flake.username;
+  helpers = config.flake.helpers;
 in
 {
   flake.modules.darwin.desktop-shell = {
@@ -11,71 +12,77 @@ in
 
   flake.modules.homeManager.desktop-shell =
     { pkgs, config, ... }:
+    let
+      colors = config.lib.stylix.colors.withHashtag;
+      mkTheme = {
+        name = "Stylix";
+        primary = colors.base0D;
+        primaryText = colors.base00;
+        primaryContainer = colors.base0C;
+        secondary = colors.base0E;
+        surface = colors.base01;
+        surfaceText = colors.base05;
+        surfaceVariant = colors.base02;
+        surfaceVariantText = colors.base04;
+        surfaceTint = colors.base0D;
+        background = colors.base00;
+        backgroundText = colors.base05;
+        outline = colors.base03;
+        surfaceContainer = colors.base01;
+        surfaceContainerHigh = colors.base02;
+        surfaceContainerHighest = colors.base03;
+        error = colors.base08;
+        warning = colors.base0A;
+        info = colors.base0C;
+      };
+    in
     {
       imports = [
-        inputs.noctalia.homeModules.default
+        inputs.dms.homeModules.dank-material-shell
+        inputs.dms.homeModules.niri
+        inputs.dms-plugin-registry.homeModules.default
       ];
 
-      programs.noctalia-shell = {
+      programs.dank-material-shell = {
         enable = true;
+        enableSystemMonitoring = true;
+        dgop.package = inputs.dgop.packages.${pkgs.system}.default;
+
+        systemd = {
+          enable = true;
+          restartIfChanged = true;
+        };
+
+        niri.includes = {
+          enable = true;
+          override = false;
+        };
+
+        enableVPN = false;
+        enableDynamicTheming = false;
+        enableClipboardPaste = false;
+
         settings = {
-          bar = {
-            density = "comfortable";
-            position = "left";
-            showCapsule = false;
-            widgets = {
-              left = [
-                {
-                  id = "ControlCenter";
-                  useDistroLogo = true;
-                }
-                {
-                  id = "Network";
-                }
-                {
-                  id = "Bluetooth";
-                }
-                {
-                  id = "ActiveWindow";
-                }
-              ];
-              center = [
-                {
-                  hideUnoccupied = false;
-                  id = "Workspace";
-                  labelMode = "none";
-                }
-              ];
-              right = [
-                {
-                  alwaysShowPercentage = false;
-                  id = "Battery";
-                  warningThreshold = 30;
-                }
-                {
-                  formatHorizontal = "HH:mm";
-                  formatVertical = "HH mm";
-                  id = "Clock";
-                  useMonospacedFont = true;
-                  usePrimaryColor = true;
-                }
-                {
-                  id = "Tray";
-                }
-              ];
-            };
-          };
-          dock.enable = false;
-          wallpaper.enabled = false;
-          # colorSchemes is managed by stylix.targets.noctalia-shell
-          general = {
-            avatarImage = "/home/${username}/.face";
-            radiusRatio = 0.2;
-          };
-          location = {
-            monthBeforeDay = true;
-            name = "Toronto, Ontario, Canada";
-          };
+          currentThemeName = "custom";
+          customThemeFile = pkgs.writeText "dms-stylix-theme.json" (
+            builtins.toJSON {
+              dark = mkTheme;
+              light = mkTheme;
+            }
+          );
+
+          useAutoLocation = true;
+          fontFamily = config.stylix.fonts.monospace.name;
+          nightModeEnabled = false;
+          widgetOutlineEnabled = true;
+        };
+
+        session = {
+          wallpaperPath = helpers.mkConfigPath config "/wallpapers/wallpaper-1.jpg";
+        };
+
+        clipboardSettings = {
+          disabled = true;
         };
       };
     };
