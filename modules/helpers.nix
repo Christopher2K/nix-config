@@ -36,11 +36,12 @@
     mkAssetsPath = filename_or_dir: ../assets + "${filename_or_dir}";
     mkAssetsStringPath =
       hmConfig: filename_or_dir: "${hmConfig.home.homeDirectory}/NixConfig/assets/${filename_or_dir}";
-    # Get a path to the config folder
-    mkConfigPath =
-      hmConfig: filename_or_dir: "${hmConfig.home.homeDirectory}/.config/${filename_or_dir}";
-    # Get a path to the home folder
-    mkHomePath = hmConfig: filename_or_dir: "${hmConfig.home.homeDirectory}/${filename_or_dir}";
+    # Relative path under $HOME/.config suitable for use as a `home.file` key.
+    # Home Manager requires keys to be relative to $HOME, so do NOT prepend
+    # $HOME here. `filename_or_dir` may be passed with or without a leading `/`.
+    mkConfigPath = _hmConfig: filename_or_dir: ".config/" + (lib.removePrefix "/" filename_or_dir);
+    # Relative path under $HOME suitable for use as a `home.file` key.
+    mkHomePath = _hmConfig: filename_or_dir: lib.removePrefix "/" filename_or_dir;
 
     # Create a hybrid Home Manager module that applies platform-specific config.
     # Usage:

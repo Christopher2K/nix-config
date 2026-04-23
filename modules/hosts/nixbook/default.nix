@@ -8,7 +8,6 @@ in
   flake.nixosConfigurations.nixbook = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       # system level configuration
-      nixos.ai
       nixos.coding
       nixos.gaming
       nixos.gnome-apps

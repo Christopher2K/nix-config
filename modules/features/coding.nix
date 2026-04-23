@@ -62,7 +62,7 @@ in
       "android-studio"
       "ungoogled-chromium"
       "localcan"
-      "xcodes"
+      "xcodes-app"
     ];
   };
 
@@ -96,6 +96,11 @@ in
           defaultEditor = true;
           viAlias = true;
           vimAlias = true;
+          # Avoid HM writing ~/.config/nvim/init.lua (conflicts with our
+          # out-of-store symlink to assets/nvim). HM's auto-generated initLua
+          # (provider disables, plugin configs) is injected via a wrapper
+          # --cmd flag instead.
+          sideloadInitLua = true;
         };
 
         programs.mise = {
