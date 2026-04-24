@@ -11,11 +11,6 @@
         "--executable-path=/etc/profiles/per-user/christopher/bin/chromium",
       ]
     },
-    "tanstack": {
-      "enabled": true,
-      "type": "local",
-      "command": ["npx", "@tanstack/cli", "mcp"],
-    },
     "lucid": {
       "enabled": false,
       "type": "local",
@@ -30,11 +25,14 @@
         "Authorization": "Bearer {env:GITHUB_TOKEN}"
       }
     },
-    "pencil": {
-      "enabled": true,
+    "mobile-mcp": {
       "type": "local",
-      "command": ["/Applications/Pencil.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64", "--app","desktop"],
-    },
+      "command": [
+        "npx",
+        "@mobilenext/mobile-mcp@latest"
+      ],
+      "enabled": true
+    }
   },
   "plugin": [],
   "provider": {
