@@ -80,7 +80,7 @@ NixConfig/
 |---|---|
 | `config.flake.username` | Username is declared once in `helpers.nix`, never hardcoded elsewhere |
 | `helpers.mkAssetsPath` | Returns a Nix store path to `assets/<path>` — used at eval time |
-| `helpers.mkAssetsStringPath` | Returns a string `~/NixConfig/assets/<path>` — used for live symlinks that must not enter the store |
+| `helpers.mkAssetsStringPath` | Returns a string `~/nix-config/assets/<path>` — used for live symlinks that must not enter the store |
 | `helpers.mkConfigPath` / `mkHomePath` | All `~/.config/` and `~/` paths go through helpers; no raw string paths scattered around |
 | `helpers.mkHybrid` | Wraps a Home Manager module to conditionally apply config per platform (Linux vs. macOS) |
 | `mkOutOfStoreSymlink` for `assets/nvim/` | Neovim config edits take effect immediately without a rebuild |

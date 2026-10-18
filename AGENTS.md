@@ -161,7 +161,7 @@ Not every feature needs all three; omit namespaces that don't apply.
 - Use `helpers.mkAssetsPath "/subpath"` to reference files under `assets/` as a **Nix store path**
   (evaluated at build time).
 - Use `helpers.mkAssetsStringPath hmConfig "/subpath"` to reference `assets/` files as a **string
-  path** (`~/NixConfig/assets/<path>`) — use this for live symlinks that must not enter the store.
+  path** (`~/nix-config/assets/<path>`) — use this for live symlinks that must not enter the store.
 - Use `helpers.mkConfigPath hmConfig "/subpath"` for `~/.config/` paths.
 - Use `helpers.mkHomePath hmConfig "/subpath"` for `~/` paths.
 - Prefer `config.lib.file.mkOutOfStoreSymlink` for mutable/live-edited assets (e.g., the Neovim
