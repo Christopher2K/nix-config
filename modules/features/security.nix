@@ -117,19 +117,21 @@ in
           };
         };
 
-        # SSH-only logins never get a GUI session, so the launchd agent above
-        # never fires. Detect a dead agent (ssh-add exit code 2 = cannot
-        # connect), unlock the keychain (prompts once for the login password)
-        # and start the daemon from this interactive session instead.
+        # Fallback for sessions where the launchd agent never fired (SSH-only
+        # logins) or can't exist at all (headless hosts rebuilt over SSH, where
+        # the gui domain doesn't even exist). Detect a dead agent (ssh-add exit
+        # code 2 = cannot connect) and start the daemon from this interactive
+        # shell; over SSH the keychain must be unlocked first (prompts once for
+        # the login password).
         programs.zsh.initContent = ''
-          if [[ -n "$SSH_CONNECTION" ]]; then
-            ssh-add -l &>/dev/null
-            if [[ $? -eq 2 ]]; then
-              echo "🔑 Proton Pass SSH agent not running — starting it..."
-              security unlock-keychain && \
-                ${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent daemon start \
-                  --log-file "$HOME/Library/Logs/pass-cli-ssh-agent.log"
+          ssh-add -l &>/dev/null
+          if [[ $? -eq 2 ]]; then
+            echo "🔑 Proton Pass SSH agent not running — starting it..."
+            if [[ -n "$SSH_CONNECTION" ]]; then
+              security unlock-keychain
             fi
+            ${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent daemon start \
+              --log-file "$HOME/Library/Logs/pass-cli-ssh-agent.log"
           fi
         '';
       };
