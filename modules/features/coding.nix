@@ -140,7 +140,7 @@ in
       ];
     };
 
-  flake.modules.darwin.coding = {
+  flake.modules.darwin.coding = { pkgs, ... }: {
     nixpkgs.overlays = overlays;
 
     homebrew.brews = [
@@ -150,6 +150,7 @@ in
     ];
 
     homebrew.casks = [
+      "miktex-console"
       "android-studio"
       "ungoogled-chromium"
       "localcan"
