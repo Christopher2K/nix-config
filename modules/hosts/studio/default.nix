@@ -15,6 +15,7 @@ in
       darwin.launcher
       darwin.storage
       darwin.terminal
+      darwin.security
       darwin.theme
 
       darwin.studioConfiguration
@@ -31,6 +32,7 @@ in
             hm.coding
             hm.terminal
             hm.theme
+            hm.security
           ];
         };
       }
