@@ -96,6 +96,10 @@ in
       {
         launchd.agents.pass-cli-ssh-agent = {
           enable = true;
+          # Background service with no GUI dependency — use the `user` domain so
+          # bootstrap works on headless/SSH-only sessions (gui/<uid> only exists
+          # during an Aqua login). See home-manager#9629.
+          domain = "user";
           config = {
             ProgramArguments = [
               "${pkgs.proton-pass-cli}/bin/pass-cli"
