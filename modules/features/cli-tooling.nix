@@ -20,6 +20,7 @@ in
         scrcpy
         unzip
         glow
+        wget
         # watchman  # Temporarily disabled - folly fails with GCC 15.2.0
       ];
 
