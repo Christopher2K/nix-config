@@ -28,6 +28,7 @@ in
         home-manager.users.${username} = {
           imports = [
             hm.christopher
+            hm.ai
             hm.cli-tooling
             hm.coding
             hm.terminal
