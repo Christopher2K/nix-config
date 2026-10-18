@@ -46,7 +46,7 @@
     tree-sitter.url = "github:tree-sitter/tree-sitter";
     tree-sitter.inputs.nixpkgs.follows = "nixpkgs";
 
-    opencode.url = "github:sst/opencode/v1.18.30";
+    opencode.url = "github:anomalyco/opencode/v2.0.21";
 
     helium.url = "github:amaanq/helium-flake";
     helium.inputs.nixpkgs.follows = "nixpkgs";
