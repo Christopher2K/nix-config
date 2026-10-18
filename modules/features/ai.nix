@@ -15,6 +15,10 @@ in
         opencodePkg = inputs.opencode.packages.${system}.opencode;
         # v2.0.21 shipped a stale node_modules FOD hash for aarch64-darwin
         # (anomalyco/opencode nix/hashes.json); override with the correct one.
+        # Both issues are fixed upstream in v2.0.32, but that build fails with
+        # "Cannot find module '../../../script/native-arch'" — blocked on
+        # https://github.com/anomalyco/opencode/issues/55328 before upgrading
+        # and dropping this workaround.
         fixedNodeModules = opencodePkg.node_modules.overrideAttrs (_: {
           outputHash = "sha256-1Q+c4Ww1KoL7s60j9boEZkhKWYQJRxTRoPIFqOKJEeM=";
         });
