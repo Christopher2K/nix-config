@@ -56,8 +56,6 @@
     stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
-    zjstatus.url = "github:dj95/zjstatus";
-
     devenv.url = "github:cachix/devenv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
 

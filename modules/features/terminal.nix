@@ -4,7 +4,6 @@ let
   helpers = config.flake.helpers;
   overlays = [
     (final: prev: {
-      zjstatus = inputs.zjstatus.packages.${prev.stdenv.hostPlatform.system}.default;
       herdr = inputs.herdr.packages.${prev.stdenv.hostPlatform.system}.default;
     })
   ];
@@ -58,7 +57,6 @@ in
         }:
         {
           home.packages = with pkgs; [
-            zjstatus
             herdr
           ];
 
@@ -221,126 +219,6 @@ in
               };
             };
           };
-
-          programs.zellij = {
-            enable = true;
-            enableZshIntegration = false;
-            attachExistingSession = false;
-            layouts = {
-              default = {
-                layout = {
-                  _children = [
-                    {
-                      default_tab_template = {
-                        _children = [
-                          {
-                            pane = {
-                              size = 1;
-                              borderless = true;
-                              plugin = {
-                                location = "file:${pkgs.zjstatus}/bin/zjstatus.wasm";
-                                format_left = "{mode}#[fg=#7c6f64,bg=#3c3836]#[fg=#282828,bold,bg=#7c6f64] {session} #[fg=#7c6f64,bg=#3c3836]{tabs}";
-                                format_right = "#[fg=#928374,bg=#3c3836]#[fg=#282828,bold,bg=#928374] {datetime} #[fg=#928374,bg=#3c3836]";
-                                format_space = "";
-
-                                border_enabled = "false";
-                                border_char = "─";
-                                border_format = "#[fg=#928374]{char}";
-                                border_position = "top";
-
-                                hide_frame_for_single_pane = "true";
-
-                                mode_normal = "#[bg=#3c3836]";
-                                mode_tmux = "#[fg=#fe8019,bg=#3c3836]#[fg=#282828,bold,bg=#fe8019]  #[fg=#fe8019,bg=#3c3836]";
-                                mode_locked = "#[fg=#fe8019,bg=#3c3836]#[fg=#282828,bold,bg=#fe8019]  #[fg=#fe8019,bg=#3c3836]";
-                                mode_pane = "#[fg=#83a598,bg=#3c3836]#[fg=#282828,bold,bg=#83a598] PANE #[fg=#83a598,bg=#3c3836]";
-                                mode_tab = "#[fg=#fabd2f,bg=#3c3836]#[fg=#3c3836,bold,bg=#fabd2f] TAB #[fg=#fabd2f,bg=#3c3836]";
-                                mode_resize = "#[fg=#d3869b,bg=#3c3836]#[fg=#282828,bold,bg=#d3869b] RESIZE #[fg=#d3869b,bg=#3c3836]";
-                                mode_move = "#[fg=#8ec07c,bg=#3c3836]#[fg=#282828,bold,bg=#8ec07c] MOVE #[fg=#8ec07c,bg=#3c3836]";
-                                mode_scroll = "#[fg=#83a598,bg=#3c3836]#[fg=#282828,bold,bg=#83a598] SCROLL #[fg=#83a598,bg=#3c3836]";
-                                mode_search = "#[fg=#fe8019,bg=#3c3836]#[fg=#282828,bold,bg=#fe8019] SEARCH #[fg=#fe8019,bg=#3c3836]";
-                                mode_enter_search = "#[fg=#fe8019,bg=#3c3836]#[fg=#282828,bold,bg=#fe8019] ENTER SEARCH #[fg=#fe8019,bg=#3c3836]";
-                                mode_rename_tab = "#[fg=#fabd2f,bg=#3c3836]#[fg=#3c3836,bold,bg=#fabd2f] RENAME TAB #[fg=#fabd2f,bg=#3c3836]";
-                                mode_rename_pane = "#[fg=#83a598,bg=#3c3836]#[fg=#282828,bold,bg=#83a598] RENAME PANE #[fg=#83a598,bg=#3c3836]";
-                                mode_session = "#[fg=#b8bb26,bg=#3c3836]#[fg=#282828,bold,bg=#b8bb26] SESSION #[fg=#b8bb26,bg=#3c3836]";
-                                mode_prompt = "#[fg=#d3869b,bg=#3c3836]#[fg=#282828,bold,bg=#d3869b] PROMPT #[fg=#d3869b,bg=#3c3836]";
-
-                                tab_normal = "#[fg=#928374,bg=#3c3836]#[fg=#282828,bg=#928374] {index} {name} #[fg=#928374,bg=#3c3836]";
-                                tab_active = "#[fg=#fe8019,bg=#3c3836]#[fg=#282828,bold,bg=#fe8019] {index} {name} #[fg=#fe8019,bg=#3c3836]";
-                                tab_separator = "";
-
-                                datetime = "{format}";
-                                datetime_format = "%d %b %H:%M";
-                                datetime_timezone = "local";
-                              };
-                            };
-                          }
-                          { "children" = { }; }
-                        ];
-                      };
-                    }
-                  ];
-                };
-              };
-            };
-
-            settings = {
-              theme = "gruvbox-dark";
-              simplified_ui = true;
-              default_shell = "zsh";
-              copy_on_select = true;
-              show_startup_tips = false;
-            };
-
-            extraConfig = ''
-              keybinds {
-                normal clear-defaults=true {
-                  bind "Ctrl b" { SwitchToMode "Tmux"; }
-
-                  bind "Alt f" { ToggleFloatingPanes; }
-                  bind "Alt n" { NewPane; }
-                  bind "Alt i" { MoveTab "Left"; }
-                  bind "Alt o" { MoveTab "Right"; }
-                  bind "Alt h" { MoveFocusOrTab "Left"; }
-                  bind "Alt l" { MoveFocusOrTab "Right"; }
-                  bind "Alt j" { MoveFocus "Down"; }
-                  bind "Alt k" { MoveFocus "Up"; }
-                  bind "Alt =" "Alt +" { Resize "Increase"; }
-                  bind "Alt -" { Resize "Decrease"; }
-                  bind "Alt [" { PreviousSwapLayout; }
-                  bind "Alt ]" { NextSwapLayout; }
-                  bind "Alt p" { TogglePaneInGroup; }
-                  bind "Alt Shift p" { ToggleGroupMarking; }
-                }
-
-                tmux clear-defaults=true {
-                  bind "Ctrl b" { Write 2; SwitchToMode "Normal"; }
-                  bind "Esc" { SwitchToMode "Normal"; }
-                  bind "g" { SwitchToMode "Locked"; }
-                  bind "p" { SwitchToMode "Pane"; }
-                  bind "t" { SwitchToMode "Tab"; }
-                  bind "r" { SwitchToMode "Resize"; }
-                  bind "m" { SwitchToMode "Move"; }
-                  bind "s" { SwitchToMode "Scroll"; }
-                  bind "o" { SwitchToMode "Session"; }
-                  bind "q" { Quit; }
-
-                  bind "Ctrl n" "n" { GoToNextTab; SwitchToMode "Normal"; }
-                  bind "Ctrl p" "p" { GoToPreviousTab; SwitchToMode "Normal"; }
-                  bind "Ctrl 1" "1" { GoToTab 1; SwitchToMode "Normal"; }
-                  bind "Ctrl 2" "2" { GoToTab 2; SwitchToMode "Normal"; }
-                  bind "Ctrl 3" "3" { GoToTab 3; SwitchToMode "Normal"; }
-                  bind "Ctrl 4" "4" { GoToTab 4; SwitchToMode "Normal"; }
-                  bind "Ctrl 5" "5" { GoToTab 5; SwitchToMode "Normal"; }
-                  bind "Ctrl 6" "6" { GoToTab 6; SwitchToMode "Normal"; }
-                  bind "Ctrl 7" "7" { GoToTab 7; SwitchToMode "Normal"; }
-                  bind "Ctrl 8" "8" { GoToTab 8; SwitchToMode "Normal"; }
-                  bind "Ctrl 9" "9" { GoToTab 9; SwitchToMode "Normal"; }
-                }
-              }
-            '';
-          };
-
         };
     };
 }
