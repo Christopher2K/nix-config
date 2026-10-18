@@ -1,7 +1,8 @@
 # NixConfig — Agent Guidelines
 
 This is a NixOS/Home Manager configuration repository structured as a Nix flake. It manages
-multiple hosts (`nixbook`, `macbook`, `macbook-cookunity`) and a single user (`christopher`). The
+multiple hosts (`nixbook`, `macbook`, `macbook-cookunity`, `studio`) and a single user
+(`christopher`). The
 entire config is written in Nix using `flake-parts` and `import-tree` to auto-import all modules
 under `modules/`.
 
@@ -22,6 +23,7 @@ modules/
     nixbook/               # Main Linux host (NixOS, x86_64-linux)
     macbook/               # Personal macOS host (nix-darwin, aarch64-darwin)
     macbook-cookunity/     # Work macOS host (nix-darwin, aarch64-darwin)
+    studio/                # Studio macOS host (nix-darwin, aarch64-darwin)
   users/
     christopher.nix        # Home Manager base user config
 assets/                    # Static files symlinked into $HOME (nvim config, scripts, wallpapers, …)

@@ -63,9 +63,12 @@ NixConfig/
 │   │   ├── macbook/
 │   │   │   ├── default.nix          # Personal macOS host (nix-darwin + Homebrew)
 │   │   │   └── configuration.nix    # macOS system settings, apps, Homebrew config
-│   │   └── macbook-cookunity/
-│   │       ├── default.nix          # Work macOS host (nix-darwin + Homebrew)
-│   │       └── configuration.nix    # macOS system settings, apps, Homebrew config
+│   │   ├── macbook-cookunity/
+│   │   │   ├── default.nix          # Work macOS host (nix-darwin + Homebrew)
+│   │   │   └── configuration.nix    # macOS system settings, apps, Homebrew config
+│   │   └── studio/
+│   │       ├── default.nix          # Studio macOS host (nix-darwin)
+│   │       └── configuration.nix    # macOS system settings
 │   └── users/
 │       └── christopher.nix          # Minimal Home Manager base: username + stateVersion
 └── assets/                          # Static files symlinked into $HOME at activation time
@@ -92,6 +95,7 @@ NixConfig/
 | `nixbook` | `x86_64-linux` | Active | Main desktop — AMD+Nvidia PRIME, LUKS, Niri, SDDM |
 | `macbook` | `aarch64-darwin` | Active | Personal MacBook — nix-darwin + Homebrew |
 | `macbook-cookunity` | `aarch64-darwin` | Active | Work MacBook — nix-darwin + Homebrew |
+| `studio` | `aarch64-darwin` | Active | Studio Mac — nix-darwin |
 
 ---
 
