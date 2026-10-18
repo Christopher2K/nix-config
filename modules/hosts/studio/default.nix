@@ -10,6 +10,13 @@ in
       inputs.nix-homebrew.darwinModules.nix-homebrew
 
       # system-level configuration
+      darwin.coding
+      darwin.homebrew
+      darwin.launcher
+      darwin.storage
+      darwin.terminal
+      darwin.theme
+
       darwin.studioConfiguration
 
       inputs.home-manager.darwinModules.home-manager
@@ -20,6 +27,10 @@ in
         home-manager.users.${username} = {
           imports = [
             hm.christopher
+            hm.cli-tooling
+            hm.coding
+            hm.terminal
+            hm.theme
           ];
         };
       }
