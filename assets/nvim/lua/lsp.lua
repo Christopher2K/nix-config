@@ -12,7 +12,7 @@ function lsp.init()
     "gopls",
     "html",
     "jsonls",
-    "kotlin_lsp",
+    -- "kotlin_lsp",
     "lua_ls",
     "pyright",
     "qmlls",

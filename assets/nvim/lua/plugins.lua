@@ -142,8 +142,8 @@ function plugins.configure()
   local autotag = require("nvim-ts-autotag")
   autotag.setup({
     opts = {
-      enable_close = true,        -- Auto close tags
-      enable_rename = true,       -- Auto rename pairs of tags
+      enable_close = true,          -- Auto close tags
+      enable_rename = true,         -- Auto rename pairs of tags
       enable_close_on_slash = false -- Auto close on trailing </
     },
   })
@@ -289,7 +289,7 @@ function plugins.configure()
       jsonc = { "biome_c", "prettier", stop_after_first = true },
       nix = { "nixfmt", stop_after_first = true },
       ocaml = { "ocamlformat", stop_after_first = true },
-      kotlin = { "ktlint", stop_after_first = true },
+      -- kotlin = { "ktlint", stop_after_first = true },
       qlm = {},
     },
     format_on_save = {
