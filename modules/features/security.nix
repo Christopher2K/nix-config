@@ -94,24 +94,44 @@ in
     darwin =
       { pkgs, config, ... }:
       {
+        # Auto-start the pass-cli SSH agent daemon at GUI login. Must use the
+        # `gui` domain: background (user-domain) agents can't read the pass-cli
+        # encryption key from the macOS keychain (errSecInteractionNotAllowed
+        # -25308). `daemon start` self-daemonizes and exits (and no-ops with an
+        # error if already running), so KeepAlive stays off.
         launchd.agents.pass-cli-ssh-agent = {
           enable = true;
-          # Background service with no GUI dependency — use the `user` domain so
-          # bootstrap works on headless/SSH-only sessions (gui/<uid> only exists
-          # during an Aqua login). See home-manager#9629.
-          domain = "user";
+          domain = "gui";
           config = {
             ProgramArguments = [
               "${pkgs.proton-pass-cli}/bin/pass-cli"
               "ssh-agent"
+              "daemon"
               "start"
+              "--log-file"
+              "${config.home.homeDirectory}/Library/Logs/pass-cli-ssh-agent.log"
             ];
             RunAtLoad = true;
-            KeepAlive = true;
             StandardOutPath = "${config.home.homeDirectory}/Library/Logs/pass-cli-ssh-agent.log";
             StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/pass-cli-ssh-agent.log";
           };
         };
+
+        # SSH-only logins never get a GUI session, so the launchd agent above
+        # never fires. Detect a dead agent (ssh-add exit code 2 = cannot
+        # connect), unlock the keychain (prompts once for the login password)
+        # and start the daemon from this interactive session instead.
+        programs.zsh.initContent = ''
+          if [[ -n "$SSH_CONNECTION" ]]; then
+            ssh-add -l &>/dev/null
+            if [[ $? -eq 2 ]]; then
+              echo "🔑 Proton Pass SSH agent not running — starting it..."
+              security unlock-keychain && \
+                ${pkgs.proton-pass-cli}/bin/pass-cli ssh-agent daemon start \
+                  --log-file "$HOME/Library/Logs/pass-cli-ssh-agent.log"
+            fi
+          fi
+        '';
       };
   };
 }
