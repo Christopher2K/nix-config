@@ -1,4 +1,4 @@
-# NixConfig
+# nix-config
 
 A cross-machine, cross-OS Nix flake configuration for NixOS and macOS (nix-darwin), managing
 packages, dotfiles and system settings for a single user across multiple hosts.
