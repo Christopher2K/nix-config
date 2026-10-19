@@ -10,6 +10,7 @@ in
       inputs.nix-homebrew.darwinModules.nix-homebrew
 
       # system-level configuration
+      darwin.browser
       darwin.coding
       darwin.homebrew
       darwin.launcher

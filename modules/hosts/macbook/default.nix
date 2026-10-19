@@ -11,6 +11,7 @@ in
       inputs.nix-homebrew.darwinModules.nix-homebrew
 
       # system-level configuration
+      darwin.browser
       darwin.coding
       darwin.communication
       darwin.design
@@ -35,7 +36,6 @@ in
         home-manager.users.${username} = {
           imports = [
             hm.ai
-            hm.browser
             hm.christopher
             hm.cli-tooling
             hm.coding

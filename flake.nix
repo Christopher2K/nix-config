@@ -2,6 +2,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nur.url = "github:nix-community/NUR";
+
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -47,9 +49,6 @@
     tree-sitter.inputs.nixpkgs.follows = "nixpkgs";
 
     opencode.url = "github:anomalyco/opencode/v2.0.21";
-
-    helium.url = "github:amaanq/helium-flake";
-    helium.inputs.nixpkgs.follows = "nixpkgs";
 
     vicinae.url = "github:vicinaehq/vicinae";
 

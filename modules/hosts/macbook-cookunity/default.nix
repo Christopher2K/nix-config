@@ -12,6 +12,7 @@ in
 
       # system-level configuration
       darwin.ai-router
+      darwin.browser
       darwin.coding
       darwin.communication
       darwin.design
@@ -33,7 +34,6 @@ in
           imports = [
             hm.ai
             hm.ai-router
-            hm.browser
             hm.christopher
             hm.cli-tooling
             hm.coding

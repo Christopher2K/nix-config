@@ -1,13 +1,26 @@
 {
   inputs,
+  config,
   ...
 }:
 {
-  flake.modules.homeManager.browser =
-    { pkgs, ... }:
-    {
-      home.packages = [
-        inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
-      ];
-    };
+  flake.modules.darwin.browser = {
+
+    homebrew.casks = [
+      "helium-browser"
+    ];
+  };
+
+  flake.modules.homeManager.browser = config.flake.helpers.mkHybrid {
+    linux =
+      {
+        pkgs,
+        ...
+      }:
+      {
+        home.packages = [
+          inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
+        ];
+      };
+  };
 }
