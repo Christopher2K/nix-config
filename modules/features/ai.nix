@@ -9,7 +9,7 @@ in
 {
   flake.modules.homeManager.ai = helpers.mkHybrid {
     common =
-      { pkgs, ... }:
+      { pkgs, config, ... }:
       let
         system = pkgs.stdenv.hostPlatform.system;
         opencodePkg = inputs.opencode.packages.${system}.opencode;
@@ -44,6 +44,12 @@ in
           force = true;
           recursive = true;
         };
+
+        # Global agent skills (~/.agents/skills). Out-of-store symlink so
+        # `npx skills add ... -g` can install into it without a rebuild.
+        home.file.".agents/skills".source = config.lib.file.mkOutOfStoreSymlink (
+          helpers.mkAssetsStringPath config "/global-ai-skills"
+        );
       };
 
     # Linux opencode.json is linked by the pen module (pen.nix), which injects
