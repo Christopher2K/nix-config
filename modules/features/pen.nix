@@ -8,12 +8,12 @@ in
       { pkgs, ... }:
       let
         pname = "pen";
-        version = "1.2.4";
+        version = "1.2.19";
         # pen.dev serves an unversioned "latest" URL; bump hash and version
         # (X-AppImage-Version in the extracted pen.desktop) on upstream releases.
         src = pkgs.fetchurl {
           url = "https://www.pen.dev/download/Pen-linux-x86_64.AppImage";
-          hash = "sha256-wkiecbt6WeaUXN/1ZK3X07wGpZTEkQ1V6iBaRqDoGvo=";
+          hash = "sha256-9gDdzCoAoYz8udg45Q3xmpjjPYQiBaRAu5OJp9qPRAI=";
         };
         appimageContents = pkgs.appimageTools.extract { inherit pname version src; };
       in
