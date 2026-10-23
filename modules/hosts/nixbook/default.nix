@@ -14,7 +14,6 @@ in
       nixos.gnome-apps
       nixos.graphics
       nixos.launcher
-      nixos.mise-fixes
       nixos.nixbookConfiguration
       nixos.security
       nixos.sound
@@ -36,7 +35,6 @@ in
             hm.browser
             hm.cli-tooling
             hm.coding
-            hm.mise-fixes
             hm.communication
             hm.desktop-shell
             hm.gaming

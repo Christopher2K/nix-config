@@ -17,7 +17,7 @@ modules/
   helpers.nix              # Shared utilities (mkAssetsPath, mkHybrid, etc.) and flake-level options
   features/                # Feature modules (ai, browser, cli-tooling, coding, communication,
                            #   design, desktop-shell, gaming, gnome-apps, graphics, homebrew,
-                           #   launcher, mise-fixes, productivity, security, sound, splashscreen,
+                           #   launcher, productivity, security, sound, splashscreen,
                            #   storage, streaming, terminal, theme, window-manager, …)
   hosts/                   # Per-host configurations
     nixbook/               # Main Linux host (NixOS, x86_64-linux)

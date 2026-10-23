@@ -50,6 +50,10 @@
 
     opencode.url = "github:anomalyco/opencode/v2.0.21";
 
+    # Helium browser for NixOS (darwin gets it via homebrew cask).
+    helium.url = "github:amaanq/helium-flake";
+    helium.inputs.nixpkgs.follows = "nixpkgs";
+
     vicinae.url = "github:vicinaehq/vicinae";
 
     stylix.url = "github:nix-community/stylix";
