@@ -9,6 +9,18 @@ in
     modules = [
       # system level configuration
       nixos.nixstationConfiguration
+
+      nixos.coding
+      nixos.gaming
+      nixos.gnome-apps
+      nixos.graphics
+      nixos.launcher
+      nixos.security
+      nixos.splashscreen
+      nixos.terminal
+      nixos.theme
+      nixos.window-manager
+
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -16,6 +28,22 @@ in
         home-manager.users.${username} = {
           imports = [
             hm.christopher
+
+            hm.ai
+            hm.browser
+            hm.cli-tooling
+            hm.coding
+            hm.communication
+            hm.desktop-shell
+            hm.gaming
+            hm.gnome-apps
+            hm.launcher
+            hm.notes
+            hm.security
+            hm.streaming
+            hm.terminal
+            hm.theme
+            hm.window-manager
           ];
         };
       }

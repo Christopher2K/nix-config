@@ -22,7 +22,6 @@
 
     settings = {
       debug = {
-        render-drm-device = "/dev/dri/by-path/pci-0000:65:00.0-render";
         honor-xdg-activation-with-invalid-serial = true;
       };
 
@@ -101,28 +100,28 @@
         };
       };
 
-      workspaces = {
-        "01-main" = {
-          name = "main";
-          open-on-output = "eDP-1";
-        };
-        "02-secondary" = {
-          name = "secondary";
-          open-on-output = "eDP-1";
-        };
-        "03-stream" = {
-          name = "stream";
-          open-on-output = "eDP-1";
-        };
-        "04-misc" = {
-          name = "misc";
-          open-on-output = "eDP-1";
-        };
-        "05-scratch" = {
-          name = "scratch";
-          open-on-output = "eDP-1";
-        };
-      };
+      # workspaces = {
+      #   "01-main" = {
+      #     name = "main";
+      #     open-on-output = "eDP-1";
+      #   };
+      #   "02-secondary" = {
+      #     name = "secondary";
+      #     open-on-output = "eDP-1";
+      #   };
+      #   "03-stream" = {
+      #     name = "stream";
+      #     open-on-output = "eDP-1";
+      #   };
+      #   "04-misc" = {
+      #     name = "misc";
+      #     open-on-output = "eDP-1";
+      #   };
+      #   "05-scratch" = {
+      #     name = "scratch";
+      #     open-on-output = "eDP-1";
+      #   };
+      # };
 
       # Hotkey overlay
       hotkey-overlay = { };

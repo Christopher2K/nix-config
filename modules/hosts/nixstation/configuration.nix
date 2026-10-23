@@ -1,5 +1,4 @@
-{ inputs, config, ... }:
-let
+{ inputs, config, ... }: let
   username = config.flake.username;
 in
 {
@@ -13,6 +12,7 @@ in
       boot.loader.systemd-boot.enable = true;
       boot.loader.systemd-boot.configurationLimit = 5;
       boot.loader.efi.canTouchEfiVariables = true;
+      boot.kernelPackages = pkgs.linuxPackages_latest;
 
       networking.hostName = "nixstation";
       networking.wireless.enable = true;

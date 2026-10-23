@@ -34,7 +34,7 @@ in
       in
       {
         home.packages = [
-          opencode
+          # opencode
           pkgs.codex
           pkgs.claude-code
         ];
