@@ -4,7 +4,6 @@ let
   helpers = config.flake.helpers;
   overlays = [
     # inputs.neovim-nightly-overlay.overlays.default
-    inputs.devenv.overlays.default
     (final: prev: {
       # snowflake-connector-python's tests fail on Python 3.14 (event-loop +
       # permission assertion issues); skip checks so sqlit can build.
@@ -41,7 +40,10 @@ let
           nativeBuildInputs = [ pyPkgs.pythonRelaxDepsHook ];
           pythonRelaxDeps = [ "textual-fastdatatable" ];
 
-          SETUPTOOLS_SCM_PRETEND_VERSION = version;
+          postPatch = ''
+            export SETUPTOOLS_SCM_PRETEND_VERSION="${version}"
+            export SETUPTOOLS_SCM_PRETEND_VERSION_FOR_SQLIT_TUI="${version}"
+          '';
 
           dependencies = [
             pyPkgs.docker

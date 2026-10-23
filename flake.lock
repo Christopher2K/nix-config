@@ -703,22 +703,6 @@
         "type": "github"
       }
     },
-    "niri-scratchpad": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762334439,
-        "narHash": "sha256-3PVc17NWTE7O5IS6/wT4V7M9moIC035vJZ0vFi7DQ0Q=",
-        "owner": "gvolpe",
-        "repo": "niri-scratchpad",
-        "rev": "d12bf51846777a245d16ca89cbf7e67a256064a5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "gvolpe",
-        "repo": "niri-scratchpad",
-        "type": "github"
-      }
-    },
     "niri-stable": {
       "flake": false,
       "locked": {
@@ -982,11 +966,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1790185690,
-        "narHash": "sha256-xJ+X4hBtOcAFGBOe5nAMyMUeF9foJBmIOu3NjBqBycU=",
+        "lastModified": 1792502884,
+        "narHash": "sha256-IoNisKcGbUjdd45qCqywGMCYmZ5EnkxezvLII0FWwNA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4975466d324710c576dc11ad614684e6bd8cad8e",
+        "rev": "02c087f3fe673c9e317f206a627cb6b910336dbe",
         "type": "github"
       },
       "original": {
@@ -1131,16 +1115,16 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1790809328,
-        "narHash": "sha256-3Gql1xYRIOuyv5mJSadGsMnvQrh1Zw8He89IN8Ya6mQ=",
+        "lastModified": 1792750491,
+        "narHash": "sha256-ggL24qwcafvNzn1g0/UYk1PcHy8OJeLARZSicET10Zo=",
         "owner": "anomalyco",
         "repo": "opencode",
-        "rev": "8a8bd622a3d7dc29ccf30ec17f84e363ed95ed72",
+        "rev": "68bc26b7da1990ce10ffecfbc1e09eb13aa5d824",
         "type": "github"
       },
       "original": {
         "owner": "anomalyco",
-        "ref": "v2.0.21",
+        "ref": "v2.1.4",
         "repo": "opencode",
         "type": "github"
       }
@@ -1181,7 +1165,6 @@
         "matugen": "matugen",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "niri": "niri",
-        "niri-scratchpad": "niri-scratchpad",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_5",

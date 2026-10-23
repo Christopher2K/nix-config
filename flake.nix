@@ -41,14 +41,11 @@
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
 
-    niri-scratchpad.url = "github:gvolpe/niri-scratchpad";
-    niri-scratchpad.inputs.nixpkgs.follows = "nixpkgs";
-
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     tree-sitter.url = "github:tree-sitter/tree-sitter";
     tree-sitter.inputs.nixpkgs.follows = "nixpkgs";
 
-    opencode.url = "github:anomalyco/opencode/v2.0.21";
+    opencode.url = "github:anomalyco/opencode/v2.1.4";
 
     # Helium browser for NixOS (darwin gets it via homebrew cask).
     helium.url = "github:amaanq/helium-flake";

@@ -69,6 +69,7 @@ in
       programs.dank-material-shell = {
         enable = true;
         enableSystemMonitoring = true;
+        enableCalendarEvents = false;
 
         systemd = {
           enable = true;

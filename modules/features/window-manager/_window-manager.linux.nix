@@ -8,7 +8,6 @@
 
   home.packages = with pkgs; [
     xwayland-satellite
-    inputs.niri-scratchpad.packages.${stdenv.hostPlatform.system}.default
   ];
 
   home.file."${helpers.mkConfigPath config "/wallpapers"}" = {
@@ -38,12 +37,12 @@
             "--components=secrets,pkcs11"
           ];
         }
-        {
-          argv = [
-            "kitty"
-            "--title=_kitty-scratchpad"
-          ];
-        }
+        # {
+        # argv = [
+        #   "kitty"
+        #   "--title=_kitty-scratchpad"
+        # ];
+        # }
       ];
 
       prefer-no-csd = true;
@@ -182,10 +181,10 @@
         "Mod+Shift+Slash".action.show-hotkey-overlay = [ ];
 
         # Launch programs
-        "Mod+Grave" = {
-          hotkey-overlay.title = "Open kitty scratch";
-          action.spawn-sh = "nscratch -t _kitty-scratchpad -s 'kitty --title=_kitty-scratchpad' -m";
-        };
+        # "Mod+Grave" = {
+        #   hotkey-overlay.title = "Open kitty scratch";
+        #   action.spawn-sh = "nscratch -t _kitty-scratchpad -s 'kitty --title=_kitty-scratchpad' -m";
+        # };
         "Mod+Return" = {
           hotkey-overlay.title = "Open kitty";
           action.spawn = "kitty";
