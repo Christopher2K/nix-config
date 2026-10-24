@@ -1,7 +1,7 @@
 # NixConfig — Agent Guidelines
 
 This is a NixOS/Home Manager configuration repository structured as a Nix flake. It manages
-multiple hosts (`nixbook`, `macbook`, `macbook-cookunity`, `studio`) and a single user
+multiple hosts (`nixstation`, `macbook`, `macbook-cookunity`, `studio`) and a single user
 (`christopher`). The
 entire config is written in Nix using `flake-parts` and `import-tree` to auto-import all modules
 under `modules/`.
@@ -20,7 +20,7 @@ modules/
                            #   launcher, productivity, security, sound, splashscreen,
                            #   storage, streaming, terminal, theme, window-manager, …)
   hosts/                   # Per-host configurations
-    nixbook/               # Main Linux host (NixOS, x86_64-linux)
+    nixstation/            # Main Linux host (NixOS, x86_64-linux)
     macbook/               # Personal macOS host (nix-darwin, aarch64-darwin)
     macbook-cookunity/     # Work macOS host (nix-darwin, aarch64-darwin)
     studio/                # Studio macOS host (nix-darwin, aarch64-darwin)
@@ -40,12 +40,12 @@ nix flake check
 
 ### Build a NixOS configuration without switching
 ```bash
-nix build .#nixosConfigurations.nixbook.config.system.build.toplevel
+nix build .#nixosConfigurations.nixstation.config.system.build.toplevel
 ```
 
-### Apply the NixOS config (on the nixbook host)
+### Apply the NixOS config (on the nixstation host)
 ```bash
-sudo nixos-rebuild switch --flake .#nixbook
+sudo nixos-rebuild switch --flake .#nixstation
 ```
 
 ### Apply the macOS (nix-darwin) config
@@ -93,12 +93,12 @@ nix flake check          # Evaluates all nixosConfigurations and nixosModules
 
 To dry-run a configuration switch (build without activating):
 ```bash
-sudo nixos-rebuild dry-activate --flake .#nixbook
+sudo nixos-rebuild dry-activate --flake .#nixstation
 ```
 
 To check a specific host evaluation only:
 ```bash
-nix eval .#nixosConfigurations.nixbook.config.system.build.toplevel
+nix eval .#nixosConfigurations.nixstation.config.system.build.toplevel
 ```
 
 ---
@@ -173,7 +173,7 @@ Not every feature needs all three; omit namespaces that don't apply.
 ### Naming Conventions
 - Feature module names match their filename without extension (e.g., `cli-tooling`, `window-manager`).
 - NixOS module attributes use `camelCase` for multi-word names when the filename uses kebab-case
-  (e.g., `nixbookConfiguration`).
+  (e.g., `nixstationConfiguration`).
 - Options and config keys follow nixpkgs conventions: `camelCase` for option names.
 
 ### Overlays

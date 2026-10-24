@@ -56,10 +56,10 @@ NixConfig/
 │   ├── helpers.nix                  # Global options: username, supported systems, path helpers
 │   ├── features/                    # Feature modules — one file per capability
 │   ├── hosts/
-│   │   ├── nixbook/                 # Primary Linux host (fully configured)
+│   │   ├── nixstation/              # Primary Linux host (fully configured)
 │   │   │   ├── default.nix          # Assembles nixosConfiguration from feature modules
 │   │   │   ├── configuration.nix    # Boot, networking, display manager, users, locale
-│   │   │   └── hardware-configuration.nix  # LUKS, GPU (AMD+Nvidia PRIME), Bluetooth
+│   │   │   └── hardware-configuration.nix  # Filesystems, Bluetooth, AMD CPU
 │   │   ├── macbook/
 │   │   │   ├── default.nix          # Personal macOS host (nix-darwin + Homebrew)
 │   │   │   └── configuration.nix    # macOS system settings, apps, Homebrew config
@@ -92,7 +92,7 @@ NixConfig/
 
 | Host | Platform | Status | Description |
 |---|---|---|---|
-| `nixbook` | `x86_64-linux` | Active | Main desktop — AMD+Nvidia PRIME, LUKS, Niri, SDDM |
+| `nixstation` | `x86_64-linux` | Active | Main Linux desktop — AMD, Niri, DankMaterialShell |
 | `macbook` | `aarch64-darwin` | Active | Personal MacBook — nix-darwin + Homebrew |
 | `macbook-cookunity` | `aarch64-darwin` | Active | Work MacBook — nix-darwin + Homebrew |
 | `studio` | `aarch64-darwin` | Active | Studio Mac — nix-darwin |
@@ -110,19 +110,19 @@ nix flake check
 ### Build without applying
 
 ```bash
-nix build .#nixosConfigurations.nixbook.config.system.build.toplevel
+nix build .#nixosConfigurations.nixstation.config.system.build.toplevel
 ```
 
 ### Dry-run (build without activating)
 
 ```bash
-sudo nixos-rebuild dry-activate --flake .#nixbook
+sudo nixos-rebuild dry-activate --flake .#nixstation
 ```
 
 ### Apply — Linux
 
 ```bash
-sudo nixos-rebuild switch --flake .#nixbook
+sudo nixos-rebuild switch --flake .#nixstation
 ```
 
 ### Apply — macOS
@@ -192,7 +192,7 @@ To update to a newer launcher version:
      ```
 4. Apply the update:
    ```bash
-   sudo nixos-rebuild switch --flake .#nixbook
+   sudo nixos-rebuild switch --flake .#nixstation
    ```
 
 Note: if Ankama ever changes the auto-updater config key, the build fails loudly with
