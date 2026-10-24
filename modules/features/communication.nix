@@ -18,17 +18,10 @@ in
   };
 
   flake.modules.homeManager.communication = helpers.mkHybrid {
-    common =
-      { pkgs, ... }:
-      {
-        home.packages = with pkgs; [
-          vesktop
-        ];
-      };
-
     linux = { pkgs, ... }: {
       home.packages = with pkgs; [
         beeper
+        discord
       ];
     };
   };
