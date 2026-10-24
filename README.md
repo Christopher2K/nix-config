@@ -125,6 +125,20 @@ sudo nixos-rebuild dry-activate --flake .#nixstation
 sudo nixos-rebuild switch --flake .#nixstation
 ```
 
+> **One-time setup — make `switch` work without `--flake`**
+>
+> `nixos-rebuild` only auto-detects this flake if `/etc/nixos/flake.nix` exists. Create it as a
+> symlink to the repo (this is why the `switch` alias is just `sudo nixos-rebuild switch`):
+>
+> ```bash
+> sudo ln -sfn /home/christopher/nix-config/flake.nix /etc/nixos/flake.nix
+> ```
+>
+> With that in place, `nixos-rebuild` resolves the symlink, uses its parent directory as the flake
+> path, and picks `nixosConfigurations.nixstation` from the hostname. Without it, plain `switch`
+> fails with `file 'nixos-config' was not found in the Nix search path`. The symlink lives in
+> `/etc/nixos`, a mutable directory NixOS leaves alone, so it survives every rebuild.
+
 ### Apply — macOS
 
 ```bash
