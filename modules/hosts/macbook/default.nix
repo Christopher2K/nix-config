@@ -11,6 +11,7 @@ in
       inputs.nix-homebrew.darwinModules.nix-homebrew
 
       # system-level configuration
+      darwin.ai
       darwin.browser
       darwin.coding
       darwin.communication

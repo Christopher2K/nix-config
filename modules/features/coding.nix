@@ -99,7 +99,6 @@ in
     homebrew.casks = [
       "miktex-console"
       "android-studio"
-      "ungoogled-chromium"
       "localcan"
       "xcodes-app"
     ];
@@ -211,8 +210,6 @@ in
       { pkgs, ... }:
       {
         home.packages = with pkgs; [
-          ungoogled-chromium # for MCP and stuff
-
           # Global dev toolchains (replacing mise on NixOS).
           # Per-project versions: use a flake devShell or devenv
           # with direnv (`use flake` / `use devenv` in .envrc).
