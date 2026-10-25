@@ -39,6 +39,42 @@
         "kimi-for-coding-highspeed": {
           "modelID": "kimi-coding/kimi-for-coding-highspeed",
           "name": "Kimi for Coding Highspeed (subscription)"
+        },
+        "glm-5.3": {
+          "modelID": "zai/glm-5.3",
+          "name": "GLM 5.3 (Z.ai)"
+        },
+        "glm-5.3-flash": {
+          "modelID": "zai/glm-5.3-flash",
+          "name": "GLM 5.3 Flash (Z.ai)"
+        },
+        "glm-5.2": {
+          "modelID": "zai/glm-5.2",
+          "name": "GLM 5.2 (Z.ai)"
+        },
+        "glm-5.1": {
+          "modelID": "zai/glm-5.1",
+          "name": "GLM 5.1 (Z.ai)"
+        },
+        "glm-5": {
+          "modelID": "zai/glm-5",
+          "name": "GLM 5 (Z.ai)"
+        },
+        "glm-5-turbo": {
+          "modelID": "zai/glm-5-turbo",
+          "name": "GLM 5 Turbo (Z.ai)"
+        },
+        "glm-4.7": {
+          "modelID": "zai/glm-4.7",
+          "name": "GLM 4.7 (Z.ai)"
+        },
+        "glm-4.7-flash": {
+          "modelID": "zai/glm-4.7-flash",
+          "name": "GLM 4.7 Flash (Z.ai)"
+        },
+        "coding": {
+          "modelID": "coding",
+          "name": "Coding (Kimi K3 → GLM 5.3)"
         }
       }
     }
