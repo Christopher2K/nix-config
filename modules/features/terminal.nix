@@ -17,10 +17,18 @@ in
       users.users.${username}.shell = pkgs.zsh;
 
       nixpkgs.overlays = overlays;
+
+      services.eternal-terminal = {
+        enable = true;
+      };
     };
 
   flake.modules.darwin.terminal = {
     nixpkgs.overlays = overlays;
+
+    services.eternal-terminal = {
+      enable = true;
+    };
   };
 
   flake.modules.homeManager.terminal =
@@ -219,6 +227,7 @@ in
               };
             };
           };
+
         };
     };
 }
