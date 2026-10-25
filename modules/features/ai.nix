@@ -9,7 +9,6 @@ in
 {
   flake.modules.darwin.ai = {
     homebrew.casks = [
-      "t3-code"
     ];
   };
 
