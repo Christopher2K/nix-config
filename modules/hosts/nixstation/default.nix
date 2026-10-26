@@ -10,6 +10,7 @@ in
       # system level configuration
       nixos.nixstationConfiguration
 
+      nixos."3d-design"
       nixos.coding
       nixos.gaming
       nixos.gnome-apps

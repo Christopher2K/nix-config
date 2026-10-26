@@ -1,4 +1,15 @@
 {
+  flake.modules.nixos."3d-design" =
+    {
+      pkgs,
+      ...
+    }:
+    {
+      environment.systemPackages = with pkgs; [
+        plasticity
+      ];
+    };
+
   flake.modules.darwin.design = {
     homebrew.casks = [
       "figma"
