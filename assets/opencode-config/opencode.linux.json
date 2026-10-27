@@ -1,6 +1,5 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "autoupdate": false,
   "mcp": {
     "chrome-devtools": {
       "enabled": true,
@@ -15,10 +14,15 @@
     "lucid": {
       "enabled": false,
       "type": "local",
-      "command": ["npx", "-y", "mcp-remote", "https://mcp.lucid.app/mcp"]
+      "command": [
+        "npx",
+        "-y",
+        "mcp-remote",
+        "https://mcp.lucid.app/mcp"
+      ]
     },
     "github": {
-      "enabled": true ,
+      "enabled": true,
       "oauth": false,
       "type": "remote",
       "url": "https://api.githubcopilot.com/mcp/",
@@ -49,12 +53,22 @@
     },
     "pencil": {
       "type": "local",
-      "command": ["@penMcpServer@", "--app", "desktop"],
+      "command": [
+        "@penMcpServer@",
+        "--app",
+        "desktop"
+      ],
       "enabled": true
+    },
+    "coolify": {
+      "type": "remote",
+      "url": "https://hosting.coolsrv.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer {env:COOLIFY_MANAGEMENT_KEY}"
+      }
     }
   },
-  "plugin": [
-  ],
+  "plugin": [],
   "provider": {
     "anthropic": {
       "options": {}

@@ -105,7 +105,12 @@
     "lucid": {
       "enabled": false,
       "type": "local",
-      "command": ["npx", "-y", "mcp-remote", "https://mcp.lucid.app/mcp"]
+      "command": [
+        "npx",
+        "-y",
+        "mcp-remote",
+        "https://mcp.lucid.app/mcp"
+      ]
     },
     "linear": {
       "enabled": true,
@@ -154,8 +159,19 @@
     },
     "pencil": {
       "type": "local",
-      "command": ["/Applications/Pen.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64", "--app", "desktop"],
+      "command": [
+        "/Applications/Pen.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64",
+        "--app",
+        "desktop"
+      ],
       "enabled": true
+    },
+    "coolify": {
+      "type": "remote",
+      "url": "https://hosting.coolsrv.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer {env:COOLIFY_MANAGEMENT_KEY}"
+      }
     }
   }
 }

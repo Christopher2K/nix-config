@@ -1,6 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugins": ["@bandonker/opencode-finish-guard@1.2.1"],
+  "plugins": [
+    "@bandonker/opencode-finish-guard@1.2.1"
+  ],
   "providers": {
     "omniroute": {
       "name": "OmniRoute",
@@ -62,7 +64,12 @@
     "lucid": {
       "enabled": false,
       "type": "local",
-      "command": ["npx", "-y", "mcp-remote", "https://mcp.lucid.app/mcp"]
+      "command": [
+        "npx",
+        "-y",
+        "mcp-remote",
+        "https://mcp.lucid.app/mcp"
+      ]
     },
     "linear": {
       "enabled": true,
@@ -70,7 +77,7 @@
       "url": "https://mcp.linear.app/mcp"
     },
     "github": {
-      "enabled": true ,
+      "enabled": true,
       "oauth": false,
       "type": "remote",
       "url": "https://api.githubcopilot.com/mcp/",
@@ -84,13 +91,13 @@
         "npx",
         "@mobilenext/mobile-mcp@latest"
       ],
-      "enabled": false 
+      "enabled": false
     },
     "agent-device": {
       "type": "local",
       "command": [
         "npx",
-        "-y", 
+        "-y",
         "agent-device@latest",
         "mcp"
       ],
@@ -103,7 +110,11 @@
     },
     "pencil": {
       "type": "local",
-      "command": ["/Applications/Pen.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64", "--app", "desktop"],
+      "command": [
+        "/Applications/Pen.app/Contents/Resources/app.asar.unpacked/out/mcp-server-darwin-arm64",
+        "--app",
+        "desktop"
+      ],
       "enabled": true
     },
     "omniroute": {
@@ -112,6 +123,13 @@
       "enabled": true,
       "headers": {
         "Authorization": "Bearer {env:OMNIROUTE_MANAGEMENT_KEY}"
+      }
+    },
+    "coolify": {
+      "type": "remote",
+      "url": "https://hosting.coolsrv.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer {env:COOLIFY_MANAGEMENT_KEY}"
       }
     }
   }
