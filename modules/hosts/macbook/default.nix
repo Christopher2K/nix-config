@@ -21,6 +21,7 @@ in
       darwin.homebrew
       darwin.launcher
       darwin.macbookConfiguration
+      darwin.nix
       darwin.productivity
       darwin.security
       darwin.storage

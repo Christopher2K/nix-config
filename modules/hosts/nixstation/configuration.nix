@@ -1,4 +1,9 @@
-{ inputs, config, ... }: let
+{
+  inputs,
+  config,
+  ...
+}:
+let
   username = config.flake.username;
 in
 {
@@ -15,7 +20,6 @@ in
       boot.kernelPackages = pkgs.linuxPackages_latest;
 
       networking.hostName = "nixstation";
-      networking.wireless.enable = true;
       networking.networkmanager.enable = true;
 
       time.timeZone = null;
@@ -49,7 +53,7 @@ in
 
         trusted-users = [
           "root"
-          "christopher"
+          username
         ];
       };
 

@@ -20,6 +20,7 @@ in
       darwin.homebrew
       darwin.launcher
       darwin.macbookCookUnityConfiguration
+      darwin.nix
       darwin.productivity-cookunity
       darwin.security
       darwin.streaming-cookunity

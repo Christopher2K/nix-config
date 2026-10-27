@@ -15,6 +15,7 @@ in
       darwin.coding
       darwin.homebrew
       darwin.launcher
+      darwin.nix
       darwin.storage
       darwin.terminal
       darwin.security

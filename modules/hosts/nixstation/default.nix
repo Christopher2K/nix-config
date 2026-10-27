@@ -16,6 +16,7 @@ in
       nixos.gnome-apps
       nixos.graphics
       nixos.launcher
+      nixos.nix
       nixos.security
       nixos.splashscreen
       nixos.terminal
