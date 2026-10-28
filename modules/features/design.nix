@@ -7,6 +7,7 @@
     {
       environment.systemPackages = with pkgs; [
         plasticity
+        bambu-studio
       ];
     };
 
