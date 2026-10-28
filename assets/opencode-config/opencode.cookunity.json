@@ -99,7 +99,7 @@
         "npx",
         "-y",
         "chrome-devtools-mcp@latest",
-        "--executable-path=/Users/christopher/Applications/Home Manager Apps/Helium.app/Contents/MacOS/Helium"
+        "--executable-path=/Applications/Helium.app/Contents/MacOS/Helium"
       ]
     },
     "lucid": {
