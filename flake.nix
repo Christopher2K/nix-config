@@ -84,6 +84,11 @@
 
     herdr.url = "github:ogulcancelik/herdr";
     herdr.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Local checkout until the flake PR lands upstream; then switch to
+    # github:jonesy827/pippin
+    pippin.url = "path:/home/christopher/Developer/pippin";
+    pippin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);

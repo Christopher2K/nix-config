@@ -9,12 +9,6 @@
       # Silent boot - more aggressive settings to prevent black flash
       boot.consoleLogLevel = 0;
 
-      boot.initrd = {
-        verbose = false;
-        # Need that for luks stuff
-        systemd.enable = true;
-      };
-
       boot.kernelParams = [
         "quiet"
         "splash"

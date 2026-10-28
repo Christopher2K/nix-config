@@ -42,6 +42,7 @@ in
             hm.gnome-apps
             hm.launcher
             hm.notes
+            hm.pippin
             hm.security
             hm.streaming
             hm.terminal
