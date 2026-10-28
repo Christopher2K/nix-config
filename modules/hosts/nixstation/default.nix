@@ -19,6 +19,7 @@ in
       nixos.nix
       nixos.security
       nixos.splashscreen
+      nixos.storage
       nixos.terminal
       nixos.theme
       nixos.window-manager

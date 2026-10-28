@@ -76,6 +76,13 @@ in
         helpers.mkAssetsPath "/opencode-config/opencode.cookunity.json"
       );
 
+      # The shared opencode.jsonc (see ai.nix) would otherwise merge the
+      # omniroute providers in on top of the local CLIProxyAPI provider. Drop it
+      # here so CookUnity only exposes the work provider.
+      home.file.".config/opencode/opencode.jsonc".source = lib.mkForce (
+        pkgs.writeText "opencode.jsonc" "{}\n"
+      );
+
       home.activation.cliproxyapiCredentialPermissions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         auth_dir="${config.home.homeDirectory}/.cli-proxy-api"
         $DRY_RUN_CMD mkdir -p "$auth_dir"

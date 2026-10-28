@@ -11,16 +11,6 @@
         "--executable-path=/etc/profiles/per-user/christopher/bin/helium"
       ]
     },
-    "lucid": {
-      "enabled": false,
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "mcp-remote",
-        "https://mcp.lucid.app/mcp"
-      ]
-    },
     "github": {
       "enabled": true,
       "oauth": false,
@@ -28,27 +18,6 @@
       "url": "https://api.githubcopilot.com/mcp/",
       "headers": {
         "Authorization": "Bearer {env:GITHUB_TOKEN}"
-      }
-    },
-    "mobile-mcp": {
-      "type": "local",
-      "command": [
-        "npx",
-        "@mobilenext/mobile-mcp@latest"
-      ],
-      "enabled": true
-    },
-    "notion": {
-      "enabled": true,
-      "type": "remote",
-      "url": "https://mcp.notion.com/mcp"
-    },
-    "stitch": {
-      "type": "remote",
-      "url": "https://stitch.googleapis.com/mcp",
-      "enabled": true,
-      "headers": {
-        "X-Goog-Api-Key": "{env:STITCH_API_KEY}"
       }
     },
     "pencil": {
@@ -66,15 +35,6 @@
       "headers": {
         "Authorization": "Bearer {env:COOLIFY_MANAGEMENT_KEY}"
       }
-    }
-  },
-  "plugin": [],
-  "provider": {
-    "anthropic": {
-      "options": {}
-    },
-    "openrouter": {
-      "models": {}
     }
   }
 }

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "agent-device": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "agent-device@latest",
+        "mcp"
+      ],
+      "enabled": true
+    },
+    "github": {
+      "enabled": true,
+      "oauth": false,
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer {env:GITHUB_TOKEN}"
+      }
+    },
+    "omniroute": {
+      "type": "remote",
+      "url": "https://omniroute.coollab.dev/api/mcp/stream",
+      "enabled": true,
+      "headers": {
+        "Authorization": "Bearer {env:OMNIROUTE_MANAGEMENT_KEY}"
+      }
+    },
+    "coolify": {
+      "type": "remote",
+      "url": "https://hosting.coolsrv.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer {env:COOLIFY_MANAGEMENT_KEY}"
+      }
+    }
+  },
+  "providers": {
+    "omniroute": {
+      "name": "OmniRoute",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "https://omniroute.coollab.dev/v1"
+      },
+      "models": {
+        "coding": {
+          "modelID": "coding",
+          "name": "Coding (Kimi K3 → GLM 5.3)"
+        },
+        "deepseek-v4": {
+          "modelID": "deepseek-v4",
+          "name": "DeepSeek V4 (opencode-go pro → go flash → fallbacks)"
+        },
+        "deepseek-v4-pro": {
+          "modelID": "opencode-go/deepseek-v4-pro",
+          "name": "DeepSeek V4 Pro (opencode-go)"
+        },
+        "deepseek-v4.1-flash": {
+          "modelID": "cheaperinference/deepseek-v4.1-flash",
+          "name": "DeepSeek V4.1 Flash"
+        },
+        "kimi-k3": {
+          "modelID": "kimi-coding/k3",
+          "name": "Kimi K3 (subscription)"
+        },
+        "kimi-for-coding": {
+          "modelID": "kimi-coding/kimi-for-coding",
+          "name": "Kimi for Coding (subscription)"
+        },
+        "kimi-for-coding-highspeed": {
+          "modelID": "kimi-coding/kimi-for-coding-highspeed",
+          "name": "Kimi for Coding Highspeed (subscription)"
+        },
+        "glm-5.3": {
+          "modelID": "zai/glm-5.3",
+          "name": "GLM 5.3 (Z.ai)"
+        },
+        "glm-5.3-flash": {
+          "modelID": "zai/glm-5.3-flash",
+          "name": "GLM 5.3 Flash (Z.ai)"
+        }
+      }
+    }
+  }
+}

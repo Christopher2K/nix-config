@@ -78,6 +78,10 @@
     proton-cachyos.url = "github:powerofthe69/proton-cachyos-nix";
     proton-cachyos.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Pinned to a release tag; upstream CI builds each tag into its Cachix cache.
+    # No nixpkgs follows: the cache holds builds against the flake's locked nixpkgs.
+    proton-drive-linux.url = "github:narrrl/proton-drive-linux/v3.5.0";
+
     herdr.url = "github:ogulcancelik/herdr";
     herdr.inputs.nixpkgs.follows = "nixpkgs";
   };

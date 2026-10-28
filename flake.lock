@@ -906,6 +906,38 @@
         "type": "github"
       }
     },
+    "nixpkgs_10": {
+      "locked": {
+        "lastModified": 1792094642,
+        "narHash": "sha256-zp8ToDMnqZcu4o4IH9pdwXFXGp7yLm/M0dEnNWnyd7I=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fe13242281a67641c0102cdb1087f0ebe586c7df",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_11": {
+      "locked": {
+        "lastModified": 1786719841,
+        "narHash": "sha256-QcpQOT0NQEFkI77t+YXPZqDJc35iIodG7zinieOwFUg=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8be7bd0c83f12e2e3bbba07c9044d6fed9e66f7f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1792502884,
@@ -1031,6 +1063,25 @@
         "type": "github"
       }
     },
+    "proton-drive-linux": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_9"
+      },
+      "locked": {
+        "lastModified": 1792171093,
+        "narHash": "sha256-whyk7JPgW8ky2PiCU3zZVYSdSHb3pQ7UF263w1Jb+w0=",
+        "owner": "narrrl",
+        "repo": "proton-drive-linux",
+        "rev": "eb25c16fe629ffb7115a444b99d00c22a6f7eee7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "narrrl",
+        "ref": "v3.5.0",
+        "repo": "proton-drive-linux",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "devenv": "devenv",
@@ -1055,6 +1106,7 @@
         "nur": "nur",
         "opencode": "opencode",
         "proton-cachyos": "proton-cachyos",
+        "proton-drive-linux": "proton-drive-linux",
         "sqlit": "sqlit",
         "stylix": "stylix",
         "tree-sitter": "tree-sitter",
