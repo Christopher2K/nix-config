@@ -480,11 +480,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1793052051,
-        "narHash": "sha256-i8SGIqqebpHXG9oz7YknMZye48B/7UaXJZhHEZcmAT0=",
+        "lastModified": 1793216654,
+        "narHash": "sha256-LSuQhQdhHvvBwDYy2cdBxrpKXzC6uM6gsPU1wqZtHp8=",
         "owner": "ogulcancelik",
         "repo": "herdr",
-        "rev": "2713feb56e9c9db33992db0a262c68f7426d46dd",
+        "rev": "bc8c28988f75c538d4ca058b702f5adbea30566e",
         "type": "github"
       },
       "original": {
@@ -532,11 +532,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1793202716,
-        "narHash": "sha256-soCBBJJyYzZEvJdk9FUN5K3gHNNmYPrS22pm5395nqo=",
+        "lastModified": 1793217741,
+        "narHash": "sha256-5wBHHa8cnHFfhmNi/vpJzWY4MrTUCPIk5mkoHoxlqUU=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "80b0e45d08955f67496122733ad9b8d64d09d488",
+        "rev": "00e820c3fcd21dfa5f1a2591357b4065fefb1a3c",
         "type": "github"
       },
       "original": {
@@ -548,11 +548,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1793202436,
-        "narHash": "sha256-kwC8RGm9TNSE9OPOjBf/r9skomjl/6x9SPrq9zWsdus=",
+        "lastModified": 1793215864,
+        "narHash": "sha256-NT8BE9GKt6PHkJVJej3DWcUbPGxaE7prrqhxyLiRldk=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "cfd4cf11276a22910313c301399957434c3c2e99",
+        "rev": "96c457277e52d9fa16e37873c7b7994fa64b57a8",
         "type": "github"
       },
       "original": {
@@ -935,11 +935,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793204311,
-        "narHash": "sha256-Rq/bqDnp/Sy01cW/HfxSK188Ax2oiIYzDN7BM/ia9r4=",
+        "lastModified": 1793218857,
+        "narHash": "sha256-K1ZDsnF6wYdWNmfX4XNsTrp/PyUrUJlG130g446Myv8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "66194cb01c650d3e71d54d345ffc4f94b6469ca6",
+        "rev": "c94527e5f28d55d024ccde6f7c65844b9fa343cc",
         "type": "github"
       },
       "original": {
@@ -1001,7 +1001,7 @@
         ]
       },
       "locked": {
-        "lastModified": 1793207648,
+        "lastModified": 1793211432,
         "narHash": "sha256-B/PffZ2SgCsjVPc+sEY2A7zv8zJNlKbxNLMd9DZSKXE=",
         "path": "/home/christopher/Developer/pippin",
         "type": "path"
@@ -1036,16 +1036,16 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1792171093,
-        "narHash": "sha256-whyk7JPgW8ky2PiCU3zZVYSdSHb3pQ7UF263w1Jb+w0=",
+        "lastModified": 1793099150,
+        "narHash": "sha256-ynvaCPVRHaKPUuBbJP8uQZ8xK+VHZetd0M2HyY3PtGY=",
         "owner": "narrrl",
         "repo": "proton-drive-linux",
-        "rev": "eb25c16fe629ffb7115a444b99d00c22a6f7eee7",
+        "rev": "27201914ee17ce7e0cd51e5cc8f7b788fd62e196",
         "type": "github"
       },
       "original": {
         "owner": "narrrl",
-        "ref": "v3.5.0",
+        "ref": "v3.6.0",
         "repo": "proton-drive-linux",
         "type": "github"
       }
