@@ -46,7 +46,10 @@
       "models": {
         "coding": {
           "modelID": "coding",
-          "name": "Coding (Kimi for Coding → GLM 5.3 → DeepSeek V4.1 Flash)"
+          "name": "Coding (Kimi for Coding → GLM 5.3 Flash → DeepSeek V4.1 Flash)",
+          "settings": {
+            "reasoningEffort": "medium"
+          }
         },
         "deepseek-v4.1-flash-1017": {
           "modelID": "cheaperinference/deepseek-v4.1-flash-1017",
