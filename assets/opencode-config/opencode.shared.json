@@ -46,23 +46,11 @@
       "models": {
         "coding": {
           "modelID": "coding",
-          "name": "Coding (Kimi K3 → GLM 5.3)"
+          "name": "Coding (Kimi for Coding → GLM 5.3 → DeepSeek V4.1 Flash)"
         },
-        "deepseek-v4": {
-          "modelID": "deepseek-v4",
-          "name": "DeepSeek V4 (opencode-go pro → go flash → fallbacks)"
-        },
-        "deepseek-v4-pro": {
-          "modelID": "opencode-go/deepseek-v4-pro",
-          "name": "DeepSeek V4 Pro (opencode-go)"
-        },
-        "deepseek-v4.1-flash": {
-          "modelID": "cheaperinference/deepseek-v4.1-flash",
-          "name": "DeepSeek V4.1 Flash"
-        },
-        "kimi-k3": {
-          "modelID": "kimi-coding/k3",
-          "name": "Kimi K3 (subscription)"
+        "deepseek-v4.1-flash-1017": {
+          "modelID": "cheaperinference/deepseek-v4.1-flash-1017",
+          "name": "DeepSeek V4.1 Flash 1017"
         },
         "kimi-for-coding": {
           "modelID": "kimi-coding/kimi-for-coding",
