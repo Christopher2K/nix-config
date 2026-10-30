@@ -1,5 +1,42 @@
 { inputs, helpers }:
 { pkgs, config, ... }:
+let
+  kittyScratchpad = pkgs.writeShellApplication {
+    name = "kitty-scratchpad";
+    runtimeInputs = [
+      pkgs.jq
+      pkgs.kitty
+      pkgs.nirius
+    ];
+    text = ''
+      match='^kitty-scratchpad$'
+
+      exists() {
+        niri msg --json windows | jq -e 'any(.[]; .app_id == "kitty-scratchpad")' >/dev/null
+      }
+
+      center() {
+        id=$(niri msg --json windows | jq -r '[.[] | select(.app_id == "kitty-scratchpad")][0].id')
+        niri msg action center-window --id "$id"
+      }
+
+      if nirius scratchpad-show --app-id "$match"; then
+        center
+      elif exists; then
+        nirius scratchpad-toggle --app-id "$match"
+      else
+        kitty --class kitty-scratchpad &
+        for _ in $(seq 50); do
+          exists && break
+          sleep 0.1
+        done
+        nirius scratchpad-toggle --app-id "$match"
+        nirius scratchpad-show --app-id "$match"
+        center
+      fi
+    '';
+  };
+in
 {
 
   imports = [
@@ -8,6 +45,7 @@
 
   home.packages = with pkgs; [
     xwayland-satellite
+    nirius
   ];
 
   home.file."${helpers.mkConfigPath config "/wallpapers"}" = {
@@ -37,12 +75,9 @@
             "--components=secrets,pkcs11"
           ];
         }
-        # {
-        # argv = [
-        #   "kitty"
-        #   "--title=_kitty-scratchpad"
-        # ];
-        # }
+        {
+          command = [ "niriusd" ];
+        }
       ];
 
       prefer-no-csd = true;
@@ -146,18 +181,9 @@
 
         {
           matches = [
-            { title = "_kitty-scratchpad"; }
-          ];
-          open-on-workspace = "scratch";
-          open-floating = true;
-          open-focused = false;
-        }
-
-        {
-          matches = [
             {
               app-id = "steam";
-              title = "r#\"^notificationtoasts_\d+_desktop$\"#";
+              title = "^notificationtoasts_[0-9]+_desktop$";
             }
           ];
           default-floating-position = {
@@ -173,6 +199,22 @@
           ];
           open-floating = true;
         }
+
+        {
+          matches = [
+            { app-id = "^kitty-scratchpad$"; }
+          ];
+          open-floating = true;
+        }
+
+        # Picture-in-picture. Chromium titles the PiP window "Picture in
+        # picture" but leaves its app-id empty, so match the title only.
+        {
+          matches = [
+            { title = "^[Pp]icture[- ]in[- ][Pp]icture$"; }
+          ];
+          open-floating = true;
+        }
       ];
 
       # Keybindings
@@ -180,11 +222,21 @@
         # Show hotkey overlay
         "Mod+Shift+Slash".action.show-hotkey-overlay = [ ];
 
+        # Scratchpad (nirius): show the kitty scratchpad, launching it if needed
+        "Mod+Grave" = {
+          hotkey-overlay.title = "Show kitty scratchpad";
+          action.spawn = "${kittyScratchpad}/bin/kitty-scratchpad";
+        };
+        # Send the focused window to the scratchpad
+        "Mod+Shift+Grave" = {
+          hotkey-overlay.title = "Toggle focused window in scratchpad";
+          action.spawn = [
+            "nirius"
+            "scratchpad-toggle"
+          ];
+        };
+
         # Launch programs
-        # "Mod+Grave" = {
-        #   hotkey-overlay.title = "Open kitty scratch";
-        #   action.spawn-sh = "nscratch -t _kitty-scratchpad -s 'kitty --title=_kitty-scratchpad' -m";
-        # };
         "Mod+Return" = {
           hotkey-overlay.title = "Open kitty";
           action.spawn = "kitty";
@@ -353,6 +405,15 @@
         # Floating
         "Mod+V".action.toggle-window-floating = [ ];
         "Mod+Shift+V".action.switch-focus-between-floating-and-tiling = [ ];
+
+        # Follow mode: focused window follows you across workspaces (e.g. PiP)
+        "Mod+Alt+P" = {
+          hotkey-overlay.title = "Toggle follow mode (nirius)";
+          action.spawn = [
+            "nirius"
+            "toggle-follow-mode"
+          ];
+        };
 
         # Tabbed display
         "Mod+W".action.toggle-column-tabbed-display = [ ];
