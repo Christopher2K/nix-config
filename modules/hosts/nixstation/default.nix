@@ -41,6 +41,7 @@ in
             hm.gaming
             hm.gnome-apps
             hm.launcher
+            hm.limusic
             hm.notes
             hm.pippin
             hm.security
