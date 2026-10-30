@@ -82,6 +82,9 @@
     # No nixpkgs follows: the cache holds builds against the flake's locked nixpkgs.
     proton-drive-linux.url = "github:narrrl/proton-drive-linux/v3.6.0";
 
+    proton-drive-sync.url = "github:Christopher2K/proton-drive-sync-linux";
+    proton-drive-sync.inputs.nixpkgs.follows = "nixpkgs";
+
     herdr.url = "github:ogulcancelik/herdr";
     herdr.inputs.nixpkgs.follows = "nixpkgs";
 

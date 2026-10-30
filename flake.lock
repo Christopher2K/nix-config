@@ -1050,6 +1050,27 @@
         "type": "github"
       }
     },
+    "proton-drive-sync": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay_3"
+      },
+      "locked": {
+        "lastModified": 1793389435,
+        "narHash": "sha256-KPbKLWHBPpjCUT/Nxhi/YJABpvJqPdtPUIVYCDtOpY8=",
+        "owner": "Christopher2K",
+        "repo": "proton-drive-sync-linux",
+        "rev": "fffcf5ce58bf307c2373ddd9a2e5bbacd2217cb3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Christopher2K",
+        "repo": "proton-drive-sync-linux",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "devenv": "devenv",
@@ -1076,6 +1097,7 @@
         "pippin": "pippin",
         "proton-cachyos": "proton-cachyos",
         "proton-drive-linux": "proton-drive-linux",
+        "proton-drive-sync": "proton-drive-sync",
         "sqlit": "sqlit",
         "stylix": "stylix",
         "tree-sitter": "tree-sitter",
@@ -1117,6 +1139,27 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "4cdea398dc491b082dccdce0fad1ed0b75fa3394",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_3": {
+      "inputs": {
+        "nixpkgs": [
+          "proton-drive-sync",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793261817,
+        "narHash": "sha256-fAvtOccUXHVAH5wXK+ABYUUC47W2qTb9T9EefLcS9ME=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "afcefd09c71e63663a46e4ce5e09968584f2c709",
         "type": "github"
       },
       "original": {

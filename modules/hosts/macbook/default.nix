@@ -23,6 +23,7 @@ in
       darwin.macbookConfiguration
       darwin.nix
       darwin.productivity
+      darwin.remote-access
       darwin.security
       darwin.storage
       darwin.streaming

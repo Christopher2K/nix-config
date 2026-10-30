@@ -1,19 +1,13 @@
 { inputs, config, ... }:
 let
   helpers = config.flake.helpers;
-  tailscaleConfig = {
-    services.tailscale = {
-      enable = true;
-    };
-  };
 in
 {
   flake.modules.nixos.security =
     { pkgs, ... }:
     {
       services.gnome.gnome-keyring.enable = true;
-    }
-    // tailscaleConfig;
+    };
 
   flake.modules.darwin.security = {
     security.pam.services.sudo_local = {
@@ -21,8 +15,7 @@ in
       reattach = true;
       touchIdAuth = true;
     };
-  }
-  // tailscaleConfig;
+  };
 
   flake.modules.homeManager.security = helpers.mkHybrid {
     common =

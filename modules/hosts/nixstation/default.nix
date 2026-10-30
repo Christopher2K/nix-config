@@ -17,6 +17,7 @@ in
       nixos.graphics
       nixos.launcher
       nixos.nix
+      nixos.remote-access
       nixos.security
       nixos.splashscreen
       nixos.storage
@@ -44,7 +45,9 @@ in
             hm.limusic
             hm.notes
             hm.pippin
+            hm.remote-access
             hm.security
+            hm.storage
             hm.streaming
             hm.terminal
             hm.theme

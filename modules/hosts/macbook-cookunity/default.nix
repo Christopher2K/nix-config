@@ -22,6 +22,7 @@ in
       darwin.macbookCookUnityConfiguration
       darwin.nix
       darwin.productivity-cookunity
+      darwin.remote-access
       darwin.security
       darwin.streaming-cookunity
       darwin.terminal
