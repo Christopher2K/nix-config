@@ -38,8 +38,8 @@ in
           '') envKeys}
 
           if [ ! -f "$targetFile" ] || ! ${pkgs.diffutils}/bin/cmp -s "$newFile" "$targetFile"; then
-            /bin/mkdir -p "$HOME/.t3"
-            /usr/bin/install -m 600 "$newFile" "$targetFile"
+            ${pkgs.coreutils}/bin/mkdir -p "$HOME/.t3"
+            ${pkgs.coreutils}/bin/install -m 600 "$newFile" "$targetFile"
             echo "t3code: $targetFile updated; run 't3 service restart' for it to take effect"
           fi
           ${pkgs.coreutils}/bin/rm -f "$newFile"
