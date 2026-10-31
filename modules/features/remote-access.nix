@@ -64,44 +64,4 @@ in
   flake.modules.darwin.remote-access = {
     services.tailscale.enable = true;
   };
-
-  flake.modules.homeManager.remote-access = helpers.mkHybrid {
-    linux =
-      { pkgs, config, ... }:
-      let
-        # Builds the wayvnc config at runtime so the password never enters the Nix store.
-        # Put the VNC password (max 8 chars is used by macOS) in ~/.config/wayvnc/password.
-        wayvncStart = pkgs.writeShellScript "wayvnc-start" ''
-          umask 077
-          password="$(cat "${config.xdg.configHome}/wayvnc/password")"
-          cat > "$RUNTIME_DIRECTORY/config" <<EOF
-          address=0.0.0.0
-          port=5900
-          enable_auth=true
-          password=$password
-          relax_encryption=true
-          allow_broken_crypto=true
-          EOF
-          exec ${pkgs.wayvnc}/bin/wayvnc --config "$RUNTIME_DIRECTORY/config"
-        '';
-      in
-      {
-        home.packages = [ pkgs.wayvnc ];
-
-        systemd.user.services.wayvnc = {
-          Unit = {
-            Description = "wayvnc VNC server for the niri session";
-            PartOf = [ "graphical-session.target" ];
-            After = [ "graphical-session.target" ];
-            ConditionEnvironment = "WAYLAND_DISPLAY";
-          };
-          Service = {
-            ExecStart = wayvncStart;
-            Restart = "on-failure";
-            RuntimeDirectory = "wayvnc";
-          };
-          Install.WantedBy = [ "graphical-session.target" ];
-        };
-      };
-  };
 }

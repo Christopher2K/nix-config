@@ -45,7 +45,6 @@ in
             hm.limusic
             hm.notes
             hm.pippin
-            hm.remote-access
             hm.security
             hm.storage
             hm.streaming
