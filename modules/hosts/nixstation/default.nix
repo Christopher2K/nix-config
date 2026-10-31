@@ -20,7 +20,6 @@ in
       nixos.remote-access
       nixos.security
       nixos.splashscreen
-      nixos.storage
       nixos.terminal
       nixos.theme
       nixos.window-manager

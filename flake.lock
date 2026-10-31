@@ -889,22 +889,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1791456040,
-        "narHash": "sha256-H83yz/do+hjOO0uujHyH8RgtIQP2v7Mw+cLwcZK/xKc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "e7439b6b14ad3cc35d05608ebca9bce01a25f5f8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "numen": {
       "inputs": {
         "nixpkgs": [
@@ -1031,25 +1015,6 @@
         "type": "github"
       }
     },
-    "proton-drive-linux": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "lastModified": 1793099150,
-        "narHash": "sha256-ynvaCPVRHaKPUuBbJP8uQZ8xK+VHZetd0M2HyY3PtGY=",
-        "owner": "narrrl",
-        "repo": "proton-drive-linux",
-        "rev": "27201914ee17ce7e0cd51e5cc8f7b788fd62e196",
-        "type": "github"
-      },
-      "original": {
-        "owner": "narrrl",
-        "ref": "v3.6.0",
-        "repo": "proton-drive-linux",
-        "type": "github"
-      }
-    },
     "proton-drive-sync": {
       "inputs": {
         "nixpkgs": [
@@ -1058,11 +1023,11 @@
         "rust-overlay": "rust-overlay_3"
       },
       "locked": {
-        "lastModified": 1793389435,
-        "narHash": "sha256-KPbKLWHBPpjCUT/Nxhi/YJABpvJqPdtPUIVYCDtOpY8=",
+        "lastModified": 1793420456,
+        "narHash": "sha256-XCjkeI0+RUZ+1w01hokdhNIL8O8lO1KkZ8/Lc8EnwCw=",
         "owner": "Christopher2K",
         "repo": "proton-drive-sync-linux",
-        "rev": "fffcf5ce58bf307c2373ddd9a2e5bbacd2217cb3",
+        "rev": "29e306d1a14f3b0eb66c29e524c80c7bd9276f7f",
         "type": "github"
       },
       "original": {
@@ -1096,7 +1061,6 @@
         "opencode": "opencode",
         "pippin": "pippin",
         "proton-cachyos": "proton-cachyos",
-        "proton-drive-linux": "proton-drive-linux",
         "proton-drive-sync": "proton-drive-sync",
         "sqlit": "sqlit",
         "stylix": "stylix",
