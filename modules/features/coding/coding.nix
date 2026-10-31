@@ -4,126 +4,8 @@ let
   helpers = config.flake.helpers;
   overlays = [
     # inputs.neovim-nightly-overlay.overlays.default
-    (final: prev: {
-      # railpack isn't packaged in nixpkgs yet; use the official prebuilt
-      # binaries (static musl on Linux, ad-hoc signed Mach-O on macOS).
-      railpack = final.callPackage (
-        {
-          lib,
-          stdenvNoCC,
-          fetchurl,
-        }:
-        let
-          version = "0.43.0";
-          targets = {
-            "x86_64-linux" = {
-              target = "x86_64-unknown-linux-musl";
-              hash = "sha256-JIqPYPNoVKq+1hJBE2MQeKgC3jRhZghV/E3pwmBlwfs=";
-            };
-            "aarch64-darwin" = {
-              target = "arm64-apple-darwin";
-              hash = "sha256-OFAmk0Encm/Q+bWhQxxa5EEGLqmVil+duw6YopFC1t4=";
-            };
-          };
-          system = stdenvNoCC.hostPlatform.system;
-          target = targets.${system} or (throw "railpack: unsupported system ${system}");
-        in
-        stdenvNoCC.mkDerivation {
-          pname = "railpack";
-          inherit version;
-
-          src = fetchurl {
-            url = "https://github.com/railwayapp/railpack/releases/download/v${version}/railpack-v${version}-${target.target}.tar.gz";
-            inherit (target) hash;
-          };
-
-          # The tarball has files at its root instead of a single top-level dir.
-          sourceRoot = ".";
-
-          installPhase = ''
-            runHook preInstall
-            install -Dm755 railpack $out/bin/railpack
-            runHook postInstall
-          '';
-
-          meta = {
-            description = "Zero-config application packaging: build OCI images from source";
-            homepage = "https://railpack.com";
-            license = lib.licenses.mit;
-            mainProgram = "railpack";
-            platforms = builtins.attrNames targets;
-          };
-        }
-      ) { };
-
-      # snowflake-connector-python's tests fail on Python 3.14 (event-loop +
-      # permission assertion issues); skip checks so sqlit can build.
-      python3 = prev.python3.override {
-        packageOverrides = pyFinal: pyPrev: {
-          snowflake-connector-python = pyPrev.snowflake-connector-python.overridePythonAttrs (old: {
-            doCheck = false;
-            dontCheckRuntimeDeps = true;
-          });
-        };
-      };
-
-      # Rebuild sqlit from the upstream flake against our python3 so the
-      # snowflake override applies (the flake's own packages close over
-      # nixpkgs.legacyPackages and can't see our overlays).
-      sqlit =
-        let
-          pyPkgs = final.python3.pkgs;
-          version = "0.0.0+${inputs.sqlit.shortRev or "dirty"}";
-        in
-        pyPkgs.buildPythonApplication {
-          pname = "sqlit";
-          inherit version;
-          pyproject = true;
-
-          src = inputs.sqlit;
-
-          build-system = [
-            pyPkgs.hatchling
-            pyPkgs."hatch-vcs"
-            pyPkgs."setuptools-scm"
-          ];
-
-          nativeBuildInputs = [ pyPkgs.pythonRelaxDepsHook ];
-          pythonRelaxDeps = [ "textual-fastdatatable" ];
-
-          postPatch = ''
-            export SETUPTOOLS_SCM_PRETEND_VERSION="${version}"
-            export SETUPTOOLS_SCM_PRETEND_VERSION_FOR_SQLIT_TUI="${version}"
-          '';
-
-          dependencies = [
-            pyPkgs.docker
-            pyPkgs.keyring
-            pyPkgs.pyperclip
-            pyPkgs.sqlparse
-            pyPkgs.textual
-            pyPkgs."textual-fastdatatable"
-            # extras (mirrors upstream nixpkgsExtras)
-            pyPkgs.sshtunnel
-            pyPkgs.paramiko
-            pyPkgs.psycopg2
-            pyPkgs.pymysql
-            pyPkgs.duckdb
-            pyPkgs.google-cloud-bigquery
-            pyPkgs.snowflake-connector-python
-            pyPkgs.requests
-          ];
-
-          pythonImportsCheck = [ "sqlit" ];
-
-          meta = {
-            description = "A terminal UI for SQL databases";
-            homepage = "https://github.com/Maxteabag/sqlit";
-            license = prev.lib.licenses.mit;
-            mainProgram = "sqlit";
-          };
-        };
-    })
+    (import ./_railpack-overlay.nix)
+    (import ./_sqlit-overlay.nix { inherit inputs; })
   ];
 in
 {
@@ -157,7 +39,12 @@ in
 
   flake.modules.homeManager.coding = helpers.mkHybrid {
     common =
-      { pkgs, config, ... }:
+      {
+        pkgs,
+        lib,
+        config,
+        ...
+      }:
       {
         home.file."${helpers.mkConfigPath config "/nvim"}".source = config.lib.file.mkOutOfStoreSymlink (
           helpers.mkAssetsStringPath config "/nvim"
@@ -168,7 +55,45 @@ in
           force = true;
         };
 
+        # SSH commit signing via the Proton Pass SSH agent: the private key
+        # lives in Proton Pass (synced across hosts). git shells out to the
+        # `proton-pass-sign` wrapper below (gpg.ssh.program), which points
+        # SSH_AUTH_SOCK at the agent socket and execs ssh-keygen. The public
+        # key is committed in the repo so git can pass it to ssh-keygen (-f).
+        home.file."${helpers.mkHomePath config "/.ssh/git_signing_key.pub"}" = {
+          source = helpers.mkAssetsPath "/git-signing-key.pub";
+          force = true;
+        };
+
+        home.file."${helpers.mkHomePath config "/.ssh/proton-pass-sign"}" = {
+          executable = true;
+          text = ''
+            #!/bin/sh
+            # Git SSH signing helper (gpg.ssh.program): sign with the key
+            # stored in Proton Pass instead of an on-disk private key.
+            export SSH_AUTH_SOCK="$HOME/.ssh/proton-pass-agent.sock"
+
+            if [ ! -S "$SSH_AUTH_SOCK" ]; then
+              echo "proton-pass-sign: Proton Pass agent socket not found at $SSH_AUTH_SOCK" >&2
+              echo "Start Proton Pass (SSH agent enabled) to sign commits." >&2
+              exit 1
+            fi
+
+            exec ssh-keygen "$@"
+          '';
+        };
+
+        # allowed_signers for `git log --show-signature` / `git verify-commit`
+        # (GitHub verification uses the key registered on the account instead).
+        # The second principal covers the work identity used in */cookunity/* repos.
+        home.file."${helpers.mkHomePath config "/.ssh/allowed_signers"}".text =
+          "me@christopher2k.dev,christopherkatoyi@cookunity.com ${lib.removeSuffix "\n" (builtins.readFile (helpers.mkAssetsPath "/git-signing-key.pub"))}\n";
+
         home.packages = [
+          # t3 CLI + desktop app (t3code-desktop); no upstream flake, packaged in
+          # nixpkgs. Installed on every host; the background-service secrets it
+          # needs are set up by the workstation feature.
+          pkgs.t3code
           pkgs.devenv
           pkgs.lazydocker
           pkgs.lazygit
@@ -205,6 +130,15 @@ in
             pull.rebase = true;
             init.defaultBranch = "main";
             rerere.enabled = true;
+            # Sign commits with the "Github Christopher2K Key" stored in the
+            # Proton Pass SSH agent (wrapper + public key installed above).
+            # Repos under */cookunity/* override the identity via the included
+            # gitconfig; signing still applies unless disabled there.
+            commit.gpgsign = true;
+            gpg.format = "ssh";
+            gpg.ssh.program = "${config.home.homeDirectory}/.ssh/proton-pass-sign";
+            gpg.ssh.allowedsignersfile = "${config.home.homeDirectory}/.ssh/allowed_signers";
+            user.signingkey = "${config.home.homeDirectory}/.ssh/git_signing_key.pub";
           };
 
           includes = [

@@ -34,6 +34,7 @@ in
             hm.christopher
 
             hm.ai
+            hm.workstation
             hm.browser
             hm.cli-tooling
             hm.coding

@@ -33,6 +33,7 @@ in
           imports = [
             hm.christopher
             hm.ai
+            hm.workstation
             hm.cli-tooling
             hm.coding
             hm.terminal
