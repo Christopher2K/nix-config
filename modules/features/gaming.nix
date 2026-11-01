@@ -63,6 +63,9 @@ in
 
       programs.steam = {
         enable = true;
+        # Desktop capture for Remote Play needs PipeWire; without it Steam
+        # streams black frames to the Deck.
+        package = pkgs.steam.override { extraArgs = "-pipewire"; };
         remotePlay.openFirewall = true;
         extraCompatPackages = with pkgs; [ proton-cachyos ];
       };
