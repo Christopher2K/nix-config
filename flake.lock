@@ -1023,11 +1023,11 @@
         "rust-overlay": "rust-overlay_3"
       },
       "locked": {
-        "lastModified": 1793420456,
-        "narHash": "sha256-XCjkeI0+RUZ+1w01hokdhNIL8O8lO1KkZ8/Lc8EnwCw=",
+        "lastModified": 1793479568,
+        "narHash": "sha256-GFOwMOOWUA595Xxj+tj+2DgJRSBfuRr4A+zGqdCPfCI=",
         "owner": "Christopher2K",
         "repo": "proton-drive-sync-linux",
-        "rev": "29e306d1a14f3b0eb66c29e524c80c7bd9276f7f",
+        "rev": "87a7893a628230ad4afae17d1faa96eec33af1ec",
         "type": "github"
       },
       "original": {

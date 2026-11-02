@@ -51,9 +51,13 @@
             "reasoningEffort": "medium"
           }
         },
-        "deepseek-v4.1-flash-1017": {
-          "modelID": "cheaperinference/deepseek-v4.1-flash-1017",
-          "name": "DeepSeek V4.1 Flash 1017"
+        "deepseek-v4.1-flash": {
+          "modelID": "opencode-go/deepseek-v4.1-flash",
+          "name": "DeepSeek V4.1 Flash (OpenCode Go)"
+        },
+        "deepseek-v4-pro": {
+          "modelID": "opencode-go/deepseek-v4-pro",
+          "name": "DeepSeek V4 Pro (OpenCode Go)"
         },
         "kimi-for-coding": {
           "modelID": "kimi-coding/kimi-for-coding",
@@ -71,6 +75,38 @@
           "modelID": "zai/glm-5.3-flash",
           "name": "GLM 5.3 Flash (Z.ai)"
         }
+      }
+    },
+    "github-copilot": {
+      "models": {
+        "claude-fable-5": { "disabled": true },
+        "claude-fable-5.1": { "disabled": true },
+        "claude-haiku-4.5": { "disabled": true },
+        "claude-haiku-5.5": { "disabled": true },
+        "claude-opus-4.8": { "disabled": true },
+        "claude-opus-4.8-fast": { "disabled": true },
+        "claude-opus-5": { "disabled": true },
+        "claude-opus-5.5": { "disabled": true },
+        "claude-sonnet-4.6": { "disabled": true },
+        "claude-sonnet-5": { "disabled": true },
+        "claude-sonnet-5.5": { "disabled": true },
+        "gemini-3.8-flash": { "disabled": true },
+        "gemini-4-argon": { "disabled": true },
+        "gpt-5.3-codex": { "disabled": true },
+        "gpt-5.4-nano": { "disabled": true },
+        "gpt-5.6-luna": { "disabled": true },
+        "gpt-5.6-sol": { "disabled": true },
+        "gpt-5.6-terra": { "disabled": true },
+        "gpt-6-astra": { "disabled": true },
+        "gpt-6-luna": { "disabled": true },
+        "gpt-6-sol": { "disabled": true },
+        "gpt-6.1-sol": { "disabled": true },
+        "gpt-6.1-terra": { "disabled": true },
+        "grok-4.5": { "disabled": true },
+        "grok-4.6": { "disabled": true },
+        "grok-4.7": { "disabled": true },
+        "kimi-k3": { "disabled": true },
+        "mai-code-1.1-flash": { "disabled": true }
       }
     }
   }
