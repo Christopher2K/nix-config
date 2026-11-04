@@ -120,6 +120,11 @@
       "enabled": true,
       "type": "remote",
       "url": "https://mcp.notion.com/mcp"
+    },
+    "figma": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.figma.com/mcp"
     }
   }
 }
