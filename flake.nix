@@ -84,6 +84,9 @@
     herdr.url = "github:ogulcancelik/herdr";
     herdr.inputs.nixpkgs.follows = "nixpkgs";
 
+    paneru.url = "github:karinushka/paneru";
+    paneru.inputs.nixpkgs.follows = "nixpkgs";
+
     # Local checkout until the flake PR lands upstream; then switch to
     # github:jonesy827/pippin
     pippin.url = "path:/home/christopher/Developer/pippin";

@@ -41,7 +41,7 @@ in
 
     system.defaults = {
       spaces.spans-displays = false;
-      dock.expose-group-apps = true; # For aerospace
+      dock.expose-group-apps = true; # For paneru
       SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
       dock = {
         autohide = true;

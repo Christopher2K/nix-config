@@ -1,102 +1,81 @@
 { inputs, helpers }:
 { pkgs, config, ... }:
 {
-  programs.aerospace = {
+  imports = [ inputs.paneru.homeModules.paneru ];
+
+  services.paneru = {
     enable = true;
-    launchd.enable = true;
-    launchd.keepAlive = true;
 
     settings = {
-      after-startup-command = [ "layout accordion" ];
-      enable-normalization-flatten-containers = true;
-      enable-normalization-opposite-orientation-for-nested-containers = true;
-      accordion-padding = 30;
-      default-root-container-layout = "accordion";
-      default-root-container-orientation = "horizontal";
-      automatically-unhide-macos-hidden-apps = true;
-      key-mapping.preset = "qwerty";
-
-      gaps = {
-        inner.horizontal = 12;
-        inner.vertical = 12;
-        outer.left = 12;
-        outer.bottom = 12;
-        outer.top = 12;
-        outer.right = 12;
+      options = {
+        focus_follows_mouse = true;
+        mouse_follows_focus = true;
       };
 
-      mode.main.binding = {
-        alt-slash = "layout tiles horizontal vertical";
-        alt-comma = "layout accordion horizontal vertical";
-        alt-h = "focus left";
-        alt-j = "focus down";
-        alt-k = "focus up";
-        alt-l = "focus right";
-        alt-shift-h = "move left";
-        alt-shift-j = "move down";
-        alt-shift-k = "move up";
-        alt-shift-l = "move right";
-        alt-shift-minus = "resize smart -50";
-        alt-shift-equal = "resize smart +50";
-        alt-1 = "workspace 1";
-        alt-2 = "workspace 2";
-        alt-3 = "workspace 3";
-        alt-4 = "workspace 4";
-        alt-5 = "workspace 5";
-        alt-6 = "workspace 6";
-        alt-7 = "workspace 7";
-        alt-m = "workspace M";
-        alt-shift-1 = "move-node-to-workspace 1";
-        alt-shift-2 = "move-node-to-workspace 2";
-        alt-shift-3 = "move-node-to-workspace 3";
-        alt-shift-4 = "move-node-to-workspace 4";
-        alt-shift-5 = "move-node-to-workspace 5";
-        alt-shift-6 = "move-node-to-workspace 6";
-        alt-shift-7 = "move-node-to-workspace 7";
-        alt-shift-m = "move-node-to-workspace M";
-        alt-tab = "workspace-back-and-forth";
-        alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
-        alt-shift-semicolon = "mode service";
+      # Outer gap: 6px screen padding + 6px per-window padding = 12px at the
+      # edges and 12px between adjacent windows (Paneru has no global inner-gap
+      # option; gaps between windows come from per-window padding rules).
+      padding = {
+        top = 6;
+        bottom = 6;
+        left = 6;
+        right = 6;
       };
 
-      mode.service.binding = {
-        esc = [
-          "reload-config"
-          "mode main"
-        ];
-        r = [
-          "flatten-workspace-tree"
-          "mode main"
-        ];
-        f = [
-          "layout floating tiling"
-          "mode main"
-        ];
-        backspace = [
-          "close-all-windows-but-current"
-          "mode main"
-        ];
+      # Catch-all rule: 6px padding on each side of every window.
+      windows.default = {
+        title = ".*";
+        horizontal_padding = 6;
+        vertical_padding = 6;
       };
 
-      # App-specific workspace assignments
-      workspace-to-monitor-force-assignment = {
-        "1" = [ "main" ];
-        "2" = [ "main" ];
-        "3" = [ "main" ];
-        "4" = [ "main" ];
-        "5" = [ "secondary" ];
-        "6" = [ "secondary" ];
-        "7" = [ "secondary" ];
-        "M" = [ "secondary" ];
-      };
+      bindings = {
+        # Focus
+        window_focus_west = "alt - h";
+        window_focus_east = "alt - l";
+        window_focus_north = "alt - k";
+        window_focus_south = "alt - j";
+        window_focus_first = "alt + shift - leftarrow";
+        window_focus_last = "alt + shift - rightarrow";
 
-      # Window detection for specific apps
-      on-window-detected = [
-        {
-          "if".app-id = "com.1password.1password";
-          run = [ "move-node-to-workspace M" ];
-        }
-      ];
+        # Move
+        window_swap_west = "alt + shift - h";
+        window_swap_east = "alt + shift - l";
+        window_swap_north = "alt + shift - k";
+        window_swap_south = "alt + shift - j";
+        window_nextdisplay = "alt + shift - tab";
+
+        # Resize
+        window_grow = "alt + shift - equal";
+        window_shrink = "alt + shift - minus";
+        window_center = "alt - c";
+        window_fullwidth = "alt - f";
+        window_balance = "alt - b";
+
+        # Layout
+        window_manage = "alt - t";
+
+        # Virtual workspaces (rows within a native macOS space)
+        window_virtual_north = "alt - k";
+        window_virtual_south = "alt - j";
+        window_virtualnum_1 = "alt - 1";
+        window_virtualnum_2 = "alt - 2";
+        window_virtualnum_3 = "alt - 3";
+        window_virtualnum_4 = "alt - 4";
+        window_virtualnum_5 = "alt - 5";
+        window_virtualnum_6 = "alt - 6";
+        window_virtualnum_7 = "alt - 7";
+        window_virtualmovenum_1 = "alt + shift - 1";
+        window_virtualmovenum_2 = "alt + shift - 2";
+        window_virtualmovenum_3 = "alt + shift - 3";
+        window_virtualmovenum_4 = "alt + shift - 4";
+        window_virtualmovenum_5 = "alt + shift - 5";
+        window_virtualmovenum_6 = "alt + shift - 6";
+        window_virtualmovenum_7 = "alt + shift - 7";
+
+        quit = "ctrl + alt - q";
+        restart = "ctrl + alt - r";
+      };
     };
   };
 
