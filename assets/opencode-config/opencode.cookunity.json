@@ -125,6 +125,11 @@
       "enabled": true,
       "type": "remote",
       "url": "https://mcp.figma.com/mcp"
+    },
+    "expo": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.expo.dev/mcp"
     }
   }
 }
