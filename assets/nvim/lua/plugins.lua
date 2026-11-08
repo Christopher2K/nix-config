@@ -48,7 +48,6 @@ function plugins.init()
     "nvim-pack/nvim-spectre",                                              -- Search and replace
     { src = "nvim-treesitter/nvim-treesitter", version = "main" },         -- Treesitter
     "windwp/nvim-ts-autotag",                                              -- Treesitter extension for auto-tag
-    "wakatime/vim-wakatime",                                               -- WakaTime
     "folke/which-key.nvim",                                                -- Bindings helpers
     "OXY2DEV/markview.nvim",                                               -- Markdown viewers
     "lervag/vimtex",
