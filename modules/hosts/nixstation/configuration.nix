@@ -34,6 +34,14 @@ in
         options = "caps:escape";
       };
 
+      services.displayManager = {
+        autoLogin = {
+          enable = true;
+          user = username;
+        };
+        defaultSession = "niri";
+      };
+
       users.users.${username} = {
         isNormalUser = true;
         description = "Christopher Katoyi Kaba";
