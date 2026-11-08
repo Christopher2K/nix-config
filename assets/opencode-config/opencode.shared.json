@@ -76,8 +76,8 @@
           "name": "Kimi K3.1 Pro Highspeed (subscription)"
         },
         "glm-5.3": {
-          "modelID": "zai/glm-5.3",
-          "name": "GLM 5.3 (Z.ai)"
+          "modelID": "glm-5.3",
+          "name": "GLM 5.3 (Z.ai std for text → Flash for vision)"
         },
         "glm-5.3-flash": {
           "modelID": "zai/glm-5.3-flash",
