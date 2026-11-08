@@ -24,6 +24,9 @@ in
       nixos.theme
       nixos.window-manager
 
+      nixos.sound
+      nixos.rodecaster
+
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -51,6 +54,9 @@ in
             hm.terminal
             hm.theme
             hm.window-manager
+
+            hm.sound
+            hm.rodecaster
           ];
         };
       }

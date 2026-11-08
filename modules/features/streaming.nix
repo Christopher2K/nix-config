@@ -20,6 +20,10 @@ in
   };
 
   flake.modules.homeManager.streaming = helpers.mkHybrid {
+    common = { pkgs, ... }: {
+      home.packages = with pkgs; [ fdk_aac ];
+    };
+
     linux = {
       programs.obs-studio = {
         enable = true;
