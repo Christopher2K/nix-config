@@ -78,6 +78,12 @@ in
         {
           command = [ "niriusd" ];
         }
+        {
+          command = [
+            "steam"
+            "-silent"
+          ];
+        }
       ];
 
       prefer-no-csd = true;
@@ -247,6 +253,10 @@ in
             "vicinae"
             "toggle"
           ];
+        };
+        "Mod+N" = {
+          hotkey-overlay.title = "Toggle DMS Notepad";
+          action.spawn-sh = "dms ipc call notepad toggle";
         };
         "Mod+Alt+L" = {
           hotkey-overlay.title = "Lock the Screen: swaylock";
