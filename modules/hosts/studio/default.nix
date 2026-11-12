@@ -15,6 +15,7 @@ in
       darwin.coding
       darwin.homebrew
       darwin.launcher
+      darwin.localsend
       darwin.nix
       darwin.remote-access
       darwin.storage

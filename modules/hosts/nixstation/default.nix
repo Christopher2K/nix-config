@@ -46,6 +46,7 @@ in
             hm.gnome-apps
             hm.launcher
             hm.limusic
+            hm.localsend
             hm.notes
             hm.pippin
             hm.security

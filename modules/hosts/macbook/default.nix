@@ -20,6 +20,7 @@ in
       darwin.desktop-shell
       darwin.homebrew
       darwin.launcher
+      darwin.localsend
       darwin.macbookConfiguration
       darwin.nix
       darwin.productivity

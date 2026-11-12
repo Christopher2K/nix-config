@@ -19,6 +19,7 @@ in
       darwin.design
       darwin.homebrew
       darwin.launcher
+      darwin.localsend
       darwin.macbookCookUnityConfiguration
       darwin.nix
       darwin.productivity-cookunity
