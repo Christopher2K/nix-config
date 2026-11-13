@@ -196,6 +196,7 @@ in
       { pkgs, ... }:
       {
         home.packages = with pkgs; [
+          androidStudioPackages.stable
           # Global dev toolchains (replacing mise on NixOS).
           # Per-project versions: use a flake devShell or devenv
           # with direnv (`use flake` / `use devenv` in .envrc).
