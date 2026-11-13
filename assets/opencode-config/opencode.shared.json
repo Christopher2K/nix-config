@@ -59,6 +59,10 @@
           "modelID": "opencode-go/deepseek-v4-pro",
           "name": "DeepSeek V4 Pro (OpenCode Go)"
         },
+        "claude-haiku-5.5-go": {
+          "modelID": "opencode-go/claude-haiku-5-5",
+          "name": "Claude Haiku 5.5 (OpenCode Go)"
+        },
         "kimi-for-coding": {
           "modelID": "kimi-coding/kimi-for-coding",
           "name": "Kimi for Coding (subscription)"
@@ -82,22 +86,6 @@
         "glm-5.3-flash": {
           "modelID": "zai/glm-5.3-flash",
           "name": "GLM 5.3 Flash (Z.ai)"
-        },
-        "kimi-k3.1-pro": {
-          "modelID": "cheaperinference/kimi-k3.1-pro",
-          "name": "Kimi K3.1 Pro"
-        },
-        "kimi-k3.1-pro-highspeed": {
-          "modelID": "cheaperinference/kimi-k3.1-pro-highspeed",
-          "name": "Kimi K3.1 Pro Highspeed"
-        },
-        "claude-opus-5.5": {
-          "modelID": "cheaperinference/claude-opus-5.5",
-          "name": "Claude Opus 5.5"
-        },
-        "claude-opus-5.5-fast": {
-          "modelID": "cheaperinference/claude-opus-5.5-fast",
-          "name": "Claude Opus 5.5 Fast"
         }
       }
     },
