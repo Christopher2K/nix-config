@@ -24,9 +24,10 @@ in
       home.packages = with pkgs; [ fdk_aac ];
     };
 
-    linux = {
+    linux = { pkgs, ... }: {
       programs.obs-studio = {
         enable = true;
+        plugins = [ pkgs.obs-studio-plugins.obs-vertical-canvas ];
       };
     };
   };
