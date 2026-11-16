@@ -17,6 +17,7 @@ in
       nixos.graphics
       nixos.launcher
       nixos.nix
+      nixos.printing
       nixos.remote-access
       nixos.security
       nixos.splashscreen
