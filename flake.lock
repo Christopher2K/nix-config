@@ -1131,11 +1131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794258476,
-        "narHash": "sha256-4Ltm0uA2Ze4pmFbJhl1lD7asMj5Bd4AyuDS/lLN7Sc4=",
+        "lastModified": 1794716452,
+        "narHash": "sha256-IqvCITUT1nu3fWqM6wPoBQjzWEvMuTX4xb+rzlKZgW0=",
         "owner": "Christopher2K",
         "repo": "proton-drive-sync-linux",
-        "rev": "3871d8cfc271cbeb3ad84d5fae30dfc24de09d29",
+        "rev": "ea2abba195e87c28eb86315bfef9c3ce716b4d29",
         "type": "github"
       },
       "original": {
