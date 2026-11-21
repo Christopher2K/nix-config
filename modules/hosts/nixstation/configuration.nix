@@ -46,6 +46,7 @@ in
         isNormalUser = true;
         description = "Christopher Katoyi Kaba";
         extraGroups = [
+          "dialout"
           "networkmanager"
           "wheel"
         ];
