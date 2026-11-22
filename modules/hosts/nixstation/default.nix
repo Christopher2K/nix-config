@@ -22,6 +22,7 @@ in
       nixos.remote-access
       nixos.security
       nixos.splashscreen
+      nixos.streaming
       nixos.terminal
       nixos.theme
       nixos.window-manager
