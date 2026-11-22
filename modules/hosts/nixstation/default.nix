@@ -12,6 +12,7 @@ in
 
       nixos."3d-design"
       nixos.coding
+      nixos.design
       nixos.gaming
       nixos.gnome-apps
       nixos.graphics
