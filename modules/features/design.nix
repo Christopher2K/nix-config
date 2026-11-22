@@ -13,6 +13,8 @@
         inherit pname version src;
 
         extraInstallCommands = ''
+          ln -s ${appimageContents}/resources/app.asar.unpacked/out/mcp-server-linux-x64 \
+            $out/bin/pen-dev-mcp
           install -Dm644 ${appimageContents}/pen.desktop $out/share/applications/pen.desktop
           substituteInPlace $out/share/applications/pen.desktop \
             --replace-fail 'Exec=AppRun' 'Exec=pen-dev'

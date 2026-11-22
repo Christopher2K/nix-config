@@ -23,7 +23,7 @@
     "pencil": {
       "type": "local",
       "command": [
-        "@penMcpServer@",
+        "pen-dev-mcp",
         "--app",
         "desktop"
       ],
