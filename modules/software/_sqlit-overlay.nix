@@ -1,5 +1,6 @@
 # Overlay adding sqlit. Takes { inputs } and returns the overlay lambda;
-# coding.nix applies it as (import ./_sqlit-overlay.nix { inherit inputs; }).
+# features/coding/coding.nix applies it as
+# (import ../../software/_sqlit-overlay.nix { inherit inputs; }).
 # Underscore prefix keeps import-tree from auto-importing this as a module.
 { inputs }:
 final: prev: {

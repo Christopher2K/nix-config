@@ -15,10 +15,13 @@ flake.nix                  # Entrypoint: delegates to flake-parts via import-tre
 modules/
   flake-modules.nix        # Imports flake-parts and home-manager flake modules
   helpers.nix              # Shared utilities (mkAssetsPath, mkHybrid, etc.) and flake-level options
-  features/                # Feature modules (ai, browser, cli-tooling, coding, communication,
-                           #   design, desktop-shell, gaming, gnome-apps, graphics, homebrew,
-                           #   launcher, productivity, security, sound, splashscreen,
-                           #   storage, streaming, terminal, theme, window-manager, …)
+  features/                # Feature modules for cross-hardware capabilities (ai, browser,
+                           #   cli-tooling, coding, communication, design, desktop-shell, gaming,
+                           #   gnome-apps, homebrew, launcher, productivity, security, sound,
+                           #   splashscreen, storage, streaming, terminal, theme, window-manager, …)
+  hardware/                # Hardware-specific modules (graphics, rodecaster)
+  software/                # Reusable package and overlay helpers imported by feature/hardware
+                           #   modules; raw helper filenames begin with _ to skip import-tree
   hosts/                   # Per-host configurations
     nixstation/            # Main Linux host (NixOS, x86_64-linux)
     macbook/               # Personal macOS host (nix-darwin, aarch64-darwin)
@@ -202,9 +205,16 @@ Not every feature needs all three; omit namespaces that don't apply.
 - **`allowUnfree = true`** is set system-wide; proprietary packages are permitted.
 - **Supported systems**: `x86_64-linux` and `aarch64-darwin` (defined in `helpers.nix`).
 - `nixpkgs.config.allowUnfree` must be set in the NixOS/darwin system module, not in Home Manager.
-- When adding a new feature, create `modules/features/<name>.nix` and add it to the relevant host's
-  `default.nix` imports under both the system-level and `home-manager.users.${username}.imports`
-  lists.
-- `import-tree` automatically picks up any `.nix` file added under `modules/`; no manual
-  registration in `flake.nix` is needed.
+- New files directly under `modules/features/` are rare and must represent broad categories or
+  cohesive capabilities, never random or individual software packages. First add app/tool
+  configuration to an existing category (for example `communication`, `coding`, `gaming`, or
+  `music`), use `modules/hardware/` for device-specific configuration, and use `modules/software/`
+  for package/overlay helpers. Create a new feature file only when no existing category fits and the
+  file defines a genuinely distinct, reusable capability category. Register new public feature
+  modules in the relevant host `default.nix` imports under the appropriate system-level and
+  `home-manager.users.${username}.imports` lists.
+- `import-tree` automatically picks up module `.nix` files added under `modules/`; no manual
+  registration in `flake.nix` is needed. Raw package/overlay helpers imported by other files must
+  begin with `_` (and normally live in `modules/software/`) so `import-tree` does not treat them as
+  flake-parts modules.
 - The `switch` shell alias runs the correct rebuild command per platform (Linux vs. Darwin).

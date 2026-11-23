@@ -1,7 +1,7 @@
 # Overlay adding railpack, which isn't packaged in nixpkgs yet; use the
 # official prebuilt binaries (static musl on Linux, ad-hoc signed Mach-O on
 # macOS). Underscore prefix keeps import-tree from auto-importing this as a
-# module; coding.nix pulls it in explicitly.
+# module; features/coding/coding.nix pulls it in explicitly.
 final: prev: {
   railpack = final.callPackage (
     {

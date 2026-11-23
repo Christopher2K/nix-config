@@ -3,9 +3,7 @@ let
   username = config.flake.username;
   helpers = config.flake.helpers;
   overlays = [
-    (final: prev: {
-      herdr = inputs.herdr.packages.${prev.stdenv.hostPlatform.system}.default;
-    })
+    (import ../software/_herdr-overlay.nix { inherit inputs; })
   ];
 in
 {

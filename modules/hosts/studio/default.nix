@@ -21,6 +21,7 @@ in
       darwin.storage
       darwin.terminal
       darwin.security
+      darwin.simslim
       darwin.theme
 
       darwin.studioConfiguration
@@ -37,6 +38,7 @@ in
             hm.workstation
             hm.cli-tooling
             hm.coding
+            hm.notes
             hm.openbot
             hm.terminal
             hm.theme

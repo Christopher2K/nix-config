@@ -9,11 +9,18 @@ Built around the [Dendritic Pattern](#the-dendritic-pattern).
 
 ## The Dendritic Pattern
 
-This repository follows the **Dendritic Pattern**: every `.nix` file (except the entry points
-`flake.nix` and host `default.nix` files) is a
-[flake-parts](https://flake.parts) module. Modules are organised by **feature**, not by host or
-configuration class. A single feature file covers NixOS system config, nix-darwin system config and
-Home Manager config all in one place.
+This repository follows the **Dendritic Pattern**: configuration files (except the entry points
+`flake.nix` and host `default.nix` files) are [flake-parts](https://flake.parts) modules. Modules are
+organised by **feature** and **hardware**, not by host or configuration class, while reusable package
+and overlay helpers live under `modules/software/`. A single feature or hardware file can cover NixOS
+system config, nix-darwin system config and Home Manager config all in one place.
+
+New files directly under `modules/features/` are reserved for broad, cohesive capability categories,
+not individual apps or tools. Add app/tool configuration to an existing category first (such as
+`communication`, `coding`, `gaming`, or `music`), use `modules/hardware/` for device-specific
+configuration, and use `modules/software/` for package/overlay helpers. Create a feature file only
+when no existing category fits and it forms a genuinely distinct, reusable capability category. This
+convention applies to new work; existing legacy files do not all need to be reorganized.
 
 ```nix
 # modules/features/terminal.nix — one file owns everything "terminal" touches
@@ -24,8 +31,9 @@ Home Manager config all in one place.
 }
 ```
 
-[`import-tree`](https://github.com/vic/import-tree) auto-imports every `.nix` file under
-`modules/`, so dropping a new file in is enough — no manual registration in `flake.nix` needed.
+[`import-tree`](https://github.com/vic/import-tree) auto-imports module `.nix` files under
+`modules/`, so dropping a new module in is enough — no manual registration in `flake.nix` needed.
+Raw package and overlay helpers imported by other files begin with `_` so they are not auto-imported.
 
 **Why this pattern?**
 
@@ -34,7 +42,8 @@ Home Manager config all in one place.
   instead of being threaded through `specialArgs`/`extraSpecialArgs`.
 - **Free file paths** - files can be renamed, moved, or split without breaking anything. The path
   is just a name.
-- **Automatic importing** - any `.nix` file added under `modules/` is picked up immediately.
+- **Automatic importing** - any module file added under `modules/` is picked up immediately;
+  underscore-prefixed raw helpers are imported explicitly.
 
 **Sources & further reading**
 
@@ -55,6 +64,8 @@ NixConfig/
 │   ├── flake-modules.nix            # Registers flake-parts + home-manager flake modules
 │   ├── helpers.nix                  # Global options: username, supported systems, path helpers
 │   ├── features/                    # Feature modules — one file per capability
+│   ├── hardware/                    # Hardware-specific modules (graphics, RODECaster)
+│   ├── software/                    # Reusable package/overlay helpers; raw files start with _
 │   ├── hosts/
 │   │   ├── nixstation/              # Primary Linux host (fully configured)
 │   │   │   ├── default.nix          # Assembles nixosConfiguration from feature modules
@@ -179,9 +190,9 @@ sudo howdy add
 ### Ankama Launcher
 
 The launcher (`pkgs.ankama-launcher`) is pinned in nixpkgs to a Wayback Machine snapshot of the
-official AppImage. The overlay in `modules/features/gaming.nix` additionally disables its built-in
-auto-updater (it crashes on NixOS — it only works when running as a real AppImage), so launcher
-updates always come from the package, never from the app itself.
+official AppImage. The overlay in `modules/software/_ankama-launcher-overlay.nix` additionally
+disables its built-in auto-updater (it crashes on NixOS — it only works when running as a real
+AppImage), so launcher updates always come from the package, never from the app itself.
 
 To update to a newer launcher version:
 
@@ -193,7 +204,8 @@ To update to a newer launcher version:
    ```bash
    nix flake update nixpkgs
    ```
-3. If nixpkgs hasn't caught up yet, bump it manually in `modules/features/gaming.nix`:
+3. If nixpkgs hasn't caught up yet, bump it manually in
+   `modules/software/_ankama-launcher-overlay.nix`:
    - Create a snapshot of
      `https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage`
      on [web.archive.org](https://web.archive.org/save) — don't use the CDN URL directly, it is not
@@ -210,5 +222,6 @@ To update to a newer launcher version:
    ```
 
 Note: if Ankama ever changes the auto-updater config key, the build fails loudly with
-`updater feed URL not found in app.asar` — adjust the `postExtract` patch in `gaming.nix`
-accordingly (the replacement string must stay the exact same byte length).
+`updater feed URL not found in app.asar` — adjust the `postExtract` patch in
+`modules/software/_ankama-launcher-overlay.nix` accordingly (the replacement string must stay the
+exact same byte length).

@@ -4,8 +4,9 @@ let
   helpers = config.flake.helpers;
   overlays = [
     # inputs.neovim-nightly-overlay.overlays.default
-    (import ./_railpack-overlay.nix)
-    (import ./_sqlit-overlay.nix { inherit inputs; })
+    (import ../../software/_railpack-overlay.nix)
+    (import ../../software/_simslim-overlay.nix)
+    (import ../../software/_sqlit-overlay.nix { inherit inputs; })
   ];
 in
 {
