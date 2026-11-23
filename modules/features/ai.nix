@@ -14,10 +14,20 @@ in
 
   flake.modules.homeManager.ai = helpers.mkHybrid {
     common =
-      { pkgs, config, ... }:
+      {
+        pkgs,
+        config,
+        lib,
+        ...
+      }@args:
+      let
+        hostName = args.hostName or null;
+      in
       {
         home.packages = [
           inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.opencode
+        ]
+        ++ lib.optionals (hostName == "macbook-cookunity") [
           pkgs.codex
           pkgs.claude-code
         ];

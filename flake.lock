@@ -974,6 +974,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1794840529,
+        "narHash": "sha256-ySrWnmZB5UsZTYGHHnBjllT05O5iFjElCRS+mabtfP0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e21fec321d73511849707a7585e4ea155ee4bf40",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "numen": {
       "inputs": {
         "nixpkgs": [
@@ -1042,23 +1058,41 @@
         "type": "github"
       }
     },
-    "opencode": {
+    "openbot": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1792750491,
-        "narHash": "sha256-ggL24qwcafvNzn1g0/UYk1PcHy8OJeLARZSicET10Zo=",
+        "lastModified": 1795457748,
+        "narHash": "sha256-4agtOrxDtWcLUwLGsFIMLVxGURvWeQ2HcsRZESWx0gE=",
+        "owner": "nightly-labs",
+        "repo": "openbot",
+        "rev": "f40d2e1a54b423c09567991277e3fcc6c054e93f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nightly-labs",
+        "repo": "openbot",
+        "type": "github"
+      }
+    },
+    "opencode": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1795445743,
+        "narHash": "sha256-0bgTMqKMooQZ2MO8O64uvp/XI0NluBvmxR+wKXMUScI=",
         "owner": "anomalyco",
         "repo": "opencode",
-        "rev": "68bc26b7da1990ce10ffecfbc1e09eb13aa5d824",
+        "rev": "6f0514052a3c859894ad01bb14cc14dda1e44b96",
         "type": "github"
       },
       "original": {
         "owner": "anomalyco",
-        "ref": "v2.1.4",
+        "ref": "v2.4.1",
         "repo": "opencode",
         "type": "github"
       }
@@ -1166,6 +1200,7 @@
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
+        "openbot": "openbot",
         "opencode": "opencode",
         "paneru": "paneru",
         "pippin": "pippin",

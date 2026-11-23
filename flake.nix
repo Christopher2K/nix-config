@@ -48,8 +48,11 @@
     tree-sitter.url = "github:tree-sitter/tree-sitter";
     tree-sitter.inputs.nixpkgs.follows = "nixpkgs";
 
-    opencode.url = "github:anomalyco/opencode/v2.1.4";
-    opencode.inputs.nixpkgs.follows = "nixpkgs";
+    # Keep upstream nixpkgs: the fixed-output node_modules hash depends on Bun's version.
+    opencode.url = "github:anomalyco/opencode/v2.4.1";
+
+    openbot.url = "github:nightly-labs/openbot";
+    openbot.inputs.nixpkgs.follows = "nixpkgs";
 
     # Helium browser for NixOS (darwin gets it via homebrew cask).
     helium.url = "github:amaanq/helium-flake";

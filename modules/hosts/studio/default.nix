@@ -37,6 +37,7 @@ in
             hm.workstation
             hm.cli-tooling
             hm.coding
+            hm.openbot
             hm.terminal
             hm.theme
             hm.security
