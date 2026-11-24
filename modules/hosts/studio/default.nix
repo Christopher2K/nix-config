@@ -38,7 +38,6 @@ in
             hm.cli-tooling
             hm.coding
             hm.notes
-            hm.openbot
             hm.terminal
             hm.theme
             hm.security
