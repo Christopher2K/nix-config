@@ -19,17 +19,22 @@ in
       }@args:
       let
         hostName = args.hostName or null;
-        openbot = inputs.openbot.packages.${pkgs.stdenv.hostPlatform.system}.openbot.overrideAttrs (old: {
-          # OpenBot 0.77.0 removed --no-sandbox from its desktop entry.
-          extraInstallCommands =
-            lib.replaceString "Exec=AppRun --no-sandbox %U" "Exec=AppRun %U"
-              old.extraInstallCommands;
-        });
+        openbot = inputs.openbot.packages.${pkgs.stdenv.hostPlatform.system}.openbot;
+        openbotPackage =
+          if pkgs.stdenv.hostPlatform.isLinux then
+            openbot.overrideAttrs (old: {
+              # OpenBot 0.77.0 removed --no-sandbox from its desktop entry.
+              extraInstallCommands =
+                lib.replaceString "Exec=AppRun --no-sandbox %U" "Exec=AppRun %U"
+                  old.extraInstallCommands;
+            })
+          else
+            openbot;
       in
       {
         home.packages = [
           inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.opencode
-          openbot
+          openbotPackage
         ]
         ++ lib.optionals (hostName == "macbook-cookunity") [
           pkgs.codex
