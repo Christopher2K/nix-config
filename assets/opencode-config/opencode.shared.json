@@ -120,6 +120,15 @@
             "output": 65536
           }
         },
+        "hungerg-free": {
+          "modelID": "opencode-go/hungerg-free",
+          "name": "HungerG Free (OpenCode Go)",
+          "limit": {
+            "context": 1000000,
+            "input": 1000000,
+            "output": 65536
+          }
+        },
         "kimi-for-coding": {
           "modelID": "kimi-coding/kimi-for-coding",
           "name": "Kimi for Coding (subscription)",
