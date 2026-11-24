@@ -1,5 +1,0 @@
-# --- niri / Wayland: force JBR native Wayland AWT toolkit ---
-# JBR 21 ships an experimental Wayland toolkit that is off by default. Without
-# this, no window maps under niri (wlroots) and the IDE silently exits (130).
--Dawt.toolkit.name=WLToolkit
--Dsun.java2d.wl.draw=true

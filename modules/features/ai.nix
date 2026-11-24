@@ -45,7 +45,7 @@ in
         # Global agent skills (~/.agents/skills). Out-of-store symlink so
         # `npx skills add ... -g` can install into it without a rebuild.
         home.file.".agents/skills".source = config.lib.file.mkOutOfStoreSymlink (
-          helpers.mkAssetsStringPath config "/global-ai-skills"
+          helpers.mkAssetsStringPath config "/skills"
         );
       };
 
