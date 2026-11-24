@@ -90,9 +90,7 @@
     paneru.url = "github:karinushka/paneru";
     paneru.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Local checkout until the flake PR lands upstream; then switch to
-    # github:jonesy827/pippin
-    pippin.url = "path:/home/christopher/Developer/pippin";
+    pippin.url = "github:jonesy827/pippin";
     pippin.inputs.nixpkgs.follows = "nixpkgs";
   };
 

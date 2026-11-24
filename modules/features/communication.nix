@@ -14,7 +14,16 @@ in
       "slack"
       "insta360-link-controller"
       "zoom"
+      "localsend"
     ];
+  };
+
+  flake.modules.nixos.communication = {
+    # LocalSend discovery and file transfers both use port 53317.
+    networking.firewall = {
+      allowedTCPPorts = [ 53317 ];
+      allowedUDPPorts = [ 53317 ];
+    };
   };
 
   flake.modules.homeManager.communication = helpers.mkHybrid {
@@ -23,19 +32,9 @@ in
         beeper
         discord
         thunderbird
+        localsend
       ];
     };
   };
 
-  flake.modules.darwin.localsend = {
-    homebrew.casks = [ "localsend" ];
-  };
-
-  flake.modules.homeManager.localsend = helpers.mkHybrid {
-    linux =
-      { pkgs, ... }:
-      {
-        home.packages = with pkgs; [ localsend ];
-      };
-  };
 }

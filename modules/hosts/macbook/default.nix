@@ -20,7 +20,6 @@ in
       darwin.desktop-shell
       darwin.homebrew
       darwin.launcher
-      darwin.localsend
       darwin.macbookConfiguration
       darwin.nix
       darwin.productivity
@@ -43,7 +42,6 @@ in
             hm.christopher
             hm.cli-tooling
             hm.coding
-            hm.communication
             hm.notes
             hm.security
             hm.streaming

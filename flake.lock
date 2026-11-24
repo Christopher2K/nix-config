@@ -1128,14 +1128,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1794181296,
-        "narHash": "sha256-LBOGAzIdz61NUZqFUxo0ZrG3+GhJkYAxN6+yhzFQCxM=",
-        "path": "/home/christopher/Developer/pippin",
-        "type": "path"
+        "lastModified": 1795408775,
+        "narHash": "sha256-h3ga0tdQyABujfZT7vHjQ4vzZPJJ90ydQH+Bz8AJ0PQ=",
+        "owner": "jonesy827",
+        "repo": "pippin",
+        "rev": "5f3cc89968287342b2ca329aef298e2a88da9abf",
+        "type": "github"
       },
       "original": {
-        "path": "/home/christopher/Developer/pippin",
-        "type": "path"
+        "owner": "jonesy827",
+        "repo": "pippin",
+        "type": "github"
       }
     },
     "proton-cachyos": {

@@ -19,7 +19,6 @@ in
       darwin.design
       darwin.homebrew
       darwin.launcher
-      darwin.localsend
       darwin.macbookCookUnityConfiguration
       darwin.nix
       darwin.productivity-cookunity
@@ -42,7 +41,6 @@ in
             hm.christopher
             hm.cli-tooling
             hm.coding
-            hm.communication
             hm.notes
             hm.security
             hm.terminal

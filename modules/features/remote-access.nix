@@ -1,10 +1,17 @@
-{ config, ... }:
+{
+  inputs,
+  config,
+  ...
+}:
 let
   helpers = config.flake.helpers;
   username = config.flake.username;
 in
 {
-  flake.modules.nixos.remote-access = {
+  flake.modules.nixos.remote-access = { pkgs, ... }: {
+    environment.systemPackages = [
+      inputs.pippin.packages.${pkgs.system}.default
+    ];
     hardware.uinput.enable = true;
 
     users.users.${username}.extraGroups = [ "uinput" ];

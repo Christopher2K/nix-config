@@ -12,6 +12,7 @@ in
 
       nixos."3d-design"
       nixos.coding
+      nixos.communication
       nixos.design
       nixos.gaming
       nixos.gnome-apps
@@ -29,6 +30,7 @@ in
 
       nixos.sound
       nixos.rodecaster
+      nixos.loupedeck
 
       inputs.home-manager.nixosModules.home-manager
       {
@@ -43,15 +45,12 @@ in
             hm.browser
             hm.cli-tooling
             hm.coding
-            hm.communication
             hm.desktop-shell
             hm.gaming
             hm.gnome-apps
             hm.launcher
             hm.limusic
-            hm.localsend
             hm.notes
-            hm.pippin
             hm.security
             hm.storage
             hm.streaming
