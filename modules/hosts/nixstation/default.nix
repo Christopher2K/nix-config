@@ -41,6 +41,7 @@ in
             hm.christopher
 
             hm.ai
+            hm.communication
             hm.workstation
             hm.browser
             hm.cli-tooling
