@@ -44,17 +44,6 @@
         "baseURL": "https://omniroute.coollab.dev/v1"
       },
       "models": {
-        "coding": {
-          "modelID": "coding",
-          "name": "Coding (Kimi for Coding → GLM 5.3 Flash → DeepSeek V4.1 Flash)",
-          "settings": {
-            "reasoningEffort": "medium"
-          },
-          "limit": {
-            "context": 1000000,
-            "output": 32768
-          }
-        },
         "deepseek-v4.1-flash": {
           "modelID": "opencode-go/deepseek-v4.1-flash",
           "name": "DeepSeek V4.1 Flash (OpenCode Go)",
@@ -116,7 +105,7 @@
           "name": "Hunyuan HY4 (OpenCode Go)",
           "limit": {
             "context": 1048576,
-            "input": 983010,
+            "input": 983040,
             "output": 65536
           }
         },
@@ -134,7 +123,7 @@
           "name": "Kimi for Coding (subscription)",
           "limit": {
             "context": 1048576,
-            "output": 32768
+            "output": 131072
           }
         },
         "kimi-for-coding-highspeed": {
@@ -142,7 +131,7 @@
           "name": "Kimi for Coding Highspeed (subscription)",
           "limit": {
             "context": 262144,
-            "output": 32768
+            "output": 131072
           }
         },
         "kimi-k3.1-pro-sub": {
@@ -150,7 +139,7 @@
           "name": "Kimi K3.1 Pro (subscription)",
           "limit": {
             "context": 1048576,
-            "output": 1048576
+            "output": 131072
           }
         },
         "kimi-k3.1-pro-sub-highspeed": {
@@ -158,22 +147,6 @@
           "name": "Kimi K3.1 Pro Highspeed (subscription)",
           "limit": {
             "context": 1048576,
-            "output": 1048576
-          }
-        },
-        "glm-5.3": {
-          "modelID": "glm-5.3",
-          "name": "GLM 5.3 (Z.ai std for text → Flash for vision)",
-          "limit": {
-            "context": 1000000,
-            "output": 131072
-          }
-        },
-        "glm-5.3-flash": {
-          "modelID": "zai/glm-5.3-flash",
-          "name": "GLM 5.3 Flash (Z.ai)",
-          "limit": {
-            "context": 1000000,
             "output": 131072
           }
         }
