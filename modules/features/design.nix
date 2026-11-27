@@ -3,9 +3,13 @@
     { pkgs, ... }:
     let
       pen-dev = import ../software/_pen-dev.nix pkgs;
+      openpencil = import ../software/_openpencil.nix pkgs;
     in
     {
-      environment.systemPackages = [ pen-dev ];
+      environment.systemPackages = [
+        pen-dev
+        openpencil
+      ];
     };
 
   flake.modules.nixos."3d-design" =
@@ -29,6 +33,7 @@
       "figma"
       "cleanshot"
       "cap"
+      "openpencil"
     ];
   };
 
