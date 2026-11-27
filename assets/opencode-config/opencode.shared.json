@@ -34,6 +34,11 @@
       "headers": {
         "Authorization": "Bearer {env:COOLIFY_MANAGEMENT_KEY}"
       }
+    },
+    "doop": {
+      "type": "remote",
+      "url": "https://doop.coollab.dev/mcp",
+      "enabled": true
     }
   },
   "providers": {
